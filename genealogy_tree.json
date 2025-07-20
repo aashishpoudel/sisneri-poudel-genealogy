@@ -1,0 +1,49 @@
+{
+  "name": "Gopal",
+  "birth_year": 1940,
+  "children": [
+    {
+      "name": "Ram Bhadra",
+      "birth_year": null,
+      "children": [
+        {
+          "name": "Govinda",
+          "birth_year": null,
+          "children": [
+            {
+              "name": "Gautam",
+              "birth_year": null,
+              "children": [
+                {
+                  "name": "Laxmidhar",
+                  "birth_year": null,
+                  "children": []
+                },
+                {
+                  "name": "RamChandra",
+                  "birth_year": null,
+                  "children": []
+                },
+                {
+                  "name": "DevHari",
+                  "birth_year": null,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Prajapati",
+          "birth_year": null,
+          "children": []
+        },
+        {
+          "name": "Chamu",
+          "birth_year": null,
+          "children": []
+        }
+      ]
+    }
+  ]
+}
