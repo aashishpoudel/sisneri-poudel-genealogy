@@ -492,6 +492,9 @@ Narayan_43.add_child(Aashish_44)
 Aashish_44.add_childs([Aayan_45, Adwik_45])
 Kalyan_43.add_child(Samyog_44)
 
+Bhagawan_43.add_child(Pravesh_44)
+Pushpa_43.add_childs([Suraj_44, Niraj_44])
+Madhu_43.add_child(Kushal_44)
 
 
 

@@ -4,9 +4,21 @@ from genealogy_poudel_data import *
 with open("genealogy_tree.json", "w") as f:
     json.dump(gopal_31.to_dict(), f, indent=2)
 
-def print_tree(person, level=0):
-    print("  " * level + f"{person.name} ({person.birth_year})")
-    for child in person.children:
-        print_tree(child, level + 1)
+# Print tree with visual guide indentation
+def print_tree(person, prefix="", is_last=True):
+    connector = "└── " if is_last else "├── "
+    print(prefix + connector + f"{person.name} ({person.birth_year})")
+
+    child_count = len(person.children)
+    for i, child in enumerate(person.children):
+        is_child_last = (i == child_count - 1)
+        new_prefix = prefix + ("    " if is_last else "│   ")
+        print_tree(child, new_prefix, is_child_last)
+
+# Simple Tree
+# def print_tree(person, level=0):
+#     print("  " * level + f"{person.name} ({person.birth_year})")
+#     for child in person.children:
+#         print_tree(child, level + 1)
 
 print_tree(gopal_31)
