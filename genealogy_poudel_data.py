@@ -288,10 +288,30 @@ Manoj_45 = Person("Pashupati", None)
 Bijay_45 = Person("Pashupati", None)
 Pramod_45 = Person("Pashupati", None)
 Niranjan_45 = Person("Pashupati", None)
-Jeewan = Person("Pashupati", None)
+Jeewan_45 = Person("Pashupati", None)
 Suraj_45 = Person("Pashupati", None)
 
 #Page 34
+Bhrigu_34 = Person("Pashupati", None)
+Agnidhar_35 = Person("Pashupati", None)
+
+Satyadhar_36 = Person("Pashupati", None)
+Gangadhar_36 = Person("Pashupati", None)
+
+DevNarayan_37 = Person("Pashupati", None)
+Punyashil_37_2 = Person("Pashupati", None)
+Ramu_37 = Person("Pashupati", None)
+Prayagdut_38 = Person("Pashupati", None)
+Kashinath_39 = Person("Pashupati", None)
+
+Gokul_38 = Person("Pashupati", None)
+Baijanath_38 = Person("Pashupati", None)
+
+Birbhadra_39 = Person("Pashupati", None)
+Makarananda_39 = Person("Pashupati", None)
+HariNarayan_40 = Person("Pashupati", None)
+Laxminath_40 = Person("Pashupati", None)
+
 
 
 
