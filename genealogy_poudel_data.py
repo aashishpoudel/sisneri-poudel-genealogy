@@ -427,6 +427,28 @@ Nandalal_40 = Person("Nandalal", None)
 Sashidhar_40 = Person("Sashidhar", None)
 Chiranjibi_40 = Person("Chiranjibi", None)
 
+Sadananda_41 = Person("Chiranjibi", None)
+Narandutta_41 = Person("Chiranjibi", None)
+Chandrakanta_41 = Person("Chiranjibi", None)
+Chabilal_41 = Person("Chiranjibi", None)
+Tankanath_41 = Person("Chiranjibi", None)
+Khomnath_41 = Person("Chiranjibi", None)
+VishwoNath_41 = Person("Chiranjibi", None)
+Sukadev_41 = Person("Chiranjibi", None)
+Gangasagar_41 = Person("Chiranjibi", None)
+
+#Page 37
+Gopilal_42 = Person("Chiranjibi", None)
+Hemnath_42 = Person("Chiranjibi", None)
+Gopal_42 = Person("Chiranjibi", None)
+Rishi_42 = Person("Chiranjibi", None)
+Laxminath_42 = Person("Chiranjibi", None)
+GopiKrishna_42 = Person("Chiranjibi", None)
+Bhojraj_42 = Person("Chiranjibi", None)
+Muktinath_42 = Person("Chiranjibi", None)
+Narayan_42 = Person("Chiranjibi", None)
+
+Narayan_43 = Person("Chiranjibi", None)
 
 
 #####################################################
