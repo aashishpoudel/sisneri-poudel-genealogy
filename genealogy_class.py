@@ -1,9 +1,10 @@
 import json
 
 class Person:
-    def __init__(self, name, birth_year, children=None):
+    def __init__(self, name, birth_year=None, death_year=None, children=None, place=None):
         self.name = name
         self.birth_year = birth_year
+        self.death_year = death_year
         self.children = children or []
 
     def add_child(self, child):
