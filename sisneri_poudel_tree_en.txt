@@ -1,0 +1,195 @@
+└── Gopal (1622)
+    └── Ram Bhadra
+        ├── Govinda
+        │   ├── Gautam
+        │   │   ├── Laxmidhar
+        │   │   │   ├── LaxmiNarayan
+        │   │   │   │   └── VidyaNanda
+        │   │   │   │       └── DharmaNanda
+        │   │   │   │           └── HariLal
+        │   │   │   │               └── ShivaNidhi
+        │   │   │   │                   ├── GedLal
+        │   │   │   │                   │   └── EkNath
+        │   │   │   │                   ├── LekhNath
+        │   │   │   │                   │   ├── Ram
+        │   │   │   │                   │   │   └── Ananta
+        │   │   │   │                   │   ├── Krishna
+        │   │   │   │                   │   │   ├── Harihar
+        │   │   │   │                   │   │   │   └── Praveen
+        │   │   │   │                   │   │   └── Binod (1974)
+        │   │   │   │                   │   │       └── Vivek
+        │   │   │   │                   │   ├── Badri
+        │   │   │   │                   │   │   ├── Pramod
+        │   │   │   │                   │   │   │   └── Prashant
+        │   │   │   │                   │   │   ├── Ammod
+        │   │   │   │                   │   │   └── Arun
+        │   │   │   │                   │   └── VishwoNath
+        │   │   │   │                   │       └── ShivaNath
+        │   │   │   │                   └── PremNath
+        │   │   │   │                       └── AatmaRam
+        │   │   │   │                           ├── Deepak
+        │   │   │   │                           └── Diwakar
+        │   │   │   └── Rambhadra
+        │   │   │       └── Ghanashyam
+        │   │   │           ├── ShivaDutta
+        │   │   │           ├── BishnuDutta
+        │   │   │           ├── RamDutta
+        │   │   │           │   ├── Padmalochan
+        │   │   │           │   ├── Buddhinath
+        │   │   │           │   ├── Laxminath
+        │   │   │           │   │   ├── Chakrapani
+        │   │   │           │   │   │   ├── GuruPrasad
+        │   │   │           │   │   │   │   ├── Dhruva
+        │   │   │           │   │   │   │   │   ├── Rishiram
+        │   │   │           │   │   │   │   │   └── Rajan
+        │   │   │           │   │   │   │   └── Ishwori
+        │   │   │           │   │   │   │       ├── Chiranjibi
+        │   │   │           │   │   │   │       ├── Uttam
+        │   │   │           │   │   │   │       └── Narottam (1983)
+        │   │   │           │   │   │   ├── Gunaraj
+        │   │   │           │   │   │   │   └── Suryamani
+        │   │   │           │   │   │   │       └── Mahesh
+        │   │   │           │   │   │   ├── Ramanath
+        │   │   │           │   │   │   │   ├── Janardan
+        │   │   │           │   │   │   │   └── Raghu
+        │   │   │           │   │   │   ├── Balaram
+        │   │   │           │   │   │   │   ├── Sudarshan
+        │   │   │           │   │   │   │   ├── Gokul
+        │   │   │           │   │   │   │   └── Madan
+        │   │   │           │   │   │   └── Dilliram
+        │   │   │           │   │   │       ├── Madhav
+        │   │   │           │   │   │       └── Parshuram
+        │   │   │           │   │   └── Dandapani
+        │   │   │           │   │       ├── Toyanath
+        │   │   │           │   │       │   └── SitaRam
+        │   │   │           │   │       │       ├── Purushottam
+        │   │   │           │   │       │       ├── Basanta
+        │   │   │           │   │       │       ├── Bishwonath
+        │   │   │           │   │       │       └── Damodar
+        │   │   │           │   │       │           ├── Nirmal
+        │   │   │           │   │       │           └── Nirjan
+        │   │   │           │   │       └── KrishnaPrasad
+        │   │   │           │   ├── Jeewanath
+        │   │   │           │   │   ├── Badibilas
+        │   │   │           │   │   │   ├── Bhuminanda
+        │   │   │           │   │   │   └── Buddhinath
+        │   │   │           │   │   │       ├── Basudev
+        │   │   │           │   │   │       │   └── Ramhari
+        │   │   │           │   │   │       ├── Debarshi
+        │   │   │           │   │   │       │   ├── Haribol
+        │   │   │           │   │   │       │   ├── Anup
+        │   │   │           │   │   │       │   ├── Binod (1974)
+        │   │   │           │   │   │       │   │   └── Vivek
+        │   │   │           │   │   │       │   └── Sanod
+        │   │   │           │   │   │       └── Mukunda
+        │   │   │           │   │   │           ├── Suresh
+        │   │   │           │   │   │           └── Dinesh
+        │   │   │           │   │   ├── Bavanath
+        │   │   │           │   │   ├── Naranath
+        │   │   │           │   │   └── GaneshDutta (1889)
+        │   │   │           │   │       └── Angirash (1906)
+        │   │   │           │   │           ├── Bishnugopal
+        │   │   │           │   │           │   ├── Narayan (1955)
+        │   │   │           │   │           │   │   └── Aashish (1983)
+        │   │   │           │   │           │   │       ├── Aayan (2017)
+        │   │   │           │   │           │   │       └── Adwik (2019)
+        │   │   │           │   │           │   ├── Bhagawan (1961)
+        │   │   │           │   │           │   │   └── Pravesh (1991)
+        │   │   │           │   │           │   ├── Pushpa (1967)
+        │   │   │           │   │           │   │   ├── Suraj (1991)
+        │   │   │           │   │           │   │   └── Niraj (1991)
+        │   │   │           │   │           │   └── Madhu
+        │   │   │           │   │           │       └── Kushal (1995)
+        │   │   │           │   │           ├── Kedar
+        │   │   │           │   │           │   └── Kalyan (1986)
+        │   │   │           │   │           │       └── Samyog
+        │   │   │           │   │           ├── Hariprasad
+        │   │   │           │   │           └── Parasar
+        │   │   │           │   │               └── Sunil
+        │   │   │           │   └── Kashinath
+        │   │   │           └── HariDutta
+        │   │   ├── RamChandra
+        │   │   └── DevHari
+        │   │       └── Rishi
+        │   │           └── HariNarayan
+        │   │               ├── ShreeLal
+        │   │               │   └── Narandutta
+        │   │               │       └── Balabhadra
+        │   │               │           └── Devahari
+        │   │               │               └── Lokaraj
+        │   │               │                   ├── Sadananda
+        │   │               │                   │   ├── Pushraj
+        │   │               │                   │   │   └── Ramraj
+        │   │               │                   │   ├── Aatmanath
+        │   │               │                   │   │   ├── Manoj
+        │   │               │                   │   │   └── ShyamKrishna
+        │   │               │                   │   ├── Kirtinath
+        │   │               │                   │   │   ├── Pramod
+        │   │               │                   │   │   ├── Sudan
+        │   │               │                   │   │   └── Suman
+        │   │               │                   │   └── Rajaram
+        │   │               │                   │       └── Naniram
+        │   │               │                   ├── Homraj
+        │   │               │                   │   └── Balmiki
+        │   │               │                   │       ├── Dharmaraj
+        │   │               │                   │       └── Kulraj
+        │   │               │                   ├── Kulbahadur
+        │   │               │                   │   ├── Upendra
+        │   │               │                   │   │   └── Kapil
+        │   │               │                   │   ├── Raju
+        │   │               │                   │   ├── Saroj
+        │   │               │                   │   └── Suraj (1991)
+        │   │               │                   └── Balkrishna
+        │   │               │                       └── Sudip
+        │   │               └── RamNath
+        │   │                   └── Kedarnath
+        │   ├── Gangaram
+        │   │   ├── Kashiram
+        │   │   │   └── Kamalapati
+        │   │   │       ├── Prajapati
+        │   │   │       ├── Punyashil
+        │   │   │       │   ├── DevNarayan
+        │   │   │       │   ├── Basistha
+        │   │   │       │   │   ├── Ganapati
+        │   │   │       │   │   │   └── Narandutta
+        │   │   │       │   │   │       ├── NandaLal
+        │   │   │       │   │   │       ├── Prabhunath
+        │   │   │       │   │   │       ├── Chudamani
+        │   │   │       │   │   │       │   ├── Pashupati
+        │   │   │       │   │   │       │   │   └── Damodar
+        │   │   │       │   │   │       │   │       ├── Nirmal
+        │   │   │       │   │   │       │   │       └── Nirjan
+        │   │   │       │   │   │       │   ├── Ramchandra
+        │   │   │       │   │   │       │   │   ├── Balaram
+        │   │   │       │   │   │       │   │   │   ├── Brihaspati
+        │   │   │       │   │   │       │   │   │   └── Ekdev
+        │   │   │       │   │   │       │   │   └── Mukunda
+        │   │   │       │   │   │       │   └── Gopal
+        │   │   │       │   │   │       │       ├── Shyamkrishna
+        │   │   │       │   │   │       │       │   ├── Sudip
+        │   │   │       │   │   │       │       │   └── Sudu
+        │   │   │       │   │   │       │       └── Madhusudan
+        │   │   │       │   │   │       │           └── Manish
+        │   │   │       │   │   │       ├── Thakurnath
+        │   │   │       │   │   │       │   ├── Govinda
+        │   │   │       │   │   │       │   ├── Hariprasad
+        │   │   │       │   │   │       │   └── Padmanav
+        │   │   │       │   │   │       ├── KeshavRaj
+        │   │   │       │   │   │       │   ├── Madhusudan
+        │   │   │       │   │   │       │   └── Mitraprasad
+        │   │   │       │   │   │       └── Lilanath
+        │   │   │       │   │   ├── Ramchandra
+        │   │   │       │   │   ├── Me_laxman
+        │   │   │       │   │   ├── ShreeKanta
+        │   │   │       │   │   └── Ramakanta
+        │   │   │       │   ├── Bishamitra
+        │   │   │       │   └── Parmananda
+        │   │   │       ├── Krishnananda
+        │   │   │       └── Bashudev
+        │   │   ├── Kapil
+        │   │   ├── Gopal
+        │   │   └── Jayanarayan
+        │   ├── Bhrigu
+        │   └── Bali
+        ├── Prajapati (1650)
+        └── Chamu

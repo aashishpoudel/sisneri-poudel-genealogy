@@ -47,16 +47,18 @@ def export_tree(root_person, print_language="en"):
     html_lines.append('</body></html>')
 
     # Write text output
-    with open("family_tree_output.txt", "w", encoding="utf-8") as f:
+    with open(f"sisneri_poudel_tree_{print_language}.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(text_lines))
 
     # Write HTML output
-    with open("family_tree_output.html", "w", encoding="utf-8") as f:
+    with open(f"sisneri_poudel_tree_{print_language}.html", "w", encoding="utf-8") as f:
         f.write("\n".join(html_lines))
 
 
 # Example:
-export_tree(gopal_31, print_language="np")  # Make sure you have a Person instance assigned to `root_person`
+for language in ("en", "np"):
+    print_tree(gopal_31, print_language=language)
+    export_tree(gopal_31, print_language=language)  # Make sure you have a Person instance assigned to `root_person`
 
 
 # Simple Tree
@@ -65,4 +67,3 @@ export_tree(gopal_31, print_language="np")  # Make sure you have a Person instan
 #     for child in person.children:
 #         print_tree(child, level + 1)
 
-print_tree(gopal_31, print_language="np")
