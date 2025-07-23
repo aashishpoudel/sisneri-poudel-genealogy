@@ -332,7 +332,18 @@
                                                 {
                                                   "name": "Damodar",
                                                   "birth_year": null,
-                                                  "children": []
+                                                  "children": [
+                                                    {
+                                                      "name": "Nirmal",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Nirjan",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             }
@@ -592,7 +603,156 @@
                                 {
                                   "name": "Narandutta",
                                   "birth_year": null,
-                                  "children": []
+                                  "children": [
+                                    {
+                                      "name": "Balabhadra",
+                                      "birth_year": null,
+                                      "children": [
+                                        {
+                                          "name": "Devahari",
+                                          "birth_year": null,
+                                          "children": [
+                                            {
+                                              "name": "Lokaraj",
+                                              "birth_year": null,
+                                              "children": [
+                                                {
+                                                  "name": "Sadananda",
+                                                  "birth_year": null,
+                                                  "children": [
+                                                    {
+                                                      "name": "Pushraj",
+                                                      "birth_year": null,
+                                                      "children": [
+                                                        {
+                                                          "name": "Sudeep",
+                                                          "birth_year": null,
+                                                          "children": []
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "name": "Aatmanath",
+                                                      "birth_year": null,
+                                                      "children": [
+                                                        {
+                                                          "name": "Manoj",
+                                                          "birth_year": null,
+                                                          "children": []
+                                                        },
+                                                        {
+                                                          "name": "Sudeep",
+                                                          "birth_year": null,
+                                                          "children": []
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "name": "Kirtinath",
+                                                      "birth_year": null,
+                                                      "children": [
+                                                        {
+                                                          "name": "Pramod",
+                                                          "birth_year": null,
+                                                          "children": []
+                                                        },
+                                                        {
+                                                          "name": "Sudeep",
+                                                          "birth_year": null,
+                                                          "children": []
+                                                        },
+                                                        {
+                                                          "name": "Sudeep",
+                                                          "birth_year": null,
+                                                          "children": []
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "name": "Rajaram",
+                                                      "birth_year": null,
+                                                      "children": [
+                                                        {
+                                                          "name": "Sudeep",
+                                                          "birth_year": null,
+                                                          "children": []
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "name": "Homraj",
+                                                  "birth_year": null,
+                                                  "children": [
+                                                    {
+                                                      "name": "Balmiki",
+                                                      "birth_year": null,
+                                                      "children": [
+                                                        {
+                                                          "name": "Sudeep",
+                                                          "birth_year": null,
+                                                          "children": []
+                                                        },
+                                                        {
+                                                          "name": "Sudeep",
+                                                          "birth_year": null,
+                                                          "children": []
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "name": "Kulbahadur",
+                                                  "birth_year": null,
+                                                  "children": [
+                                                    {
+                                                      "name": "Upendra",
+                                                      "birth_year": null,
+                                                      "children": [
+                                                        {
+                                                          "name": "Sudeep",
+                                                          "birth_year": null,
+                                                          "children": []
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "name": "Raju",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Saroj",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Suraj",
+                                                      "birth_year": 1991,
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "name": "Balkrishna",
+                                                  "birth_year": null,
+                                                  "children": [
+                                                    {
+                                                      "name": "Sudip",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 }
                               ]
                             },
@@ -614,6 +774,258 @@
                   ]
                 }
               ]
+            },
+            {
+              "name": "Gangaram",
+              "birth_year": null,
+              "children": [
+                {
+                  "name": "Kashiram",
+                  "birth_year": null,
+                  "children": [
+                    {
+                      "name": "Kamalapati",
+                      "birth_year": null,
+                      "children": [
+                        {
+                          "name": "Prajapati",
+                          "birth_year": null,
+                          "children": []
+                        },
+                        {
+                          "name": "Punyashil",
+                          "birth_year": null,
+                          "children": [
+                            {
+                              "name": "DevNarayan",
+                              "birth_year": null,
+                              "children": []
+                            },
+                            {
+                              "name": "Basistha",
+                              "birth_year": null,
+                              "children": [
+                                {
+                                  "name": "Ganapati",
+                                  "birth_year": null,
+                                  "children": [
+                                    {
+                                      "name": "Narandutta",
+                                      "birth_year": null,
+                                      "children": [
+                                        {
+                                          "name": "NandaLal",
+                                          "birth_year": null,
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Prabhunath",
+                                          "birth_year": null,
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Chudamani",
+                                          "birth_year": null,
+                                          "children": [
+                                            {
+                                              "name": "Pashupati",
+                                              "birth_year": null,
+                                              "children": [
+                                                {
+                                                  "name": "Damodar",
+                                                  "birth_year": null,
+                                                  "children": [
+                                                    {
+                                                      "name": "Nirmal",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Nirjan",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "name": "Ramchandra",
+                                              "birth_year": null,
+                                              "children": [
+                                                {
+                                                  "name": "Balaram",
+                                                  "birth_year": null,
+                                                  "children": [
+                                                    {
+                                                      "name": "Brihaspati",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Ekdev",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "name": "Mukunda",
+                                                  "birth_year": null,
+                                                  "children": []
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "name": "Gopal",
+                                              "birth_year": null,
+                                              "children": [
+                                                {
+                                                  "name": "Shyamkrishna",
+                                                  "birth_year": null,
+                                                  "children": [
+                                                    {
+                                                      "name": "Sudip",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Sudu",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "name": "Madhusudan",
+                                                  "birth_year": null,
+                                                  "children": [
+                                                    {
+                                                      "name": "Manish",
+                                                      "birth_year": null,
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "name": "Thakurnath",
+                                          "birth_year": null,
+                                          "children": [
+                                            {
+                                              "name": "Govinda",
+                                              "birth_year": null,
+                                              "children": []
+                                            },
+                                            {
+                                              "name": "Hariprasad",
+                                              "birth_year": null,
+                                              "children": []
+                                            },
+                                            {
+                                              "name": "Padmanav",
+                                              "birth_year": null,
+                                              "children": []
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "name": "KeshavRaj",
+                                          "birth_year": null,
+                                          "children": [
+                                            {
+                                              "name": "Madhusudan",
+                                              "birth_year": null,
+                                              "children": []
+                                            },
+                                            {
+                                              "name": "Mitraprasad",
+                                              "birth_year": null,
+                                              "children": []
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "name": "Lilanath",
+                                          "birth_year": null,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Ramchandra",
+                                  "birth_year": null,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Me_laxman",
+                                  "birth_year": null,
+                                  "children": []
+                                },
+                                {
+                                  "name": "ShreeKanta",
+                                  "birth_year": null,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ramakanta",
+                                  "birth_year": null,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Bishamitra",
+                              "birth_year": null,
+                              "children": []
+                            },
+                            {
+                              "name": "Parmananda",
+                              "birth_year": null,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Krishnananda",
+                          "birth_year": null,
+                          "children": []
+                        },
+                        {
+                          "name": "Bashudev",
+                          "birth_year": null,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Kapil",
+                  "birth_year": null,
+                  "children": []
+                },
+                {
+                  "name": "Gopal",
+                  "birth_year": null,
+                  "children": []
+                },
+                {
+                  "name": "Jayanarayan",
+                  "birth_year": null,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Bhrigu",
+              "birth_year": null,
+              "children": []
             },
             {
               "name": "Bali",

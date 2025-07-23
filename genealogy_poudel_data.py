@@ -7,6 +7,8 @@ govinda_33 = Person("Govinda", None)
 prajapati_33 = Person("Prajapati", None)
 chamu_33 = Person("Chamu", None)
 gautam_34 = Person("Gautam", None)
+Gangaram_34 = Person("Gangaram", None)
+Bhrigu_34 = Person("Bhrigu", None)
 laxmidhar_35 = Person("Laxmidhar", None)
 ramchandra_35 = Person("RamChandra", None)
 devhari_kancha_35 = Person("DevHari", None)
@@ -58,7 +60,7 @@ Ghanashyam_37 = Person("Ghanashyam", None)
 
 ShivaDutta_38 = Person("ShivaDutta", None)
 BishnuDutta_38 = Person("BishnuDutta", None)
-RamDutta_38 = Person("RamDutta", None)
+RamDutta_38 = Person("RamDutta", None, place="Chasidol")
 HariDutta_38 = Person("HariDutta", None)
 
 Padmalochan_39 = Person("Padmalochan", None)
@@ -170,9 +172,9 @@ RamNath_38 = Person("RamNath", None)
 Narandutta_39 = Person("Narandutta", None)
 Kedarnath_39 = Person("Kedarnath", None)
 
-Balabhadra_40 = Person("Balabhadra", None)
-Devahari_41 = Person("Devahari", None)
-Lokaraj_42 = Person("Lokaraj", None)
+Balbhadra_40 = Person("Balabhadra", None)
+Devhari_41 = Person("Devahari", None)
+Lokraj_42 = Person("Lokaraj", None)
 
 Dadhilal_40 = Person("Dadhilal", None)
 Sahadutta_41 = Person("Sahadutta", None)
@@ -184,7 +186,7 @@ Kulbahadur_43 = Person("Kulbahadur", None)
 Balkrishna_43 = Person("Balkrishna", None)
 
 
-Pushraj_44 = Person("Pushraj", None)
+Pushparaj_44 = Person("Pushraj", None)
 Aatmanath_44 = Person("Aatmanath", None)
 Kirtinath_44 = Person("Kirtinath", None)
 Rajaram_44 = Person("Rajaram", None)
@@ -206,22 +208,22 @@ Dharmaraj_45 = Person("Sudeep", None)
 Kulraj_45 = Person("Sudeep", None)
 Kapil_45 = Person("Sudeep", None)
 
-Gangaram_34 = Person("Gangaram", None)
+
 Kashiram_35 = Person("Kashiram", None)
 Kapil_35 = Person("Kapil", None)
 Gopal_35 = Person("Gopal", None)
 Jayanarayan_35 = Person("Jayanarayan", None)
 
-Kamalapati_36 = Person("Kamalapati", None)
+Kamalpati_36 = Person("Kamalapati", None)
 
 Prajapati_37 = Person("Prajapati", None)
 Punyashil_37 = Person("Punyashil", None)
 Krishnananda_37 = Person("Krishnananda", None)
-Bashudev_37 = Person("Bashudev", None)
+Basudev_37 = Person("Bashudev", None)
 
 DevNarayan_38 = Person("DevNarayan", None)
 Basistha_38 = Person("Basistha", None)
-Bishamitra_38 = Person("Bishamitra", None)
+Bishwamitra_38 = Person("Bishamitra", None)
 Parmananda_38 = Person("Parmananda", None)
 
 Ganapati_39 = Person("Ganapati", None)
@@ -247,17 +249,17 @@ Padmanav_42 = Person("Padmanav", None)
 Madhusudan_42 = Person("Madhusudan", None)
 Mitraprasad_42 = Person("Mitraprasad", None)
 
-Damodar_43 = Person("Damodar", None)
+Damodar_43_2 = Person("Damodar", None)
 Balaram_43 = Person("Balaram", None)
 Mukunda_43 = Person("Mukunda", None)
 Shyamkrishna_43 = Person("Shyamkrishna", None)
 Madhusudan_43 = Person("Madhusudan", None)
 Shivaram_43 = Person("Shivaram", None)
 Sashidhar_43 = Person("Sashidhar", None)
-Diwakar_43 = Person("Diwakar", None)
-Suresh_43 = Person("Suresh", None)
-Mahesh_43 = Person("Mahesh", None)
-Dinesh_43 = Person("Dinesh", None)
+Diwakar_43_2 = Person("Diwakar", None)
+Suresh_43_2 = Person("Suresh", None)
+Mahesh_43_2 = Person("Mahesh", None)
+Dinesh_43_2 = Person("Dinesh", None)
 
 Nirmal_44 = Person("Nirmal", None)
 Nirjan_44 = Person("Nirjan", None)
@@ -316,7 +318,7 @@ Jeewan_45 = Person("Jeewan", None)
 Suraj_45 = Person("Suraj", None)
 
 #Page 34
-Bhrigu_34 = Person("Bhrigu", None)
+
 Agnidhar_35 = Person("Agnidhar", None)
 
 Satyadhar_36 = Person("Satyadhar", None)
@@ -581,7 +583,7 @@ Kailash_43 = Person("Kailash", None)
 Umesh_43 = Person("Umesh", None)
 Radheshyam_43 = Person("Radheshyam", None)
 Ganashyam_43 = Person("Ganashyam", None)
-Dinesh_43_2 = Person("Dinesh", None)
+Dinesh_43_3 = Person("Dinesh", None)
 
 #Page 40
 Su_Ramnath_36 = Person("Su_Ramnath", None)
@@ -789,7 +791,7 @@ Mani_42 = Person("Mani", None)
 Kumar_42 = Person("Kumar", None)
 Jeewan_42_1 = Person("Jeewan", None)
 
-Diwakar_43_2 = Person("Diwakar", None)
+Diwakar_43_3 = Person("Diwakar", None)
 Prabhakar_43 = Person("Prabhakar", None)
 Suman_43 = Person("Suman", None)
 Sagar_43 = Person("Sagar", None)
@@ -803,7 +805,7 @@ _4 = Person("Yogmohan", None)
 #####################################################
 gopal_31.add_child(ram_bhadra_32)
 ram_bhadra_32.add_childs([govinda_33, prajapati_33, chamu_33])
-govinda_33.add_childs([gautam_34, Bali_34])
+govinda_33.add_childs([gautam_34, Gangaram_34, Bhrigu_34, Bali_34])
 gautam_34.add_childs([laxmidhar_35, ramchandra_35, devhari_kancha_35])
 laxmidhar_35.add_childs([laxminarayan_36, Rambhadra_36])
 laxminarayan_36.add_child(VidyaNanda_37)
@@ -874,6 +876,45 @@ ShreeLal_38.add_child(Narandutta_39)
 RamNath_38.add_child(Kedarnath_39)
 
 #page 30
+Narandutta_39.add_child(Balbhadra_40)
+Balbhadra_40.add_child(Devhari_41)
+Devhari_41.add_child(Lokraj_42)
+Lokraj_42.add_childs([Sadananda_43, Homraj_43, Kulbahadur_43, Balkrishna_43])
+Sadananda_43.add_childs([Pushparaj_44, Aatmanath_44, Kirtinath_44, Rajaram_44])
+Homraj_43.add_child(Balmiki_44)
+Kulbahadur_43.add_childs([Upendra_44, Raju_44, Saroj_44, Suraj_44])
+Balkrishna_43.add_child(Sudip_44)
+
+Pushparaj_44.add_child(Ramraj_45)
+Aatmanath_44.add_childs([Manoj_45, ShyamKrishna_45])
+Kirtinath_44.add_childs([Pramod_45, Sudan_45, Suman_45])
+Rajaram_44.add_child(Naniram_45)
+Balmiki_44.add_childs([Dharmaraj_45, Kulraj_45])
+Upendra_44.add_child(Kapil_45)
+
+#Page 31
+Gangaram_34.add_childs([Kashiram_35, Kapil_35, Gopal_35, Jayanarayan_35])
+Kashiram_35.add_child(Kamalpati_36)
+Kamalpati_36.add_childs([Prajapati_37, Punyashil_37, Krishnananda_37, Basudev_37])
+Punyashil_37.add_childs([DevNarayan_38, Basistha_38, Bishwamitra_38, Parmananda_38])
+Basistha_38.add_childs([Ganapati_39, Ramchandra_39, Me_laxman_39, ShreeKanta_39, Ramakanta_39])
+Ganapati_39.add_childs([Narandutta_40])
+Narandutta_40.add_childs([NandaLal_41, Prabhunath_41, Chudamani_41, Thakurnath_41, KeshavRaj_41, Lilanath_41])
+
+#page 32
+Chudamani_41.add_childs([Pashupati_42, Ramchandra_42, Gopal_42])
+Thakurnath_41.add_childs([Govinda_42, Hariprasad_42, Padmanav_42])
+KeshavRaj_41.add_childs([Madhusudan_42, Mitraprasad_42])
+
+Pashupati_42.add_childs([Damodar_43])
+Damodar_43.add_childs([Nirmal_44, Nirjan_44])
+Ramchandra_42.add_childs([Balaram_43, Mukunda_43])
+Balaram_43.add_childs([Brihaspati_44, Ekdev_44])
+Gopal_42.add_childs([Shyamkrishna_43, Madhusudan_43])
+Shyamkrishna_43.add_childs([Sudip_44, Sudu_44])
+Madhusudan_43.add_child(Manish_44)
+
+
 
 
 

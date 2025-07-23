@@ -7,7 +7,10 @@ with open("genealogy_tree.json", "w") as f:
 # Print tree with visual guide indentation
 def print_tree(person, prefix="", is_last=True):
     connector = "└── " if is_last else "├── "
-    print(prefix + connector + f"{person.name} ({person.birth_year})")
+    if person.birth_year:
+        print(prefix + connector + f"{person.name} ({person.birth_year})")
+    else:
+        print(prefix + connector + f"{person.name}")
 
     child_count = len(person.children)
     for i, child in enumerate(person.children):
