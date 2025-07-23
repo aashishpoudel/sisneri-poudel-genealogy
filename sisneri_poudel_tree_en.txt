@@ -1,4 +1,4 @@
-└── Gopal (1622)
+└── Gopal
     └── Ram Bhadra
         ├── Govinda
         │   ├── Gautam
@@ -16,7 +16,7 @@
         │   │   │   │                   │   ├── Krishna
         │   │   │   │                   │   │   ├── Harihar
         │   │   │   │                   │   │   │   └── Praveen
-        │   │   │   │                   │   │   └── Binod (1974)
+        │   │   │   │                   │   │   └── Binod
         │   │   │   │                   │   │       └── Vivek
         │   │   │   │                   │   ├── Badri
         │   │   │   │                   │   │   ├── Pramod
@@ -45,7 +45,7 @@
         │   │   │           │   │   │   │   └── Ishwori
         │   │   │           │   │   │   │       ├── Chiranjibi
         │   │   │           │   │   │   │       ├── Uttam
-        │   │   │           │   │   │   │       └── Narottam (1983)
+        │   │   │           │   │   │   │       └── Narottam
         │   │   │           │   │   │   ├── Gunaraj
         │   │   │           │   │   │   │   └── Suryamani
         │   │   │           │   │   │   │       └── Mahesh
@@ -78,7 +78,7 @@
         │   │   │           │   │   │       ├── Debarshi
         │   │   │           │   │   │       │   ├── Haribol
         │   │   │           │   │   │       │   ├── Anup
-        │   │   │           │   │   │       │   ├── Binod (1974)
+        │   │   │           │   │   │       │   ├── Binod
         │   │   │           │   │   │       │   │   └── Vivek
         │   │   │           │   │   │       │   └── Sanod
         │   │   │           │   │   │       └── Mukunda
@@ -86,22 +86,22 @@
         │   │   │           │   │   │           └── Dinesh
         │   │   │           │   │   ├── Bavanath
         │   │   │           │   │   ├── Naranath
-        │   │   │           │   │   └── GaneshDutta (1889)
-        │   │   │           │   │       └── Angirash (1906)
+        │   │   │           │   │   └── GaneshDutta
+        │   │   │           │   │       └── Angirash
         │   │   │           │   │           ├── Bishnugopal
-        │   │   │           │   │           │   ├── Narayan (1955)
-        │   │   │           │   │           │   │   └── Aashish (1983)
-        │   │   │           │   │           │   │       ├── Aayan (2017)
-        │   │   │           │   │           │   │       └── Adwik (2019)
-        │   │   │           │   │           │   ├── Bhagawan (1961)
-        │   │   │           │   │           │   │   └── Pravesh (1991)
-        │   │   │           │   │           │   ├── Pushpa (1967)
-        │   │   │           │   │           │   │   ├── Suraj (1991)
-        │   │   │           │   │           │   │   └── Niraj (1991)
+        │   │   │           │   │           │   ├── Narayan
+        │   │   │           │   │           │   │   └── Aashish
+        │   │   │           │   │           │   │       ├── Aayan
+        │   │   │           │   │           │   │       └── Adwik
+        │   │   │           │   │           │   ├── Bhagawan
+        │   │   │           │   │           │   │   └── Pravesh
+        │   │   │           │   │           │   ├── Pushpa
+        │   │   │           │   │           │   │   ├── Suraj
+        │   │   │           │   │           │   │   └── Niraj
         │   │   │           │   │           │   └── Madhu
-        │   │   │           │   │           │       └── Kushal (1995)
+        │   │   │           │   │           │       └── Kushal
         │   │   │           │   │           ├── Kedar
-        │   │   │           │   │           │   └── Kalyan (1986)
+        │   │   │           │   │           │   └── Kalyan
         │   │   │           │   │           │       └── Samyog
         │   │   │           │   │           ├── Hariprasad
         │   │   │           │   │           └── Parasar
@@ -138,7 +138,7 @@
         │   │               │                   │   │   └── Kapil
         │   │               │                   │   ├── Raju
         │   │               │                   │   ├── Saroj
-        │   │               │                   │   └── Suraj (1991)
+        │   │               │                   │   └── Suraj
         │   │               │                   └── Balkrishna
         │   │               │                       └── Sudip
         │   │               └── RamNath
@@ -191,5 +191,5 @@
         │   │   └── Jayanarayan
         │   ├── Bhrigu
         │   └── Bali
-        ├── Prajapati (1650)
+        ├── Prajapati
         └── Chamu
