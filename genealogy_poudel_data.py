@@ -442,7 +442,7 @@ Anupam_43 = Person("Anupam", nepali_name="अनुपम")
 Pashupati_38 = Person("Pashupati", nepali_name="पशुपति")
 Ganapati_38 = Person("Ganapati", nepali_name="गणपति")
 Padmanath_39 = Person("Padmanath", nepali_name="पद्मनाथ")
-Kashinath_39_2 = Person("Kashinath", nepali_name="काशीनाथ")
+Kashinath_39_3 = Person("Kashinath", nepali_name="काशीनाथ")
 Umanath_39 = Person("Umanath", nepali_name="उमानाथ")
 Kalu_40 = Person("Kalu", nepali_name="कालु")
 Muktinath_40 = Person("Muktinath", nepali_name="मुक्तिनाथ")
@@ -914,3 +914,23 @@ Saroj_43.add_childs([Sourya_43, Saurav_43])
 Shreeram_42_1.add_child(Santosh_43)
 Mukunda_42_1.add_child(Saroj_43_2)
 Madhuwan_42.add_childs([Mahesh_43_3, Anupam_43])
+
+#Page 39
+Liladhar_37.add_childs([Pashupati_38, Ganapati_38])
+Pashupati_38.add_childs([Padmanath_39, Kashinath_39_3])
+Ganapati_38.add_child(Umanath_39)
+
+Padmanath_39.add_child(Kalu_40)
+Kashinath_39_3.add_childs([Muktinath_40, Sadananda_40, Emanath_40, Bhimnath_40])
+Umanath_39.add_child(Narayan_40)
+Kalu_40.add_childs([Sukadev_41_2, Dalbahadur_41])
+Sadananda_40.add_child(Gopal_41_3)
+Bhimnath_40.add_childs([Ramjeev_41, Shyamjeev_41, Sahadev_41, Arjun_41, Prahlad_41, Kamal_41])
+
+Sukadev_41_2.add_child(Nanibabu_42)
+Dalbahadur_41.add_childs([Rameshor_42, Achyut_42, Shreeram_42_2])
+Gopal_41.add_childs([ShyamKrishna_42, ShyamKaji_42, Hariprasad_42, Sundar_42])
+
+Ramjeev_41.add_child(Bidur_42)
+Shyamjeev_41.add_childs([Purushottam_42, Krishnasharan_42])
+
