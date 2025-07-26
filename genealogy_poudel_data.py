@@ -944,6 +944,84 @@ KapilDev_41 = Person("Pundarika", nepali_name="महेश", place="चण्�
 
 RamKaji_42 = Person("RamKaji", nepali_name="महेश", place="चण्डोल")
 Basudev_42_2 = Person("RamKaji", nepali_name="महेश", place="जवलाखेल")
+Laxman_42_2 = Person("RamKaji", nepali_name="महेश")
+Binod_42 = Person("RamKaji", nepali_name="महेश")
+Ramgopal_42 = Person("RamKaji", nepali_name="महेश")
+RanjanRaj_42 = Person("RamKaji", nepali_name="महेश")
+Sitaram_42 = Person("RamKaji", nepali_name="महेश")
+Shivanath_42 = Person("RamKaji", nepali_name="महेश")
+RamPrasad_42 = Person("RamKaji", nepali_name="महेश")
+HariPrasad_42 = Person("RamKaji", nepali_name="महेश")
+Bishesh_43 = Person("RamKaji", nepali_name="महेश")
+Bibek_43 = Person("RamKaji", nepali_name="महेश")
+RajuPrasad_43 = Person("RamKaji", nepali_name="महेश")
+Sancha_43 = Person("RamKaji", nepali_name="महेश")
+Saroj_43_3 = Person("RamKaji", nepali_name="महेश")
+Manoj_43 = Person("RamKaji", nepali_name="महेश")
+
+#page 52
+Homnath_40 = Person("RamKaji", nepali_name="महेश")
+Padmanidhi_40 = Person("RamKaji", nepali_name="महेश")
+Gangadutta_40 = Person("RamKaji", nepali_name="महेश")
+Tulsiram_40 = Person("RamKaji", nepali_name="महेश")
+
+Narayan_41 = Person("RamKaji", nepali_name="महेश")
+ShivaHari_41_2 = Person("RamKaji", nepali_name="महेश")
+TulsiPrasad_41 = Person("RamKaji", nepali_name="महेश")
+Makarananda_41 = Person("RamKaji", nepali_name="महेश")
+HutaPrasad_41 = Person("RamKaji", nepali_name="महेश")
+Ghananath_41 = Person("RamKaji", nepali_name="महेश")
+Narayan_41_2 = Person("RamKaji", nepali_name="महेश")
+Khecharnath_41 = Person("RamKaji", nepali_name="महेश")
+
+PremKumar_42 = Person("RamKaji", nepali_name="महेश")
+Ramesh_42_4 = Person("RamKaji", nepali_name="महेश")
+AatmaRam_42_2 = Person("RamKaji", nepali_name="महेश")
+Badri_42_2 = Person("RamKaji", nepali_name="महेश")
+Basudev_42_3 = Person("RamKaji", nepali_name="महेश")
+Dayanidhi_42 = Person("RamKaji", nepali_name="महेश")
+BalKrishna_42 = Person("RamKaji", nepali_name="महेश")
+Kedar_42_3 = Person("RamKaji", nepali_name="महेश")
+Govinda_42_3 = Person("RamKaji", nepali_name="महेश")
+Keshav_42_3 = Person("RamKaji", nepali_name="महेश")
+Sambhu_42_2 = Person("RamKaji", nepali_name="महेश")
+ShyamPrasad_42 = Person("RamKaji", nepali_name="महेश")
+Baburam_42 = Person("RamKaji", nepali_name="महेश")
+Krishna_42_5 = Person("RamKaji", nepali_name="महेश")
+Bishnu_42_2 = Person("RamKaji", nepali_name="महेश")
+
+Pawan_43 = Person("RamKaji", nepali_name="महेश")
+Rujhan_43 = Person("RamKaji", nepali_name="महेश")
+Ranjan_43 = Person("RamKaji", nepali_name="महेश")
+Shivakumar_43 = Person("RamKaji", nepali_name="महेश")
+Gopal_43 = Person("RamKaji", nepali_name="महेश")
+Prithu_43 = Person("RamKaji", nepali_name="महेश")
+Parshu_43 = Person("RamKaji", nepali_name="महेश")
+Laxman_43_2 = Person("RamKaji", nepali_name="महेश")
+Shyamsundar_43 = Person("RamKaji", nepali_name="महेश")
+Ram_43_2 = Person("RamKaji", nepali_name="महेश")
+Ghanashyam_43_2 = Person("RamKaji", nepali_name="महेश")
+Binod_43_2 = Person("RamKaji", nepali_name="महेश")
+Narayan_43_2 = Person("RamKaji", nepali_name="महेश")
+Rajendra_43 = Person("RamKaji", nepali_name="महेश")
+Binod_43_3 = Person("RamKaji", nepali_name="महेश")
+Sambhu_43 = Person("RamKaji", nepali_name="महेश")
+Kedar_43_3 = Person("RamKaji", nepali_name="महेश")
+Rameshwor_43_3 = Person("RamKaji", nepali_name="महेश")
+Raju_43 = Person("RamKaji", nepali_name="महेश")
+Deepak_43_4 = Person("RamKaji", nepali_name="महेश")
+
+Dinesh_44 = Person("RamKaji", nepali_name="महेश")
+Umesh_44 = Person("RamKaji", nepali_name="महेश")
+Rajesh_44 = Person("RamKaji", nepali_name="महेश")
+
+#Page 53
+
+
+
+
+
+
 
 
 
