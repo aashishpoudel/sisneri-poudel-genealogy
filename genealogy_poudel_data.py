@@ -1016,11 +1016,37 @@ Umesh_44 = Person("RamKaji", nepali_name="महेश")
 Rajesh_44 = Person("RamKaji", nepali_name="महेश")
 
 #Page 53
+Unnamed_37 = Person("Unnamed", nepali_name="नाम नखुलेको")
+Unnamed_38 = Person("Unnamed", nepali_name="नाम नखुलेको", place="विराटनगर")
+Devdutta_38 = Person("Devdutta", nepali_name="देवदत्त")
+Rambhadra_39 = Person("Devdutta", nepali_name="देवदत्त")
+Bhuminandan_39 = Person("Bhuminandan", nepali_name="देवदत्त", place='कुमारीगाल')
 
+DambarBahadur_40 = Person("Bhuminandan", nepali_name="देवदत्त")
+PurnaBahadur_40_3 = Person("Bhuminandan", nepali_name="देवदत्त")
+Harinandan_40 = Person("Bhuminandan", nepali_name="देवदत्त")
+Chandrakant_40 = Person("Bhuminandan", nepali_name="देवदत्त")
+Chiranjibi_40_2 = Person("Bhuminandan", nepali_name="देवदत्त")
+Taranath_40_2 = Person("Bhuminandan", nepali_name="देवदत्त")
 
+BhimBahadur_41 = Person("Bhuminandan", nepali_name="देवदत्त")
+Sete_41 = Person("Bhuminandan", nepali_name="देवदत्त")
+Ramnath_41 = Person("Bhuminandan", nepali_name="देवदत्त")
+ShivaPrasad_41 = Person("Bhuminandan", nepali_name="देवदत्त")
+Purushottam_41 = Person("Bhuminandan", nepali_name="देवदत्त")
 
+Sanatkumar_42 = Person("Bhuminandan", nepali_name="देवदत्त")
+Shivaram_42 = Person("Bhuminandan", nepali_name="देवदत्त")
+ShreeKrishna_42 = Person("Bhuminandan", nepali_name="देवदत्त")
+Ramsharan_42 = Person("Bhuminandan", nepali_name="देवदत्त")
+Maniram_42 = Person("Bhuminandan", nepali_name="देवदत्त")
+Nabaraj_42_2 = Person("Bhuminandan", nepali_name="देवदत्त")
 
+Nirmal_43 = Person("Bhuminandan", nepali_name="देवदत्त")
+Nirjan_43 = Person("Bhuminandan", nepali_name="देवदत्त")
+Nischal_43 = Person("Bhuminandan", nepali_name="देवदत्त")
 
+#Page 54
 
 
 
