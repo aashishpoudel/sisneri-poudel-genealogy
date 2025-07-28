@@ -2260,16 +2260,6 @@
                                           "name": "Ramji",
                                           "birth_year": null,
                                           "children": []
-                                        },
-                                        {
-                                          "name": "Hari",
-                                          "birth_year": null,
-                                          "children": []
-                                        },
-                                        {
-                                          "name": "Shyam",
-                                          "birth_year": null,
-                                          "children": []
                                         }
                                       ]
                                     }
@@ -2959,7 +2949,18 @@
                                     {
                                       "name": "DeviPrasad",
                                       "birth_year": null,
-                                      "children": []
+                                      "children": [
+                                        {
+                                          "name": "Hari",
+                                          "birth_year": null,
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Shyam",
+                                          "birth_year": null,
+                                          "children": []
+                                        }
+                                      ]
                                     },
                                     {
                                       "name": "Jhankanath",

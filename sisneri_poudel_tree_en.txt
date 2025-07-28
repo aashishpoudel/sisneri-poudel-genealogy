@@ -411,9 +411,7 @@
         │   │   │       │       │   │           └── BinodPrasad
         │   │   │       │       │   │               └── Murari
         │   │   │       │       │   └── DeviPrasad
-        │   │   │       │       │       ├── Ramji
-        │   │   │       │       │       ├── Hari
-        │   │   │       │       │       └── Shyam
+        │   │   │       │       │       └── Ramji
         │   │   │       │       ├── Makardwoj
         │   │   │       │       │   └── Taranath
         │   │   │       │       │       ├── SivaPrasad
@@ -540,6 +538,8 @@
         │   │   │   │   │   │       │   │   └── Jeewan
         │   │   │   │   │   │       │   └── Rishi
         │   │   │   │   │   │       ├── DeviPrasad
+        │   │   │   │   │   │       │   ├── Hari
+        │   │   │   │   │   │       │   └── Shyam
         │   │   │   │   │   │       ├── Jhankanath
         │   │   │   │   │   │       │   └── Ramhari
         │   │   │   │   │   │       └── Homanath
