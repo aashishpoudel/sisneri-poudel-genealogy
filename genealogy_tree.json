@@ -387,7 +387,35 @@
                                                   "death_year": null,
                                                   "place": null,
                                                   "comment": null,
-                                                  "children": []
+                                                  "children": [
+                                                    {
+                                                      "name": "Saroj",
+                                                      "nepali_name": "\u0938\u0930\u094b\u091c",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Sabin",
+                                                      "nepali_name": "\u0938\u0935\u093f\u0928",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Suman",
+                                                      "nepali_name": "\u0938\u0941\u092e\u0928",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "children": []
+                                                    }
+                                                  ]
                                                 },
                                                 {
                                                   "name": "Rajan",
@@ -396,7 +424,17 @@
                                                   "death_year": null,
                                                   "place": null,
                                                   "comment": null,
-                                                  "children": []
+                                                  "children": [
+                                                    {
+                                                      "name": "Ramesh",
+                                                      "nepali_name": "\u0930\u092e\u0947\u0936",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "children": []
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             },
@@ -415,7 +453,17 @@
                                                   "death_year": null,
                                                   "place": null,
                                                   "comment": null,
-                                                  "children": []
+                                                  "children": [
+                                                    {
+                                                      "name": "Pujan",
+                                                      "nepali_name": "\u092a\u0941\u091c\u0928",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "children": []
+                                                    }
+                                                  ]
                                                 },
                                                 {
                                                   "name": "Uttam",
@@ -8797,7 +8845,17 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Pawan",
+                                                  "nepali_name": "\u092a\u0935\u0928",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                }
+                                              ]
                                             },
                                             {
                                               "name": "Ramesh",
@@ -8806,7 +8864,26 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Rujhan",
+                                                  "nepali_name": "\u0930\u0941\u091d\u093e\u0928",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Ranjan",
+                                                  "nepali_name": "\u0930\u091e\u094d\u091c\u0928",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                }
+                                              ]
                                             }
                                           ]
                                         },
@@ -8863,7 +8940,17 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Shivakumar",
+                                                  "nepali_name": "\u0936\u093f\u0935\u0915\u0941\u092e\u093e\u0930",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                }
+                                              ]
                                             },
                                             {
                                               "name": "Badri",
@@ -8872,7 +8959,44 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Gopal",
+                                                  "nepali_name": "\u0917\u094b\u092a\u093e\u0932",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Prithu",
+                                                  "nepali_name": "\u092a\u0943\u0925\u0941",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Parshu",
+                                                  "nepali_name": "\u092a\u0930\u0936\u0941",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Laxman",
+                                                  "nepali_name": "\u0932\u0915\u094d\u0937\u094d\u092e\u0923",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                }
+                                              ]
                                             },
                                             {
                                               "name": "Basudev",
@@ -8890,7 +9014,35 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Shyamsundar",
+                                                  "nepali_name": "\u0936\u094d\u092f\u093e\u092e\u0938\u0941\u0928\u094d\u0926\u0930",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Ram",
+                                                  "nepali_name": "\u0930\u093e\u092e",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Ghanashyam",
+                                                  "nepali_name": "\u0918\u0928\u0936\u094d\u092f\u093e\u092e",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                }
+                                              ]
                                             }
                                           ]
                                         },
@@ -8946,7 +9098,17 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Binod",
+                                                  "nepali_name": "\u0935\u093f\u0928\u094b\u0926",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                }
+                                              ]
                                             },
                                             {
                                               "name": "Shambhu",
@@ -9012,7 +9174,53 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Narayan",
+                                                  "nepali_name": "\u0928\u093e\u0930\u093e\u092f\u0923",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Rajendra",
+                                                  "nepali_name": "\u0930\u093e\u091c\u0947\u0928\u094d\u0926\u094d\u0930",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Binod",
+                                                  "nepali_name": "\u0935\u093f\u0928\u094b\u0926",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Shambhu",
+                                                  "nepali_name": "\u0936\u092e\u094d\u092d\u0941",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Ramesh",
+                                                  "nepali_name": "\u0930\u092e\u0947\u0936",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                }
+                                              ]
                                             },
                                             {
                                               "name": "Krishna",
@@ -9021,7 +9229,35 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Kedar",
+                                                  "nepali_name": "\u0915\u0947\u0926\u093e\u0930",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Rameshwor",
+                                                  "nepali_name": "\u0930\u093e\u092e\u0947\u0936\u094d\u0935\u0930",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Raju",
+                                                  "nepali_name": "\u0930\u093e\u091c\u0941",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                }
+                                              ]
                                             },
                                             {
                                               "name": "Bishnu",
@@ -9030,7 +9266,17 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Deepak",
+                                                  "nepali_name": "\u0926\u0940\u092a\u0915",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "children": []
+                                                }
+                                              ]
                                             }
                                           ]
                                         }
