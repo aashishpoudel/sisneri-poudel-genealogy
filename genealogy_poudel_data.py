@@ -1570,7 +1570,6 @@ bharat_bahadur_39.add_child(ram_bahadur_40)
 tilak_bahadur_39.add_childs([krishna_bahadur_40_1, purna_bahadur_40])
 
 #page 46
-###### all done
 dol_bahadur_40.add_childs([shiva_hari_41, krishna_hari_41])
 ram_bahadur_40.add_childs([babu_kaji_41, shiva_41])
 krishna_bahadur_40_1.add_childs([bal_gopal_41, rajendra_41])
@@ -1660,11 +1659,12 @@ bishnu_40.add_childs([pradeep_41, niroj_41])
 shivakumar_40.add_childs([sarad_kumar_41, sree_kumar_41])
 
 ramchandra_41.add_childs([govinda_42_2, sudarshan_42_2, madhav_42_3])
-ganesh_bahadur_41.add_childs([narayan_42_3, kedar_42_2])
+ganesh_bahadur_41.add_childs([narayan_42_3, kedar_42_3])
 shyam_bahadur_41.add_childs([ramesh_42_3, rameshwor_42, rajendra_42_2])
 sambhu_bahadur_41.add_child(shiva_bahadur_42)
 pushpa_raj_41.add_childs([kiran_42_2, kishor_42])
 
+purshuram_35.add_child(hari_36)
 hari_36.add_child(ramananda_37)
 ramananda_37.add_childs([liladhar_38, jayabhadra_38])
 
@@ -1688,10 +1688,11 @@ dhruva_prasad_41.add_childs([sitaram_42, shivanath_42, ram_prasad_42])
 kapil_dev_41.add_child(hari_prasad_42_2)
 basudev_42_2.add_childs([bishesh_43, bibek_43_2])
 sitaram_42.add_childs([raju_prasad_43])
-shivanath_42.add_child([sancha_43])
-hari_prasad_42.add_childs([saroj_43_3, manoj_43_2])
+shivanath_42.add_child(sancha_43)
+hari_prasad_42_2.add_childs([saroj_43_3, manoj_43_2])
 
 #Page 52
+###### all done
 prabhunath_39.add_childs([homnath_40])
 sadananda_39.add_childs([padmanidhi_40, gangadutta_40, tulsiram_40])
 homnath_40.add_childs([narayan_41, shiva_hari_41_2])
@@ -1700,8 +1701,39 @@ tulsiram_40.add_child(khecharnath_41)
 
 narayan_41.add_childs([prem_kumar_42, ramesh_42_4])
 makarananda_41.add_childs([aatma_ram_42_2, badri_42_2, basudev_42_3, dayanidhi_42])
-huta_prasad_41.add_childs([bal_krishna_42, kedar_42_3, govinda_42_3])
+huta_prasad_41.add_childs([bal_krishna_42, kedar_42_4, govinda_42_3])
 ghananath_41.add_childs([keshav_42_3, shambu_42_2])
 narayan_41_2.add_child(shyam_prasad_42)
 khecharnath_41.add_childs([baburam_42, krishna_42_5, bishnu_42_2])
+
+prem_kumar_42.add_child(pawan_43)
+ramesh_42.add_childs([rujhan_43, ranjan_43])
+aatma_ram_42_2.add_child(shivakumar_43)
+badri_42_2.add_childs([gopal_43, prithu_43, parshu_43, laxman_43_2])
+dayanidhi_42
+keshav_42_3
+
+
+laxman_43_2 = Person("Laxman", nepali_name="लक्ष्मण")
+shyamsundar_43 = Person("Shyamsundar", nepali_name="श्यामसुन्दर")
+ram_43_2 = Person("Ram", nepali_name="राम")
+ghanashyam_43_2 = Person("Ghanashyam", nepali_name="घनश्याम")
+binod_43_3 = Person("Binod", nepali_name="विनोद")
+narayan_43_2 = Person("Narayan", nepali_name="नारायण")
+rajendra_43 = Person("Rajendra", nepali_name="राजेन्द्र")
+binod_43_4 = Person("Binod", nepali_name="विनोद")
+shambhu_43_2 = Person("Shambhu", nepali_name="शम्भु")
+ramesh_43_2 = Person("Ramesh", nepali_name="रमेश")
+kedar_43_3 = Person("Kedar", nepali_name="केदार")
+rameshwor_43_3 = Person("Rameshwor", nepali_name="रामेश्वर")
+raju_43 = Person("Raju", nepali_name="राजु")
+deepak_43_5 = Person("Deepak", nepali_name="दीपक")
+
+
+
+
+
+
+
+
 
