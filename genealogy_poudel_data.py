@@ -1289,6 +1289,62 @@ banmali_41 = Person("Banmali", nepali_name="वनमाली")
 devendra_41 = Person("Devendra", nepali_name="देवेन्द्र")
 
 #page 58
+harilal_38 = Person("Harilal", nepali_name="हरिलाल")
+ramlal_38 = Person("Ramlal", nepali_name="रामलाल")
+
+radharaman_39 = Person("Radharaman", nepali_name="राधारमण")
+gobatsa_39 = Person("Gobatsa", nepali_name="गोवत्स")
+suryanidhi_39 = Person("Suryanidhi", nepali_name="सूर्यनिधि")
+loknath_39_2 = Person("Loknath", nepali_name="लोकनाथ")
+rupnarayan_39 = Person("Rupnarayan", nepali_name="रूपनारायण")
+
+chetnath_40 = Person("Chetnath", nepali_name="चेतनाथ")
+muktinath_40_2 = Person("Muktinath", nepali_name="मुक्तिनाथ")
+harinarayan_40 = Person("Harinarayan", nepali_name="हरिनारायण")
+ramji_40_2 = Person("Ramji", nepali_name="रामजी")
+dolkeshor_40 = Person("Dolkeshor", nepali_name="डोलकेश्वर")
+
+lesardutta_41 = Person("Lesardutta", nepali_name="लेसरदत्त")
+devdutta_41 = Person("Devdutta", nepali_name="देवदत्त")
+ishoriprasad_41 = Person("Ishoriprasad", nepali_name="ईश्वरीप्रसाद")
+homnath_41 = Person("Homnath", nepali_name="होमनाथ")
+giriraj_41 = Person("Giriraj", nepali_name="गिरिराज")
+pitambar_41_2 = Person("Pitambar", nepali_name="पिताम्बर")
+hariprasad_41_2 = Person("Hariprasad", nepali_name="हरिप्रसाद")
+brahmaprasad_41 = Person("Brahmaprasad", nepali_name="ब्रह्मप्रसाद")
+ramprasad_41 = Person("Ramprasad", nepali_name="रामप्रसाद")
+tekprasad_41 = Person("Tekprasad", nepali_name="टेकप्रसाद")
+
+hariprasad_42 = Person("Hariprasad", nepali_name="हरिप्रसाद")
+pundarika_42 = Person("Pundarika", nepali_name="पुण्डरीक")
+rana_bahadur_42 = Person("Rana Bahadur", nepali_name="रणबहादुर")
+govinda_bahadur_42 = Person("Govinda Bahadur", nepali_name="गोविन्दबहादुर")
+bhakta_bahadur_42 = Person("Bhakta Bahadur", nepali_name="भक्तबहादुर")
+bishnu_bahadur_42 = Person("Bishnu Bahadur", nepali_name="बिष्णुबहादुर")
+rajendra_bahadur_42 = Person("Rajendra Bahadur", nepali_name="राजेन्द्रबहादुर")
+bikram_42 = Person("Bikram", nepali_name="विक्रम")
+bishnu_42_3 = Person("Bishnu", nepali_name="बिष्णु")
+krishna_42_6 = Person("Krishna", nepali_name="कृष्ण")
+ramsharan_42_2 = Person("Ramsharan", nepali_name="रामशरण")
+shankar_42_2 = Person("Shankar", nepali_name="शंकर")
+bikram_42_2 = Person("Bikram", nepali_name="विक्रम")  # Duplicate name, so added _42b
+ram_42_2 = Person("Ram", nepali_name="राम")
+laxman_42_3 = Person("Laxman", nepali_name="लक्ष्मण")
+santosh_42_2 = Person("Santosh", nepali_name="सन्तोष")
+mahesh_42 = Person("Mahesh", nepali_name="महेश")
+
+prabhat_43 = Person("Prabhat", nepali_name="प्रभात")
+prakash_43 = Person("Prakash", nepali_name="प्रकाश")
+suman_43_2 = Person("Suman", nepali_name="सुमन")
+suraj_43 = Person("Suraj", nepali_name="सुरज")
+sujan_43 = Person("Sujan", nepali_name="सुजन")
+rajendra_43_2 = Person("Rajendra", nepali_name="राजेन्द्र")
+yogendra_43 = Person("Yogendra", nepali_name="योगेन्द्र")
+jeewan_43 = Person("Jeewan", nepali_name="जीवन")
+
+#page 59
+
+
 
 
 
