@@ -1692,7 +1692,6 @@ shivanath_42.add_child(sancha_43)
 hari_prasad_42_2.add_childs([saroj_43_3, manoj_43_2])
 
 #Page 52
-###### all done
 prabhunath_39.add_childs([homnath_40])
 sadananda_39.add_childs([padmanidhi_40, gangadutta_40, tulsiram_40])
 homnath_40.add_childs([narayan_41, shiva_hari_41_2])
@@ -1707,27 +1706,17 @@ narayan_41_2.add_child(shyam_prasad_42)
 khecharnath_41.add_childs([baburam_42, krishna_42_5, bishnu_42_2])
 
 prem_kumar_42.add_child(pawan_43)
-ramesh_42.add_childs([rujhan_43, ranjan_43])
+ramesh_42_4.add_childs([rujhan_43, ranjan_43])
 aatma_ram_42_2.add_child(shivakumar_43)
 badri_42_2.add_childs([gopal_43, prithu_43, parshu_43, laxman_43_2])
-dayanidhi_42
-keshav_42_3
+dayanidhi_42.add_childs([shyamsundar_43, ram_43_2, ghanashyam_43_2])
+keshav_42_3.add_child(binod_43_3)
+baburam_42.add_childs([narayan_43_2, rajendra_43, binod_43_4, shambhu_43_2, ramesh_43_2])
+krishna_42_5.add_childs([kedar_43_3, rameshwor_43_3, raju_43])
+bishnu_42_2.add_child(deepak_43_5)
 
-
-laxman_43_2 = Person("Laxman", nepali_name="लक्ष्मण")
-shyamsundar_43 = Person("Shyamsundar", nepali_name="श्यामसुन्दर")
-ram_43_2 = Person("Ram", nepali_name="राम")
-ghanashyam_43_2 = Person("Ghanashyam", nepali_name="घनश्याम")
-binod_43_3 = Person("Binod", nepali_name="विनोद")
-narayan_43_2 = Person("Narayan", nepali_name="नारायण")
-rajendra_43 = Person("Rajendra", nepali_name="राजेन्द्र")
-binod_43_4 = Person("Binod", nepali_name="विनोद")
-shambhu_43_2 = Person("Shambhu", nepali_name="शम्भु")
-ramesh_43_2 = Person("Ramesh", nepali_name="रमेश")
-kedar_43_3 = Person("Kedar", nepali_name="केदार")
-rameshwor_43_3 = Person("Rameshwor", nepali_name="रामेश्वर")
-raju_43 = Person("Raju", nepali_name="राजु")
-deepak_43_5 = Person("Deepak", nepali_name="दीपक")
+##Page 53
+###### all done
 
 
 
