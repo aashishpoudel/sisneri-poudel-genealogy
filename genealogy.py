@@ -48,7 +48,21 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
         print_words += f"({person.birth_year}" if not "(" in print_words else f"{person.birth_year}"
         print_words += ")"
 
-    name_html = f'<span style="color:{my_color}; font-weight:bold">{print_words}</span>'
+    # Get parent and grandparent info if Person class supports it
+    # father = person.father.name if person.father else ""
+    # grandfather = person.father.father.name if person.father and person.father.father else ""
+
+    father = parent_map.get(person)
+    grandfather = parent_map.get(father) if father else None
+
+    father_name = father.name if father else ""
+    grandfather_name = grandfather.name if grandfather else ""
+
+    name_html = (
+        f'<span style="color:{my_color}; font-size: 19px" '
+        f'data-name="{person.name}" data-father="{father_name}" data-grandfather="{grandfather_name}">'
+        f'{print_words}</span>'
+    )
     html_lines.append(f"<div>{html_prefix}{connector_html}{name_html}</div>")
 
     # Prepare for children
@@ -96,6 +110,15 @@ def export_tree(root_person, print_language="en"):
     with open(f"sisneri_poudel_tree_{print_language}.html", "w", encoding="utf-8") as f:
         f.write("\n".join(html_lines))
 
+# Build parent mapping: child -> parent
+parent_map = {}
+
+def build_parent_map(person, parent=None):
+    for child in person.children:
+        parent_map[child] = person
+        build_parent_map(child, child)
+
+build_parent_map(root_person)
 
 # Example:
 for language in ("en", "np"):
