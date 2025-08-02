@@ -188,6 +188,136 @@
       traverseTree(genealogyData, []);
     };
   </script>
+
+<script>
+const searchInput = document.getElementById('searchInput');
+const suggestions = document.getElementById('suggestions');
+let currentIframe = document.getElementById('tabFrame');
+let selectedSuggestionIndex = -1;
+
+function showTab(lang) {
+  document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
+  if (lang === 'en') {
+    document.querySelectorAll('.tab')[0].classList.add('active');
+    document.getElementById('tabFrame').style.display = 'block';
+    document.getElementById('tabFrame2').style.display = 'none';
+    currentIframe = document.getElementById('tabFrame');
+  } else {
+    document.querySelectorAll('.tab')[1].classList.add('active');
+    document.getElementById('tabFrame').style.display = 'none';
+    document.getElementById('tabFrame2').style.display = 'block';
+    currentIframe = document.getElementById('tabFrame2');
+  }
+}
+
+function searchNames() {
+  const query = searchInput.value.trim().toLowerCase();
+  suggestions.innerHTML = '';
+  selectedSuggestionIndex = -1;
+  if (query === '') return;
+
+  const matches = genealogyData.filter(p => p.name.toLowerCase().includes(query));
+  matches.forEach((person, index) => {
+    const li = document.createElement('li');
+    li.textContent = `${person.name} (Father: ${person.father || '—'}, Grandfather: ${person.grandfather || '—'})`;
+    li.dataset.name = person.name;
+    li.dataset.father = person.father || '';
+    li.dataset.grandfather = person.grandfather || '';
+    li.addEventListener('click', () => {
+      commitSelection(person.name, person.father, person.grandfather);
+    });
+    suggestions.appendChild(li);
+  });
+}
+
+function commitSelection(name, father, grandfather) {
+  searchInput.value = name;
+  suggestions.innerHTML = '';
+  highlightPerson(name, father, grandfather);
+}
+
+
+
+
+function highlightPerson(name, father, grandfather) {
+  console.log("Attempting to highlight:");
+  console.log("Name:", name);
+  console.log("Father:", father);
+  console.log("Grandfather:", grandfather);
+
+  const tryHighlight = () => {
+    const iframeDoc = currentIframe.contentDocument || currentIframe.contentWindow.document;
+    if (!iframeDoc) {
+      console.warn("Iframe document not ready");
+      return;
+    }
+
+    // Clear old highlights and remove debug badges
+    iframeDoc.querySelectorAll('[data-name]').forEach(el => {
+      el.style.backgroundColor = '';
+      el.style.border = '';
+    });
+    iframeDoc.querySelectorAll('.debug-badge').forEach(el => el.remove());
+
+    const selector = `[data-name="${name}"][data-father="${father}"][data-grandfather="${grandfather}"]`;
+    console.log("Using selector:", selector);
+
+    const target = iframeDoc.querySelector(selector);
+
+    if (target) {
+      console.log("Target found. Highlighting...");
+      console.log("Matched element:", target.outerHTML);
+      target.style.backgroundColor = 'yellow';
+      target.style.border = '2px solid orange';
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Add visible badge next to match
+      const badge = iframeDoc.createElement('span');
+      badge.className = 'debug-badge';
+<!--      badge.textContent = ' ✅';-->
+      badge.style.color = 'red';
+      badge.style.fontWeight = 'bold';
+      badge.style.marginLeft = '5px';
+      target.parentNode.insertBefore(badge, target.nextSibling);
+    } else {
+      console.warn("No matching target found in iframe.");
+    }
+  };
+
+  if (currentIframe.contentDocument?.readyState === 'complete') {
+    tryHighlight();
+  } else {
+    currentIframe.onload = tryHighlight;
+  }
+}
+
+
+
+
+searchInput.addEventListener('input', searchNames);
+searchInput.addEventListener('keydown', (e) => {
+  const items = suggestions.querySelectorAll('li');
+  if (items.length === 0) return;
+
+  if (e.key === 'ArrowDown') {
+    selectedSuggestionIndex = (selectedSuggestionIndex + 1) % items.length;
+  } else if (e.key === 'ArrowUp') {
+    selectedSuggestionIndex = (selectedSuggestionIndex - 1 + items.length) % items.length;
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    const item = items[selectedSuggestionIndex];
+    if (item) {
+      commitSelection(item.dataset.name, item.dataset.father, item.dataset.grandfather);
+    }
+    return;
+  }
+
+  items.forEach((item, index) => {
+    item.style.backgroundColor = index === selectedSuggestionIndex ? '#eef' : '';
+  });
+});
+</script>
+
 <script>
 function normalize(text) {
   return text.replace(/\(.*?\)/g, '')
