@@ -6,16 +6,21 @@ class Person:
         self.nepali_name = nepali_name
         self.birth_year = birth_year
         self.death_year = death_year
-        self.children = children or []
         self.place = place
         self.comment = comment
+        self.children = children or []
+        self.father = None  # ✅ Add this
+        self.grandfather = None  # Optional, but useful for quick access
 
     def add_child(self, child):
         self.children.append(child)
+        child.father = self  # ✅ Link child to self as father
+        if self.father:
+            child.grandfather = self.father
 
     def add_childs(self, childs):
         for child in childs:
-            self.children.append(child)
+            self.add_child(child)
 
     def to_dict(self, father=None, grandfather=None):
         return {

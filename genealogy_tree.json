@@ -1301,7 +1301,19 @@
                                                   "comment": null,
                                                   "father": "Debarshi",
                                                   "grandfather": "Buddhinath",
-                                                  "children": []
+                                                  "children": [
+                                                    {
+                                                      "name": "Ashutosh",
+                                                      "nepali_name": "\u0906\u0936\u0941\u0924\u094b\u0937",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "father": "Sanod",
+                                                      "grandfather": "Debarshi",
+                                                      "children": []
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             },
@@ -1429,7 +1441,7 @@
                                                       "children": [
                                                         {
                                                           "name": "Aayan",
-                                                          "nepali_name": "\u0906\u092f\u093e\u0928",
+                                                          "nepali_name": "\u0906\u092f\u0928",
                                                           "birth_year": 2017,
                                                           "death_year": null,
                                                           "place": null,
@@ -7554,7 +7566,7 @@
                   "nepali_name": "\u0930\u093e\u092e\u0915\u0943\u0937\u094d\u0923",
                   "birth_year": null,
                   "death_year": 1822,
-                  "place": "Lubhu",
+                  "place": "\u0932\u0941\u092d\u0942",
                   "comment": null,
                   "father": "Bali",
                   "grandfather": "Govinda",
