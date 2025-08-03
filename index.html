@@ -239,29 +239,21 @@ function commitSelection(name, father, grandfather) {
 
 
 
-function highlightPerson(name, father, grandfather) {
-  console.log("Attempting to highlight:");
-  console.log("Name:", name);
-  console.log("Father:", father);
-  console.log("Grandfather:", grandfather);
 
+function highlightPerson(name, father, grandfather) {
   const tryHighlight = () => {
     const iframeDoc = currentIframe.contentDocument || currentIframe.contentWindow.document;
-    if (!iframeDoc) {
-      console.warn("Iframe document not ready");
-      return;
-    }
+    if (!iframeDoc) return;
 
-    // Clear old highlights and remove debug badges
+    // Clear all highlights and bold styles
     iframeDoc.querySelectorAll('[data-name]').forEach(el => {
       el.style.backgroundColor = '';
       el.style.border = '';
+      el.style.fontWeight = '';
+      el.style.textDecoration = '';
     });
-    iframeDoc.querySelectorAll('.debug-badge').forEach(el => el.remove());
 
     const selector = `[data-name="${name}"][data-father="${father}"][data-grandfather="${grandfather}"]`;
-    console.log("Using selector:", selector);
-
     const target = iframeDoc.querySelector(selector);
 
     if (target) {
@@ -274,13 +266,34 @@ function highlightPerson(name, father, grandfather) {
       // Add visible badge next to match
       const badge = iframeDoc.createElement('span');
       badge.className = 'debug-badge';
-<!--      badge.textContent = ' ✅';-->
+      badge.textContent = ' ✅';
       badge.style.color = 'red';
       badge.style.fontWeight = 'bold';
       badge.style.marginLeft = '5px';
       target.parentNode.insertBefore(badge, target.nextSibling);
-    } else {
-      console.warn("No matching target found in iframe.");
+
+      // Highlight all ancestors recursively
+      let currentPerson = genealogyData.find(p =>
+        p.name === name &&
+        p.father === father &&
+        p.grandfather === grandfather
+      );
+
+      while (currentPerson && currentPerson.father) {
+        const f = currentPerson.father;
+        const gf = currentPerson.grandfather || "";
+
+        const ancestor = iframeDoc.querySelector(
+          `[data-name="${f}"][data-father="${gf}"]`
+        );
+
+        if (ancestor) {
+          ancestor.style.fontWeight = 'bold';
+          ancestor.style.textDecoration = 'underline';
+        }
+
+        currentPerson = genealogyData.find(p => p.name === f && p.father === gf);
+      }
     }
   };
 
@@ -290,6 +303,7 @@ function highlightPerson(name, father, grandfather) {
     currentIframe.onload = tryHighlight;
   }
 }
+
 
 
 
