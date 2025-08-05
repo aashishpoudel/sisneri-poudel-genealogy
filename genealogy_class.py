@@ -18,8 +18,8 @@ class Person:
         if self.father:
             child.grandfather = self.father
 
-    def add_childs(self, childs):
-        for child in childs:
+    def add_children(self, children):
+        for child in children:
             self.add_child(child)
 
     def to_dict(self, father=None, grandfather=None):
