@@ -1575,7 +1575,7 @@ sushil_43_3 = Person("Sushil", nepali_name="सुसिल")
 bhaskar_43_3 = Person("Bhaskar", nepali_name="भास्कर")
 kishor_43_3 = Person("Kishor", nepali_name="किशोर")
 sandeep_43 = Person("Sandeep", nepali_name="सन्दीप")
-amitkishan = Person("Amitkishan", nepali_name="अमितकिशन")
+amitkishan_43 = Person("Amitkishan", nepali_name="अमितकिशन")
 
 damodar_42_2 = Person("Damodar", nepali_name="दामोदर")
 madan_42_4 = Person("Madan", nepali_name="मदन")
@@ -1617,7 +1617,7 @@ mukunda_42_2 = Person("Mukunda", nepali_name="मुकुन्द")
 sankar_42 = Person("Sankar", nepali_name="शंकर")
 
 pradeep_43 = Person("Pradeep", nepali_name="प्रदीप")
-sueep_43 = Person("Sueep", nepali_name="सुईप")  # verify spelling if typo
+sudeep_43 = Person("Sueep", nepali_name="सुईप")  # verify spelling if typo
 dilip_43_2 = Person("Dilip", nepali_name="दिलिप")
 nilip_43 = Person("Nilip", nepali_name="निलिप")  # uncommon—verify
 bishal_43 = Person("Bishal", nepali_name="विशाल")
@@ -1666,7 +1666,7 @@ manokeshar_37 = Person("Manokeshar", nepali_name="मनोकुृशर")
 punyasheel_38 = Person("Punyasheel", nepali_name="पुण्यशील")
 radhaballav_38 = Person("Radhaballav", nepali_name="राधाबल्लभ")
 krishna_lal_39_2 = Person("KrishnaLal", nepali_name="कृष्णलाल")
-hem_lal_39 = Person("HemLal", nepali_name="हेमलाल")
+hemlal_39 = Person("HemLal", nepali_name="हेमलाल")
 
 balkrishna_40 = Person("Balkrishna", nepali_name="बालकृष्ण")
 harinarayan_40_2 = Person("Harinarayan", nepali_name="हरिनारायण")
@@ -2284,7 +2284,7 @@ bishnu_42_2.add_child(deepak_43_5)
 
 ##Page 53
 ###### all done
-purshuram_35.add_children([unnamed_36, hari_36])
+purshuram_35.add_children([unnamed_36])
 unnamed_36.add_child(ram_chandra_37)
 ram_chandra_37.add_children([unnamed_38, devdutta_38])
 
@@ -2432,7 +2432,6 @@ sankar_prasad_41.add_child(ram_krishna_42)
 loknath_42.add_child(ram_prasad_43_2)
 ram_krishna_42.add_children([diwakar_43_4, madhukar_43, prabhakar_43_2])
 
-brihaspati_36.add_child(bishnu_narayan_37)
 bishnu_narayan_37.add_children([purna_bhadra_38_2, indiwar_38, rewati_raman_38])
 purna_bhadra_38_2.add_children([padmanidhi_39, dinanath_39, uday_narayan_39])
 
@@ -2458,9 +2457,129 @@ subarna_42.add_children([bigyan_43, shyamkrishna_43_2, ramkrishna_43, balkrishna
 fadindra_raj_42.add_children([rabindra_43, ramesh_43_4])
 
 #Page 62
+dwijaraj_keshari_41.add_children([trilokya_keshari_42, dilliraj_42, shreedhar_42_2, mithila_42, krishna_42_7, madhav_42_4, madan_42_2, bishworaj_42])
+
+trilokya_keshari_42.add_children([surendra_43, upendra_43])
+dilliraj_42.add_children([rabindra_43_2, sasindra_43, rajendra_43_3, narendra_43, santosh_43_2])
+shreedhar_42_2.add_children([kapil_43, keshav_43_2])
+mithila_42.add_children([bhaskar_43_2, prabhakar_43_3, diwakar_43_5])
+madhav_42_4.add_child(sanjit_43)
+madan_42_2.add_child(aashutosh_43)
+bishworaj_42.add_children([binay_43, binod_43_5])
+surendra_43.add_child(anup_44_3)
+
+bishnu_narayan_37.add_child(indiwar_38)
+indiwar_38.add_children([padmanav_39_2, chabilal_39, ramkrishna_39])
+padmanav_39_2.add_children([rudradutta_40, jhankanath_40_2, bhuwaneshor_40, ishwari_prasad_40, bishnu_prasad_40])
+chabilal_39.add_children([hari_narayan_40_2, suryanidhi_40, minnath_40])
+
+rudradutta_40.add_children([tikaram_41, narayan_41_3])
+bhuwaneshor_40.add_children([lalmani_41, madhusudan_41])
+ishwari_prasad_40.add_child(mohan_41)
+hari_narayan_40_2.add_children([rameshwor_41, shivaram_41])
+suryanidhi_40.add_child(krishna_prasad_41_4)
+
+#page 63
+tikaram_41.add_child(premlal_42)
+narayan_41_3.add_children([mahananda_42, hurmatuk_42, sthaneshwor_42, durga_prasad_42, dinesh_42_2])
+rameshwor_41.add_children([kapil_42, sunil_42])
+shivaram_41.add_child(santosh_42)
+krishna_prasad_41_4.add_children([bijay_42, rajan_42_2, jagadish_42])
+
+mahananda_42.add_child(madhav_43_4)
+hurmatuk_42.add_children([suman_43_4, susan_43, hemanta_43])
+sthaneshwor_42.add_children([subash_43, suresh_43_4])
+durga_prasad_42.add_children([dilip_43, hemraj_43])
+bijay_42.add_children([sudarshan_43, purushottam_43_3, suresh_43_5])
+rajan_42_2.add_child(umesh_43_3)
+
+narayan_37.add_children([krishna_mitra_38, chandrasekhar_38_3])
+chandrasekhar_38_3.add_children([krishna_lal_39, mitra_lal_39, jeevanath_39, loknath_39_3])
+krishna_lal_39.add_children([ishwari_prasad_40_3, parshuram_40, thakurnath_40, sadananda_40_3, doleshwor_40, bhesnath_40, chatraraj_40, bodraj_40, megraj_40])
+ishwari_prasad_40_3.add_children([koshraj_41, gopal_41_4])
+parshuram_40.add_children([bodraj_41, bishnu_prasad_41_2])
+doleshwor_40.add_children([ramji_41_2, bijuli_41, govinda_41])
+chatraraj_40.add_child(janardan_41)
+bodraj_40.add_child(sankar_41)
+
+koshraj_41.add_children([pushkar_42, bholanath_42, gopal_42_3])
+bodraj_41.add_children([keshav_42_4, narendra_42, sailendra_42])
+bishnu_prasad_41_2.add_children([rabindra_42_2, surendra_42_2, upendra_42, bhupendra_42, kabindra_42])
+govinda_41.add_children([bigyan_prasad_42, santosh_42_3, sushil_42])
+janardan_41.add_children([bijay_42_2, basanta_42_3])
+
+pushkar_42.add_child(umesh_43_2)
+bholanath_42.add_child(kiran_43)
+gopal_42_3.add_child(dipesh_43_3)
+keshav_42_4.add_children([sushil_43_3, bhaskar_43_3, kishor_43_3])
+surendra_42_2.add_children([sandeep_43, santosh_42_3, amitkishan_43])
+
+ramji_41_2.add_children([damodar_42_2, madan_42_4, basudev_42_4])
+narendra_42.add_children([nirish_43, kshitij_43])
+rabindra_42_2.add_children([kiran_43_2, sekhar_43])
+
+damodar_42_2.add_children([sagar_43_4, bishwonath_43_3])
+
+mitra_lal_39.add_child(prannath_40)
+jeewanath_39_2.add_child(chiranjibi_40_3)
+loknath_39_3.add_children([jagannath_40_3, naranath_40_3, homnath_40_3])
+
+prannath_40.add_children([ram_prasad_41_2, bishwonath_41_3, gopinath_41])
+chiranjibi_40_3.add_child(laxmi_prasad_41)
+jagannath_40_3.add_children([krishna_raj_41, hari_prasad_41])
+homnath_40_3.add_children([ramji_41_3, tej_prasad_41, bhairav_prasad_41])
 
 
+#Page 65
+ram_prasad_41_2.add_children([hareram_42_2, sambhu_42_2, madhav_42_5])
+gopinath_41.add_children([sudarshan_42_3, ramhari_42_3, sunil_42_2])
+laxmi_prasad_41.add_children([ram_prasad_42_2, krishna_prasad_42_3, mukunda_42_2, sankar_42])
 
+sudarshan_42_3.add_children([pradeep_43, sudeep_43])
+ramhari_42_3.add_children([dilip_43_2, nilip_43])
+sunil_42_2.add_child(bishal_43)
+ram_prasad_42_2.add_child(anup_43_2)
+krishna_prasad_42_3.add_child(naveen_43)
+mukunda_42_2.add_child(maheshwor_43)
 
+rup_narayan_37.add_children([kashinath_38_3, yadunath_38])
 
+kashinath_38_3.add_children([laxmikanta_39, umakanta_39, gajalal_39])
+yadunath_38.add_children([bhawakanta_39, taranath_39_2])
 
+laxmikanta_39.add_child(ishwari_dutta_40)
+gajalal_39.add_child(harilal_40)
+
+ishwari_dutta_40.add_children([sadananda_41_3, khecharnath_41_2])
+harilal_40.add_children([shiva_prasad_41_2, hiranya_lal_41])
+
+sadananda_41_3.add_child(sitaram_42_2)
+khecharnath_41_2.add_children([balram_42_2, bishnuram_42])
+shiva_prasad_41_2.add_child(harihar_42_2)
+
+sitaram_42_2.add_child(arun_43_2)
+balram_42_2.add_children([bimal_43, kamal_43_2])
+bishnuram_42.add_child(mohan_43)
+
+#Page 66
+chamu_33.add_child(agnidhar_34)
+agnidhar_34.add_child(shree_upendra_35)
+shree_upendra_35.add_children([dhananjaya_36, janmejaya_36])
+
+dhananjaya_36.add_children([lokeshwor_37, jayamangal_37, manokeshar_37])
+jayamangal_37.add_children([punyasheel_38, radhaballav_38])
+punyasheel_38.add_children([krishna_lal_39_2, hemlal_39])
+
+#page 67
+hemlal_39.add_children([balkrishna_40, harinarayan_40_2, khilnath_40, lilanath_40, modnath_40, ghananath_40, eknath_40])
+harinarayan_40_2.add_children([badri_prasad_41, kedar_prasad_41])
+modnath_40.add_children([tek_bahadur_41, surya_bahadur_41, rana_bahadur_41])
+eknath_40.add_child(tanka_prasad_41)
+
+badri_prasad_41.add_children([rameshwor_42_2, anil_42_2])
+kedar_prasad_41.add_child(shivaji_42)
+tek_bahadur_41.add_children([bhim_bahadur_42, amar_bahadur_42, upendra_42_3])
+rana_bahadur_41.add_children([madan_bahadur_42, mohan_bahadur_42, bhuwan_bahadur_42])
+tanka_prasad_41.add_children([mitharam_bahadur_42, nabaraj_bahadur_42])
+
+#Page 68

@@ -980,140 +980,55 @@
         │       │   │                       │   └── Raju
         │       │   │                       └── Bishnu
         │       │   │                           └── Deepak
-        │       │   ├── Unnamed
-        │       │   │   └── Unnamed
-        │       │   │       ├── Unnamed
-        │       │   │       └── Devdutta
-        │       │   │           ├── Rambhadra
-        │       │   │           │   ├── DambarBahadur
-        │       │   │           │   │   ├── BhimBahadur
-        │       │   │           │   │   │   └── Sanatkumar
-        │       │   │           │   │   └── Sete
-        │       │   │           │   └── PurnaBahadur
-        │       │   │           │       ├── Nabaraj
-        │       │   │           │       └── Prahlad
-        │       │   │           └── Bhuminandan
-        │       │   │               ├── Harinandan
-        │       │   │               │   ├── Ramnath
-        │       │   │               │   │   ├── Shivaram
-        │       │   │               │   │   └── ShreeKrishna
-        │       │   │               │   ├── BhimBahadur
-        │       │   │               │   │   └── Sanatkumar
-        │       │   │               │   └── Sete
-        │       │   │               ├── Chandrakant
-        │       │   │               │   └── ShivaPrasad
-        │       │   │               │       ├── SreeRam
-        │       │   │               │       │   └── Nirmal
-        │       │   │               │       ├── Ramsharan
-        │       │   │               │       │   ├── Nirjan
-        │       │   │               │       │   └── Nischal
-        │       │   │               │       └── Maniram
-        │       │   │               ├── Chiranjibi
-        │       │   │               │   ├── Sukadev
-        │       │   │               │   │   ├── GopiKrishna
-        │       │   │               │   │   │   └── Gokul
-        │       │   │               │   │   │       ├── Byapak
-        │       │   │               │   │   │       └── Binay
-        │       │   │               │   │   └── Bhojraj
-        │       │   │               │   │       ├── PurnaPrasad
-        │       │   │               │   │       └── Saroj
-        │       │   │               │   └── Gangasagar
-        │       │   │               │       ├── Muktinath
-        │       │   │               │       │   ├── Bhairav
-        │       │   │               │       │   └── GyanPrasad
-        │       │   │               │       │       ├── Prajyan
-        │       │   │               │       │       └── Pawan
-        │       │   │               │       └── Narayan
-        │       │   │               │           └── BinodPrasad
-        │       │   │               │               └── Murari
-        │       │   │               └── Taranath
-        │       │   │                   └── Purushottam
-        │       │   │                       └── Nabaraj
-        │       │   └── Hari
-        │       │       └── Ramananda
-        │       │           ├── Liladhar
-        │       │           │   └── Taranath
-        │       │           │       ├── Prayagdut
-        │       │           │       │   └── GaneshBahadur
-        │       │           │       │       └── RamKaji
-        │       │           │       ├── Purushottam
-        │       │           │       │   └── Premnath
-        │       │           │       │       └── Basudev
-        │       │           │       │           ├── Bishesh
-        │       │           │       │           └── Bibek
-        │       │           │       └── Narayan
-        │       │           └── Jayabhadra
-        │       │               ├── Loknath
-        │       │               │   ├── Chabilal
-        │       │               │   │   ├── Byas
-        │       │               │   │   │   ├── Laxman
-        │       │               │   │   │   └── Binod
-        │       │               │   │   ├── Sukadev
-        │       │               │   │   │   └── Ramgopal
-        │       │               │   │   ├── Gunaraj
-        │       │               │   │   │   └── RanjanRaj
-        │       │               │   │   └── Bawaraj
-        │       │               │   └── Kubernath
-        │       │               │       ├── DhruvaPrasad
-        │       │               │       │   ├── Sitaram
-        │       │               │       │   │   └── RajuPrasad
-        │       │               │       │   ├── Shivanath
-        │       │               │       │   │   └── Sancha
-        │       │               │       │   └── RamPrasad
-        │       │               │       └── KapilDev
-        │       │               │           └── HariPrasad
-        │       │               │               ├── Saroj
-        │       │               │               └── Manoj
-        │       │               ├── Prabhunath
-        │       │               │   └── Homnath
-        │       │               │       ├── Narayan
-        │       │               │       │   ├── PremKumar
-        │       │               │       │   │   └── Pawan
-        │       │               │       │   └── Ramesh
-        │       │               │       │       ├── Rujhan
-        │       │               │       │       └── Ranjan
-        │       │               │       └── ShivaHari
-        │       │               └── Sadananda
-        │       │                   ├── Padmanidhi
-        │       │                   │   ├── TulsiPrasad
-        │       │                   │   ├── Makarananda
-        │       │                   │   │   ├── AatmaRam
-        │       │                   │   │   │   └── Shivakumar
-        │       │                   │   │   ├── Badri
-        │       │                   │   │   │   ├── Gopal
-        │       │                   │   │   │   ├── Prithu
-        │       │                   │   │   │   ├── Parshu
-        │       │                   │   │   │   └── Laxman
-        │       │                   │   │   ├── Basudev
-        │       │                   │   │   └── Dayanidhi
-        │       │                   │   │       ├── Shyamsundar
-        │       │                   │   │       ├── Ram
-        │       │                   │   │       └── Ghanashyam
-        │       │                   │   ├── HutaPrasad
-        │       │                   │   │   ├── BalKrishna
-        │       │                   │   │   ├── Kedar
-        │       │                   │   │   └── Govinda
-        │       │                   │   ├── Ghananath
-        │       │                   │   │   ├── Keshav
-        │       │                   │   │   │   └── Binod
-        │       │                   │   │   └── Shambhu
-        │       │                   │   └── Narayan
-        │       │                   │       └── ShyamPrasad
-        │       │                   ├── Gangadutta
-        │       │                   └── Tulsiram
-        │       │                       └── Khecharnath
-        │       │                           ├── Baburam
-        │       │                           │   ├── Narayan
-        │       │                           │   ├── Rajendra
-        │       │                           │   ├── Binod
-        │       │                           │   ├── Shambhu
-        │       │                           │   └── Ramesh
-        │       │                           ├── Krishna
-        │       │                           │   ├── Kedar
-        │       │                           │   ├── Rameshwor
-        │       │                           │   └── Raju
-        │       │                           └── Bishnu
-        │       │                               └── Deepak
+        │       │   └── Unnamed
+        │       │       └── Unnamed
+        │       │           ├── Unnamed
+        │       │           └── Devdutta
+        │       │               ├── Rambhadra
+        │       │               │   ├── DambarBahadur
+        │       │               │   │   ├── BhimBahadur
+        │       │               │   │   │   └── Sanatkumar
+        │       │               │   │   └── Sete
+        │       │               │   └── PurnaBahadur
+        │       │               │       ├── Nabaraj
+        │       │               │       └── Prahlad
+        │       │               └── Bhuminandan
+        │       │                   ├── Harinandan
+        │       │                   │   ├── Ramnath
+        │       │                   │   │   ├── Shivaram
+        │       │                   │   │   └── ShreeKrishna
+        │       │                   │   ├── BhimBahadur
+        │       │                   │   │   └── Sanatkumar
+        │       │                   │   └── Sete
+        │       │                   ├── Chandrakant
+        │       │                   │   └── ShivaPrasad
+        │       │                   │       ├── SreeRam
+        │       │                   │       │   └── Nirmal
+        │       │                   │       ├── Ramsharan
+        │       │                   │       │   ├── Nirjan
+        │       │                   │       │   └── Nischal
+        │       │                   │       └── Maniram
+        │       │                   ├── Chiranjibi
+        │       │                   │   ├── Sukadev
+        │       │                   │   │   ├── GopiKrishna
+        │       │                   │   │   │   └── Gokul
+        │       │                   │   │   │       ├── Byapak
+        │       │                   │   │   │       └── Binay
+        │       │                   │   │   └── Bhojraj
+        │       │                   │   │       ├── PurnaPrasad
+        │       │                   │   │       └── Saroj
+        │       │                   │   └── Gangasagar
+        │       │                   │       ├── Muktinath
+        │       │                   │       │   ├── Bhairav
+        │       │                   │       │   └── GyanPrasad
+        │       │                   │       │       ├── Prajyan
+        │       │                   │       │       └── Pawan
+        │       │                   │       └── Narayan
+        │       │                   │           └── BinodPrasad
+        │       │                   │               └── Murari
+        │       │                   └── Taranath
+        │       │                       └── Purushottam
+        │       │                           └── Nabaraj
         │       └── Markandeya
         │           └── Prem Narayan
         │               └── Sree Krishna
@@ -1245,17 +1160,313 @@
         │       │       │   │   │   │   │   ├── Laxman
         │       │       │   │   │   │   │   └── Santosh
         │       │       │   │   │   │   ├── Brahmaprasad
+        │       │       │   │   │   │   │   ├── Sarad
+        │       │       │   │   │   │   │   ├── Yogendra
+        │       │       │   │   │   │   │   ├── Basanta
+        │       │       │   │   │   │   │   └── Hemanta
         │       │       │   │   │   │   ├── Ramprasad
         │       │       │   │   │   │   └── Tekprasad
         │       │       │   │   │   │       └── Mahesh
         │       │       │   │   │   └── Dolkeshor
         │       │       │   │   ├── Suryanidhi
+        │       │       │   │   │   └── Bodnidhi
+        │       │       │   │   │       └── Toyanidhi
+        │       │       │   │   │           ├── Bijay
+        │       │       │   │   │           └── Pramod
         │       │       │   │   ├── Loknath
         │       │       │   │   └── Rupnarayan
         │       │       │   └── Ramlal
+        │       │       │       ├── Govinda
+        │       │       │       │   ├── Premnidhi
+        │       │       │       │   │   ├── Badri
+        │       │       │       │   │   │   ├── Ghananath
+        │       │       │       │   │   │   └── Loknath
+        │       │       │       │   │   │       └── RamPrasad
+        │       │       │       │   │   └── Madhav
+        │       │       │       │   ├── Dilliram
+        │       │       │       │   │   ├── Topraj
+        │       │       │       │   │   │   ├── KrishnaRaj
+        │       │       │       │   │   │   └── RatnaRaj
+        │       │       │       │   │   ├── Yubaraj
+        │       │       │       │   │   └── GaneshBahadur
+        │       │       │       │   │       ├── KrishnaRaj
+        │       │       │       │   │       ├── KrishnaLal
+        │       │       │       │   │       └── Ramesh
+        │       │       │       │   ├── Umakanta
+        │       │       │       │   └── Ramnath
+        │       │       │       │       └── SankarPrasad
+        │       │       │       │           └── RamKrishna
+        │       │       │       │               ├── Diwakar
+        │       │       │       │               ├── Madhukar
+        │       │       │       │               └── Prabhakar
+        │       │       │       ├── Bishwamitra
+        │       │       │       └── Prajapati
         │       │       ├── Bishnu Narayan
+        │       │       │   ├── PurnaBhadra
+        │       │       │   │   ├── Padmanidhi
+        │       │       │   │   ├── Dinanath
+        │       │       │   │   │   └── Sadananda
+        │       │       │   │   │       └── Yadunath
+        │       │       │   │   │           ├── Yogbasistha
+        │       │       │   │   │           │   └── HiranyaPrasad
+        │       │       │   │   │           └── Pitambar
+        │       │       │   │   ├── UdayNarayan
+        │       │       │   │   ├── Khecharnath
+        │       │       │   │   │   ├── BidyaranyaKeshari
+        │       │       │   │   │   │   ├── Ramhari
+        │       │       │   │   │   │   │   ├── Fadindra
+        │       │       │   │   │   │   │   ├── Devraj
+        │       │       │   │   │   │   │   ├── Harihar
+        │       │       │   │   │   │   │   └── Jyoti
+        │       │       │   │   │   │   ├── Subarna
+        │       │       │   │   │   │   │   ├── Bigyan
+        │       │       │   │   │   │   │   ├── Shyamkrishna
+        │       │       │   │   │   │   │   ├── Ramkrishna
+        │       │       │   │   │   │   │   └── Balkrishna
+        │       │       │   │   │   │   ├── Doleshor
+        │       │       │   │   │   │   ├── FadindraRaj
+        │       │       │   │   │   │   │   ├── Rabindra
+        │       │       │   │   │   │   │   └── Ramesh
+        │       │       │   │   │   │   └── Bhairav
+        │       │       │   │   │   └── DwijarajKeshari
+        │       │       │   │   │       ├── TrilokyaKeshari
+        │       │       │   │   │       │   ├── Surendra
+        │       │       │   │   │       │   │   └── Anup
+        │       │       │   │   │       │   └── Upendra
+        │       │       │   │   │       ├── Dilliraj
+        │       │       │   │   │       │   ├── Rabindra
+        │       │       │   │   │       │   ├── Sasindra
+        │       │       │   │   │       │   ├── Rajendra
+        │       │       │   │   │       │   ├── Narendra
+        │       │       │   │   │       │   └── Santosh
+        │       │       │   │   │       ├── Shreedhar
+        │       │       │   │   │       │   ├── Kapil
+        │       │       │   │   │       │   └── Keshav
+        │       │       │   │   │       ├── Mithila
+        │       │       │   │   │       │   ├── Bhaskar
+        │       │       │   │   │       │   ├── Prabhakar
+        │       │       │   │   │       │   └── Diwakar
+        │       │       │   │   │       ├── Krishna
+        │       │       │   │   │       ├── Madhav
+        │       │       │   │   │       │   └── Sanjit
+        │       │       │   │   │       ├── Madan
+        │       │       │   │   │       │   └── Aashutosh
+        │       │       │   │   │       └── BishwoRaj
+        │       │       │   │   │           ├── Binay
+        │       │       │   │   │           └── Binod
+        │       │       │   │   └── Vednath
+        │       │       │   │       ├── KrishnaPrasad
+        │       │       │   │       │   ├── Bhuwan
+        │       │       │   │       │   │   └── Kundan
+        │       │       │   │       │   ├── Saroj
+        │       │       │   │       │   └── Ramharsha
+        │       │       │   │       ├── Batuk
+        │       │       │   │       │   └── Aatmaram
+        │       │       │   │       │       ├── Suman
+        │       │       │   │       │       └── Sunil
+        │       │       │   │       └── RamchandraBahadur
+        │       │       │   │           └── KrishnaBahadur
+        │       │       │   ├── Indiwar
+        │       │       │   │   ├── Padmanav
+        │       │       │   │   │   ├── Rudradutta
+        │       │       │   │   │   │   ├── Tikaram
+        │       │       │   │   │   │   │   └── Premlal
+        │       │       │   │   │   │   └── Narayan
+        │       │       │   │   │   │       ├── Mahananda
+        │       │       │   │   │   │       │   └── Madhav
+        │       │       │   │   │   │       ├── Hurmatuk
+        │       │       │   │   │   │       │   ├── Suman
+        │       │       │   │   │   │       │   ├── Susan
+        │       │       │   │   │   │       │   └── Hemanta
+        │       │       │   │   │   │       ├── Sthaneshwor
+        │       │       │   │   │   │       │   ├── Subash
+        │       │       │   │   │   │       │   └── Suresh
+        │       │       │   │   │   │       ├── DurgaPrasad
+        │       │       │   │   │   │       │   ├── Dilip
+        │       │       │   │   │   │       │   └── Hemraj
+        │       │       │   │   │   │       └── Dinesh
+        │       │       │   │   │   ├── Jhankanath
+        │       │       │   │   │   ├── Bhuwaneshor
+        │       │       │   │   │   │   ├── Lalmani
+        │       │       │   │   │   │   └── Madhusudan
+        │       │       │   │   │   ├── IshwariPrasad
+        │       │       │   │   │   │   └── Mohan
+        │       │       │   │   │   └── BishnuPrasad
+        │       │       │   │   ├── Chabilal
+        │       │       │   │   │   ├── HariNarayan
+        │       │       │   │   │   │   ├── Rameshwor
+        │       │       │   │   │   │   │   ├── Kapil
+        │       │       │   │   │   │   │   └── Sunil
+        │       │       │   │   │   │   └── Shivaram
+        │       │       │   │   │   │       └── Santosh
+        │       │       │   │   │   ├── Suryanidhi
+        │       │       │   │   │   │   └── KrishnaPrasad
+        │       │       │   │   │   │       ├── Bijay
+        │       │       │   │   │   │       │   ├── Sudarshan
+        │       │       │   │   │   │       │   ├── Purushottam
+        │       │       │   │   │   │       │   └── Suresh
+        │       │       │   │   │   │       ├── Rajan
+        │       │       │   │   │   │       │   └── Umesh
+        │       │       │   │   │   │       └── Jagadish
+        │       │       │   │   │   └── Minnath
+        │       │       │   │   └── Ramkrishna
+        │       │       │   ├── RewatiRaman
+        │       │       │   └── Indiwar
+        │       │       │       ├── Padmanav
+        │       │       │       │   ├── Rudradutta
+        │       │       │       │   │   ├── Tikaram
+        │       │       │       │   │   │   └── Premlal
+        │       │       │       │   │   └── Narayan
+        │       │       │       │   │       ├── Mahananda
+        │       │       │       │   │       │   └── Madhav
+        │       │       │       │   │       ├── Hurmatuk
+        │       │       │       │   │       │   ├── Suman
+        │       │       │       │   │       │   ├── Susan
+        │       │       │       │   │       │   └── Hemanta
+        │       │       │       │   │       ├── Sthaneshwor
+        │       │       │       │   │       │   ├── Subash
+        │       │       │       │   │       │   └── Suresh
+        │       │       │       │   │       ├── DurgaPrasad
+        │       │       │       │   │       │   ├── Dilip
+        │       │       │       │   │       │   └── Hemraj
+        │       │       │       │   │       └── Dinesh
+        │       │       │       │   ├── Jhankanath
+        │       │       │       │   ├── Bhuwaneshor
+        │       │       │       │   │   ├── Lalmani
+        │       │       │       │   │   └── Madhusudan
+        │       │       │       │   ├── IshwariPrasad
+        │       │       │       │   │   └── Mohan
+        │       │       │       │   └── BishnuPrasad
+        │       │       │       ├── Chabilal
+        │       │       │       │   ├── HariNarayan
+        │       │       │       │   │   ├── Rameshwor
+        │       │       │       │   │   │   ├── Kapil
+        │       │       │       │   │   │   └── Sunil
+        │       │       │       │   │   └── Shivaram
+        │       │       │       │   │       └── Santosh
+        │       │       │       │   ├── Suryanidhi
+        │       │       │       │   │   └── KrishnaPrasad
+        │       │       │       │   │       ├── Bijay
+        │       │       │       │   │       │   ├── Sudarshan
+        │       │       │       │   │       │   ├── Purushottam
+        │       │       │       │   │       │   └── Suresh
+        │       │       │       │   │       ├── Rajan
+        │       │       │       │   │       │   └── Umesh
+        │       │       │       │   │       └── Jagadish
+        │       │       │       │   └── Minnath
+        │       │       │       └── Ramkrishna
         │       │       ├── Narayan
+        │       │       │   ├── KrishnaMitra
+        │       │       │   └── Chandrasekhar
+        │       │       │       ├── KrishnaLal
+        │       │       │       │   ├── IshwariPrasad
+        │       │       │       │   │   ├── Koshraj
+        │       │       │       │   │   │   ├── Pushkar
+        │       │       │       │   │   │   │   └── Umesh
+        │       │       │       │   │   │   ├── Bholanath
+        │       │       │       │   │   │   │   └── Kiran
+        │       │       │       │   │   │   └── Gopal
+        │       │       │       │   │   │       └── Dipesh
+        │       │       │       │   │   └── Gopal
+        │       │       │       │   ├── Parshuram
+        │       │       │       │   │   ├── Bodraj
+        │       │       │       │   │   │   ├── Keshav
+        │       │       │       │   │   │   │   ├── Sushil
+        │       │       │       │   │   │   │   ├── Bhaskar
+        │       │       │       │   │   │   │   └── Kishor
+        │       │       │       │   │   │   ├── Narendra
+        │       │       │       │   │   │   │   ├── Nirish
+        │       │       │       │   │   │   │   └── Kshitij
+        │       │       │       │   │   │   └── Sailendra
+        │       │       │       │   │   └── BishnuPrasad
+        │       │       │       │   │       ├── Rabindra
+        │       │       │       │   │       │   ├── Kiran
+        │       │       │       │   │       │   └── Sekhar
+        │       │       │       │   │       ├── Surendra
+        │       │       │       │   │       │   ├── Sandeep
+        │       │       │       │   │       │   ├── Santosh
+        │       │       │       │   │       │   └── Amitkishan
+        │       │       │       │   │       ├── Upendra
+        │       │       │       │   │       ├── Bhupendra
+        │       │       │       │   │       └── Kabindra
+        │       │       │       │   ├── Thakurnath
+        │       │       │       │   ├── Sadananda
+        │       │       │       │   ├── Doleshwor
+        │       │       │       │   │   ├── Bishwonath
+        │       │       │       │   │   │   ├── Bhairav
+        │       │       │       │   │   │   ├── Sadananda
+        │       │       │       │   │   │   ├── Bishnu
+        │       │       │       │   │   │   └── RamPrasad
+        │       │       │       │   │   ├── Badri
+        │       │       │       │   │   │   └── Damodar
+        │       │       │       │   │   ├── Kedar
+        │       │       │       │   │   ├── Ramji
+        │       │       │       │   │   │   ├── Damodar
+        │       │       │       │   │   │   │   ├── Sagar
+        │       │       │       │   │   │   │   └── Bishwonath
+        │       │       │       │   │   │   ├── Madan
+        │       │       │       │   │   │   └── Basudev
+        │       │       │       │   │   ├── Bijuli
+        │       │       │       │   │   └── Govinda
+        │       │       │       │   │       ├── BigyanPrasad
+        │       │       │       │   │       ├── Santosh
+        │       │       │       │   │       └── Sushil
+        │       │       │       │   ├── Bhesnath
+        │       │       │       │   ├── Chatraraj
+        │       │       │       │   │   └── Janardan
+        │       │       │       │   │       ├── Bijay
+        │       │       │       │   │       └── Basanta
+        │       │       │       │   ├── Bodraj
+        │       │       │       │   │   └── Sankar
+        │       │       │       │   └── Megraj
+        │       │       │       ├── MitraLal
+        │       │       │       │   └── Prannath
+        │       │       │       │       ├── RamPrasad
+        │       │       │       │       │   ├── Hareram
+        │       │       │       │       │   ├── Sambhu
+        │       │       │       │       │   └── Madhav
+        │       │       │       │       ├── Bishwonath
+        │       │       │       │       └── Gopinath
+        │       │       │       │           ├── Sudarshan
+        │       │       │       │           │   ├── Pradeep
+        │       │       │       │           │   └── Sueep
+        │       │       │       │           ├── Ramhari
+        │       │       │       │           │   ├── Dilip
+        │       │       │       │           │   └── Nilip
+        │       │       │       │           └── Sunil
+        │       │       │       │               └── Bishal
+        │       │       │       ├── Jeevanath
+        │       │       │       └── Loknath
+        │       │       │           ├── Jagannath
+        │       │       │           │   ├── KrishnaRaj
+        │       │       │           │   └── HariPrasad
+        │       │       │           ├── Naranath
+        │       │       │           └── Homnath
+        │       │       │               ├── Ramji
+        │       │       │               ├── TejPrasad
+        │       │       │               └── BhairavPrasad
         │       │       ├── Rup Narayan
+        │       │       │   ├── Kashinath
+        │       │       │   │   ├── Laxmikanta
+        │       │       │   │   │   └── IshwariDutta
+        │       │       │   │   │       ├── Sadananda
+        │       │       │   │   │       │   └── Sitaram
+        │       │       │   │   │       │       └── Arun
+        │       │       │   │   │       └── Khecharnath
+        │       │       │   │   │           ├── Balram
+        │       │       │   │   │           │   ├── Bimal
+        │       │       │   │   │           │   └── Kamal
+        │       │       │   │   │           └── Bishnuram
+        │       │       │   │   │               └── Mohan
+        │       │       │   │   ├── Umakanta
+        │       │       │   │   └── Gajalal
+        │       │       │   │       └── Harilal
+        │       │       │   │           ├── ShivaPrasad
+        │       │       │   │           │   └── Harihar
+        │       │       │   │           └── HiranyaLal
+        │       │       │   └── Yadunath
+        │       │       │       ├── Bhawakanta
+        │       │       │       └── Taranath
         │       │       ├── Devdutta
         │       │       │   ├── Gajadhar
         │       │       │   │   └── Padmanav
@@ -1273,6 +1484,15 @@
         │       │           ├── Nilkantha
         │       │           │   ├── Pashupati
         │       │           │   └── Jeewanath
+        │       │           │       └── Chiranjibi
+        │       │           │           └── LaxmiPrasad
+        │       │           │               ├── RamPrasad
+        │       │           │               │   └── Anup
+        │       │           │               ├── KrishnaPrasad
+        │       │           │               │   └── Naveen
+        │       │           │               ├── Mukunda
+        │       │           │               │   └── Maheshwor
+        │       │           │               └── Sankar
         │       │           └── Siromani
         │       │               └── Gopilal
         │       ├── Shivanarayan
@@ -1291,3 +1511,38 @@
         │           ├── Harinarayan
         │           └── Gokul
         └── Chamu
+            └── Agnidhar
+                └── ShreeUpendra
+                    ├── Dhananjaya
+                    │   ├── Lokeshwor
+                    │   ├── Jayamangal
+                    │   │   ├── Punyasheel
+                    │   │   │   ├── KrishnaLal
+                    │   │   │   └── HemLal
+                    │   │   │       ├── Balkrishna
+                    │   │   │       ├── Harinarayan
+                    │   │   │       │   ├── BadriPrasad
+                    │   │   │       │   │   ├── Rameshwor
+                    │   │   │       │   │   └── Anil
+                    │   │   │       │   └── KedarPrasad
+                    │   │   │       │       └── Shivaji
+                    │   │   │       ├── Khilnath
+                    │   │   │       ├── Lilanath
+                    │   │   │       ├── Modnath
+                    │   │   │       │   ├── TekBahadur
+                    │   │   │       │   │   ├── BhimBahadur
+                    │   │   │       │   │   ├── AmarBahadur
+                    │   │   │       │   │   └── Upendra
+                    │   │   │       │   ├── SuryaBahadur
+                    │   │   │       │   └── RanaBahadur
+                    │   │   │       │       ├── MadanBahadur
+                    │   │   │       │       ├── MohanBahadur
+                    │   │   │       │       └── BhuwanBahadur
+                    │   │   │       ├── Ghananath
+                    │   │   │       └── Eknath
+                    │   │   │           └── TankaPrasad
+                    │   │   │               ├── MitharamBahadur
+                    │   │   │               └── NabarajBahadur
+                    │   │   └── Radhaballav
+                    │   └── Manokeshar
+                    └── Janmejaya
