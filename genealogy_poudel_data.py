@@ -5,6 +5,7 @@ gopal_31 = Person("Gopal", nepali_name="गोपाल", birth_year=1622, comme
 root_person = gopal_31
 ram_bhadra_32 = Person("Ram Bhadra", nepali_name="रामभद्र", comment="लुभू सिस्नेरी आउने")
 govinda_33 = Person("Govinda", nepali_name="गोविन्द", comment="ठूलाघरेका पूर्वज")
+bishwamvar_33 = Person("Bishwamvar", nepali_name="विश्वम्भर")
 prajapati_33 = Person("Prajapati", nepali_name="प्रजापति", birth_year=1650, comment="तीनघरेका पूर्वज\nसन् १६७७ मा श्रीनिवास मल्लबाट विर्ता")
 chamu_33 = Person("Chamu", nepali_name="चामु", comment="तीनघरेका पूर्वज")
 
@@ -1693,10 +1694,400 @@ madan_bahadur_42 = Person("MadanBahadur", nepali_name="मदनबहादु�
 mohan_bahadur_42 = Person("MohanBahadur", nepali_name="मोहनबहादुर")
 bhuwan_bahadur_42 = Person("BhuwanBahadur", nepali_name="भुवनबहादुर")
 mitharam_bahadur_42 = Person("MitharamBahadur", nepali_name="मिठारामबहादुर")
-nabaraj_bahadur_42 = Person("NabarajBahadur", nepali_name="नवराजबहादुर")
+radhakrishna_37 = Person("Radhakrishna", nepali_name="राधाकृष्ण")
+gangadhar_37 = Person("Gangadhar", nepali_name="गंगाधर")
+birbhadra_37 = Person("Birbhadra", nepali_name="वीरभद्र")
+kuber_37 = Person("Kuber", nepali_name="कुबेर")
 
-#Page 68
-###done
+devi_dutta_38 = Person("DeviDutta", nepali_name="देवीदत्त")
+sribilas_38 = Person("Sribilas", nepali_name="श्रीबिलास")
+bharat_38 = Person("Bharat", nepali_name="भरत")
+
+ramnath_39 = Person("Ramnath", nepali_name="रामनाथ")
+pashupati_39 = Person("Pashupati", nepali_name="पशुपति")
+gobardhan_39 = Person("Gobardhan", nepali_name="गोवर्धन")
+krishna_dutta_39 = Person("KrishnaDutta", nepali_name="कृष्णदत्त")
+
+chabilal_40 = Person("Chabilal", nepali_name="छबिलाल")
+ghanashyam_40 = Person("Ghanashyam", nepali_name="घनश्याम")
+dinanath_40 = Person("Dinanath", nepali_name="दीननाथ")
+gothu_40 = Person("Gothu", nepali_name="गोठू")
+tikadutta_40 = Person("Tikadutta", nepali_name="टिकादत्त")
+bhuminanda_40 = Person("Bhuminanda", nepali_name="भूमिनन्द")
+durgadutta_40 = Person("Durgadutta", nepali_name="दुर्गादत्त")
+balmiki_40 = Person("Balmiki", nepali_name="बाल्मिकी")
+umanath_40 = Person("Umanath", nepali_name="उमनाथ")
+megbilas_40 = Person("Megbilas", nepali_name="मेघबिलास")
+
+jagannath_41 = Person("Jagannath", nepali_name="जगन्नाथ")
+devi_prasad_41 = Person("DeviPrasad", nepali_name="देवीप्रसाद")
+hemlal_41 = Person("Hemlal", nepali_name="हेमलाल")
+damodar_41 = Person("Damodar", nepali_name="दामोदर")
+hari_prasad_41 = Person("HariPrasad", nepali_name="हरिप्रसाद")
+sreedhar_41 = Person("Sreedhar", nepali_name="श्रीधर")
+basudev_41 = Person("Basudev", nepali_name="वासुदेव")
+govinda_41 = Person("Govinda", nepali_name="गोविन्द")
+sanatkumar_41 = Person("Sanatkumar", nepali_name="सनतकुमार")
+rajendra_41 = Person("Rajendra", nepali_name="राजेन्द्र")
+bishwamitra_41 = Person("Bishwamitra", nepali_name="विश्वामित्र")
+jagadeshwor_41 = Person("Jagadeshwor", nepali_name="जगदेश्वर")
+
+gitadutta_42 = Person("Gitadutta", nepali_name="गीतात्त")
+tejnath_42 = Person("Tejnath", nepali_name="तेजनाथ")
+
+#page 69
+diwakar_39 = Person("Diwakar", nepali_name="दिवाकर")
+dayanidhi_39 = Person("Dayanidhi", nepali_name="दयानिधि")
+janakidutta_39 = Person("Janakidutta", nepali_name="जनकीदत्त")
+tikadutta_39 = Person("Tikadutta", nepali_name="टिकादत्त")
+
+tanka_40 = Person("Tanka", nepali_name="टंक")
+rup_prasad_40 = Person("RupPrasad", nepali_name="रूपप्रसाद")
+rudradutta_40 = Person("Rudradutta", nepali_name="रुद्रदत्त")
+rohininath_40 = Person("Rohininath", nepali_name="रोहिणीनाथ")
+yamunadhar_40 = Person("Yamunadhar", nepali_name="यमुनाधर")
+maheshwor_40 = Person("Maheshwor", nepali_name="महेश्वर")
+toyanath_40 = Person("Toyanath", nepali_name="तोयनाथ")
+durgadutta_40 = Person("Durgadutta", nepali_name="दुर्गादत्त")
+ravidutta_40 = Person("Ravidutta", nepali_name="रविदत्त")
+loknath_40 = Person("Loknath", nepali_name="लोकनाथ")
+
+chandra_prasad_41 = Person("ChandraPrasad", nepali_name="चन्द्रप्रसाद")
+bednidhi_41 = Person("Bednidhi", nepali_name="बेदनिधि")
+tirthahari_41 = Person("Tirthahari", nepali_name="तीर्थहरी")
+kedarnath_41 = Person("Kedarnath", nepali_name="केदारनाथ")
+bedraj_41 = Person("Bedraj", nepali_name="बेदराज")
+ram_41 = Person("Ram", nepali_name="राम")
+laxman_41 = Person("Laxman", nepali_name="लक्ष्मण")
+bharat_41 = Person("Bharat", nepali_name="भरत")
+govinda_41 = Person("Govinda", nepali_name="गोविन्द")
+
+tejnath_42 = Person("Tejnath", nepali_name="तेजनाथ")
+purna_prasad_42 = Person("PurnaPrasad", nepali_name="पूर्णप्रसाद")
+bachaspati_42 = Person("Bachaspati", nepali_name="बचस्पति")
+thanendra_42 = Person("Thanendra", nepali_name="थानेन्द्र")
+padmanath_42 = Person("Padmanath", nepali_name="पद्मनाथ")
+badibilas_42 = Person("Badibilas", nepali_name="वाणीविलास")
+
+#Page 70
+harisankar_34 = Person("Harisankar", nepali_name="हरिशंकर")
+
+bansagopal_35 = Person("Bansagopal", nepali_name="बंसीगोपाल")
+laxman_35 = Person("Laxman", nepali_name="लक्ष्मण")
+laxminarayan_36 = Person("Laxminarayan", nepali_name="लक्ष्मीनारायण")
+bishnu_dutta_36 = Person("BishnuDutta", nepali_name="बिष्णुदत्त")
+
+chandrasekhar_37 = Person("Chandrasekhar", nepali_name="चन्द्रशेखर")
+bishwamvar_37 = Person("Bishwamvar", nepali_name="विश्वम्भर")
+lokraman_37 = Person("Lokraman", nepali_name="लोकरमन")
+ganesh_dutta_37 = Person("GaneshDutta", nepali_name="गणेशदत्त")
+ramkanta_37 = Person("Ramkanta", nepali_name="रामकान्त")
+
+kantidutta_38 = Person("Kantidutta", nepali_name="कान्तिदत्त")
+trilochan_38 = Person("Trilochan", nepali_name="त्रिलोचन")
+naranath_38 = Person("Naranath", nepali_name="नरनाथ")
+nandalal_38 = Person("Nandalal", nepali_name="नन्दलाल")
+bhimlal_38 = Person("Bhimlal", nepali_name="भीमलाल")
+
+# Page 71
+bhojraj_39 = Person("Bhojraj", nepali_name="भोजराज")
+fiste_39 = Person("Fiste", nepali_name="फिष्टे")
+chudamani_39 = Person("Chudamani", nepali_name="चूड़ामणि")
+loknath_39 = Person("Loknath", nepali_name="लोकनाथ")
+
+hemnath_40 = Person("Hemnath", nepali_name="हेमनाथ")
+meghnath_40 = Person("Meghnath", nepali_name="मेघनाथ")
+dilliprasad_40 = Person("Dilliprasad", nepali_name="दिलीप्रसाद")
+kamalprasad_40 = Person("Kamalprasad", nepali_name="कमलप्रसाद")
+rishiram_40 = Person("Rishiram", nepali_name="ऋषिराम")
+totranath_40 = Person("Totranath", nepali_name="तोत्रनाथ")
+chutnath_40 = Person("Chutnath", nepali_name="चुतनाथ")
+chudanath_40 = Person("Chudanath", nepali_name="चूडनाथ")
+
+puskar_41 = Person("Puskar", nepali_name="पुष्कर")
+shivahari_41 = Person("Shivahari", nepali_name="शिवहरि")
+uddhav_41 = Person("Uddhav", nepali_name="उद्धव")
+baikuntha_41 = Person("Baikuntha", nepali_name="बैकुण्ठ")
+niranjan_41 = Person("Niranjan", nepali_name="निरञ्जन")
+dhirendra_41 = Person("Dhirendra", nepali_name="धिरेन्द्र")
+jeewan_41 = Person("Jeewan", nepali_name="जीवन")
+krishna_prasad_41 = Person("KrishnaPrasad", nepali_name="कृष्णप्रसाद")
+rameshwor_41 = Person("Rameshwor", nepali_name="रामेश्वर")
+madhav_41 = Person("Madhav", nepali_name="माधव")
+teknath_41 = Person("Teknath", nepali_name="टेकनाथ")
+jagannath_41 = Person("Jagannath", nepali_name="जगन्नाथ")
+balkrishna_41 = Person("Balkrishna", nepali_name="बालकृष्ण")
+diwakar_41 = Person("Diwakar", nepali_name="दिवाकर")
+dipesh_41 = Person("Dipesh", nepali_name="दिपेश")
+surendra_41 = Person("Surendra", nepali_name="सुरेन्द्र")
+sree_prasad_41 = Person("SreePrasad", nepali_name="श्रीप्रसाद")
+
+niraj_42 = Person("Niraj", nepali_name="निरज")
+suraj_42 = Person("Suraj", nepali_name="सुरज")
+
+chabilal_39 = Person("Chabilal", nepali_name="छबिलाल")
+basudev_tufan_40 = Person("BasudevTufan", nepali_name="वासुदेव तुफान")
+ramnath_40 = Person("Ramnath", nepali_name="रामनाथ")
+binod_40 = Person("Binod", nepali_name="विनोद")
+
+ganapati_41 = Person("Ganapati", nepali_name="गणपति")
+hemant_41 = Person("Hemant", nepali_name="हेमन्त")
+raju_41 = Person("Raju", nepali_name="राजु")
+suman_41 = Person("Suman", nepali_name="सुमन")
+subin_41 = Person("Subin", nepali_name="सुबिन")
+
+premnath_42 = Person("Premnath", nepali_name="प्रेमनाथ")
+
+#page 72
+prayagdutt_36 = Person("Prayagdutt", nepali_name="प्रयागदत्त")
+shivadutt_36 = Person("Shivadutt", nepali_name="शिवदत्त")
+jayanarayan_36 = Person("Jayanarayan", nepali_name="जयनारायण")
+debarshi_36 = Person("Debarshi", nepali_name="देवार्षि")
+prithvidhar_36 = Person("Prithvidhar", nepali_name="पृथ्वीधर")
+raghunath_36 = Person("Raghunath", nepali_name="रघुनाथ")
+
+dharmadutta_37 = Person("Dharmadutta", nepali_name="धर्मदत्त")
+muktinath_38 = Person("Muktinath", nepali_name="मुक्तिनाथ")
+
+badri_39 = Person("Badri", nepali_name="बद्री")
+pratapkeshari_39 = Person("Pratapkeshari", nepali_name="प्रतापकेशरी")
+kulkeshari_39 = Person("Kulkeshari", nepali_name="कुलकेशरी")
+mohankeshari_39 = Person("Mohankeshari", nepali_name="मोहनकेशरी")
+
+dibagyakeshari_40 = Person("Dibagyakeshari", nepali_name="दिब्यज्ञकेशरी")
+saundaryakeshari_40 = Person("Saundaryakeshari", nepali_name="सौन्दर्यकेशरी")
+chandrakeshari_40 = Person("Chandrakeshari", nepali_name="चन्द्रकेशरी")
+narendrakeshari_40 = Person("Narendrakeshari", nepali_name="नरेन्द्रकेशरी")
+dilendrakeshari_40 = Person("Dilendrakeshari", nepali_name="दिलेन्द्रकेशरी")
+
+lalitkeshari_41 = Person("Lalitkeshari", nepali_name="ललितकेशरी")
+anangakeshari_41 = Person("Anangakeshari", nepali_name="अनंगकेशरी")
+tejkeshari_41 = Person("Tejkeshari", nepali_name="तेजकेशरी")
+upendrakeshari_41 = Person("Upendrakeshari", nepali_name="उपेन्द्रकेशरी")
+bhuwankeshari_41 = Person("Bhuwankeshari", nepali_name="भुवनकेशरी")
+govindakeshari_41 = Person("Govindakeshari", nepali_name="गोविन्दकेशरी")
+bigyankeshari_41 = Person("Bigyankeshari", nepali_name="विज्ञानकेशरी")
+
+punyakeshari_42 = Person("Punyakeshari", nepali_name="पुण्यकेशरी")
+arjunkeshari_42 = Person("Arjunkeshari", nepali_name="अर्जुनकेशरी")
+sashibhusan_42 = Person("Sashibhusan", nepali_name="शशिभूषण")
+binod_42 = Person("Binod", nepali_name="विनोद")
+sambhu_42 = Person("Sambhu", nepali_name="शम्भु")
+sarad_42 = Person("Sarad", nepali_name="शरद")
+anil_42 = Person("Anil", nepali_name="अनिल")
+kanchankeshari_42 = Person("Kanchankeshari", nepali_name="काञ्चनकेशरी")
+
+saktikeshari_43 = Person("Saktikeshari", nepali_name="शक्तिकेशरी")
+kirankeshari_43 = Person("Kirankeshari", nepali_name="किरणकेशरी")
+
+shivadutta_36 = Person("Shivadutta", nepali_name="शिवदत्त")
+prannath_37 = Person("Prannath", nepali_name="प्रणनाथ")
+chandrakanta_38 = Person("Chandrakanta", nepali_name="चन्द्रकान्त")
+kedarnath_38 = Person("Kedarnath", nepali_name="केदारनाथ")
+
+purushottam_39 = Person("Purushottam", nepali_name="पुरुषोत्तम")
+mohanlal_39 = Person("Mohanlal", nepali_name="मोहनलाल")
+krishna_prasad_39 = Person("KrishnaPrasad", nepali_name="कृष्णप्रसाद")
+bhojraj_39 = Person("Bhojraj", nepali_name="भोजराज")
+
+ramchandra_40 = Person("Ramchandra", nepali_name="रामचन्द्र")
+bednath_40 = Person("Bednath", nepali_name="बेदनाथ")
+tikaprasad_40 = Person("Tikaprasad", nepali_name="टिकाप्रसाद")
+
+chiranjibi_41 = Person("Chiranjibi", nepali_name="चिरञ्जीवी")
+mohanraj_41 = Person("Mohanraj", nepali_name="मोहनराज")
+prakashchandra_41 = Person("Prakashchandra", nepali_name="प्रकाशचन्द्र")
+kumar_41 = Person("Kumar", nepali_name="कुमार")
+
+saroj_42 = Person("Saroj", nepali_name="सरोज")
+sardula_42 = Person("Sardula", nepali_name="सार्दुल")
+sirish_42 = Person("Sirish", nepali_name="सिरिष")
+ramsharan_42 = Person("Ramsharan", nepali_name="रामशरण")
+
+#Page 74
+devarshi_36 = Person("Devarshi", nepali_name="देवार्षि")
+mukundasharan_37 = Person("Mukundasharan", nepali_name="मुकुन्दशरण")
+purnabhadra_38 = Person("Purnabhadra", nepali_name="पूर्णभद्र")
+balkrishna_38 = Person("Balkrishna", nepali_name="बालकृष्ण")
+loknath_38 = Person("Loknath", nepali_name="लोकनाथ")
+
+thirnath_39 = Person("Thirnath", nepali_name="थिरनाथ")
+bishnuprasad_39 = Person("Bishnuprasad", nepali_name="बिष्णुप्रसाद")
+deviprasad_39 = Person("Deviprasad", nepali_name="देवीप्रसाद")
+ganeshprasad_39 = Person("Ganeshprasad", nepali_name="गणेशप्रसाद")
+sitaram_39 = Person("Sitaram", nepali_name="सीताराम")
+tulsiprasad_39 = Person("Tulsiprasad", nepali_name="तुलसीप्रसाद")
+
+pradeep_40 = Person("Pradeep", nepali_name="प्रदीप")
+keshav_40 = Person("Keshav", nepali_name="केशव")
+madhav_40 = Person("Madhav", nepali_name="माधव")
+achyut_40 = Person("Achyut", nepali_name="अच्युत")
+uttam_40 = Person("Uttam", nepali_name="उत्तम")
+ramkumar_40 = Person("Ramkumar", nepali_name="रामकुमार")
+purushottam_40 = Person("Purushottam", nepali_name="पुरुषोत्तम")
+ramsundar_40 = Person("Ramsundar", nepali_name="रामसुन्दर")
+shyamsundar_40 = Person("Shyamsundar", nepali_name="श्यामसुन्दर")
+krishnaprasad_40 = Person("KrishnaPrasad", nepali_name="कृष्णप्रसाद")
+
+prithvidhar_36 = Person("Prithvidhar", nepali_name="पृथ्वीधर")
+rewatiraman_37 = Person("Rewatiraman", nepali_name="रेवतीरामण")
+kedarnath_37 = Person("Kedarnath", nepali_name="केदारनाथ")
+tankanath_38 = Person("Tankanath", nepali_name="टंकनाथ")
+bednath_38 = Person("Bednath", nepali_name="बेदनाथ")
+
+# Page 75
+ramchandra_39 = Person("Ramchandra", nepali_name="रामचन्द्र")
+kedarnath_39 = Person("Kedarnath", nepali_name="केदारनाथ")
+chiranjibi_39 = Person("Chiranjibi", nepali_name="चिरञ्जीवी")
+rishiram_39 = Person("Rishiram", nepali_name="ऋषिराम")
+sahadev_39 = Person("Sahadev", nepali_name="सहदेव")
+premnath_39 = Person("Premnath", nepali_name="प्रेमनाथ")
+shivabahadur_39 = Person("Shivabahadur", nepali_name="शिवबहादुर")
+haribahadur_39 = Person("Haribahadur", nepali_name="हरिबहादुर")
+birbahadur_39 = Person("Birbahadur", nepali_name="वीरबहादुर")
+
+utsav_40 = Person("Utsav", nepali_name="उत्सव")
+gokarna_40 = Person("Gokarna", nepali_name="गोकर्ण")
+purushottam_40 = Person("Purushottam", nepali_name="पुरुषोत्तम")
+keshavprasad_40 = Person("Keshavprasad", nepali_name="केशवप्रसाद")
+achyutprasad_40 = Person("Achyutprasad", nepali_name="अच्युतप्रसाद")
+
+raghunath_36 = Person("Raghunath", nepali_name="रघुनाथ")
+nandikeshar_37 = Person("Nandikeshar", nepali_name="नन्दिकेशर")
+padmanath_37 = Person("Padmanath", nepali_name="पद्मनाथ")
+
+kanakbahadur_38 = Person("Kanakbahadur", nepali_name="कनकबहादुर")
+deviprasad_38 = Person("Deviprasad", nepali_name="देवीप्रसाद")
+naranath_38 = Person("Naranath", nepali_name="नरनाथ")
+badriprasad_38 = Person("Badriprasad", nepali_name="बद्रीप्रसाद")
+
+jeetbahadur_39 = Person("Jeetbahadur", nepali_name="जीतबहादुर")
+chhatrabahadur_39 = Person("Chhatrabahadur", nepali_name="छत्रबहादुर")
+khadgabahadur_39 = Person("Khadgabahadur", nepali_name="खड्गबहादुर")
+chiranjibi_39 = Person("Chiranjibi", nepali_name="चिरञ्जीवी")
+maniram_39 = Person("Maniram", nepali_name="मनिराम")
+niranjan_39 = Person("Niranjan", nepali_name="निरञ्जन")
+rajaram_39 = Person("Rajarama", nepali_name="राजाराम")
+atmaram_39 = Person("Atmaram", nepali_name="आत्माराम")
+
+suman_40 = Person("Suman", nepali_name="सुमन")
+
+#Page 76
+padmanav_34 = Person("Padmanav", nepali_name="पद्मनाभ")
+parmananda_35 = Person("Parmananda", nepali_name="परमानन्द")
+devanand_35 = Person("Devanand", nepali_name="देवानन्द")
+dharmadutta_35 = Person("Dharmadutta", nepali_name="धर्मदत्त")
+narottam_35 = Person("Narottam", nepali_name="नरोत्तम")
+pradhumna_35 = Person("Pradhumna", nepali_name="प्रधुम्न")
+gangaram_35 = Person("Gangaram", nepali_name="गंगाराम")
+
+kashiram_36 = Person("Kashiram", nepali_name="काशीराम")
+raghunath_36 = Person("Raghunath", nepali_name="रघुनाथ")
+sreeballav_36 = Person("Sreeballav", nepali_name="श्रीवल्लभ")
+devdutta_36 = Person("Devdutta", nepali_name="देवदत्त")
+saktiballav_36 = Person("Saktiballav", nepali_name="शक्तिबल्लभ")
+saptarishi_36 = Person("Saptarishi", nepali_name="सप्तऋषि")
+balgovinda_36 = Person("Balgovinda", nepali_name="बालगोविन्द")
+setu_36 = Person("Setu", nepali_name="सेतु")
+brahmananda_36 = Person("Brahmananda", nepali_name="ब्रह्मानन्द")
+anirudra_36 = Person("Anirudra", nepali_name="अनिरुद्ध")
+kapildas_36 = Person("Kapildas", nepali_name="कपिलदास")
+chandu_36 = Person("Chandu", nepali_name="चन्दु")
+
+umanath_37 = Person("Umanath", nepali_name="उमनाथ")
+prannath_37 = Person("Prannath", nepali_name="प्रणनाथ")
+ramnath_37 = Person("Ramnath", nepali_name="रामनाथ")
+sivanidhi_37 = Person("Sivanidhi", nepali_name="शिवनिधि")
+devrishi_37 = Person("Devrishi", nepali_name="देवऋषि")
+
+gaurikanta_38 = Person("Gaurikanta", nepali_name="गौरिकान्त")
+bhawanath_38 = Person("Bhawanath", nepali_name="भावनाथ")
+jagannath_38 = Person("Jagannath", nepali_name="जगन्नाथ")
+chabilal_38 = Person("Chabilal", nepali_name="छबिलाल")
+ghananath_38 = Person("Ghananath", nepali_name="घननाथ")
+bishnugopal_38 = Person("Bishnugopal", nepali_name="विष्णुगोपाल")
+latababu_38 = Person("Latababu", nepali_name="लताबाबु")
+
+chudamani_39 = Person("Chudamani", nepali_name="चूड़ामणि")
+jeevnath_39 = Person("Jeevnath", nepali_name="जीवननाथ")
+bhawanath_39 = Person("Bhawanath", nepali_name="भावनाथ")
+tejnath_39 = Person("Tejnath", nepali_name="तेजनाथ")
+gunanath_39 = Person("Gunanath", nepali_name="गुणनाथ")
+
+jagannath_40 = Person("Jagannath", nepali_name="जगन्नाथ")
+
+# Page 77
+basu_36 = Person("Basu", nepali_name="बासु")
+jaharsingh_36 = Person("Jaharsingh", nepali_name="जहरसिंह")
+keharsingh_36 = Person("Keharsingh", nepali_name="केहरसिंह")
+
+brihaspati_37 = Person("Brihaspati", nepali_name="बृहस्पति")
+pashupati_37 = Person("Pashupati", nepali_name="पशुपति")
+devdutta_37 = Person("Devdutta", nepali_name="देवदत्त")
+
+nandikeshar_38 = Person("Nandikeshar", nepali_name="नन्दिकेशर")
+chandrakanta_38 = Person("Chandrakanta", nepali_name="चन्द्रकान्त")
+dandapani_38 = Person("Dandapani", nepali_name="दण्डपाणि")
+dhanapati_38 = Person("Dhanapati", nepali_name="धनपति")
+sadananda_38 = Person("Sadananda", nepali_name="सदानन्द")
+kavidutta_38 = Person("Kavidutta", nepali_name="कविदत्त")
+
+chetnath_39 = Person("Chetnath", nepali_name="चेतनाथ")
+raghunath_39 = Person("Raghunath", nepali_name="रघुनाथ")
+kancho_39 = Person("Kancho", nepali_name="कान्छो")
+mohan_39 = Person("Mohan", nepali_name="मोहन")
+bachhu_39 = Person("Bachhu", nepali_name="बच्चु")
+laxminidhi_39 = Person("Laxminidhi", nepali_name="लक्ष्मीनिधि")
+madhusudan_39 = Person("Madhusudan", nepali_name="मधुसूदन")
+bishnudutta_39 = Person("Bishnudutta", nepali_name="बिष्णुदत्त")
+
+narayan_prasad_40 = Person("NarayanPrasad", nepali_name="नारायणप्रसाद")
+madhav_prasad_40 = Person("MadhavPrasad", nepali_name="माधवप्रसाद")
+
+amrit_prasad_41 = Person("AmritPrasad", nepali_name="अमृतप्रसाद")
+navin_prasad_41 = Person("NavinPrasad", nepali_name="नवीनप्रसाद")
+praveen_prasad_41 = Person("PraveenPrasad", nepali_name="प्रवीणप्रसाद")
+
+# Page 78
+dhanapati_34 = Person("Dhanapati", nepali_name="धनपति")
+
+devnarayan_35 = Person("Devnarayan", nepali_name="देवनारायण")
+bamdev_36 = Person("Bamdev", nepali_name="बामदेव")
+harinarayan_37 = Person("Harinarayan", nepali_name="हरिनारायण")
+
+rewatiraman_38 = Person("Rewatiraman", nepali_name="रेवतीरामण")
+kalidas_38 = Person("Kalidas", nepali_name="कालिदास")
+bhuraman_38 = Person("Bhuraman", nepali_name="भूरामण")
+balkrishna_38 = Person("Balkrishna", nepali_name="बालकृष्ण")
+narahari_38 = Person("Narahari", nepali_name="नरहरी")
+
+bhudev_39 = Person("Bhudev", nepali_name="भूदेव")
+haridev_39 = Person("Haridev", nepali_name="हरिदेव")
+govinda_39 = Person("Govinda", nepali_name="गोविन्द")
+chaturbhuj_39 = Person("Chaturbhuj", nepali_name="चतुर्भुज")
+baikuntha_39 = Person("Baikuntha", nepali_name="बैकुण्ठ")
+tulsi_prasad_39 = Person("TulsiPrasad", nepali_name="तुलसीप्रसाद")
+narayan_prasad_39 = Person("NarayanPrasad", nepali_name="नारायणप्रसाद")
+shiva_prasad_39 = Person("ShivaPrasad", nepali_name="शिवप्रसाद")
+kuldeep_39 = Person("Kuldeep", nepali_name="कुलदीप")
+dhruv_prasad_39 = Person("DhruvPrasad", nepali_name="ध्रुवप्रसाद")
+
+madhusudan_40 = Person("Madhusudan", nepali_name="मधुसूदन")
+niranjan_40 = Person("Niranjan", nepali_name="निरञ्जन")
+mohankumar_40 = Person("Mohankumar", nepali_name="मोहनकुमार")
+indrakumar_40 = Person("Indrakumar", nepali_name="इन्द्रकुमार")
+
+sarad_41 = Person("Sarad", nepali_name="शरद")
+naveen_41 = Person("Naveen", nepali_name="नवीन")
+mahendra_41 = Person("Mahendra", nepali_name="महेन्द्र")
+saurav_41 = Person("Saurav", nepali_name="सौरभ")
+
+#Page 79
+
+
+
+
+
 
 
 
