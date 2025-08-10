@@ -17494,7 +17494,7 @@
                                           "children": [
                                             {
                                               "name": "Shivaji",
-                                              "nepali_name": "\u0936\u093f\u0935\u093e\u091c\u0940",
+                                              "nepali_name": "\u0936\u093f\u0935\u091c\u0940",
                                               "birth_year": null,
                                               "death_year": null,
                                               "place": null,
@@ -17675,7 +17675,7 @@
                                           "children": [
                                             {
                                               "name": "MitharamBahadur",
-                                              "nepali_name": "\u092e\u093f\u0920\u093e\u0930\u093e\u092e\u092c\u0939\u093e\u0926\u0941\u0930",
+                                              "nepali_name": "\u092e\u093f\u0920\u093e\u0930\u093e\u092e",
                                               "birth_year": null,
                                               "death_year": null,
                                               "place": null,
@@ -17685,8 +17685,8 @@
                                               "children": []
                                             },
                                             {
-                                              "name": "NabarajBahadur",
-                                              "nepali_name": "\u0928\u0935\u0930\u093e\u091c\u092c\u0939\u093e\u0926\u0941\u0930",
+                                              "name": "Nabaraj",
+                                              "nepali_name": "\u0928\u0935\u0930\u093e\u091c",
                                               "birth_year": null,
                                               "death_year": null,
                                               "place": null,
@@ -17738,7 +17738,734 @@
                       "comment": null,
                       "father": "ShreeUpendra",
                       "grandfather": "Agnidhar",
-                      "children": []
+                      "children": [
+                        {
+                          "name": "Radhakrishna",
+                          "nepali_name": "\u0930\u093e\u0927\u093e\u0915\u0943\u0937\u094d\u0923",
+                          "birth_year": null,
+                          "death_year": null,
+                          "place": null,
+                          "comment": null,
+                          "father": "Janmejaya",
+                          "grandfather": "ShreeUpendra",
+                          "children": []
+                        },
+                        {
+                          "name": "Gangadhar",
+                          "nepali_name": "\u0917\u0902\u0917\u093e\u0927\u0930",
+                          "birth_year": null,
+                          "death_year": null,
+                          "place": null,
+                          "comment": null,
+                          "father": "Janmejaya",
+                          "grandfather": "ShreeUpendra",
+                          "children": [
+                            {
+                              "name": "DeviDutta",
+                              "nepali_name": "\u0926\u0947\u0935\u0940\u0926\u0924\u094d\u0924",
+                              "birth_year": null,
+                              "death_year": null,
+                              "place": null,
+                              "comment": null,
+                              "father": "Gangadhar",
+                              "grandfather": "Janmejaya",
+                              "children": []
+                            },
+                            {
+                              "name": "Sribilas",
+                              "nepali_name": "\u0936\u094d\u0930\u0940\u092c\u093f\u0932\u093e\u0938",
+                              "birth_year": null,
+                              "death_year": null,
+                              "place": null,
+                              "comment": null,
+                              "father": "Gangadhar",
+                              "grandfather": "Janmejaya",
+                              "children": [
+                                {
+                                  "name": "Ramnath",
+                                  "nepali_name": "\u0930\u093e\u092e\u0928\u093e\u0925",
+                                  "birth_year": null,
+                                  "death_year": null,
+                                  "place": null,
+                                  "comment": null,
+                                  "father": "Sribilas",
+                                  "grandfather": "Gangadhar",
+                                  "children": [
+                                    {
+                                      "name": "Chabilal",
+                                      "nepali_name": "\u091b\u092c\u093f\u0932\u093e\u0932",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Ramnath",
+                                      "grandfather": "Sribilas",
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "Ghanashyam",
+                                      "nepali_name": "\u0918\u0928\u0936\u094d\u092f\u093e\u092e",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Ramnath",
+                                      "grandfather": "Sribilas",
+                                      "children": [
+                                        {
+                                          "name": "Jagannath",
+                                          "nepali_name": "\u091c\u0917\u0928\u094d\u0928\u093e\u0925",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Ghanashyam",
+                                          "grandfather": "Ramnath",
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "DeviPrasad",
+                                          "nepali_name": "\u0926\u0947\u0935\u0940\u092a\u094d\u0930\u0938\u093e\u0926",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Ghanashyam",
+                                          "grandfather": "Ramnath",
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Pashupati",
+                                  "nepali_name": "\u092a\u0936\u0941\u092a\u0924\u093f",
+                                  "birth_year": null,
+                                  "death_year": null,
+                                  "place": null,
+                                  "comment": null,
+                                  "father": "Sribilas",
+                                  "grandfather": "Gangadhar",
+                                  "children": [
+                                    {
+                                      "name": "Dinanath",
+                                      "nepali_name": "\u0926\u0940\u0928\u0928\u093e\u0925",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Pashupati",
+                                      "grandfather": "Sribilas",
+                                      "children": [
+                                        {
+                                          "name": "Hemlal",
+                                          "nepali_name": "\u0939\u0947\u092e\u0932\u093e\u0932",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Dinanath",
+                                          "grandfather": "Pashupati",
+                                          "children": [
+                                            {
+                                              "name": "Gitadutta",
+                                              "nepali_name": "\u0917\u0940\u0924\u093e\u0924\u094d\u0924",
+                                              "birth_year": null,
+                                              "death_year": null,
+                                              "place": null,
+                                              "comment": null,
+                                              "father": "Hemlal",
+                                              "grandfather": "Dinanath",
+                                              "children": []
+                                            },
+                                            {
+                                              "name": "Tejnath",
+                                              "nepali_name": "\u0924\u0947\u091c\u0928\u093e\u0925",
+                                              "birth_year": null,
+                                              "death_year": null,
+                                              "place": null,
+                                              "comment": null,
+                                              "father": "Hemlal",
+                                              "grandfather": "Dinanath",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "Gothu",
+                                      "nepali_name": "\u0917\u094b\u0925\u0941",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Pashupati",
+                                      "grandfather": "Sribilas",
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "Tikadutta",
+                                      "nepali_name": "\u091f\u093f\u0915\u093e\u0926\u0924\u094d\u0924",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Pashupati",
+                                      "grandfather": "Sribilas",
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "Bhuminanda",
+                                      "nepali_name": "\u092d\u0942\u092e\u093f\u0928\u0928\u094d\u0926",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Pashupati",
+                                      "grandfather": "Sribilas",
+                                      "children": [
+                                        {
+                                          "name": "Damodar",
+                                          "nepali_name": "\u0926\u093e\u092e\u094b\u0926\u0930",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Bhuminanda",
+                                          "grandfather": "Pashupati",
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "HariPrasad",
+                                          "nepali_name": "\u0939\u0930\u093f\u092a\u094d\u0930\u0938\u093e\u0926",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Bhuminanda",
+                                          "grandfather": "Pashupati",
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Sreedhar",
+                                          "nepali_name": "\u0936\u094d\u0930\u0940\u0927\u0930",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Bhuminanda",
+                                          "grandfather": "Pashupati",
+                                          "children": []
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "Durgadutta",
+                                      "nepali_name": "\u0926\u0941\u0930\u094d\u0917\u093e\u0926\u0924\u094d\u0924",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Pashupati",
+                                      "grandfather": "Sribilas",
+                                      "children": [
+                                        {
+                                          "name": "Basudev",
+                                          "nepali_name": "\u0935\u093e\u0938\u0941\u0926\u0947\u0935",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Durgadutta",
+                                          "grandfather": "Pashupati",
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Govinda",
+                                          "nepali_name": "\u0917\u094b\u0935\u093f\u0928\u094d\u0926",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Durgadutta",
+                                          "grandfather": "Pashupati",
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Gobardhan",
+                                  "nepali_name": "\u0917\u094b\u0935\u0930\u094d\u0927\u0928",
+                                  "birth_year": null,
+                                  "death_year": null,
+                                  "place": null,
+                                  "comment": null,
+                                  "father": "Sribilas",
+                                  "grandfather": "Gangadhar",
+                                  "children": []
+                                },
+                                {
+                                  "name": "KrishnaDutta",
+                                  "nepali_name": "\u0915\u0943\u0937\u094d\u0923\u0926\u0924\u094d\u0924",
+                                  "birth_year": null,
+                                  "death_year": null,
+                                  "place": null,
+                                  "comment": null,
+                                  "father": "Sribilas",
+                                  "grandfather": "Gangadhar",
+                                  "children": [
+                                    {
+                                      "name": "Balmiki",
+                                      "nepali_name": "\u092c\u093e\u0932\u094d\u092e\u093f\u0915\u0940",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "KrishnaDutta",
+                                      "grandfather": "Sribilas",
+                                      "children": [
+                                        {
+                                          "name": "Sanatkumar",
+                                          "nepali_name": "\u0938\u0928\u0924\u0915\u0941\u092e\u093e\u0930",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Balmiki",
+                                          "grandfather": "KrishnaDutta",
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Rajendra",
+                                          "nepali_name": "\u0930\u093e\u091c\u0947\u0928\u094d\u0926\u094d\u0930",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Balmiki",
+                                          "grandfather": "KrishnaDutta",
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Bishwamitra",
+                                          "nepali_name": "\u0935\u093f\u0936\u094d\u0935\u093e\u092e\u093f\u0924\u094d\u0930",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Balmiki",
+                                          "grandfather": "KrishnaDutta",
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Jagadeshwor",
+                                          "nepali_name": "\u091c\u0917\u0926\u0947\u0936\u094d\u0935\u0930",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Balmiki",
+                                          "grandfather": "KrishnaDutta",
+                                          "children": []
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "Umanath",
+                                      "nepali_name": "\u0909\u092e\u0928\u093e\u0925",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "KrishnaDutta",
+                                      "grandfather": "Sribilas",
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "Megbilas",
+                                      "nepali_name": "\u092e\u0947\u0918\u092c\u093f\u0932\u093e\u0938",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "KrishnaDutta",
+                                      "grandfather": "Sribilas",
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Bharat",
+                              "nepali_name": "\u092d\u0930\u0924",
+                              "birth_year": null,
+                              "death_year": null,
+                              "place": null,
+                              "comment": null,
+                              "father": "Gangadhar",
+                              "grandfather": "Janmejaya",
+                              "children": [
+                                {
+                                  "name": "Diwakar",
+                                  "nepali_name": "\u0926\u093f\u0935\u093e\u0915\u0930",
+                                  "birth_year": null,
+                                  "death_year": null,
+                                  "place": null,
+                                  "comment": null,
+                                  "father": "Bharat",
+                                  "grandfather": "Gangadhar",
+                                  "children": [
+                                    {
+                                      "name": "Tanka",
+                                      "nepali_name": "\u091f\u0902\u0915",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Diwakar",
+                                      "grandfather": "Bharat",
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "RupPrasad",
+                                      "nepali_name": "\u0930\u0942\u092a\u092a\u094d\u0930\u0938\u093e\u0926",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Diwakar",
+                                      "grandfather": "Bharat",
+                                      "children": [
+                                        {
+                                          "name": "ChandraPrasad",
+                                          "nepali_name": "\u091a\u0928\u094d\u0926\u094d\u0930\u092a\u094d\u0930\u0938\u093e\u0926",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "RupPrasad",
+                                          "grandfather": "Diwakar",
+                                          "children": []
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "Rudradutta",
+                                      "nepali_name": "\u0930\u0941\u0926\u094d\u0930\u0926\u0924\u094d\u0924",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Diwakar",
+                                      "grandfather": "Bharat",
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Dayanidhi",
+                                  "nepali_name": "\u0926\u092f\u093e\u0928\u093f\u0927\u093f",
+                                  "birth_year": null,
+                                  "death_year": null,
+                                  "place": null,
+                                  "comment": null,
+                                  "father": "Bharat",
+                                  "grandfather": "Gangadhar",
+                                  "children": [
+                                    {
+                                      "name": "Rohininath",
+                                      "nepali_name": "\u0930\u094b\u0939\u093f\u0923\u0940\u0928\u093e\u0925",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Dayanidhi",
+                                      "grandfather": "Bharat",
+                                      "children": [
+                                        {
+                                          "name": "Bednidhi",
+                                          "nepali_name": "\u092c\u0947\u0926\u0928\u093f\u0927\u093f",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Rohininath",
+                                          "grandfather": "Dayanidhi",
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Tirthahari",
+                                          "nepali_name": "\u0924\u0940\u0930\u094d\u0925\u0939\u0930\u093f",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Rohininath",
+                                          "grandfather": "Dayanidhi",
+                                          "children": [
+                                            {
+                                              "name": "Tejnath",
+                                              "nepali_name": "\u0924\u0947\u091c\u0928\u093e\u0925",
+                                              "birth_year": null,
+                                              "death_year": null,
+                                              "place": null,
+                                              "comment": null,
+                                              "father": "Tirthahari",
+                                              "grandfather": "Rohininath",
+                                              "children": []
+                                            },
+                                            {
+                                              "name": "PurnaPrasad",
+                                              "nepali_name": "\u092a\u0942\u0930\u094d\u0923\u092a\u094d\u0930\u0938\u093e\u0926",
+                                              "birth_year": null,
+                                              "death_year": null,
+                                              "place": null,
+                                              "comment": null,
+                                              "father": "Tirthahari",
+                                              "grandfather": "Rohininath",
+                                              "children": []
+                                            },
+                                            {
+                                              "name": "Bachaspati",
+                                              "nepali_name": "\u092c\u093e\u091a\u0938\u094d\u092a\u0924\u093f",
+                                              "birth_year": null,
+                                              "death_year": null,
+                                              "place": null,
+                                              "comment": null,
+                                              "father": "Tirthahari",
+                                              "grandfather": "Rohininath",
+                                              "children": []
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "name": "Kedarnath",
+                                          "nepali_name": "\u0915\u0947\u0926\u093e\u0930\u0928\u093e\u0925",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Rohininath",
+                                          "grandfather": "Dayanidhi",
+                                          "children": [
+                                            {
+                                              "name": "Thanendra",
+                                              "nepali_name": "\u0925\u093e\u0928\u0947\u0928\u094d\u0926\u094d\u0930",
+                                              "birth_year": null,
+                                              "death_year": null,
+                                              "place": null,
+                                              "comment": null,
+                                              "father": "Kedarnath",
+                                              "grandfather": "Rohininath",
+                                              "children": []
+                                            },
+                                            {
+                                              "name": "Padmanath",
+                                              "nepali_name": "\u092a\u0926\u094d\u092e\u0928\u093e\u0925",
+                                              "birth_year": null,
+                                              "death_year": null,
+                                              "place": null,
+                                              "comment": null,
+                                              "father": "Kedarnath",
+                                              "grandfather": "Rohininath",
+                                              "children": []
+                                            },
+                                            {
+                                              "name": "Badibilas",
+                                              "nepali_name": "\u0935\u093e\u0923\u0940\u0935\u093f\u0932\u093e\u0938",
+                                              "birth_year": null,
+                                              "death_year": null,
+                                              "place": null,
+                                              "comment": null,
+                                              "father": "Kedarnath",
+                                              "grandfather": "Rohininath",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "Yamunadhar",
+                                      "nepali_name": "\u092f\u092e\u0941\u0928\u093e\u0927\u0930",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Dayanidhi",
+                                      "grandfather": "Bharat",
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Janakidutta",
+                                  "nepali_name": "\u091c\u0928\u0915\u0940\u0926\u0924\u094d\u0924",
+                                  "birth_year": null,
+                                  "death_year": null,
+                                  "place": null,
+                                  "comment": null,
+                                  "father": "Bharat",
+                                  "grandfather": "Gangadhar",
+                                  "children": [
+                                    {
+                                      "name": "Maheshwor",
+                                      "nepali_name": "\u092e\u0939\u0947\u0936\u094d\u0935\u0930",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Janakidutta",
+                                      "grandfather": "Bharat",
+                                      "children": [
+                                        {
+                                          "name": "Bedraj",
+                                          "nepali_name": "\u092c\u0947\u0926\u0930\u093e\u091c",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Maheshwor",
+                                          "grandfather": "Janakidutta",
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Ram",
+                                          "nepali_name": "\u0930\u093e\u092e",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Maheshwor",
+                                          "grandfather": "Janakidutta",
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Laxman",
+                                          "nepali_name": "\u0932\u0915\u094d\u0937\u094d\u092e\u0923",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Maheshwor",
+                                          "grandfather": "Janakidutta",
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "Bharat",
+                                          "nepali_name": "\u092d\u0930\u0924",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Maheshwor",
+                                          "grandfather": "Janakidutta",
+                                          "children": []
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "Toyanath",
+                                      "nepali_name": "\u0924\u094b\u092f\u0928\u093e\u0925",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Janakidutta",
+                                      "grandfather": "Bharat",
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "Durgadutta",
+                                      "nepali_name": "\u0926\u0941\u0930\u094d\u0917\u093e\u0926\u0924\u094d\u0924",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Janakidutta",
+                                      "grandfather": "Bharat",
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "Ravidutta",
+                                      "nepali_name": "\u0930\u0935\u093f\u0926\u0924\u094d\u0924",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Janakidutta",
+                                      "grandfather": "Bharat",
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Tikadutta",
+                                  "nepali_name": "\u091f\u093f\u0915\u093e\u0926\u0924\u094d\u0924",
+                                  "birth_year": null,
+                                  "death_year": null,
+                                  "place": null,
+                                  "comment": null,
+                                  "father": "Bharat",
+                                  "grandfather": "Gangadhar",
+                                  "children": [
+                                    {
+                                      "name": "Loknath",
+                                      "nepali_name": "\u0932\u094b\u0915\u0928\u093e\u0925",
+                                      "birth_year": null,
+                                      "death_year": null,
+                                      "place": null,
+                                      "comment": null,
+                                      "father": "Tikadutta",
+                                      "grandfather": "Bharat",
+                                      "children": [
+                                        {
+                                          "name": "Govinda",
+                                          "nepali_name": "\u0917\u094b\u0935\u093f\u0928\u094d\u0926",
+                                          "birth_year": null,
+                                          "death_year": null,
+                                          "place": null,
+                                          "comment": null,
+                                          "father": "Loknath",
+                                          "grandfather": "Tikadutta",
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Birbhadra",
+                          "nepali_name": "\u0935\u0940\u0930\u092d\u0926\u094d\u0930",
+                          "birth_year": null,
+                          "death_year": null,
+                          "place": null,
+                          "comment": null,
+                          "father": "Janmejaya",
+                          "grandfather": "ShreeUpendra",
+                          "children": []
+                        },
+                        {
+                          "name": "Kuber",
+                          "nepali_name": "\u0915\u0941\u092c\u0947\u0930",
+                          "birth_year": null,
+                          "death_year": null,
+                          "place": null,
+                          "comment": null,
+                          "father": "Janmejaya",
+                          "grandfather": "ShreeUpendra",
+                          "children": []
+                        }
+                      ]
                     }
                   ]
                 }

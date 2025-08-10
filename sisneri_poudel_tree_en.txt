@@ -1542,7 +1542,71 @@
                     │   │   │       └── Eknath
                     │   │   │           └── TankaPrasad
                     │   │   │               ├── MitharamBahadur
-                    │   │   │               └── NabarajBahadur
+                    │   │   │               └── Nabaraj
                     │   │   └── Radhaballav
                     │   └── Manokeshar
                     └── Janmejaya
+                        ├── Radhakrishna
+                        ├── Gangadhar
+                        │   ├── DeviDutta
+                        │   ├── Sribilas
+                        │   │   ├── Ramnath
+                        │   │   │   ├── Chabilal
+                        │   │   │   └── Ghanashyam
+                        │   │   │       ├── Jagannath
+                        │   │   │       └── DeviPrasad
+                        │   │   ├── Pashupati
+                        │   │   │   ├── Dinanath
+                        │   │   │   │   └── Hemlal
+                        │   │   │   │       ├── Gitadutta
+                        │   │   │   │       └── Tejnath
+                        │   │   │   ├── Gothu
+                        │   │   │   ├── Tikadutta
+                        │   │   │   ├── Bhuminanda
+                        │   │   │   │   ├── Damodar
+                        │   │   │   │   ├── HariPrasad
+                        │   │   │   │   └── Sreedhar
+                        │   │   │   └── Durgadutta
+                        │   │   │       ├── Basudev
+                        │   │   │       └── Govinda
+                        │   │   ├── Gobardhan
+                        │   │   └── KrishnaDutta
+                        │   │       ├── Balmiki
+                        │   │       │   ├── Sanatkumar
+                        │   │       │   ├── Rajendra
+                        │   │       │   ├── Bishwamitra
+                        │   │       │   └── Jagadeshwor
+                        │   │       ├── Umanath
+                        │   │       └── Megbilas
+                        │   └── Bharat
+                        │       ├── Diwakar
+                        │       │   ├── Tanka
+                        │       │   ├── RupPrasad
+                        │       │   │   └── ChandraPrasad
+                        │       │   └── Rudradutta
+                        │       ├── Dayanidhi
+                        │       │   ├── Rohininath
+                        │       │   │   ├── Bednidhi
+                        │       │   │   ├── Tirthahari
+                        │       │   │   │   ├── Tejnath
+                        │       │   │   │   ├── PurnaPrasad
+                        │       │   │   │   └── Bachaspati
+                        │       │   │   └── Kedarnath
+                        │       │   │       ├── Thanendra
+                        │       │   │       ├── Padmanath
+                        │       │   │       └── Badibilas
+                        │       │   └── Yamunadhar
+                        │       ├── Janakidutta
+                        │       │   ├── Maheshwor
+                        │       │   │   ├── Bedraj
+                        │       │   │   ├── Ram
+                        │       │   │   ├── Laxman
+                        │       │   │   └── Bharat
+                        │       │   ├── Toyanath
+                        │       │   ├── Durgadutta
+                        │       │   └── Ravidutta
+                        │       └── Tikadutta
+                        │           └── Loknath
+                        │               └── Govinda
+                        ├── Birbhadra
+                        └── Kuber
