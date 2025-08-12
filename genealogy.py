@@ -42,7 +42,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
 
     # Add connector and name
     connector_html = ''.join(f'<span style="color:{parent_color or my_color}">{c}</span>' for c in connector)
-    name = person.name if print_language=="en" else person.nepali_name
+    name = person.name if print_language=="en" else person.name_nepali
     print_words = name
     if person.place:
         print_words += f"({person.place})"
@@ -121,10 +121,12 @@ def update_index_html_in_place(index_path="index.html"):
     def flatten_person(person):
         people = [{
             "name": person.name,
-            "nepali_name": person.nepali_name,
+            "name_nepali": person.name_nepali,
             "birth_year": person.birth_year,
             "father": person.father.name if person.father else None,
-            "grandfather": person.father.father.name if person.father and person.father.father else None
+            "grandfather": person.father.father.name if person.father and person.father.father else None,
+            "father_nepali": person.father.name_nepali if person.father else None,
+            "grandfather_nepali": person.father.father.name_nepali if person.father and person.father.father else None,
         }]
         for child in person.children:
             people.extend(flatten_person(child))

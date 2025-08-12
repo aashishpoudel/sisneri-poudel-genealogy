@@ -101,7 +101,7 @@
         │   │   │           │   │   │   │           ├── Anup
         │   │   │           │   │   │   │           └── Anil
         │   │   │           │   │   │   └── Buddhinath
-        │   │   │           │   │   │       ├── Basudev
+        │   │   │           │   │   │       ├── Bashudev
         │   │   │           │   │   │       │   └── Ramhari
         │   │   │           │   │   │       │       └── Sujan
         │   │   │           │   │   │       ├── Debarshi
@@ -215,7 +215,7 @@
         │   │   │       │   │   │       │   ├── Hariprasad
         │   │   │       │   │   │       │   │   ├── Radheshyam
         │   │   │       │   │   │       │   │   └── Ganashyam
-        │   │   │       │   │   │       │   └── Padmanav
+        │   │   │       │   │   │       │   └── Padmanath
         │   │   │       │   │   │       │       ├── Shreedhar
         │   │   │       │   │   │       │       └── Sashidhar
         │   │   │       │   │   │       ├── KeshavRaj
@@ -259,9 +259,7 @@
         │   │   │       │       └── Shivadutta
         │   │   │       │           └── Chandrakanta
         │   │   │       │               └── Kashinath
-        │   │   │       │                   ├── Basudev
-        │   │   │       │                   │   └── Ramhari
-        │   │   │       │                   │       └── Sujan
+        │   │   │       │                   ├── Bashudev
         │   │   │       │                   ├── Dillinath
         │   │   │       │                   │   ├── RamPrasad
         │   │   │       │                   │   │   ├── Manoj
@@ -273,7 +271,7 @@
         │   │   │       │                       ├── Kishor
         │   │   │       │                       │   ├── Jeewan
         │   │   │       │                       │   └── Suraj
-        │   │   │       │                       ├── Ramkumar
+        │   │   │       │                       ├── Rajkumar
         │   │   │       │                       ├── Deepak
         │   │   │       │                       └── Shreedhar
         │   │   │       └── Bashudev
@@ -290,24 +288,12 @@
         │   │       │           ├── Birbhadra
         │   │       │           │   ├── KatakaBahadur
         │   │       │           │   │   ├── Gopal
-        │   │       │           │   │   │   ├── ShyamKrishna
-        │   │       │           │   │   │   │   ├── Nabaraj
-        │   │       │           │   │   │   │   ├── Chitra
-        │   │       │           │   │   │   │   ├── Habbu
-        │   │       │           │   │   │   │   └── Kailash
-        │   │       │           │   │   │   ├── ShyamKaji
-        │   │       │           │   │   │   │   └── Umesh
-        │   │       │           │   │   │   ├── Hariprasad
-        │   │       │           │   │   │   │   ├── Radheshyam
-        │   │       │           │   │   │   │   └── Ganashyam
-        │   │       │           │   │   │   └── Sundar
-        │   │       │           │   │   │       └── Dinesh
         │   │       │           │   │   └── LalBahadur
         │   │       │           │   └── ShumasherBahadur
         │   │       │           │       ├── KhadgaBahadur
         │   │       │           │       │   └── GaneshBahadur
         │   │       │           │       │       ├── BelBahadur
-        │   │       │           │       │       │   └── Hirav
+        │   │       │           │       │       │   └── Hirabahadur
         │   │       │           │       │       ├── OmBahadur
         │   │       │           │       │       │   └── Harisharan
         │   │       │           │       │       ├── Ramsharan
@@ -478,6 +464,18 @@
         │   │   │           │       ├── Muktinath
         │   │   │           │       ├── Sadananda
         │   │   │           │       │   └── Gopal
+        │   │   │           │       │       ├── ShyamKrishna
+        │   │   │           │       │       │   ├── Nabaraj
+        │   │   │           │       │       │   ├── Chitra
+        │   │   │           │       │       │   ├── Habbu
+        │   │   │           │       │       │   └── Kailash
+        │   │   │           │       │       ├── ShyamKaji
+        │   │   │           │       │       │   └── Umesh
+        │   │   │           │       │       ├── Hariprasad
+        │   │   │           │       │       │   ├── Radheshyam
+        │   │   │           │       │       │   └── Ganashyam
+        │   │   │           │       │       └── Sundar
+        │   │   │           │       │           └── Dinesh
         │   │   │           │       ├── Emanath
         │   │   │           │       └── Bhimnath
         │   │   │           │           ├── Ramjeev
