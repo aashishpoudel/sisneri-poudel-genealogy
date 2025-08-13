@@ -4,8 +4,10 @@ import json
 from genealogy_poudel_data import root_person  # or use gopal_31 if that is the root
 
 # Save to file
-with open("genealogy_tree.json", "w") as f:
+genealogy_json_file = "genealogy_tree.json"
+with open(genealogy_json_file, "w") as f:
     json.dump(gopal_31.to_dict(), f, indent=2)
+    print(f"✅ {genealogy_json_file} successfully updated with genealogyData.")
 
 # Print tree with visual guide indentation
 def print_tree(person, level=0, prefix="", is_last=True, print_language="en",

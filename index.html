@@ -159,7 +159,7 @@
       updateSelection(items);
     }
 
-    // Highlight in the active iframe using data attributes
+    // Highlight in the active iframe using data attributes + add ✅ next to the exact target
     function highlightNameInIframe(iframeId, name, father, grand) {
       const frame = document.getElementById(iframeId);
       const doc = frame.contentDocument || frame.contentWindow.document;
@@ -172,8 +172,10 @@
         el.style.fontWeight = '';
         el.style.textDecoration = '';
       });
+      // Remove any previous badges so only the current target shows one
+      doc.querySelectorAll('.match-badge').forEach(el => el.remove());
 
-      // Try full triple match, then fallbacks
+      // Try full triple match, then fallbacks (same as before)
       let selector = `[data-name="${CSS.escape(name)}"][data-father="${CSS.escape(father || '')}"][data-grandfather="${CSS.escape(grand || '')}"]`;
       let target = doc.querySelector(selector);
       if (!target && father) {
@@ -186,8 +188,20 @@
       }
 
       if (target) {
+        // Highlight like before
         target.style.backgroundColor = 'yellow';
         target.style.border = '3px solid orange';
+
+        // Append a visible badge ✅ right after the exact matched target
+        const badge = doc.createElement('span');
+        badge.className = 'match-badge';
+        badge.textContent = '✅';
+        // Inline style so it works inside the iframe without needing extra CSS
+        badge.style.marginLeft = '0.3em';
+        badge.style.fontSize = '1em';
+        target.insertAdjacentElement('afterend', badge);
+
+        // Scroll into view
         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
