@@ -188,22 +188,75 @@
       }
 
       if (target) {
-        // Highlight like before
+        // Style the selected target
         target.style.backgroundColor = 'yellow';
         target.style.border = '3px solid orange';
 
-        // Append a visible badge ✅ right after the exact matched target
+        // Refresh ✅ badge
+        doc.querySelectorAll('.match-badge').forEach(el => el.remove());
         const badge = doc.createElement('span');
         badge.className = 'match-badge';
         badge.textContent = '✅';
-        // Inline style so it works inside the iframe without needing extra CSS
         badge.style.marginLeft = '0.3em';
         badge.style.fontSize = '1em';
         target.insertAdjacentElement('afterend', badge);
 
-        // Scroll into view
+        // ---- Bold ALL ancestors via father chain with duplicate disambiguation ----
+        // We pick the father's element by:
+        //  1) Prefer the candidate whose own father matches the current node's data-grandfather (one-step lookahead)
+        //  2) If multiple/none match, fall back to the nearest-above candidate in the layout
+        const seen = new Set();
+
+        function pickFatherByName(fatherName, expectedGrandfather, refEl) {
+          const cands = Array.from(
+            doc.querySelectorAll(`[data-name="${CSS.escape(fatherName)}"]`)
+          );
+
+          // Filter by expected "father's father" if available (best disambiguator)
+          let filtered = cands;
+          if (expectedGrandfather) {
+            filtered = cands.filter(el => (el.getAttribute('data-father') || '') === expectedGrandfather);
+            if (!filtered.length) filtered = cands; // fallback if no exact match
+          }
+
+          // Tie-break by nearest visually above the reference element
+          const refTop = refEl.getBoundingClientRect().top;
+          filtered.sort((a, b) => {
+            const ta = a.getBoundingClientRect().top, tb = b.getBoundingClientRect().top;
+            const da = ta <= refTop ? refTop - ta : Number.POSITIVE_INFINITY;
+            const db = tb <= refTop ? refTop - tb : Number.POSITIVE_INFINITY;
+            return da - db;
+          });
+
+          return filtered[0] || null;
+        }
+
+        let currentEl = target;
+        let expectedGF = currentEl.getAttribute('data-grandfather') || ''; // father’s father of the next hop
+
+        for (let i = 0; i < 500; i++) {
+          const fatherName = currentEl.getAttribute('data-father');
+          if (!fatherName || seen.has(fatherName)) break;
+          seen.add(fatherName);
+
+          const fatherEl = pickFatherByName(fatherName, expectedGF, currentEl);
+          if (!fatherEl) break;
+
+          // Bold ancestor (no background/border so it stays distinct from the target)
+          fatherEl.style.fontWeight = 'bold';
+          fatherEl.style.backgroundColor = '';
+          fatherEl.style.border = '';
+
+          // Next hop: update the expected "father's father"
+          expectedGF = fatherEl.getAttribute('data-father') || '';
+          currentEl = fatherEl;
+        }
+        // --------------------------------------------------------------------------
+
+        // Center the selected match
         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
+
     }
 
     // Commit selection: put label in box and highlight in currently active tab
