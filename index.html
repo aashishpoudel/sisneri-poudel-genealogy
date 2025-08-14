@@ -15,6 +15,24 @@
       max-width: 1000px;      /* keeps the bar and dropdown aligned in width */
       margin: 0 auto;        /* optional: center the block */
     }
+    .search-tag {
+      display: inline-flex;
+      align-items: center;
+      background-color: #e0f7fa;
+      color: #00796b;
+      padding: 0.3em 0.6em;
+      border-radius: 16px;
+      font-size: 0.9em;
+      margin-right: 0.5em;
+    }
+    .search-tag button {
+      background: none;
+      border: none;
+      font-size: 1em;
+      margin-left: 0.4em;
+      cursor: pointer;
+      color: #00796b;
+    }
     #searchContainer {
       position: sticky;
       top: 0;
@@ -27,6 +45,9 @@
       width: 100%;
       padding: 0.6em;
       font-size: 1.2em;
+    }
+    #searchTagContainer {
+      margin-top: 0.5em;
     }
     #suggestions {
       position: absolute;
@@ -69,6 +90,8 @@
       <ul id="suggestions"></ul>
     </div>
   </div>
+
+  <div id="searchTagContainer"></div>
 
   <div id="content">
     <iframe id="tabFrame" src="sisneri_poudel_tree_en.html"></iframe>
@@ -293,6 +316,26 @@
           ancEl.style.fontWeight = 'bold';
           ancEl.style.backgroundColor = '';
           ancEl.style.border = '';
+        }
+
+        function showSearchTag(text) {
+          const container = document.getElementById('searchTagContainer');
+          container.innerHTML = ''; // clear old tag
+          const tag = document.createElement('span');
+          tag.className = 'search-tag';
+          tag.textContent = text;
+
+          const closeBtn = document.createElement('button');
+          closeBtn.textContent = '×';
+          closeBtn.onclick = () => {
+            document.getElementById('searchInput').value = '';
+            container.innerHTML = '';
+            // also clear highlights or reset iframe if needed
+            clearHighlights();
+          };
+
+          tag.appendChild(closeBtn);
+          container.appendChild(tag);
         }
 
         // 4) Center the selected match
