@@ -15,24 +15,6 @@
       max-width: 1000px;      /* keeps the bar and dropdown aligned in width */
       margin: 0 auto;        /* optional: center the block */
     }
-    .search-tag {
-      display: inline-flex;
-      align-items: center;
-      background-color: #e0f7fa;
-      color: #00796b;
-      padding: 0.3em 0.6em;
-      border-radius: 16px;
-      font-size: 0.9em;
-      margin-right: 0.5em;
-    }
-    .search-tag button {
-      background: none;
-      border: none;
-      font-size: 1em;
-      margin-left: 0.4em;
-      cursor: pointer;
-      color: #00796b;
-    }
     #searchContainer {
       position: sticky;
       top: 0;
@@ -43,11 +25,45 @@
     }
     #searchInput {
       width: 100%;
-      padding: 0.6em;
+      padding: 0.6rem 2.4rem 0.6rem 0.8rem; /* extra right padding for the × */
       font-size: 1.2em;
     }
-    #searchTagContainer {
-      margin-top: 0.5em;
+    /* In-input pill */
+    .search-pill {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      background: #e0f7fa;
+      color: #00796b;
+      padding: 0.2em 0.55em;
+      border-radius: 14px;
+      line-height: 1;
+      max-width: calc(100% - 20px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      pointer-events: auto;   /* allow clicking the × */
+    }
+
+    .search-pill.hidden { display: none; }
+
+    .search-pill button {
+      background: none;
+      border: 0;
+      cursor: pointer;
+      font-size: 1.05em;
+      color: #00796b;
+      line-height: 1;
+      padding: 0;
+    }
+
+    /* When pill is visible, dim the caret so it looks like the pill is “in” the input */
+    #searchInput.has-pill {
+      caret-color: transparent;
     }
     #suggestions {
       position: absolute;
@@ -67,6 +83,14 @@
     #suggestions li { padding:0.5rem 0.6rem; cursor:pointer; background:#fafafa; }
     #suggestions li:hover { background:#eee; }
     #suggestions li.group { font-weight:bold; background:#f0f0f0; cursor:default; }
+    #searchTagContainer { max-width:1000px; margin:0.5rem auto 0; padding:0 2px; }
+    .search-tag {
+      display:inline-flex; align-items:center; background:#e0f7fa; color:#00796b;
+      padding:0.3em 0.6em; border-radius:16px; font-size:0.9em; gap:0.4em;
+    }
+    .search-tag button {
+      background:none; border:none; font-size:1.05em; cursor:pointer; color:#00796b; line-height:1;
+    }
     #content { display:flex; height: calc(100vh - 210px); min-height: 420px; }
     iframe { width:100%; height:100%; border:0; }
     .hidden { display:none; }
@@ -87,11 +111,14 @@
       <input id="searchInput" type="text"
              placeholder="Search name (English or नेपाली)..."
              oninput="searchNames()" />
+      <div id="searchPill" class="search-pill hidden">
+        <span id="searchPillText"></span>
+        <button id="searchPillClose" aria-label="Clear search">×</button>
+      </div>
       <ul id="suggestions"></ul>
     </div>
+    <div id="searchTagContainer"></div>
   </div>
-
-  <div id="searchTagContainer"></div>
 
   <div id="content">
     <iframe id="tabFrame" src="sisneri_poudel_tree_en.html"></iframe>
@@ -137,10 +164,12 @@
     function normEN(s) { return s.normalize('NFC').replace(/\(.*?\)/g,'').replace(/[^\w]/g,'').toLowerCase().trim(); }
     function normNP(s) { return s.normalize('NFC').replace(/[^\u0900-\u097F]/g,'').trim(); }
 
-    // Render grouped suggestions
     function renderSuggestions(matchesEN, matchesNP) {
       const ul = document.getElementById('suggestions');
       ul.innerHTML = '';
+
+      ul.classList.remove('hidden');   // ✅ unhide when we’re about to render
+
       const items = [];
 
       function addGroup(title) {
@@ -158,27 +187,22 @@
 
         const li = document.createElement('li');
         li.textContent = label;
-        // Keep canonical English identifiers to find span in either iframe
-        li.dataset.name = p.name;
+        li.dataset.name   = p.name;
         li.dataset.father = p.father || '';
-        li.dataset.grand = p.grand || '';
-        li.dataset.lang = lang;
+        li.dataset.grand  = p.grand || '';
+        li.dataset.lang   = lang;
         li.onclick = () => commitSelection(li);
         ul.appendChild(li);
         items.push(li);
       }
 
-      if (matchesEN.length) {
-<!--        addGroup('English');-->
-        matchesEN.slice(0, 30).forEach(p => addItem(p, 'en'));
-      }
-      if (matchesNP.length) {
-<!--        addGroup('नेपाली');-->
-        matchesNP.slice(0, 30).forEach(p => addItem(p, 'np'));
-      }
+      if (matchesEN.length) matchesEN.slice(0, 30).forEach(p => addItem(p, 'en'));
+      if (matchesNP.length) matchesNP.slice(0, 30).forEach(p => addItem(p, 'np'));
 
       selectedSuggestionIndex = items.length ? 0 : -1;
       updateSelection(items);
+
+      if (!items.length) ul.classList.add('hidden');   // ✅ hide again if nothing to show
     }
 
     // Highlight in the active iframe using data attributes + add ✅ next to the exact target
@@ -318,45 +342,36 @@
           ancEl.style.border = '';
         }
 
-        function showSearchTag(text) {
-          const container = document.getElementById('searchTagContainer');
-          container.innerHTML = ''; // clear old tag
-          const tag = document.createElement('span');
-          tag.className = 'search-tag';
-          tag.textContent = text;
-
-          const closeBtn = document.createElement('button');
-          closeBtn.textContent = '×';
-          closeBtn.onclick = () => {
-            document.getElementById('searchInput').value = '';
-            container.innerHTML = '';
-            // also clear highlights or reset iframe if needed
-            clearHighlights();
-          };
-
-          tag.appendChild(closeBtn);
-          container.appendChild(tag);
-        }
-
         // 4) Center the selected match
         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
 
     }
 
-    // Commit selection: put label in box and highlight in currently active tab
-    function commitSelection(li) {
-      const input = document.getElementById('searchInput');
-      input.value = li.textContent; // visible label
+    // Commit selection: put label in pill and highlight in currently active tab
+function commitSelection(li) {
+  const input = document.getElementById('searchInput');
 
-      const activeId = currentIframe.id; // 'tabFrame' or 'tabFrame2'
-      const name = li.dataset.name;
-      const father = li.dataset.father || '';
-      const grand = li.dataset.grand || '';
+  // Build a nice label for the pill
+  const name   = li.dataset.name;
+  const father = li.dataset.father || '';
+  const grand  = li.dataset.grand || '';
+  const label  = grand
+      ? `${name} (Father: ${father || '—'}, Grandfather: ${grand})`
+      : (father ? `${name} (Father: ${father})` : name);
 
-      document.getElementById('suggestions').innerHTML = '';
-      highlightNameInIframe(activeId, name, father, grand);
-    }
+  // Reflect the committed choice in the input (optional)
+  input.value = label;
+
+  // ⬅️ This is the missing piece: render the pill/tag with an × button
+  showSearchTag(label);
+
+  // Clear suggestions and highlight in the active iframe
+  document.getElementById('suggestions').innerHTML = '';
+  const activeId = currentIframe.id; // 'tabFrame' or 'tabFrame2'
+  highlightNameInIframe(activeId, name, father, grand);
+}
+
 
     // Keyboard navigation
     let selectedSuggestionIndex = -1;
@@ -392,7 +407,9 @@
       const qNP = normNP(q);
 
       if (!qEN && !qNP) {
-        document.getElementById('suggestions').innerHTML = '';
+        const ul = document.getElementById('suggestions');
+        ul.innerHTML = '';
+        ul.classList.add('hidden');
         selectedSuggestionIndex = -1;
         return;
       }
@@ -402,6 +419,54 @@
 
       renderSuggestions(matchesEN, matchesNP);
     }
+
+    function clearHighlights() {
+      const frames = [document.getElementById('tabFrame'), document.getElementById('tabFrame2')];
+      for (const frame of frames) {
+        const d = frame.contentDocument || frame.contentWindow.document;
+        if (!d) continue;
+        d.querySelectorAll('[data-name]').forEach(el => {
+          el.style.fontWeight = '';
+          el.style.backgroundColor = '';
+          el.style.border = '';
+        });
+        d.querySelectorAll('.match-badge').forEach(el => el.remove());
+      }
+    }
+
+    function showSearchTag(text) {
+      const pill = document.getElementById('searchPill');
+      const pillText = document.getElementById('searchPillText');
+      const input = document.getElementById('searchInput');
+
+      // Clear the input text (you asked for this)
+      input.value = '';
+      input.classList.add('has-pill');
+
+      // Set pill label and show it
+      pillText.textContent = text;
+      pill.classList.remove('hidden');
+    }
+
+    // × button handler (run once after DOM ready)
+    (function wirePillClose() {
+      const closeBtn = document.getElementById('searchPillClose');
+      const pill = document.getElementById('searchPill');
+      const input = document.getElementById('searchInput');
+
+      if (!closeBtn) return;
+      closeBtn.onclick = () => {
+        // Hide pill and restore input/caret
+        pill.classList.add('hidden');
+        input.classList.remove('has-pill');
+        input.focus();
+
+        // Also clear any highlights/suggestions
+        const sugg = document.getElementById('suggestions');
+        if (sugg) { sugg.innerHTML = ''; sugg.classList.add('hidden'); }
+        clearHighlights();
+      };
+    })();
   </script>
 </body>
 </html>
