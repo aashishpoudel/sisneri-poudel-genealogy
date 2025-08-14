@@ -12,7 +12,7 @@
     .searchWrap {
       position: relative;
       width: 100%;
-      max-width: 800px;      /* keeps the bar and dropdown aligned in width */
+      max-width: 1000px;      /* keeps the bar and dropdown aligned in width */
       margin: 0 auto;        /* optional: center the block */
     }
     #searchContainer {
@@ -187,7 +187,7 @@
       }
 
       if (target) {
-        // Style the selected target
+        // 1) Style the selected target
         target.style.backgroundColor = 'yellow';
         target.style.border = '3px solid orange';
 
@@ -200,59 +200,102 @@
         badge.style.fontSize = '1em';
         target.insertAdjacentElement('afterend', badge);
 
-        // ---- Bold ALL ancestors via father chain with duplicate disambiguation ----
-        // We pick the father's element by:
-        //  1) Prefer the candidate whose own father matches the current node's data-grandfather (one-step lookahead)
-        //  2) If multiple/none match, fall back to the nearest-above candidate in the layout
-        const seen = new Set();
+        // 2) Build an unambiguous ancestor path FROM DATA, not the DOM
+        //    We identify the *exact* record for the selected target using its own father/grandfather
+        //    and then climb father -> father's father -> ... to the root.
+        //    Each step is (personName, personsFather), which uniquely identifies the DOM node later.
 
-        function pickFatherByName(fatherName, expectedGrandfather, refEl) {
-          const cands = Array.from(
-            doc.querySelectorAll(`[data-name="${CSS.escape(fatherName)}"]`)
+        // Read the selected node's metadata
+        const childName = target.getAttribute('data-name') || '';
+        const childFather = target.getAttribute('data-father') || '';
+        const childGrand = target.getAttribute('data-grandfather') || '';
+
+        // Build fast index: name -> array of records
+        const byName = new Map();
+        for (const rec of genealogyData) {
+          if (!byName.has(rec.name)) byName.set(rec.name, []);
+          byName.get(rec.name).push(rec);
+        }
+
+        // Helper: get the exact record for a person using (name, father, grandfather)
+        function getExactRecord(name, father, grandfather) {
+          const list = byName.get(name) || [];
+          // Prefer exact father+grandfather match when available
+          let match = list.find(r =>
+            (r.father || '') === (father || '') &&
+            (r.grandfather || '') === (grandfather || '')
           );
+          if (match) return match;
 
-          // Filter by expected "father's father" if available (best disambiguator)
-          let filtered = cands;
-          if (expectedGrandfather) {
-            filtered = cands.filter(el => (el.getAttribute('data-father') || '') === expectedGrandfather);
-            if (!filtered.length) filtered = cands; // fallback if no exact match
+          // Fallback: match only by father if no grandfather data on either side
+          match = list.find(r => (r.father || '') === (father || ''));
+          if (match) return match;
+
+          // Last resort: single record with this name
+          return list.length === 1 ? list[0] : null;
+        }
+
+        // Resolve the selected person's record first
+        let rec = getExactRecord(childName, childFather, childGrand);
+        const ancestorPath = []; // array of { name: 'Govinda', fatherOfThisPerson: 'Ram Bhadra' }
+
+        // Walk up using DATA (not DOM): person -> person's father -> father’s father -> ...
+        // Each step we push the ancestor with their *own* father, so later we can select the
+        // exact DOM node via [data-name=ancestor][data-father=ancestor.father].
+        const safetyLimit = 1000;
+        let hop = 0;
+
+        while (rec && rec.father && hop < safetyLimit) {
+          // Current ancestor is the father of 'rec'
+          const ancName = rec.father;
+          // We need the ancestor's own father to disambiguate the DOM node
+          const ancestorRec = getExactRecord(ancName, null, null) ||
+                              (byName.get(ancName) || [])[0] ||
+                              null;
+
+          // If we couldn't resolve an ancestor record directly, try guided lookup:
+          // For the ancestor 'ancName', we expect HIS father to be rec.grandfather.
+          // Find the specific record with that father.
+          let ancRec = ancestorRec;
+          const options = byName.get(ancName) || [];
+          if (options.length) {
+            const expectF = rec.grandfather || ''; // "person's father's father"
+            const withExpectedFather = options.find(o => (o.father || '') === expectF);
+            if (withExpectedFather) ancRec = withExpectedFather;
           }
 
-          // Tie-break by nearest visually above the reference element
-          const refTop = refEl.getBoundingClientRect().top;
-          filtered.sort((a, b) => {
-            const ta = a.getBoundingClientRect().top, tb = b.getBoundingClientRect().top;
-            const da = ta <= refTop ? refTop - ta : Number.POSITIVE_INFINITY;
-            const db = tb <= refTop ? refTop - tb : Number.POSITIVE_INFINITY;
-            return da - db;
-          });
+          // If still ambiguous, but only one record exists, use it. Otherwise stop safely.
+          if (!ancRec) {
+            if (options.length === 1) {
+              ancRec = options[0];
+            } else {
+              break;
+            }
+          }
 
-          return filtered[0] || null;
+          ancestorPath.push({ name: ancRec.name, fatherOfAncestor: ancRec.father || '' });
+
+          // Move up: next "rec" is the ancestor we just added
+          rec = ancRec;
+          hop++;
         }
 
-        let currentEl = target;
-        let expectedGF = currentEl.getAttribute('data-grandfather') || ''; // father’s father of the next hop
+        // 3) Bold ONLY those ancestors we resolved from data, using precise DOM selectors
+        //    This avoids bolding unrelated names like "Bali" and ensures the correct "Govinda".
+        for (const step of ancestorPath) {
+          const sel = step.fatherOfAncestor
+            ? `[data-name="${CSS.escape(step.name)}"][data-father="${CSS.escape(step.fatherOfAncestor)}"]`
+            : `[data-name="${CSS.escape(step.name)}"]`;
 
-        for (let i = 0; i < 500; i++) {
-          const fatherName = currentEl.getAttribute('data-father');
-          if (!fatherName || seen.has(fatherName)) break;
-          seen.add(fatherName);
+          const ancEl = doc.querySelector(sel);
+          if (!ancEl) continue;
 
-          const fatherEl = pickFatherByName(fatherName, expectedGF, currentEl);
-          if (!fatherEl) break;
-
-          // Bold ancestor (no background/border so it stays distinct from the target)
-          fatherEl.style.fontWeight = 'bold';
-          fatherEl.style.backgroundColor = '';
-          fatherEl.style.border = '';
-
-          // Next hop: update the expected "father's father"
-          expectedGF = fatherEl.getAttribute('data-father') || '';
-          currentEl = fatherEl;
+          ancEl.style.fontWeight = 'bold';
+          ancEl.style.backgroundColor = '';
+          ancEl.style.border = '';
         }
-        // --------------------------------------------------------------------------
 
-        // Center the selected match
+        // 4) Center the selected match
         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
 
