@@ -183,7 +183,7 @@
         const isNP = (lang === 'np');
         const label = isNP
           ? `${p.name_np} (बुवा: ${p.father_np || '—'}, हजुरबुवा: ${p.grand_np || '—'})`
-          : `${p.name} (Father: ${p.father || '—'}, Grandfather: ${p.grand || '—'})`;
+          : `${p.name} (Father→${p.father || '—'}→${p.grand || '—'})`;
 
         const li = document.createElement('li');
         li.textContent = label;
