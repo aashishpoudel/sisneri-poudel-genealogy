@@ -227,7 +227,7 @@
         │   │   │       │   │   │       │       └── Dinesh
         │   │   │       │   │   │       └── Lilanath
         │   │   │       │   │   ├── Ramchandra
-        │   │   │       │   │   ├── laxman(Major)
+        │   │   │       │   │   ├── Laxman(Major)
         │   │   │       │   │   │   ├── Nandikeshar
         │   │   │       │   │   │   └── Udayananda
         │   │   │       │   │   │       ├── Taranath

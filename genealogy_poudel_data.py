@@ -229,7 +229,7 @@ parmananda_38 = Person("Parmananda", gender="Male", name_nepali="परमान
 
 ganapati_39 = Person("Ganapati", gender="Male", name_nepali="गणपति")
 ramchandra_39 = Person("Ramchandra", gender="Male", name_nepali="रामचन्द्र")
-laxman_39 = Person("laxman(Major)", gender="Male", name_nepali="लक्ष्मण(मेजर)", comment="मेजर")
+laxman_39 = Person("Laxman(Major)", gender="Male", name_nepali="लक्ष्मण(मेजर)", comment="मेजर")
 shree_kanta_39 = Person("ShreeKanta", gender="Male", name_nepali="श्रीकान्त")
 ramakanta_39 = Person("Ramakanta", gender="Male", name_nepali="रमाकान्त")
 
