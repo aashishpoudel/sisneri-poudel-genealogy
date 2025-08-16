@@ -478,9 +478,9 @@
         │   │   │           │       │           └── Dinesh
         │   │   │           │       ├── Emanath
         │   │   │           │       └── Bhimnath
-        │   │   │           │           ├── Ramjeev
+        │   │   │           │           ├── Ramjibahadur
         │   │   │           │           │   └── Bidur
-        │   │   │           │           ├── Shyamjeev
+        │   │   │           │           ├── Shyamjibahadur
         │   │   │           │           │   ├── Purushottam
         │   │   │           │           │   └── Krishnasharan
         │   │   │           │           ├── Sahadev
@@ -664,7 +664,7 @@
         │   │   │   │   │   │   ├── Harimohan
         │   │   │   │   │   │   ├── Rudramohan
         │   │   │   │   │   │   │   ├── RamPrasad
-        │   │   │   │   │   │   │   │   ├── Padmanav
+        │   │   │   │   │   │   │   │   ├── Padmanath
         │   │   │   │   │   │   │   │   ├── Binod
         │   │   │   │   │   │   │   │   │   ├── Sunod
         │   │   │   │   │   │   │   │   │   └── Sushan
@@ -775,6 +775,14 @@
         │   │           │           └── Mayanath
         │   │           │               ├── Ganeshnath
         │   │           │               │   ├── Ramji
+        │   │           │               │   │   ├── Kedar
+        │   │           │               │   │   │   ├── Sanjiv
+        │   │           │               │   │   │   ├── Saroj
+        │   │           │               │   │   │   └── Santosh
+        │   │           │               │   │   ├── Bishnu
+        │   │           │               │   │   │   └── Sudeep
+        │   │           │               │   │   └── Shambhu
+        │   │           │               │   │       └── Suman
         │   │           │               │   ├── Krishna
         │   │           │               │   └── Narandutta
         │   │           │               ├── Bhimnath
@@ -808,14 +816,6 @@
         │   │           │               │       └── YuddhaBahadur
         │   │           │               └── BartamanSingh
         │   │           │                   └── Ramji
-        │   │           │                       ├── Kedar
-        │   │           │                       │   ├── Sanjiv
-        │   │           │                       │   ├── Saroj
-        │   │           │                       │   └── Santosh
-        │   │           │                       ├── Bishnu
-        │   │           │                       │   └── Sudeep
-        │   │           │                       ├── Shambhu
-        │   │           │                       │   └── Suman
         │   │           │                       ├── Badri
         │   │           │                       │   └── Dayaram
         │   │           │                       ├── Kedar

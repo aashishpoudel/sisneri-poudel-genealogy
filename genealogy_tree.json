@@ -6464,8 +6464,8 @@
                                       "grandfather_nepali": "\u0932\u0940\u0932\u093e\u0927\u0930",
                                       "children": [
                                         {
-                                          "name": "Ramjeev",
-                                          "name_nepali": "\u0930\u093e\u092e\u091c\u0940\u0935",
+                                          "name": "Ramjibahadur",
+                                          "name_nepali": "\u0930\u093e\u092e\u091c\u0940\u092c\u0939\u093e\u0926\u0941\u0930",
                                           "birth_year": null,
                                           "death_year": null,
                                           "place": null,
@@ -6482,8 +6482,8 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "father": "Ramjeev",
-                                              "father_nepali": "\u0930\u093e\u092e\u091c\u0940\u0935",
+                                              "father": "Ramjibahadur",
+                                              "father_nepali": "\u0930\u093e\u092e\u091c\u0940\u092c\u0939\u093e\u0926\u0941\u0930",
                                               "grandfather": "Bhimnath",
                                               "grandfather_nepali": "\u0915\u093e\u0936\u0940\u0928\u093e\u0925",
                                               "children": []
@@ -6491,8 +6491,8 @@
                                           ]
                                         },
                                         {
-                                          "name": "Shyamjeev",
-                                          "name_nepali": "\u0936\u094d\u092f\u093e\u092e\u091c\u0940\u0935",
+                                          "name": "Shyamjibahadur",
+                                          "name_nepali": "\u0936\u094d\u092f\u093e\u092e\u091c\u0940\u092c\u0939\u093e\u0926\u0941\u0930",
                                           "birth_year": null,
                                           "death_year": null,
                                           "place": null,
@@ -6509,8 +6509,8 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "father": "Shyamjeev",
-                                              "father_nepali": "\u0936\u094d\u092f\u093e\u092e\u091c\u0940\u0935",
+                                              "father": "Shyamjibahadur",
+                                              "father_nepali": "\u0936\u094d\u092f\u093e\u092e\u091c\u0940\u092c\u0939\u093e\u0926\u0941\u0930",
                                               "grandfather": "Bhimnath",
                                               "grandfather_nepali": "\u0915\u093e\u0936\u0940\u0928\u093e\u0925",
                                               "children": []
@@ -6522,8 +6522,8 @@
                                               "death_year": null,
                                               "place": null,
                                               "comment": null,
-                                              "father": "Shyamjeev",
-                                              "father_nepali": "\u0936\u094d\u092f\u093e\u092e\u091c\u0940\u0935",
+                                              "father": "Shyamjibahadur",
+                                              "father_nepali": "\u0936\u094d\u092f\u093e\u092e\u091c\u0940\u092c\u0939\u093e\u0926\u0941\u0930",
                                               "grandfather": "Bhimnath",
                                               "grandfather_nepali": "\u0915\u093e\u0936\u0940\u0928\u093e\u0925",
                                               "children": []
@@ -8963,7 +8963,7 @@
                                       "grandfather_nepali": "\u0938\u0941 \u092c\u094d\u0930\u091c\u092e\u094b\u0939\u0928",
                                       "children": [
                                         {
-                                          "name": "Padmanav",
+                                          "name": "Padmanath",
                                           "name_nepali": "\u092a\u0926\u094d\u092e\u0928\u093e\u0925",
                                           "birth_year": null,
                                           "death_year": null,
@@ -10451,7 +10451,115 @@
                                               "father_nepali": "\u0917\u0923\u0947\u0936\u0928\u093e\u0925",
                                               "grandfather": "Mayanath",
                                               "grandfather_nepali": "\u092d\u093e\u0938\u094d\u0915\u0930",
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Kedar",
+                                                  "name_nepali": "\u0915\u0947\u0926\u093e\u0930",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "father": "Ramji",
+                                                  "father_nepali": "\u0930\u093e\u092e\u091c\u0940",
+                                                  "grandfather": "Ganeshnath",
+                                                  "grandfather_nepali": "\u092e\u093e\u092f\u093e\u0928\u093e\u0925",
+                                                  "children": [
+                                                    {
+                                                      "name": "Sanjiv",
+                                                      "name_nepali": "\u0938\u091e\u094d\u091c\u0940\u0935",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "father": "Kedar",
+                                                      "father_nepali": "\u0915\u0947\u0926\u093e\u0930",
+                                                      "grandfather": "Ramji",
+                                                      "grandfather_nepali": "\u0917\u0923\u0947\u0936\u0928\u093e\u0925",
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Saroj",
+                                                      "name_nepali": "\u0938\u0930\u094b\u091c",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "father": "Kedar",
+                                                      "father_nepali": "\u0915\u0947\u0926\u093e\u0930",
+                                                      "grandfather": "Ramji",
+                                                      "grandfather_nepali": "\u0917\u0923\u0947\u0936\u0928\u093e\u0925",
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Santosh",
+                                                      "name_nepali": "\u0938\u0928\u094d\u0924\u094b\u0937",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "father": "Kedar",
+                                                      "father_nepali": "\u0915\u0947\u0926\u093e\u0930",
+                                                      "grandfather": "Ramji",
+                                                      "grandfather_nepali": "\u0917\u0923\u0947\u0936\u0928\u093e\u0925",
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "name": "Bishnu",
+                                                  "name_nepali": "\u0935\u093f\u0937\u094d\u0923\u0941",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "father": "Ramji",
+                                                  "father_nepali": "\u0930\u093e\u092e\u091c\u0940",
+                                                  "grandfather": "Ganeshnath",
+                                                  "grandfather_nepali": "\u092e\u093e\u092f\u093e\u0928\u093e\u0925",
+                                                  "children": [
+                                                    {
+                                                      "name": "Sudeep",
+                                                      "name_nepali": "\u0938\u0941\u0926\u0940\u092a",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "father": "Bishnu",
+                                                      "father_nepali": "\u0935\u093f\u0937\u094d\u0923\u0941",
+                                                      "grandfather": "Ramji",
+                                                      "grandfather_nepali": "\u0917\u0923\u0947\u0936\u0928\u093e\u0925",
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "name": "Shambhu",
+                                                  "name_nepali": "\u0936\u092e\u094d\u092d\u0941",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "father": "Ramji",
+                                                  "father_nepali": "\u0930\u093e\u092e\u091c\u0940",
+                                                  "grandfather": "Ganeshnath",
+                                                  "grandfather_nepali": "\u092e\u093e\u092f\u093e\u0928\u093e\u0925",
+                                                  "children": [
+                                                    {
+                                                      "name": "Suman",
+                                                      "name_nepali": "\u0938\u0941\u092e\u0928",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "father": "Shambhu",
+                                                      "father_nepali": "\u0936\u092e\u094d\u092d\u0941",
+                                                      "grandfather": "Ramji",
+                                                      "grandfather_nepali": "\u0917\u0923\u0947\u0936\u0928\u093e\u0925",
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                }
+                                              ]
                                             },
                                             {
                                               "name": "Krishna",
@@ -10897,113 +11005,6 @@
                                               "grandfather": "Mayanath",
                                               "grandfather_nepali": "\u092d\u093e\u0938\u094d\u0915\u0930",
                                               "children": [
-                                                {
-                                                  "name": "Kedar",
-                                                  "name_nepali": "\u0915\u0947\u0926\u093e\u0930",
-                                                  "birth_year": null,
-                                                  "death_year": null,
-                                                  "place": null,
-                                                  "comment": null,
-                                                  "father": "Ramji",
-                                                  "father_nepali": "\u0930\u093e\u092e\u091c\u0940",
-                                                  "grandfather": "BartamanSingh",
-                                                  "grandfather_nepali": "\u092e\u093e\u092f\u093e\u0928\u093e\u0925",
-                                                  "children": [
-                                                    {
-                                                      "name": "Sanjiv",
-                                                      "name_nepali": "\u0938\u091e\u094d\u091c\u0940\u0935",
-                                                      "birth_year": null,
-                                                      "death_year": null,
-                                                      "place": null,
-                                                      "comment": null,
-                                                      "father": "Kedar",
-                                                      "father_nepali": "\u0915\u0947\u0926\u093e\u0930",
-                                                      "grandfather": "Ramji",
-                                                      "grandfather_nepali": "",
-                                                      "children": []
-                                                    },
-                                                    {
-                                                      "name": "Saroj",
-                                                      "name_nepali": "\u0938\u0930\u094b\u091c",
-                                                      "birth_year": null,
-                                                      "death_year": null,
-                                                      "place": null,
-                                                      "comment": null,
-                                                      "father": "Kedar",
-                                                      "father_nepali": "\u0915\u0947\u0926\u093e\u0930",
-                                                      "grandfather": "Ramji",
-                                                      "grandfather_nepali": "",
-                                                      "children": []
-                                                    },
-                                                    {
-                                                      "name": "Santosh",
-                                                      "name_nepali": "\u0938\u0928\u094d\u0924\u094b\u0937",
-                                                      "birth_year": null,
-                                                      "death_year": null,
-                                                      "place": null,
-                                                      "comment": null,
-                                                      "father": "Kedar",
-                                                      "father_nepali": "\u0915\u0947\u0926\u093e\u0930",
-                                                      "grandfather": "Ramji",
-                                                      "grandfather_nepali": "",
-                                                      "children": []
-                                                    }
-                                                  ]
-                                                },
-                                                {
-                                                  "name": "Bishnu",
-                                                  "name_nepali": "\u0935\u093f\u0937\u094d\u0923\u0941",
-                                                  "birth_year": null,
-                                                  "death_year": null,
-                                                  "place": null,
-                                                  "comment": null,
-                                                  "father": "Ramji",
-                                                  "father_nepali": "\u0930\u093e\u092e\u091c\u0940",
-                                                  "grandfather": "BartamanSingh",
-                                                  "grandfather_nepali": "\u092e\u093e\u092f\u093e\u0928\u093e\u0925",
-                                                  "children": [
-                                                    {
-                                                      "name": "Sudeep",
-                                                      "name_nepali": "\u0938\u0941\u0926\u0940\u092a",
-                                                      "birth_year": null,
-                                                      "death_year": null,
-                                                      "place": null,
-                                                      "comment": null,
-                                                      "father": "Bishnu",
-                                                      "father_nepali": "\u0935\u093f\u0937\u094d\u0923\u0941",
-                                                      "grandfather": "Ramji",
-                                                      "grandfather_nepali": "",
-                                                      "children": []
-                                                    }
-                                                  ]
-                                                },
-                                                {
-                                                  "name": "Shambhu",
-                                                  "name_nepali": "\u0936\u092e\u094d\u092d\u0941",
-                                                  "birth_year": null,
-                                                  "death_year": null,
-                                                  "place": null,
-                                                  "comment": null,
-                                                  "father": "Ramji",
-                                                  "father_nepali": "\u0930\u093e\u092e\u091c\u0940",
-                                                  "grandfather": "BartamanSingh",
-                                                  "grandfather_nepali": "\u092e\u093e\u092f\u093e\u0928\u093e\u0925",
-                                                  "children": [
-                                                    {
-                                                      "name": "Suman",
-                                                      "name_nepali": "\u0938\u0941\u092e\u0928",
-                                                      "birth_year": null,
-                                                      "death_year": null,
-                                                      "place": null,
-                                                      "comment": null,
-                                                      "father": "Shambhu",
-                                                      "father_nepali": "\u0936\u092e\u094d\u092d\u0941",
-                                                      "grandfather": "Ramji",
-                                                      "grandfather_nepali": "",
-                                                      "children": []
-                                                    }
-                                                  ]
-                                                },
                                                 {
                                                   "name": "Badri",
                                                   "name_nepali": "\u092c\u0926\u094d\u0930\u0940",
