@@ -2911,7 +2911,11 @@ shyam_bahadur_41.add_children([ramesh_42_3, rameshwor_42, rajendra_42_2])
 sambhu_bahadur_41.add_child(shiva_bahadur_42)
 pushpa_raj_41.add_children([kiran_42_2, kishor_42])
 
-purshuram_35.add_child(hari_36)
+govinda_42_2.add_child(rameshwor_42)
+sudarshan_42_2.add_child(ramesh_42_3)
+narayan_42_3.add_child(sudeep_42)
+
+purshuram_35.add_children([unnamed_36, hari_36])
 hari_36.add_child(ramananda_37)
 ramananda_37.add_children([liladhar_38, jayabhadra_38])
 
@@ -2965,7 +2969,7 @@ bishnu_42_2.add_child(deepak_43_5)
 
 ##Page 53
 ###### all done
-purshuram_35.add_children([unnamed_36])
+
 unnamed_36.add_child(ram_chandra_37)
 ram_chandra_37.add_children([unnamed_38, devdutta_38])
 
@@ -2977,7 +2981,6 @@ dambar_bahadur_40.add_children([bhim_bahadur_41, sete_41])
 harinandan_40.add_child(ramnath_41_2)
 chandrakant_40.add_child(shiva_prasad_41)
 taranath_40_2.add_child(purushottam_41)
-harinandan_40.add_children([bhim_bahadur_41, sete_41])
 
 bhim_bahadur_41.add_child(sanatkumar_42)
 ramnath_41_2.add_children([shivaram_42, shree_krishna_42])
@@ -3117,7 +3120,7 @@ bishnu_narayan_37.add_children([purna_bhadra_38_2, indiwar_38, rewati_raman_38])
 purna_bhadra_38_2.add_children([padmanidhi_39, dinanath_39, uday_narayan_39])
 
 dinanath_39.add_child(sadananda_40_2)
-purna_bhadra_38_2.add_children([khecharnath_40, vednath_40])
+uday_narayan_39.add_children([khecharnath_40, vednath_40])
 
 sadananda_40_2.add_child(yadunath_41)
 khecharnath_40.add_children([bidyaranya_keshari_41, dwijaraj_keshari_41])
