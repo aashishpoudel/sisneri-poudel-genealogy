@@ -1166,6 +1166,14 @@
         │       │       │   │   │   │   └── Tekprasad
         │       │       │   │   │   │       └── Mahesh
         │       │       │   │   │   └── Dolkeshor
+        │       │       │   │   │       ├── Bishwonath
+        │       │       │   │   │       │   ├── Bhairav
+        │       │       │   │   │       │   ├── Sadananda
+        │       │       │   │   │       │   ├── Bishnu
+        │       │       │   │   │       │   └── RamPrasad
+        │       │       │   │   │       ├── Badri
+        │       │       │   │   │       │   └── Damodar
+        │       │       │   │   │       └── Kedar
         │       │       │   │   ├── Suryanidhi
         │       │       │   │   │   └── Bodnidhi
         │       │       │   │   │       └── Toyanidhi
@@ -1308,51 +1316,7 @@
         │       │       │   │   │   │       └── Jagadish
         │       │       │   │   │   └── Minnath
         │       │       │   │   └── Ramkrishna
-        │       │       │   ├── RewatiRaman
-        │       │       │   └── Indiwar
-        │       │       │       ├── Padmanav
-        │       │       │       │   ├── Rudradutta
-        │       │       │       │   │   ├── Tikaram
-        │       │       │       │   │   │   └── Premlal
-        │       │       │       │   │   └── Narayan
-        │       │       │       │   │       ├── Mahananda
-        │       │       │       │   │       │   └── Madhav
-        │       │       │       │   │       ├── Hurmatuk
-        │       │       │       │   │       │   ├── Suman
-        │       │       │       │   │       │   ├── Susan
-        │       │       │       │   │       │   └── Hemanta
-        │       │       │       │   │       ├── Sthaneshwor
-        │       │       │       │   │       │   ├── Subash
-        │       │       │       │   │       │   └── Suresh
-        │       │       │       │   │       ├── DurgaPrasad
-        │       │       │       │   │       │   ├── Dilip
-        │       │       │       │   │       │   └── Hemraj
-        │       │       │       │   │       └── Dinesh
-        │       │       │       │   ├── Jhankanath
-        │       │       │       │   ├── Bhuwaneshor
-        │       │       │       │   │   ├── Lalmani
-        │       │       │       │   │   └── Madhusudan
-        │       │       │       │   ├── IshwariPrasad
-        │       │       │       │   │   └── Mohan
-        │       │       │       │   └── BishnuPrasad
-        │       │       │       ├── Chabilal
-        │       │       │       │   ├── HariNarayan
-        │       │       │       │   │   ├── Rameshwor
-        │       │       │       │   │   │   ├── Kapil
-        │       │       │       │   │   │   └── Sunil
-        │       │       │       │   │   └── Shivaram
-        │       │       │       │   │       └── Santosh
-        │       │       │       │   ├── Suryanidhi
-        │       │       │       │   │   └── KrishnaPrasad
-        │       │       │       │   │       ├── Bijay
-        │       │       │       │   │       │   ├── Sudarshan
-        │       │       │       │   │       │   ├── Purushottam
-        │       │       │       │   │       │   └── Suresh
-        │       │       │       │   │       ├── Rajan
-        │       │       │       │   │       │   └── Umesh
-        │       │       │       │   │       └── Jagadish
-        │       │       │       │   └── Minnath
-        │       │       │       └── Ramkrishna
+        │       │       │   └── RewatiRaman
         │       │       ├── Narayan
         │       │       │   ├── KrishnaMitra
         │       │       │   └── Chandrasekhar
@@ -1389,15 +1353,7 @@
         │       │       │       │   │       └── Kabindra
         │       │       │       │   ├── Thakurnath
         │       │       │       │   ├── Sadananda
-        │       │       │       │   ├── Doleshwor
-        │       │       │       │   │   ├── Bishwonath
-        │       │       │       │   │   │   ├── Bhairav
-        │       │       │       │   │   │   ├── Sadananda
-        │       │       │       │   │   │   ├── Bishnu
-        │       │       │       │   │   │   └── RamPrasad
-        │       │       │       │   │   ├── Badri
-        │       │       │       │   │   │   └── Damodar
-        │       │       │       │   │   ├── Kedar
+        │       │       │       │   ├── Dolkeshwor
         │       │       │       │   │   ├── Ramji
         │       │       │       │   │   │   ├── Damodar
         │       │       │       │   │   │   │   ├── Sagar
@@ -1434,6 +1390,15 @@
         │       │       │       │           └── Sunil
         │       │       │       │               └── Bishal
         │       │       │       ├── Jeevanath
+        │       │       │       │   └── Chiranjibi
+        │       │       │       │       └── LaxmiPrasad
+        │       │       │       │           ├── RamPrasad
+        │       │       │       │           │   └── Anup
+        │       │       │       │           ├── KrishnaPrasad
+        │       │       │       │           │   └── Naveen
+        │       │       │       │           ├── Mukunda
+        │       │       │       │           │   └── Maheshwor
+        │       │       │       │           └── Sankar
         │       │       │       └── Loknath
         │       │       │           ├── Jagannath
         │       │       │           │   ├── KrishnaRaj
@@ -1467,7 +1432,7 @@
         │       │       │       └── Taranath
         │       │       ├── Devdutta
         │       │       │   ├── Gajadhar
-        │       │       │   │   └── Padmanav
+        │       │       │   │   └── Padmanath
         │       │       │   ├── Sree Batsa
         │       │       │   │   ├── Vishwonath
         │       │       │   │   └── Laxminath
@@ -1482,15 +1447,6 @@
         │       │           ├── Nilkantha
         │       │           │   ├── Pashupati
         │       │           │   └── Jeewanath
-        │       │           │       └── Chiranjibi
-        │       │           │           └── LaxmiPrasad
-        │       │           │               ├── RamPrasad
-        │       │           │               │   └── Anup
-        │       │           │               ├── KrishnaPrasad
-        │       │           │               │   └── Naveen
-        │       │           │               ├── Mukunda
-        │       │           │               │   └── Maheshwor
-        │       │           │               └── Sankar
         │       │           └── Siromani
         │       │               └── Gopilal
         │       ├── Shivanarayan
