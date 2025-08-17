@@ -1,8 +1,13 @@
+import re
 from genealogy_poudel_data import *
+import json
+from genealogy_poudel_data import root_person  # or use gopal_31 if that is the root
 
 # Save to file
-with open("genealogy_tree.json", "w") as f:
+genealogy_json_file = "genealogy_tree.json"
+with open(genealogy_json_file, "w") as f:
     json.dump(gopal_31.to_dict(), f, indent=2)
+    print(f"✅ {genealogy_json_file} successfully updated with genealogyData.")
 
 # Print tree with visual guide indentation
 def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
@@ -39,7 +44,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
 
     # Add connector and name
     connector_html = ''.join(f'<span style="color:{parent_color or my_color}">{c}</span>' for c in connector)
-    name = person.name if print_language=="en" else person.nepali_name
+    name = person.name if print_language=="en" else person.name_nep
     print_words = name
     if person.place:
         print_words += f"({person.place})"
@@ -48,7 +53,24 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
         print_words += f"({person.birth_year}" if not "(" in print_words else f"{person.birth_year}"
         print_words += ")"
 
-    name_html = f'<span style="color:{my_color}; font-weight:bold">{print_words}</span>'
+    ###Todo take below thing out if no issue seen after Aug 15
+    # Get parent and grandparent info if Person class supports it
+    # father = person.father.name if person.father else ""
+    # grandfather = person.father.father.name if person.father and person.father.father else ""
+    # father = parent_map.get(person)
+    # grandfather = parent_map.get(father) if father else None
+
+    father = person.father
+    grandfather = person.grandfather
+
+    father_name = father.name if father else ""
+    grandfather_name = grandfather.name if grandfather else ""
+
+    name_html = (
+        f'<span style="color:{my_color}; font-size: 19px" '
+        f'data-name="{person.name}" data-father="{father_name}" data-grandfather="{grandfather_name}">'
+        f'{print_words}</span>'
+    )
     html_lines.append(f"<div>{html_prefix}{connector_html}{name_html}</div>")
 
     # Prepare for children
@@ -71,9 +93,6 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                    vertical_color_map=vertical_color_map.copy())  # Important: pass a *copy* per branch
 
 
-
-
-
 # Example usage:
 def export_tree(root_person, print_language="en"):
     text_lines = []
@@ -93,15 +112,73 @@ def export_tree(root_person, print_language="en"):
         f.write("\n".join(text_lines))
 
     # Write HTML output
-    with open(f"sisneri_poudel_tree_{print_language}.html", "w", encoding="utf-8") as f:
+    html_file = f"sisneri_poudel_tree_{print_language}.html"
+    with open(html_file, "w", encoding="utf-8") as f:
         f.write("\n".join(html_lines))
 
+    print(f"✅ {html_file} - Tree exported for {'english' if print_language=='en' else 'nepali'}.")
 
-# Example:
+def update_index_html_in_place(index_path="index.html"):
+    # Flatten tree with all required fields in one line
+    def flatten_person(person):
+        people = [{
+            "name": person.name,
+            "name_nep": person.name_nep,
+            "birth_year": person.birth_year,
+            "father": person.father.name if person.father else None,
+            "grandfather": person.father.father.name if person.father and person.father.father else None,
+            "ggfather": (
+                person.father.father.father.name
+                if person.father and person.father.father and person.father.father.father
+                else None
+            ),
+            "father_nep": person.father.name_nep if person.father else None,
+            "grandfather_nep": person.father.father.name_nep if person.father and person.father.father else None,
+            "ggfather_nep": (
+                person.father.father.father.name_nep
+                if person.father and person.father.father and person.father.father.father
+                else None
+            ),
+        }]
+        for child in person.children:
+            people.extend(flatten_person(child))
+        return people
+
+    genealogy_list = flatten_person(root_person)
+    genealogy_json = json.dumps(genealogy_list, ensure_ascii=False, separators=(",", ":"))  # compact, one-line JSON
+
+    # Read the original index.html
+    with open(index_path, "r", encoding="utf-8") as f:
+        html_content = f.read()
+
+    # Replace only the genealogyData line
+    pattern = r"(const\s+genealogyData\s*=\s*)\[[\s\S]*?\](\s*;)"
+    replacement = f"{pattern[0]}{genealogy_json}{pattern[1]}"
+
+    new_html_content = re.sub(pattern, f"\\1{genealogy_json}\\2", html_content)
+
+    # Overwrite the same file
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(new_html_content)
+
+    print("✅ index.html successfully updated with genealogyData.")
+
+###Todo take below thing out if no issue seen after Aug 15
+# # Build parent mapping: child -> parent
+# parent_map = {}
+#
+# def build_parent_map(person, parent=None):
+#     for child in person.children:
+#         parent_map[child] = person
+#         build_parent_map(child, child)
+#
+# build_parent_map(root_person)
+
 for language in ("en", "np"):
     print_tree(gopal_31, print_language=language)
     export_tree(gopal_31, print_language=language)  # Make sure you have a Person instance assigned to `root_person`
 
+update_index_html_in_place("index.html")
 
 # Simple Tree
 # def print_tree(person, level=0):
