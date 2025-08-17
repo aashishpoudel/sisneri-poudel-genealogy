@@ -44,7 +44,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
 
     # Add connector and name
     connector_html = ''.join(f'<span style="color:{parent_color or my_color}">{c}</span>' for c in connector)
-    name = person.name if print_language=="en" else person.name_nepali
+    name = person.name if print_language=="en" else person.name_nep
     print_words = name
     if person.place:
         print_words += f"({person.place})"
@@ -123,12 +123,22 @@ def update_index_html_in_place(index_path="index.html"):
     def flatten_person(person):
         people = [{
             "name": person.name,
-            "name_nepali": person.name_nepali,
+            "name_nep": person.name_nep,
             "birth_year": person.birth_year,
             "father": person.father.name if person.father else None,
             "grandfather": person.father.father.name if person.father and person.father.father else None,
-            "father_nepali": person.father.name_nepali if person.father else None,
-            "grandfather_nepali": person.father.father.name_nepali if person.father and person.father.father else None,
+            "ggfather": (
+                person.father.father.father.name
+                if person.father and person.father.father and person.father.father.father
+                else None
+            ),
+            "father_nep": person.father.name_nep if person.father else None,
+            "grandfather_nep": person.father.father.name_nep if person.father and person.father.father else None,
+            "ggfather_nep": (
+                person.father.father.father.name_nep
+                if person.father and person.father.father and person.father.father.father
+                else None
+            ),
         }]
         for child in person.children:
             people.extend(flatten_person(child))
