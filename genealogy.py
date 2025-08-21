@@ -6,7 +6,7 @@ from genealogy_poudel_data import root_person  # or use gopal_31 if that is the 
 # Save to file
 genealogy_json_file = "genealogy_tree.json"
 with open(genealogy_json_file, "w") as f:
-    json.dump(gopal_31.to_dict(), f, indent=2)
+    json.dump(gopal_32.to_dict(), f, indent=2)
     print(f"✅ {genealogy_json_file} successfully updated with genealogyData.")
 
 # Print tree with visual guide indentation
@@ -175,8 +175,8 @@ def update_index_html_in_place(index_path="index.html"):
 # build_parent_map(root_person)
 
 for language in ("en", "np"):
-    print_tree(gopal_31, print_language=language)
-    export_tree(gopal_31, print_language=language)  # Make sure you have a Person instance assigned to `root_person`
+    print_tree(gopal_32, print_language=language)
+    export_tree(gopal_32, print_language=language)  # Make sure you have a Person instance assigned to `root_person`
 
 update_index_html_in_place("index.html")
 
