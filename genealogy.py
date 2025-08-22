@@ -71,7 +71,14 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
         f'data-name="{person.name}" data-father="{father_name}" data-grandfather="{grandfather_name}">'
         f'{print_words}</span>'
     )
-    html_lines.append(f"<div>{html_prefix}{connector_html}{name_html}</div>")
+    # ✅ Only show icon if this person is Female
+    icon_src = "images/girl_icon_pink_part.png"  # relative path to your images folder
+    icon_html = ""
+    if getattr(person, "gender", "") == "Female":
+        icon_html = f'<img src="{icon_src}" class="icon" alt="Girl Icon">'
+
+    # include the icon (if any) before the name
+    html_lines.append(f"<div>{html_prefix}{connector_html}{icon_html}{name_html}</div>")
 
     # Prepare for children
     new_prefix = prefix + ("    " if is_last else "│   ")
@@ -98,7 +105,10 @@ def export_tree(root_person, print_language="en"):
     text_lines = []
     html_lines = [
         '<html><head><meta charset="UTF-8">',
-        '<style>div { font-family: monospace; font-size: 16px; white-space: pre; }</style>',
+        '<style>'
+        'div { font-family: monospace; font-size: 16px; white-space: pre; }'
+        'img.icon { height: 1.2em; width: auto; vertical-align: -0.15em; margin-right: 0.35em; }'
+        '</style>',
         '</head><body>'
     ]
 
