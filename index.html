@@ -60,6 +60,13 @@
       line-height: 1;
       padding: 0;
     }
+    input[type="text"].search-bar {
+        border: 2px solid blue;   /* blue lining */
+        border-radius: 4px;       /* optional rounded corners */
+        padding: 6px 10px;
+        font-size: 16px;
+        outline: none;
+    }
 
     /* When pill is visible, dim the caret so it looks like the pill is “in” the input */
     #searchInput.has-pill {
@@ -109,8 +116,9 @@
   <div id="searchContainer">
     <div class="searchWrap">
       <input id="searchInput" type="text"
-             placeholder="Search name (English or नेपाली)..."
-             oninput="searchNames()" />
+         class="search-bar"
+         placeholder="🔎 Search name (English or नेपाली)..."
+         oninput="searchNames()" />
       <div id="searchPill" class="search-pill hidden">
         <span id="searchPillText"></span>
         <button id="searchPillClose" aria-label="Clear search">×</button>
