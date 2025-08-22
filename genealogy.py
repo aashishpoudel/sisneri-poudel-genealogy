@@ -66,8 +66,9 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     father_name = father.name if father else ""
     grandfather_name = grandfather.name if grandfather else ""
 
+    font_size = 20 #change this for changing Names font
     name_html = (
-        f'<span style="color:{my_color}; font-size: 19px" '
+        f'<span style="color:{my_color}; font-size: {font_size}px" '
         f'data-name="{person.name}" data-father="{father_name}" data-grandfather="{grandfather_name}">'
         f'{print_words}</span>'
     )
