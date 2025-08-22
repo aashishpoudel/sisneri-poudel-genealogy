@@ -30,6 +30,7 @@
         │   │   │   │                   └── PremNath
         │   │   │   │                       └── AatmaRam
         │   │   │   │                           ├── Deepak
+        │   │   │   │                           │   └── Binuska
         │   │   │   │                           └── Diwakar
         │   │   │   └── Rambhadra (Balbhadra)
         │   │   │       └── Ghanashyam
@@ -44,7 +45,6 @@
         │   │   │           │   │   │   │   ├── Dhruva
         │   │   │           │   │   │   │   │   ├── Rishiram
         │   │   │           │   │   │   │   │   │   ├── Saroj
-        │   │   │           │   │   │   │   │   │   │   └── Sauj
         │   │   │           │   │   │   │   │   │   ├── Sabin
         │   │   │           │   │   │   │   │   │   └── Suman
         │   │   │           │   │   │   │   │   └── Rajan
@@ -86,7 +86,8 @@
         │   │   │           │   │   │       │   ├── Rewatiram
         │   │   │           │   │   │       │   └── Manoj
         │   │   │           │   │   │       └── Parshuram
-        │   │   │           │   │   │           └── Achyut
+        │   │   │           │   │   │           └── AchyutRaj
+        │   │   │           │   │   │               └── Sparsha
         │   │   │           │   │   └── Dandapani
         │   │   │           │   │       ├── Toyanath
         │   │   │           │   │       │   └── SitaRam
@@ -211,6 +212,7 @@
         │   │               │                   │   │   ├── Ajay
         │   │               │                   │   │   └── Bijay
         │   │               │                   │   ├── Saroj
+        │   │               │                   │   │   └── Sauj
         │   │               │                   │   └── Suraj
         │   │               │                   └── Balkrishna
         │   │               │                       ├── Sudheer
