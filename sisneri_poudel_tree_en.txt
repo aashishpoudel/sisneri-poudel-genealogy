@@ -69,7 +69,7 @@
         │   │   │           │   │   │   │   │       └── Kritish
         │   │   │           │   │   │   │   └── Raghu
         │   │   │           │   │   │   │       └── Krishna Murari
-        │   │   │           │   │   │   │           └── Kritigya
+        │   │   │           │   │   │   │           └── Kritagya
         │   │   │           │   │   │   ├── Balaram
         │   │   │           │   │   │   │   ├── Sudarshan
         │   │   │           │   │   │   │   │   ├── Deepak
