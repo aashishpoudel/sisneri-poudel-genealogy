@@ -14,6 +14,7 @@
       width: 100%;
       max-width: 1000px;      /* keeps the bar and dropdown aligned in width */
       margin: 0 auto;        /* optional: center the block */
+      box-sizing: border-box;
     }
     #searchContainer {
       position: sticky;
@@ -25,8 +26,9 @@
     }
     #searchInput {
       width: 100%;
-      padding: 0.6rem 2.4rem 0.6rem 0.8rem; /* extra right padding for the × */
-      font-size: 1.2em;
+      padding: 0.7rem 2.4rem 0.7rem 0.8rem; /* extra right padding for the × */
+      font-size: 1.4em;
+      box-sizing: border-box;
     }
     /* In-input pill */
     .search-pill {
@@ -101,6 +103,17 @@
     #content { display:flex; height: calc(100vh - 210px); min-height: 420px; }
     iframe { width:100%; height:100%; border:0; }
     .hidden { display:none; }
+
+    /* ✅ Mobile override at the very bottom of <style> */
+    @media (max-width: 600px) {
+      #searchContainer {
+        padding: 0.5em 8px;
+      }
+      .searchWrap {
+        max-width: 100%;
+        padding: 0;
+      }
+    }
   </style>
 </head>
 <body>
