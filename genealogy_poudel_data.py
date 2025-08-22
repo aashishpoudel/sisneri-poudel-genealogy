@@ -1,7 +1,7 @@
 """This contains all the Person data of Sisneri Poudels"""
 from genealogy_class import Person
 
-gopal_32 = Person("Gopal", gender="Male", name_nep="गोपाल", birth_year="~1622", comment="काठमाण्डौ उपत्यका आउने")
+gopal_32 = Person("Gopal", gender="Male", name_nep="गोपाल", birth_year="~1620", comment="काठमाण्डौ उपत्यका आउने")
 root_person = gopal_32
 ram_bhadra_33 = Person("Ram Bhadra", gender="Male", name_nep="रामभद्र", comment="लुभू सिस्नेरीमा बस्ने")
 govinda_34 = Person("Govinda", gender="Male", name_nep="गोविन्द", comment="ठूलाघरे पूर्वज")
@@ -89,7 +89,7 @@ rishiram_44 = Person("Rishiram", gender="Male", name_nep="ऋषिराम")
 rajan_44 = Person("Rajan", gender="Male", name_nep="राजन")
 chiranjibi_44 = Person("Chiranjibi", gender="Male", name_nep="चिरञ्जीवी")
 uttam_44 = Person("Uttam", gender="Male", name_nep="उत्तम")
-narottam_44 = Person("Narottam", gender="Male", name_nep="नरोत्तम", birth_year=1983)
+narottam_44 = Person("Narottam", gender="Male", name_nep="नरोत्तम")
 mahesh_44 = Person("Mahesh", gender="Male", name_nep="महेश")
 niranjan_44 = Person("Niranjan", gender="Male", name_nep="निरञ्जन")
 manohar_44 = Person("Manohar", gender="Male", name_nep="मनोहर")
@@ -137,11 +137,11 @@ prince_45    = Person("Prince", gender="Male", name_nep="प्रिन्स")
 
 
 anup_44 = Person("Anup", gender="Male", name_nep="अनुप")
-binod_44_2 = Person("Binod", gender="Male", name_nep="विनोद", birth_year=1974)
+binod_44_2 = Person("Binod", gender="Male", name_nep="विनोद")
 sanod_44 = Person("Sanod", gender="Male", name_nep="सनोद")
 suresh_44 = Person("Suresh", gender="Male", name_nep="सुरेश")
 dinesh_44 = Person("Dinesh", gender="Male", name_nep="दिनेश")
-narayan_44 = Person("Narayan", gender="Male", name_nep="नारायण")
+narayan_44 = Person("Narayan", gender="Male", name_nep="नारायण", birth_year=1955)
 bhagawan_44 = Person("Bhagawan", gender="Male", name_nep="भगवान")
 pushpa_raj_44 = Person("Pushpa", gender="Male", name_nep="पुष्प")
 madhu_sudan_44 = Person("Madhu", gender="Male", name_nep="मधुसुदन")
