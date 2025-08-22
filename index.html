@@ -122,8 +122,8 @@
   </div>
 
   <div class="tabs">
-    <button class="tab active" onclick="showTab('en')">English</button>
-    <button class="tab" onclick="showTab('np')">नेपाली</button>
+    <button class="tab active" onclick="showTab('np')">नेपाली</button>
+    <button class="tab" onclick="showTab('en')">English</button>
   </div>
 
   <div id="searchContainer">
@@ -142,8 +142,8 @@
   </div>
 
   <div id="content">
-    <iframe id="tabFrame" src="sisneri_poudel_tree_en.html"></iframe>
-    <iframe id="tabFrame2" src="sisneri_poudel_tree_np.html" class="hidden"></iframe>
+    <iframe id="frame_np" src="sisneri_poudel_tree_np.html"></iframe>
+    <iframe id="frame_en" src="sisneri_poudel_tree_en.html" class="hidden"></iframe>
   </div>
 
   <script>
@@ -152,20 +152,20 @@
 
   <script>
     // Track active iframe
-    let currentIframe = document.getElementById('tabFrame');
+    let currentIframe = document.getElementById('frame_np');
 
     function showTab(lang) {
       document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
-      if (lang === 'en') {
+      if (lang === 'np') {
         document.querySelectorAll('.tab')[0].classList.add('active');
-        document.getElementById('tabFrame').classList.remove('hidden');
-        document.getElementById('tabFrame2').classList.add('hidden');
-        currentIframe = document.getElementById('tabFrame');
+        document.getElementById('frame_np').classList.remove('hidden');
+        document.getElementById('frame_en').classList.add('hidden');
+        currentIframe = document.getElementById('frame_np');
       } else {
         document.querySelectorAll('.tab')[1].classList.add('active');
-        document.getElementById('tabFrame').classList.add('hidden');
-        document.getElementById('tabFrame2').classList.remove('hidden');
-        currentIframe = document.getElementById('tabFrame2');
+        document.getElementById('frame_np').classList.add('hidden');
+        document.getElementById('frame_en').classList.remove('hidden');
+        currentIframe = document.getElementById('frame_en');
       }
       // clear suggestions when switching
       document.getElementById('suggestions').innerHTML = '';
@@ -397,7 +397,7 @@
 
       // Clear suggestions and highlight in the active iframe
       document.getElementById('suggestions').innerHTML = '';
-      const activeId = currentIframe.id; // 'tabFrame' or 'tabFrame2'
+      const activeId = currentIframe.id; // 'frame_np' or 'frame_en'
       highlightNameInIframe(activeId, name, father, grand);
     }
 
@@ -450,7 +450,7 @@
     }
 
     function clearHighlights() {
-      const frames = [document.getElementById('tabFrame'), document.getElementById('tabFrame2')];
+      const frames = [document.getElementById('frame_np'), document.getElementById('frame_en')];
       for (const frame of frames) {
         const d = frame.contentDocument || frame.contentWindow.document;
         if (!d) continue;
