@@ -1190,12 +1190,29 @@ suresh_44_3 = Person("Suresh", gender="Male", name_nep="सुरेश")
 kedar_44 = Person("Kedar", gender="Male", name_nep="केदार")
 bishnu_44 = Person("Bishnu", gender="Male", name_nep="विष्णु")
 shambhu_44 = Person("Shambhu", gender="Male", name_nep="शम्भु")
-sanjay_45_2 = Person("Sanjay", gender="Male", name_nep="सञ्जय")
+ranjan_44_2   = Person("Ranjan",   gender="Male", name_nep="रञ्जन")
+sumanta_45    = Person("Sumanta",  gender="Male", name_nep="सुमन्त")
+bhawesh_45    = Person("Bhawesh",  gender="Male", name_nep="भवेश")
+barun_45      = Person("Barun",    gender="Male", name_nep="वरुण")
+sashanka_45   = Person("Sashanka", gender="Male", name_nep="शशाङ्क")
+sanjay_45_2   = Person("Sanjay",   gender="Male", name_nep="सञ्जय")
+sushan_45     = Person("Sushan",   gender="Male", name_nep="सुषण")
+siddharta_45  = Person("Siddharta",gender="Male", name_nep="सिद्धार्थ")
+anil_45_2     = Person("Anil",     gender="Male", name_nep="अनिल")
+sunil_45      = Person("Sunil",    gender="Male", name_nep="सुनिल")
+diwash_45_2   = Person("Diwash",   gender="Male", name_nep="दिवश")
+
 sanjiv_45_2 = Person("Sanjiv", gender="Male", name_nep="सञ्जीव")
 saroj_45_4 = Person("Saroj", gender="Male", name_nep="सरोज")
 santosh_45 = Person("Santosh", gender="Male", name_nep="सन्तोष")
 sudeep_45_3 = Person("Sudeep", gender="Male", name_nep="सुदीप")
 suman_45_2 = Person("Suman", gender="Male", name_nep="सुमन")
+anjan_45    = Person("Anjan",   gender="Male", name_nep="अञ्जन")
+anjit_45    = Person("Anjit",   gender="Male", name_nep="अञ्जित")
+shrayam_46  = Person("Shrayam", gender="Male", name_nep="श्रेयम्")
+sarwagya_46 = Person("Sarwagya",gender="Male", name_nep="सर्वज्ञ")
+saswat_46   = Person("Saswat",  gender="Male", name_nep="सस्वत")
+pawan_46    = Person("Pawan",   gender="Male", name_nep="पवन")
 
 #Page 48
 jagannath_43_2 = Person("Jagannath", gender="Male", name_nep="जगन्नाथ")
@@ -1205,6 +1222,7 @@ narayan_43_2 = Person("Narayan", gender="Male", name_nep="नारायण")
 krishna_43_4 = Person("Krishna", gender="Male", name_nep="कृष्ण")
 ram_bahadur_43 = Person("RamBahadur", gender="Male", name_nep="रामबहादुर")
 ramji_43_2 = Person("Ramji", gender="Male", name_nep="रामजी")
+ramchandra_43_2 = Person("Ramchandra", gender="Male", name_nep="रामचन्द्र")
 
 govinda_44 = Person("Govinda", gender="Male", name_nep="गोविन्द")
 dhruva_44 = Person("Dhruva", gender="Male", name_nep="ध्रुव")
@@ -1221,17 +1239,30 @@ yuddha_bahadur_44 = Person("YuddhaBahadur", gender="Male", name_nep="युद�
 badri_44 = Person("Badri", gender="Male", name_nep="बद्री")
 kedar_44_2 = Person("Kedar", gender="Male", name_nep="केदार")
 uttam_44_3 = Person("Uttam", gender="Male", name_nep="उत्तम")
+krishabahadur_44 = Person("KrishaBahadur", gender="Male", name_nep="कृष्णबहादुर")
 
 gopal_45 = Person("Gopal", gender="Male", name_nep="गोपाल")
 niraj_45_2 = Person("Niraj", gender="Male", name_nep="निरज")
+nirakar_45_2 = Person("Nirakar", gender="Male", name_nep="निराकार")
+bhanu_46 = Person("Bhanu", gender="Male", name_nep="भानु")
+
 subash_45 = Person("Subash", gender="Male", name_nep="सुवास")
 uttam_45 = Person("Uttam", gender="Male", name_nep="उत्तम")
 dinesh_45_2 = Person("Dinesh", gender="Male", name_nep="दिनेश")
 mahesh_45_2 = Person("Mahesh", gender="Male", name_nep="महेश")
 ramesh_45_2 = Person("Ramesh", gender="Male", name_nep="रमेश")
+niraj_45_3 = Person("Niraj", gender="Male", name_nep="निरज")
+utsav_46 = Person("Utsav", gender="Male", name_nep="उत्सव")
+bibek_46 = Person("Bibek", gender="Male", name_nep="विवेक")
+
 madan_45 = Person("Madan", gender="Male", name_nep="मदन")
 dayaram_45 = Person("Dayaram", gender="Male", name_nep="दयाराम")
 bishnu_45 = Person("Bishnu", gender="Male", name_nep="विष्णु")
+ujjwol_45      = Person("Ujjwol",   gender="Male", name_nep="उज्ज्वल")
+aashish_46_2   = Person("Aashish",  gender="Male", name_nep="आशिष")
+abhishek_46_2  = Person("Abhishek", gender="Male", name_nep="अभिषेक")
+roshan_45 = Person("Roshan", gender="Male", name_nep="रोशन")
+rohit_45  = Person("Rohit",  gender="Male", name_nep="रोहित")
 
 murali_36 = Person("Murali", gender="Male", name_nep="मुरली")
 purshuram_36 = Person("Purshuram", gender="Male", name_nep="पुरुषोत्तम")
@@ -1256,14 +1287,23 @@ dasrath_39 = Person("Dasrath", gender="Male", name_nep="दशरथ")
 
 jangadwoj_40 = Person("Jangadwoj", gender="Male", name_nep="जंगध्वज")
 krishna_bahadur_40 = Person("KrishnaBahadur", gender="Male", name_nep="कृष्णबहादुर")
+
+padambahadur_41   = Person("PadamBahadur",   gender="Male", name_nep="पदमबहादुर")
+chandrabahadur_41 = Person("ChandraBahadur", gender="Male", name_nep="चन्द्रबहादुर")
+krishnabahadur_42 = Person("KrishnaBahadur", gender="Male", name_nep="कृष्णबहादुर")
+hiranyabahadur_42 = Person("HiranyaBahadur", gender="Male", name_nep="हिरण्यबहादुर")
+narayanbahadur_42 = Person("NarayanBahadur", gender="Male", name_nep="नारायणबहादुर")
+shankar_43_3      = Person("Shankar",        gender="Male", name_nep="शंकर")
+suraj_44_3        = Person("Suraj",          gender="Male", name_nep="सुरज")
+
 gobre_40 = Person("Gobre", gender="Male", name_nep="गोब्रे")
 gopal_40 = Person("Gopal", gender="Male", name_nep="गोपाल")
 shankar_40 = Person("Shankar", gender="Male", name_nep="शंकर")
 padma_bahadur_41 = Person("PadmaBahadur", gender="Male", name_nep="पद्मबहादुर")
 chandra_bahadur_41 = Person("ChandraBahadur", gender="Male", name_nep="चन्द्रबहादुर")
 gute_41 = Person("Gute", gender="Male", name_nep="गुठे")
-krishna_41 = Person("Krishna", gender="Male", name_nep="कृष्ण")
-krishna_bahadur_42_2 = Person("KrishnaBahadur", gender="Male", name_nep="कृष्णबहादुर", place="विराटनगर")
+krishna_41 = Person("Krishna", gender="Male", name_nep="कृष्ण", place="विराटनगर")
+krishna_bahadur_42_2 = Person("KrishnaBahadur", gender="Male", name_nep="कृष्णबहादुर")
 hiranya_bahadur_42 = Person("HiranyaBahadur", gender="Male", name_nep="हिरण्यबहादुर")
 narayan_bahadur_42 = Person("NarayanBahadur", gender="Male", name_nep="नारायणबहादुर")
 shankar_43 = Person("Shankar", gender="Male", name_nep="शंकर")
@@ -3158,7 +3198,7 @@ bamshidhar_42.add_child(kumud_43)
 yadav_42.add_children([enoj_43, manoj_43, anil_43])
 sumanshree_42.add_child(sreejan_43)
 
-#Page 44 #########
+#Page 44
 yagyanidhi_38.add_children([brahmananda_39, gaurinath_39, ambarnath_39, rewatiraman_39, ramakanta_39, pradhumna_39, kabikulkeshari_39, sadananda_39, kashinath_39, tejprasad_39])
 brahmananda_39.add_child(yogmohan_40)
 gaurinath_39.add_children([krishna_dutta_40, pitambar_40])
@@ -3333,7 +3373,7 @@ shyam_43_2.add_children([suraj_44_2, nischal_44_2])
 krishna_43_2.add_child(saugat_44)
 niranjan_43_2.add_child(aahan_44)
 
-#Page 52#########
+#Page 52
 
 bamdev_36.add_child(shree_hari_37)
 shree_hari_37.add_children([brahma_38, sree_krishna_38])
@@ -3354,46 +3394,96 @@ ganeshnath_42.add_children([ramji_43, krishna_43_3, narandutta_43])
 ratna_prasad_43.add_child(sunil_44_2)
 gopal_43_1.add_children([bhanu_kumar_44, shashi_kumar_44])
 harihar_43.add_children([madhav_44, achyut_44, sushil_44, mahesh_44_5, umesh_44_2, suresh_44_3])
-ramji_43.add_children([kedar_44, bishnu_44, shambhu_44])
+ramji_43.add_children([kedar_44, bishnu_44, shambhu_44, ranjan_44_2])
+
+sunil_44_2.add_child(sumanta_45)
+bhanu_kumar_44.add_children([bhawesh_45, barun_45])
+shashi_kumar_44.add_child(sashanka_45)
 madhav_44.add_child(sanjay_45_2)
-kedar_44.add_children([sanjiv_45_2, saroj_45_4, santosh_45])
+sushil_44.add_child(sushan_45)
+mahesh_44_5.add_child(siddharta_45)
+umesh_44_2.add_children([anil_45_2, sunil_45])
+suresh_44_3.add_child(diwash_45_2)
+kedar_44.add_children([sanjiv_45, saroj_45, santosh_45])
 bishnu_44.add_child(sudeep_45_3)
 shambhu_44.add_child(suman_45_2)
-pradhumna_43_3.add_child(bikash_44)
+ranjan_44_2.add_children([anjan_45, anjit_45])
 
-#page 48
+bhawesh_45.add_child(shrayam_46)
+sanjay_45_2.add_children([sarwagya_46, saswat_46])
+anil_45.add_child(pawan_46)
+
+#page 54
+basudev_42.add_child(pradhumna_43_3)
+pradhumna_43_3.add_children([bikash_44, bimal_44, bibek_44])
 bhimnath_42.add_children([jagannath_43_2])
-damodar_42_3.add_children([chudamani_43, buddhisagar_43])
-maan_bahadur_42.add_children([narayan_43_2, krishna_43_4, ram_bahadur_43])
-bartaman_singh_42_2.add_children([ramji_43_2])
-
 jagannath_43_2.add_children([govinda_44, dhruva_44, keshav_44])
-chudamani_43.add_children([bharat_44_2, shyam_44])
-buddhisagar_43.add_child(sita_ram_44)
-narayan_43_2.add_children([kamal_44, dhruva_44_2])
-krishna_43_4.add_children([durga_44])
-ram_bahadur_43.add_children([rameshwor_44, yagya_bahadur_44, yuddha_bahadur_44])
-ramji_43_2.add_children([badri_44, kedar_44_2, uttam_44_3])
 
 govinda_44.add_child(gopal_45)
 dhruva_44.add_child(niraj_45_2)
-bharat_44_2.add_child(subash_45)
-kamal_44.add_child(uttam_45)
-dhruva_44_2.add_child(dinesh_45_2)
-durga_44.add_children([mahesh_45_2, ramesh_45_2, madan_45])
+keshav_44.add_child(nirakar_45_2)
+
+gopal_45.add_child(bhanu_46)
+
+#page 55
+bartaman_singh_42_2.add_children([ramji_43_2, ramchandra_43_2])
+ramji_43_2.add_children([badri_44, kedar_44_2, uttam_44_3])
+ramchandra_43.add_child(krishabahadur_44)
+
 badri_44.add_child(dayaram_45)
 kedar_44_2.add_child(bishnu_45)
+krishabahadur_44.add_child(ujjwol_45)
+ujjwol_45.add_children([aashish_46_2, abhishek_46_2])
+
+#page 56##########
+damodar_42_3.add_children([chudamani_43, buddhisagar_43])
+chudamani_43.add_children([bharat_44_2, shyam_44])
+buddhisagar_43.add_children([sita_ram_44, balaram_44])
+
+bharat_44_2.add_child(subash_45)
+shyam_44.add_child(sunil_45)
+sita_ram_44.add_child(roshan_45)
+balaram_44.add_child(rohit_45)
+
+maan_bahadur_42.add_children([narayan_43_2, krishna_43_4, ram_bahadur_43])
+narayan_43_2.add_children([kamal_44, dhruva_44_2])
+krishna_43_4.add_children([durga_44])
+ram_bahadur_43.add_children([rameshwor_44, yagya_bahadur_44, yuddha_bahadur_44])
+
+kamal_44.add_child(uttam_45)
+dhruva_44_2.add_child(dinesh_45)
+durga_44.add_children([dinesh_45_2, mahesh_45_2, ramesh_45_2])
+rameshwor_44.add_child(niraj_45_3)
+
+uttam_45.add_child(utsav_46)
+dinesh_45.add_child(bibek_46)
+
+
+#page 57##########
+bharat_44_2.add_child(subash_45)
+
 
 parmananda_35.add_children([murali_36, purshuram_36, markandeya_36])
 murali_36.add_child(balbhadra_37)
 balbhadra_37.add_children([govinda_38, sreebilas_38, badibilas_38])
-#page 49
+
 govinda_38.add_child(pundarika_39)
 sreebilas_38.add_children([ramakanta_39_2, umakanta_39, chandrasekhar_39, lekhnath_39, nayakeshari_39, ghananath_39, moksheswor_39, agnisanta_39, nabaraj_39, dasrath_39])
 lekhnath_39.add_children([jangadwoj_40, krishna_bahadur_40])
 nabaraj_39.add_children([gobre_40, gopal_40, shankar_40])
+
+lekhnath_39.add_children([jangadwoj_40, krishna_bahadur_40])
+jangadwoj_40.add_child(padambahadur_41)
+krishna_bahadur_40.add_child(chandrabahadur_41)
+padambahadur_41.add_children([krishnabahadur_42, hiranyabahadur_42])
+chandrabahadur_41.add_child(narayanbahadur_42)
+hiranyabahadur_42.add_child(shankar_43_3)
+shankar_43_3.add_child(suraj_44_3)
+
 gobre_40.add_child(gute_41)
 shankar_40.add_child(krishna_41)
+
+#Page 58##############
 
 jangadwoj_40.add_child(padma_bahadur_41)
 padma_bahadur_41.add_children([krishna_bahadur_42_2, hiranya_bahadur_42])
