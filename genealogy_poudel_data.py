@@ -1185,7 +1185,7 @@ madhav_44 = Person("Madhav", gender="Male", name_nep="माधव")
 achyut_44 = Person("Achyut", gender="Male", name_nep="अच्युत")
 sushil_44 = Person("Sushil", gender="Male", name_nep="सुशील")
 mahesh_44_5 = Person("Mahesh", gender="Male", name_nep="महेश")
-ramesh_44 = Person("Ramesh", gender="Male", name_nep="रमेश")
+umesh_44_2 = Person("Umesh", gender="Male", name_nep="उमेश")
 suresh_44_3 = Person("Suresh", gender="Male", name_nep="सुरेश")
 kedar_44 = Person("Kedar", gender="Male", name_nep="केदार")
 bishnu_44 = Person("Bishnu", gender="Male", name_nep="विष्णु")
@@ -3180,7 +3180,7 @@ prem_raj_41.add_children([ramraj_42, laxman_42])
 ramraj_42.add_children([vidyaraj_43, nabaraj_43, raju_43])
 laxman_42.add_children([ratna_43, vijay_43])
 
-#Page 45############
+#Page 45
 sreeram_36.add_children([narad_37, dinakar_37, prabhakar_37, antare_37, kancha_37])
 narad_37.add_children([laxmikanta_38, chandrasekhar_38])
 dinakar_37.add_child(baburam_38)
@@ -3352,14 +3352,14 @@ laxmikanta_42_2.add_children([gopal_43_1, krishna_43_1, keshav_43_2, harihar_43]
 ganeshnath_42.add_children([ramji_43, krishna_43_3, narandutta_43])
 
 ratna_prasad_43.add_child(sunil_44_2)
-pradhumna_43_3.add_child(bikash_44)
 gopal_43_1.add_children([bhanu_kumar_44, shashi_kumar_44])
-harihar_43.add_children([madhav_44, achyut_44, sushil_44, mahesh_44_5, ramesh_44, suresh_44_3])
+harihar_43.add_children([madhav_44, achyut_44, sushil_44, mahesh_44_5, umesh_44_2, suresh_44_3])
 ramji_43.add_children([kedar_44, bishnu_44, shambhu_44])
 madhav_44.add_child(sanjay_45_2)
 kedar_44.add_children([sanjiv_45_2, saroj_45_4, santosh_45])
 bishnu_44.add_child(sudeep_45_3)
 shambhu_44.add_child(suman_45_2)
+pradhumna_43_3.add_child(bikash_44)
 
 #page 48
 bhimnath_42.add_children([jagannath_43_2])
