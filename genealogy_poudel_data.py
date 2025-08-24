@@ -4140,7 +4140,7 @@ siromani_39.add_child(gopilal_40)
 kirtinath_40.add_children([pashupati_41, gopal_41])
 pashupati_41.add_children([banmali_42, devendra_42])
 
-pashupati_41.add_children([banaspati_43, uddyan_43])
+banmali_42.add_children([banaspati_43, uddyan_43])
 devendra_42.add_child(aarogya_43)
 
 laxmi_narayan_38.add_children([harilal_39, ramlal_39])
