@@ -45,6 +45,7 @@
         │   │   │           │   │   │   │   ├── Dhruva
         │   │   │           │   │   │   │   │   ├── Rishiram
         │   │   │           │   │   │   │   │   │   ├── Saroj
+        │   │   │           │   │   │   │   │   │   │   └── Subham
         │   │   │           │   │   │   │   │   │   ├── Sabin
         │   │   │           │   │   │   │   │   │   └── Suman
         │   │   │           │   │   │   │   │   └── Rajan
@@ -632,7 +633,8 @@
         │   │   │           │   │       │       └── Pradeep
         │   │   │           │   │       └── Dalbahadur
         │   │   │           │   │           ├── Rameshwor
-        │   │   │           │   │           │   └── Madhukar
+        │   │   │           │   │           │   ├── Madhukar
+        │   │   │           │   │           │   └── Rijan
         │   │   │           │   │           ├── Achyut
         │   │   │           │   │           │   └── Ajit
         │   │   │           │   │           └── Shreeram
@@ -1123,7 +1125,8 @@
         │   │           │               │   │       └── Ramesh
         │   │           │               │   └── RamBahadur
         │   │           │               │       ├── Rameshwor
-        │   │           │               │       │   └── Niraj
+        │   │           │               │       │   ├── Niraj
+        │   │           │               │       │   └── Aryan
         │   │           │               │       ├── YagyaBahadur
         │   │           │               │       └── YuddhaBahadur
         │   │           │               └── BartamanSingh
@@ -1150,33 +1153,21 @@
         │       │       │   ├── Chandrasekhar
         │       │       │   ├── Lekhnath
         │       │       │   │   ├── Jangadwoj
-        │       │       │   │   │   ├── PadamBahadur
-        │       │       │   │   │   │   ├── KrishnaBahadur
-        │       │       │   │   │   │   └── HiranyaBahadur
-        │       │       │   │   │   │       └── Shankar
-        │       │       │   │   │   │           └── Suraj
         │       │       │   │   │   └── PadmaBahadur
         │       │       │   │   │       ├── KrishnaBahadur
         │       │       │   │   │       └── HiranyaBahadur
         │       │       │   │   │           └── Shankar
+        │       │       │   │   │               └── Suraj
         │       │       │   │   ├── KrishnaBahadur
-        │       │       │   │   │   ├── ChandraBahadur
-        │       │       │   │   │   │   └── NarayanBahadur
         │       │       │   │   │   └── ChandraBahadur
         │       │       │   │   │       └── NarayanBahadur
         │       │       │   │   ├── Jangadwoj
-        │       │       │   │   │   ├── PadamBahadur
-        │       │       │   │   │   │   ├── KrishnaBahadur
-        │       │       │   │   │   │   └── HiranyaBahadur
-        │       │       │   │   │   │       └── Shankar
-        │       │       │   │   │   │           └── Suraj
         │       │       │   │   │   └── PadmaBahadur
         │       │       │   │   │       ├── KrishnaBahadur
         │       │       │   │   │       └── HiranyaBahadur
         │       │       │   │   │           └── Shankar
+        │       │       │   │   │               └── Suraj
         │       │       │   │   └── KrishnaBahadur
-        │       │       │   │       ├── ChandraBahadur
-        │       │       │   │       │   └── NarayanBahadur
         │       │       │   │       └── ChandraBahadur
         │       │       │   │           └── NarayanBahadur
         │       │       │   ├── Nayakeshari
@@ -1217,22 +1208,31 @@
         │       │               │   ├── Babulal
         │       │               │   │   └── Ramchandra
         │       │               │   │       ├── Govinda
-        │       │               │   │       │   └── Rameshwor
-        │       │               │   │       │       └── Madhukar
-        │       │               │   │       ├── Sudarshan
+        │       │               │   │       │   ├── Rameshwor
+        │       │               │   │       │   │   ├── Niraj
+        │       │               │   │       │   │   └── Aryan
         │       │               │   │       │   └── Ramesh
+        │       │               │   │       │       └── Aarav
+        │       │               │   │       ├── Sudarshan
+        │       │               │   │       │   └── Sunil
         │       │               │   │       └── Madhav
+        │       │               │   │           └── Aayam
         │       │               │   ├── PurnaBahadur
         │       │               │   │   └── GaneshBahadur
         │       │               │   │       ├── Narayan
-        │       │               │   │       │   └── Sudeep
+        │       │               │   │       │   └── Sueep
+        │       │               │   │       │       └── Alex
         │       │               │   │       └── Kedar
+        │       │               │   │           └── Suresh
         │       │               │   └── AmbarBahadur
         │       │               │       ├── ShyamBahadur
         │       │               │       │   ├── Ramesh
+        │       │               │       │   │   └── Rupesh
         │       │               │       │   ├── Rameshwor
-        │       │               │       │   │   └── Madhukar
+        │       │               │       │   │   ├── Madhukar
+        │       │               │       │   │   └── Rijan
         │       │               │       │   └── Rajendra
+        │       │               │       │       └── Kushal
         │       │               │       └── ShambhuBahadur
         │       │               │           └── ShivaBahadur
         │       │               └── Bidyakanta
@@ -1736,6 +1736,7 @@
         │       │       │       │           │   ├── Pradeep
         │       │       │       │           │   │   └── Prajwol
         │       │       │       │           │   └── Sueep
+        │       │       │       │           │       └── Alex
         │       │       │       │           ├── Ramhari
         │       │       │       │           │   ├── Dilip
         │       │       │       │           │   └── Nilip
