@@ -1313,7 +1313,7 @@ laxman_40_2 = Person("Laxman", gender="Male", name_nep="लक्ष्मण")
 devdutta_40 = Person("Devdutta", gender="Male", name_nep="देवदत्त")
 bidyakanta_40 = Person("Bidyakanta", gender="Male", name_nep="विद्याकान्त")
 lilanath_40 = Person("Lilanath", gender="Male", name_nep="लिलानाथ", place="जनकपुर भगवतीपुर")
-ram_prasad_40 = Person("RamPrasad", gender="Male", name_nep="रामप्रसाद")
+ramprasad_40 = Person("RamPrasad", gender="Male", name_nep="रामप्रसाद")
 rudranath_40 = Person("Rudranath", gender="Male", name_nep="रुद्रनाथ")
 lekhnath_40 = Person("Lekhnath", gender="Male", name_nep="लेखनाथ")
 
@@ -1323,6 +1323,7 @@ purna_bahadur_41_2 = Person("PurnaBahadur", gender="Male", name_nep="पूर�
 ambar_bahadur_41 = Person("AmbarBahadur", gender="Male", name_nep="अम्बरबहादुर")
 keshav_41 = Person("Keshav", gender="Male", name_nep="केशव")
 bishwonath_41 = Person("Bishwonath", gender="Male", name_nep="विश्वनाथ")
+nilnath_41 = Person("Nilnath", gender="Male", name_nep="नीलनाथ")
 kirtinath_41 = Person("Kirtinath", gender="Male", name_nep="कीर्तिनाथ")
 hari_41 = Person("Hari", gender="Male", name_nep="हरि")
 purshuram_41 = Person("Purshuram", gender="Male", name_nep="परशुराम")
@@ -1331,11 +1332,11 @@ shivakumar_41 = Person("Shivakumar", gender="Male", name_nep="शिवकुम
 
 ramchandra_42 = Person("Ramchandra", gender="Male", name_nep="रामचन्द्र", place="बालकोट")
 ganesh_bahadur_42 = Person("GaneshBahadur", gender="Male", name_nep="गणेशबहादुर")
-shyam_bahadur_42 = Person("ShyamBahadur", gender="Male", name_nep="श्यामबहादुर")
-sambhu_bahadur_42 = Person("ShambhuBahadur", gender="Male", name_nep="शम्भुबहादुर")
+shyambahadur_42 = Person("ShyamBahadur", gender="Male", name_nep="श्यामबहादुर")
+sambhubahadur_42 = Person("ShambhuBahadur", gender="Male", name_nep="शम्भुबहादुर")
 pushpa_raj_42 = Person("PushpaRaj", gender="Male", name_nep="पुष्पराज")
 pradeep_42 = Person("Pradeep", gender="Male", name_nep="प्रदीप")
-niroj_42 = Person("Niroj", gender="Male", name_nep="निरोज")
+firoj_42 = Person("Firoj", gender="Male", name_nep="फिरोज")
 sarad_kumar_42 = Person("SaradKumar", gender="Male", name_nep="शरदकुमार")
 sree_kumar_42 = Person("SreeKumar", gender="Male", name_nep="श्रीकुमार")
 
@@ -3495,7 +3496,7 @@ shankar_43_3.add_child(suraj_44_3)
 gobre_40.add_child(gute_41)
 shankar_40.add_child(krishna_41)
 
-#Page 58##############
+#Page 58
 
 badibilas_38.add_children([hari_lal_39, nayakeshari_39_2])
 hari_lal_39.add_children([ram_chandra_40, laxman_40_2])
@@ -3504,12 +3505,12 @@ nayakeshari_39_2.add_children([devdutta_40, bidyakanta_40])
 devdutta_40.add_children([baburam_41, purna_bahadur_41_2, ambar_bahadur_41])
 baburam_41.add_child(ramchandra_42)
 purna_bahadur_41_2.add_children([ganesh_bahadur_42])
-ambar_bahadur_41.add_children([shyam_bahadur_42, sambhu_bahadur_42])
+ambar_bahadur_41.add_children([shyambahadur_42, sambhubahadur_42])
 
 ramchandra_42.add_children([govinda_43_2, sudarshan_43_2, madhav_43_3])
 ganesh_bahadur_42.add_children([narayan_43_3, kedar_43_3])
-shyam_bahadur_42.add_children([ramesh_43_3, rameshwor_43, rajendra_43_2])
-sambhu_bahadur_42.add_child(shiva_bahadur_43)
+shyambahadur_42.add_children([ramesh_43_3, rameshwor_43, rajendra_43_2])
+sambhubahadur_42.add_child(shiva_bahadur_43)
 
 govinda_43_2.add_children([rameshwor_44, ramesh_44])
 sudarshan_43_2.add_child(sunil_44_4)
@@ -3524,19 +3525,44 @@ rameshwor_44.add_child(aryan_45)
 ramesh_44.add_child(aarav_45)
 sudeep_44_2.add_child(alex_45)
 
-#Page 59########
+#Page 59
 
-dasrath_39.add_children([lilanath_40, ram_prasad_40, rudranath_40, lekhnath_40])
-lilanath_40.add_children([keshav_41, bishwonath_41, kirtinath_41, hari_41])
+dasrath_39.add_children([lilanath_40, ramprasad_40, rudranath_40, lekhnath_40])
+lilanath_40.add_children([keshav_41, bishwonath_41, nilnath_41, kirtinath_41, hari_41])
 
-ram_prasad_40.add_children([purshuram_41, bishnu_41, shivakumar_41])
+ramprasad_40.add_children([purshuram_41, bishnu_41, shivakumar_41])
 purshuram_41.add_children([pushpa_raj_42])
-bishnu_41.add_children([pradeep_42, niroj_42])
+bishnu_41.add_children([pradeep_42, firoj_42])
 shivakumar_41.add_children([sarad_kumar_42, sree_kumar_42])
 
 pushpa_raj_42.add_children([kiran_43_2, kishor_43])
+pradeep_42.add_child(prasil_43)
+firoj_42.add_child(prayaj_43)
+sarad_kumar_42.add_child(kshitij_43)
+sree_kumar_42.add_child(shreyas_43)
 
+#Page 60 ########
+keshav_41.add_children([janak_42, bishnu_42, bimal_42, kedar_42])
+bishwonath_41.add_children([rameshwor_42, kusheshwor_42])
+nilnath_41.add_children([muna_42, sumana_42])
+hari_41.add_children([jayanta_42, anup_42])
 
+janak_42.add_child(sandeep_43)
+bishnu_42.add_children([ajay_43, ajar_43, amar_43])
+bimal_42.add_child(biswas_43)
+kedar_42.add_child(prabhav_43)
+rameshwor_42.add_children([sudeep_43, sunil_43])
+kusheshwor_42.add_children([ujjwol_43, bikash_43])
+muna_42.add_child(hrita_43)
+sumana_42.add_child(suyash_43)
+jayanta_42.add_child(bibek_43)
+anup_42.add_child(ashwin_43)
+
+sandeep_43.add_child(samunnat_44)
+ajay_43.add_child(prithvi_44)
+amar_43.add_child(pratham_44)
+
+#Page 61 #####
 purshuram_36.add_children([unnamed_37, hari_37])
 hari_37.add_child(ramananda_38)
 ramananda_38.add_children([liladhar_39, jayabhadra_39])
