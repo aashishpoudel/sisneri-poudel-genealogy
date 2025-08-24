@@ -2092,10 +2092,10 @@
         │       │       │       └── Kirtinath
         │       │       │           ├── Pashupati
         │       │       │           │   ├── Banmali
-        │       │       │           │   ├── Devendra
-        │       │       │           │   │   └── Aarogya
-        │       │       │           │   ├── Banaspati
-        │       │       │           │   └── Uddyan
+        │       │       │           │   │   ├── Banaspati
+        │       │       │           │   │   └── Uddyan
+        │       │       │           │   └── Devendra
+        │       │       │           │       └── Aarogya
         │       │       │           └── Gopal
         │       │       └── Prayagdutta
         │       │           ├── Krishnaram
