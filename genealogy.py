@@ -64,7 +64,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     grandfather_name = grandfather.name if grandfather else ""
 
     # Font-size: Nepali slightly bigger
-    font_size = 19 if print_language == "en" else 20
+    font_size = 19 if print_language == "en" else 22
 
     # Base label HTML
     name_html = (

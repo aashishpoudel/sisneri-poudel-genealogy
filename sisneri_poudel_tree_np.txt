@@ -1570,10 +1570,12 @@
         │   │   │   │           ├── Chetnath
         │   │   │   │           │   ├── Devhari
         │   │   │   │           │   │   ├── Chetnath
-        │   │   │   │           │   │   │   └── Shyam Sundar
+        │   │   │   │           │   │   │   └── Gopal
+        │   │   │   │           │   │   │       └── Briyan
         │   │   │   │           │   │   ├── Sitaram
         │   │   │   │           │   │   │   ├── Balmukunda
         │   │   │   │           │   │   │   └── Radhakrishna
+        │   │   │   │           │   │   │       └── Aayush
         │   │   │   │           │   │   └── Badri
         │   │   │   │           │   └── Muktinath
         │   │   │   │           ├── Devdutta
