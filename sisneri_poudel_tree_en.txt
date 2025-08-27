@@ -30,7 +30,6 @@
         │   │   │   │                   └── PremNath
         │   │   │   │                       └── AatmaRam
         │   │   │   │                           ├── Deepak
-        │   │   │   │                           │   └── Binuska
         │   │   │   │                           └── Diwakar
         │   │   │   └── Rambhadra (Balbhadra)
         │   │   │       └── Ghanashyam
@@ -79,6 +78,7 @@
         │   │   │           │   │   │   ├── Balaram
         │   │   │           │   │   │   │   ├── Sudarshan
         │   │   │           │   │   │   │   │   ├── Deepak
+        │   │   │           │   │   │   │   │   │   └── Binuska
         │   │   │           │   │   │   │   │   ├── Ashok
         │   │   │           │   │   │   │   │   └── Bibek
         │   │   │           │   │   │   │   ├── Gokul
