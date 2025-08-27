@@ -25836,7 +25836,22 @@
                                               "father_nep": "\u0930\u093e\u092e\u092a\u094d\u0930\u0938\u093e\u0926",
                                               "grandfather": "Ramji",
                                               "grandfather_nep": "\u0917\u094b\u0935\u0924\u094d\u0938",
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Binamra",
+                                                  "name_nep": "\u092c\u093f\u0928\u092e\u094d\u0930",
+                                                  "gender": "Male",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "comment": null,
+                                                  "father": "Bishesh",
+                                                  "father_nep": "\u0935\u093f\u0936\u0947\u0937",
+                                                  "grandfather": "Ramprasad",
+                                                  "grandfather_nep": "\u0930\u093e\u092e\u091c\u0940",
+                                                  "children": []
+                                                }
+                                              ]
                                             }
                                           ]
                                         },
@@ -37024,22 +37039,7 @@
                                               "father_nep": "\u092e\u0926\u0928\u092a\u094d\u0930\u0938\u093e\u0926",
                                               "grandfather": "Ravidutta",
                                               "grandfather_nep": "\u091c\u093e\u0928\u0915\u0940\u0926\u0924\u094d\u0924",
-                                              "children": [
-                                                {
-                                                  "name": "Binamra",
-                                                  "name_nep": "\u092c\u093f\u0928\u092e\u094d\u0930",
-                                                  "gender": "Male",
-                                                  "birth_year": null,
-                                                  "death_year": null,
-                                                  "place": null,
-                                                  "comment": null,
-                                                  "father": "Manish",
-                                                  "father_nep": "\u092e\u0928\u0940\u0937",
-                                                  "grandfather": "Madanprasad",
-                                                  "grandfather_nep": "\u0930\u0935\u093f\u0926\u0924\u094d\u0924",
-                                                  "children": []
-                                                }
-                                              ]
+                                              "children": []
                                             },
                                             {
                                               "name": "Madindra",

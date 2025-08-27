@@ -5437,7 +5437,7 @@ madanprasad_42.add_children([manish_43_4, madindra_43, manil_43])
 shyamprasad_42.add_children([sabin_43_2])
 
 dinesh_43_5.add_children([subikshya_44])
-manish_43_4.add_children([binamra_44])
+bishesh_43.add_children([binamra_44])
 madindra_43.add_children([rabi_44])
 
 #page 103 ####
