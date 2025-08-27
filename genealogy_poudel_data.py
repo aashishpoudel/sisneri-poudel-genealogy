@@ -2945,7 +2945,7 @@ diwakar_40 = Person("Diwakar", gender="Male", name_nep="दिवाकर")
 dayanidhi_40 = Person("Dayanidhi", gender="Male", name_nep="दयानिधि")
 janakidutta_40 = Person("Janakidutta", gender="Male", name_nep="जानकीदत्त")
 fuchhe_40 = Person("Fuchhe", gender="Male", name_nep="फुच्चे")
-kamansingh_40 = Person("Kamansingh", gender="Male", name_nep="कमansingh")
+kamansingh_40 = Person("Kamansingh", gender="Male", name_nep="कमानसिङ")
 tikadutta_40 = Person("Tikadutta", gender="Male", name_nep="टिकादत्त")
 
 tankaprasad_41 = Person("Tanka", gender="Male", name_nep="टंकप्रसाद")
