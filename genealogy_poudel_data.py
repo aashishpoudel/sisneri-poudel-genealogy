@@ -2786,9 +2786,9 @@ bikash_44_4 = Person("Bikash", gender="Male", name_nep="विकास")
 
 #page 68
 radhakrishna_38 = Person("Radhakrishna", gender="Male", name_nep="राधाकृष्ण", place="दोलखा")
-gangadhar_38 = Person("Gangadhar", gender="Male", name_nep="गंगाधर", place="धापाखेल")
-birbhadra_38_2 = Person("Birbhadra", gender="Male", name_nep="वीरभद्र", place="चोभार")
-kuber_38 = Person("Kuber", gender="Male", name_nep="कुबेर", place="काशी")
+gangadhar_38 = Person("Gangadhar", gender="Male", name_nep="गंगाधर")
+birbhadra_38_2 = Person("Birbhadra", gender="Male", name_nep="वीरभद्र")
+kuber_38 = Person("Kuber", gender="Male", name_nep="कुबेर")
 
 devi_dutta_39 = Person("DeviDutta", gender="Male", name_nep="देवीदत्त")
 sribilas_39 = Person("Sribilas", gender="Male", name_nep="श्रीबिलास")
