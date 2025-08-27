@@ -2512,13 +2512,29 @@
                         │       │   ├── Rohininath
                         │       │   │   ├── Bednidhi
                         │       │   │   ├── Tirthahari
-                        │       │   │   │   ├── Tejnath
-                        │       │   │   │   ├── PurnaPrasad
-                        │       │   │   │   └── Bachaspati
+                        │       │   │   │   ├── Tejraman
+                        │       │   │   │   │   ├── Sudarshan
+                        │       │   │   │   │   │   └── Suvam
+                        │       │   │   │   │   └── Purushottam
+                        │       │   │   │   ├── BalPrasad
+                        │       │   │   │   │   └── Yadav
+                        │       │   │   │   │       └── Yunish
+                        │       │   │   │   ├── Bachaspati
+                        │       │   │   │   └── Sanatkumar
                         │       │   │   └── Kedarnath
                         │       │   │       ├── Thanendra
-                        │       │   │       ├── Padmanath
-                        │       │   │       └── Badibilas
+                        │       │   │       ├── Chiranjibi
+                        │       │   │       │   ├── Suman
+                        │       │   │       │   └── Suwarna
+                        │       │   │       ├── Bishnuprasad
+                        │       │   │       │   └── Laxman
+                        │       │   │       ├── Narayan
+                        │       │   │       │   ├── Sujit
+                        │       │   │       │   ├── Ajit
+                        │       │   │       │   └── Ranjit
+                        │       │   │       └── Buddhi
+                        │       │   │           ├── Sushil
+                        │       │   │           └── Subodh
                         │       │   └── Yamunadhar
                         │       ├── Fuchhe
                         │       ├── Janakidutta
