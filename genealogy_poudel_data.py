@@ -3561,9 +3561,6 @@ tikaram_40 = Person("Tikaram", gender="Male", name_nep="टिकाराम")
 narandutta_40_2 = Person("Narandutta", gender="Male", name_nep="नारायणदत्त")
 maheshwor_40 = Person("Maheshwor", gender="Male", name_nep="महेश्वर")
 
-shanbahadur_40 = Person("Shanbahadur", gender="Male", name_nep="शानबहादुर")
-thule_40 = Person("Thule", gender="Male", name_nep="ठुले")
-
 ganeshdutta_41 = Person("Ganeshdutta", gender="Male", name_nep="गणेशदत्त")
 ramu_41 = Person("Ramu", gender="Male", name_nep="रामु")
 laxminath_41_2 = Person("Laxminath", gender="Male", name_nep="लक्ष्मीनाथ")
@@ -3597,6 +3594,8 @@ haridutta_39_2 = Person("Haridutta", gender="Male", name_nep="हरिदत्
 
 sanbahadur_40 = Person("Sanbahadur", gender="Male", name_nep="सांबहादुर")
 thule_40 = Person("Thule", gender="Male", name_nep="ठुले")
+
+#page 115
 kedar_40 = Person("Kedar", gender="Male", name_nep="केदार")
 manorath_40 = Person("Manorath", gender="Male", name_nep="मनोरथ")
 tejnidhi_40 = Person("Tejnidhi", gender="Male", name_nep="तेजनिधि")
@@ -5845,7 +5844,7 @@ laxminath_41_3.add_children([somnath_42, jagannath_42_4])
 dharmananda_37.add_children([jayanarayan_38, chatrananda_38, damodar_38_2])
 damodar_38_2.add_children([sahadev_39, padmanav_39, haridutta_39])
 sahadev_39.add_children([narandutta_40_2, maheshwor_40])
-padmanav_39.add_children([shanbahadur_40, thule_40])
+padmanav_39.add_children([sanbahadur_40, thule_40])
 
 narandutta_40_2.add_child(bishnuhari_41)
 maheshwor_40.add_child(laxminath_41_3)
@@ -5862,4 +5861,28 @@ madhavprasad_43.add_children([achyut_44_2, keshav_44_3, ramprasad_44])
 achyut_44_2.add_child(santosh_45_2)
 
 #Page 115####
-# haridutta_39.add_children([])
+haridutta_39.add_children([kedar_40, manorath_40, tejnidhi_40])
+kedar_40.add_children([dhanapati_41, bhawanath_41, pashupati_41_2])
+manorath_40.add_children([kamalkanta_42, krishna_42_2, badri_42_4, jhankanath_42])
+kamalkanta_42.add_children([raviprasad_43])
+krishna_42_2.add_children([madhusudan_43_2, maheshwor_43, dipendra_43])
+
+
+jayanarayan_38.add_children([bishwonath_39])
+chatrananda_38.add_children([birbhadra_39])
+
+bishwonath_39.add_children([narabahadur_40, rudrabahadur_40])
+birbhadra_39.add_children([haridutta_40, nandanath_40])
+
+
+haridutta_40.add_children([narayan_41_5, kashinath_41, tikaprasad_41_2])
+kashinath_41.add_children([krishnaprasad_42, balram_42, baikuntha_42_2])
+tikaprasad_41_2.add_children([sitaram_42_2, damodar_42_7])
+
+krishnaprasad_42.add_children([batukrishna_43])
+baikuntha_42_2.add_children([mukunda_43_3, shyam_43_3, upendra_43_4])
+sitaram_42_2.add_children([ramesh_43_7, umesh_43])
+damodar_42_7.add_children([suresh_43_2])
+batukrishna_43.add_children([sreedhar_44, subash_44_2])
+
+# page 116
