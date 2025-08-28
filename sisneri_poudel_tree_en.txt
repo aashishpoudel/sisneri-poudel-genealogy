@@ -449,13 +449,9 @@
         │   │       │               │       │   ├── Jyoti
         │   │       │               │       │   ├── Jwala
         │   │       │               │       │   └── Kabita
-        │   │       │               │       ├── Balaram
-        │   │       │               │       │   └── Uday
-        │   │       │               │       │       └── Yashree
-        │   │       │               │       └── Purushottam
-        │   │       │               │           ├── Ganga
-        │   │       │               │           ├── Nabaraj
-        │   │       │               │           └── Nayanraj
+        │   │       │               │       └── Balaram
+        │   │       │               │           └── Uday
+        │   │       │               │               └── Yashree
         │   │       │               └── Jeewanath
         │   │       │                   ├── Pitambar
         │   │       │                   │   ├── Sarad
@@ -1416,33 +1412,7 @@
         │       │   │               │           │   └── Murari
         │       │   │               │           └── Sajal
         │       │   │               └── Taranath
-        │       │   │                   └── Hariprasad
-        │       │   │                       ├── BadriPrasad
-        │       │   │                       │   ├── Maniram
-        │       │   │                       │   │   ├── Labaprasad
-        │       │   │                       │   │   │   └── Arpit
-        │       │   │                       │   │   └── Prabhat
-        │       │   │                       │   ├── Uddhav
-        │       │   │                       │   │   └── Dikshyant
-        │       │   │                       │   └── Uttam
-        │       │   │                       │       └── Utkrista
-        │       │   │                       ├── Kedar
-        │       │   │                       │   ├── Dwarika
-        │       │   │                       │   │   ├── Sulochana
-        │       │   │                       │   │   └── Shriya
-        │       │   │                       │   └── KrishnaPrasad
-        │       │   │                       │       ├── Christina
-        │       │   │                       │       └── Shristina
-        │       │   │                       ├── Shyam
-        │       │   │                       │   └── Purushottam
-        │       │   │                       │       └── Bipulesh
-        │       │   │                       ├── Jagannath
-        │       │   │                       │   ├── Jyoti
-        │       │   │                       │   ├── Jwala
-        │       │   │                       │   └── Kabita
-        │       │   │                       ├── Balaram
-        │       │   │                       │   └── Uday
-        │       │   │                       │       └── Yashree
+        │       │   │                   └── HariPrasad
         │       │   │                       └── Purushottam
         │       │   │                           ├── Ganga
         │       │   │                           ├── Nabaraj
