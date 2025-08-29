@@ -1689,16 +1689,14 @@
         │       │       │       │       ├── GangaPrasad
         │       │       │       │       │   ├── Badri
         │       │       │       │       │   │   ├── Ghananath
+        │       │       │       │       │   │   │   ├── Raju
+        │       │       │       │       │   │   │   ├── Nabaraj
+        │       │       │       │       │   │   │   ├── Ganesh
+        │       │       │       │       │   │   │   └── Ramesh
         │       │       │       │       │   │   └── Loknath
         │       │       │       │       │   │       └── RamPrasad
         │       │       │       │       │   │           └── Rogan
-        │       │       │       │       │   ├── Madhav
-        │       │       │       │       │   └── Badri
-        │       │       │       │       │       └── Ghananath
-        │       │       │       │       │           ├── Raju
-        │       │       │       │       │           ├── Nabaraj
-        │       │       │       │       │           ├── Ganesh
-        │       │       │       │       │           └── Ramesh
+        │       │       │       │       │   └── Madhav
         │       │       │       │       ├── Dilliram
         │       │       │       │       │   ├── Topraj
         │       │       │       │       │   │   ├── KrishnaRaj
