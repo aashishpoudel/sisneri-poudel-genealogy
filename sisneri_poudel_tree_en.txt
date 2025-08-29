@@ -459,9 +459,6 @@
         │   │       │                           ├── Chiranjibi
         │   │       │                           │   └── Prince
         │   │       │                           └── Madhav
-        │   │       │                               └── Prakash
-        │   │       │                                   ├── Dipankar
-        │   │       │                                   └── Sambuddha
         │   │       └── Gangadhar
         │   │           └── Ramu
         │   │               └── Prayagdut
@@ -648,7 +645,7 @@
         │   │   │           │       │       │       └── Krijal
         │   │   │           │       │       ├── ShyamKaji
         │   │   │           │       │       │   └── Umesh
-        │   │   │           │       │       ├── HariKrishna
+        │   │   │           │       │       ├── HariPrasad
         │   │   │           │       │       │   ├── Radheshyam
         │   │   │           │       │       │   │   ├── Gaurav
         │   │   │           │       │       │   │   └── Saurav
