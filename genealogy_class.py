@@ -31,6 +31,7 @@ class Person:
         return {
             "name": self.name,
             "name_nep": self.name_nep,
+            "gender": self.gender,
             "birth_year": self.birth_year,
             "death_year": self.death_year,
             "place": self.place,

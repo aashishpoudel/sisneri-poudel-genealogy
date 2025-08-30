@@ -6,7 +6,7 @@ from genealogy_poudel_data import root_person  # or use gopal_31 if that is the 
 # Save to file
 genealogy_json_file = "genealogy_tree.json"
 with open(genealogy_json_file, "w") as f:
-    json.dump(gopal_31.to_dict(), f, indent=2)
+    json.dump(gopal_32.to_dict(), f, indent=2)
     print(f"✅ {genealogy_json_file} successfully updated with genealogyData.")
 
 # Print tree with visual guide indentation
@@ -31,7 +31,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     text_line = prefix + connector + person.name
     text_lines.append(text_line)
 
-    # --- HTML OUTPUT ---
+    # --- HTML OUTPUT (prefix with colored verticals) ---
     html_prefix = ""
     col_idx = 0  # Track which column in monospace the char is in
     for char in prefix:
@@ -44,34 +44,62 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
 
     # Add connector and name
     connector_html = ''.join(f'<span style="color:{parent_color or my_color}">{c}</span>' for c in connector)
-    name = person.name if print_language=="en" else person.name_nep
-    print_words = name
+
+    # Display name (EN/NP) + optional place/year
+    name = person.name if print_language == "en" else person.name_nep
+    print_words = name or ""
     if person.place:
         print_words += f"({person.place})"
     if person.birth_year:
-        print_words.replace(")", "")
-        print_words += f"({person.birth_year}" if not "(" in print_words else f"{person.birth_year}"
-        print_words += ")"
+        # add birth year inside the last open paren if present; else open new
+        if "(" in print_words and not print_words.endswith(")"):
+            print_words += f"{person.birth_year})"
+        else:
+            print_words += f"({person.birth_year})"
 
-    ###Todo take below thing out if no issue seen after Aug 15
-    # Get parent and grandparent info if Person class supports it
-    # father = person.father.name if person.father else ""
-    # grandfather = person.father.father.name if person.father and person.father.father else ""
-    # father = parent_map.get(person)
-    # grandfather = parent_map.get(father) if father else None
-
+    # Parent / grandparent data attributes
     father = person.father
     grandfather = person.grandfather
-
     father_name = father.name if father else ""
     grandfather_name = grandfather.name if grandfather else ""
 
+    # Font-size: Nepali slightly bigger
+    font_size = 19 if print_language == "en" else 22
+
+    # Base label HTML
     name_html = (
-        f'<span style="color:{my_color}; font-size: 19px" '
+        f'<span style="color:{my_color}; font-size:{font_size}px" '
         f'data-name="{person.name}" data-father="{father_name}" data-grandfather="{grandfather_name}">'
         f'{print_words}</span>'
     )
-    html_lines.append(f"<div>{html_prefix}{connector_html}{name_html}</div>")
+
+    # Optional female icon
+    icon_src = "images/girl_icon_new2.png"
+    icon_html = ""
+    if getattr(person, "gender", "") == "Female":
+        icon_html = f'<img src="{icon_src}" class="icon" alt="Girl Icon">'
+
+    # --- Comment asterisk (popup trigger) ---
+    def _escape_attr(s: str) -> str:
+        # Basic HTML attr escape + newline to &#10; so JS getAttribute() yields real newlines
+        return (s.replace("&", "&amp;")
+                 .replace("<", "&lt;")
+                 .replace(">", "&gt;")
+                 .replace('"', "&quot;")
+                 .replace("\r\n", "\n")
+                 .replace("\n", "&#10;"))
+
+    comment_text = getattr(person, "comment", "") or ""
+    if comment_text.strip():
+        esc = _escape_attr(comment_text)
+        # Make the asterisk adopt the generation color
+        name_html += (
+            f' <a href="#" class="cm" style="color:{my_color}" title="View note" '
+            f'   data-cmt="{esc}">*</a>'
+        )
+
+    # Append this line
+    html_lines.append(f"<div>{html_prefix}{connector_html}{icon_html}{name_html}</div>")
 
     # Prepare for children
     new_prefix = prefix + ("    " if is_last else "│   ")
@@ -90,7 +118,8 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                    text_lines=text_lines,
                    html_lines=html_lines,
                    parent_color=my_color,
-                   vertical_color_map=vertical_color_map.copy())  # Important: pass a *copy* per branch
+                   vertical_color_map=vertical_color_map.copy())
+
 
 
 # Example usage:
@@ -98,12 +127,76 @@ def export_tree(root_person, print_language="en"):
     text_lines = []
     html_lines = [
         '<html><head><meta charset="UTF-8">',
-        '<style>div { font-family: monospace; font-size: 16px; white-space: pre; }</style>',
+        '<style>',
+        # Your existing base styles:
+        'div { font-family: monospace; font-size: 16px; white-space: pre; }',
+        'img.icon { height: 1.2em; width: auto; vertical-align: -0.15em; margin-right: 0.35em; }',
+
+        # NEW: asterisk and popup styles
+        'a.cm { text-decoration: none; font-weight: bold; margin-left: 0.25rem; cursor: pointer; }',
+        'a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }',
+        '#comment-popup { position: fixed; z-index: 9999; display: none; display: inline-flex; align-items: center; width: auto; max-width: 70vw; padding: 8px 10px; '
+            'background: #fff; border: 1px solid #ccc; box-shadow: 0 6px 18px rgba(0,0,0,.15); '
+            'border-radius: 8px; font-size: 14px; line-height: 1.35; white-space: pre-wrap;}',
+        '#comment-popup .cp-body { display: inline;}',
+        '#comment-popup .cp-close { display: inline-block; margin-left: 10px; background: transparent; border: none; font-size: 16px; cursor: pointer; line-height: 1; }',
+        '</style>',
         '</head><body>'
     ]
 
     print_tree(root_person, print_language=print_language,
                text_lines=text_lines, html_lines=html_lines, level=0)
+
+    # Shared popup element + JS (added before closing body)
+    html_lines += [
+        '<div id="comment-popup" role="dialog" aria-modal="true" aria-label="Note">',
+        '  <div class="cp-body"></div>',
+        '  <button class="cp-close" aria-label="Close">×</button>',
+        '</div>',
+        '<script>',
+        '(function(){',
+        '  const popup = document.getElementById("comment-popup");',
+        '  const body = popup.querySelector(".cp-body");',
+        '  const closeBtn = popup.querySelector(".cp-close");',
+        '  let openFrom = null;',
+        '  function closePopup(){ popup.style.display="none"; openFrom=null; }',
+        '  function openPopup(anchor, text){',
+        '    body.textContent = text || "";',
+        '    popup.style.display = "block";',
+        '    const r = anchor.getBoundingClientRect();',
+        '    const pad = 8;',
+        '    let top = r.bottom + pad, left = r.left;',
+        '    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);',
+        '    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);',
+        '    const pw = popup.offsetWidth, ph = popup.offsetHeight;',
+        '    if (left + pw + pad > vw) left = vw - pw - pad;',
+        '    if (top + ph + pad > vh) top = r.top - ph - pad;',
+        '    if (top < pad) top = pad;',
+        '    if (left < pad) left = pad;',
+        '    popup.style.top = Math.round(top) + "px";',
+        '    popup.style.left = Math.round(left) + "px";',
+        '    openFrom = anchor;',
+        '  }',
+        '  document.addEventListener("click", function(e){',
+        '    const a = e.target.closest("a.cm");',
+        '    if (a){',
+        '      e.preventDefault();',
+        '      const txt = a.getAttribute("data-cmt") || "";',
+        '      // getAttribute returns real newlines from &#10;',
+        '      if (popup.style.display==="block" && openFrom===a) { closePopup(); }',
+        '      else { openPopup(a, txt); }',
+        '      e.stopPropagation();',
+        '      return;',
+        '    }',
+        '    if (popup.style.display==="block" && !e.target.closest("#comment-popup")) closePopup();',
+        '  }, true);',
+        '  closeBtn.addEventListener("click", function(e){ e.preventDefault(); closePopup(); });',
+        '  ["scroll","keydown","resize"].forEach(evt => window.addEventListener(evt, closePopup, {passive:true}));',
+        '  document.addEventListener("visibilitychange", function(){ if (document.hidden) closePopup(); });',
+        '  document.addEventListener("input", closePopup, true);',
+        '})();',
+        '</script>'
+    ]
 
     html_lines.append('</body></html>')
 
@@ -117,6 +210,7 @@ def export_tree(root_person, print_language="en"):
         f.write("\n".join(html_lines))
 
     print(f"✅ {html_file} - Tree exported for {'english' if print_language=='en' else 'nepali'}.")
+
 
 def update_index_html_in_place(index_path="index.html"):
     # Flatten tree with all required fields in one line
@@ -175,8 +269,8 @@ def update_index_html_in_place(index_path="index.html"):
 # build_parent_map(root_person)
 
 for language in ("en", "np"):
-    print_tree(gopal_31, print_language=language)
-    export_tree(gopal_31, print_language=language)  # Make sure you have a Person instance assigned to `root_person`
+    print_tree(gopal_32, print_language=language)
+    export_tree(gopal_32, print_language=language)  # Make sure you have a Person instance assigned to `root_person`
 
 update_index_html_in_place("index.html")
 
