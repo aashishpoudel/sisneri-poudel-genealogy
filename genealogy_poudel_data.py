@@ -188,8 +188,8 @@ subiksya_45 = Person("Subiksya", gender="Female", name_nep="सुविक्�
 sadiksya_45 = Person("Sadiksya", gender="Female", name_nep="सदिक्षा")
 yasonta_45 = Person("Yasonta", gender="Male", name_nep="यसोन्त")
 
-aashish_45 = Person("Aashish", gender="Male", name_nep="आशिष", birth_year=1983, comment="वंशावलीलाई sisneripoudel.com मा राखेको") #myself
-pravesh_45 = Person("Pravesh", gender="Male", name_nep="प्रवेश")
+aashish_45 = Person("Aashish", gender="Male", name_nep="आशिष", birth_year=1983, comment="वंशावलीलाई sisneripoudel.com मा राख्ने") #myself
+prabesh_45 = Person("Prabesh", gender="Male", name_nep="प्रवेश")
 niraj_45 = Person("Niraj", gender="Male", name_nep="निरज")
 suraj_45 = Person("Suraj", gender="Male", name_nep="सुरज")
 kushal_45 = Person("Kushal", gender="Male", name_nep="कुशल")
@@ -3932,7 +3932,7 @@ suresh_44.add_children([subiksya_45, sadiksya_45])
 dinesh_44.add_child(yasonta_45)
 
 narayan_44.add_child(aashish_45)
-bhagawan_44.add_child(pravesh_45)
+bhagawan_44.add_child(prabesh_45)
 pushpa_raj_44.add_children([suraj_45, niraj_45])
 madhu_sudan_44.add_child(kushal_45)
 kalyan_44.add_child(subhanga_45)
