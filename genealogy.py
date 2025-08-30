@@ -74,7 +74,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     )
 
     # Optional female icon
-    icon_src = "images/girl_icon_new.png"
+    icon_src = "images/girl_icon_new2.png"
     icon_html = ""
     if getattr(person, "gender", "") == "Female":
         icon_html = f'<img src="{icon_src}" class="icon" alt="Girl Icon">'
