@@ -1993,6 +1993,7 @@
         │       │       │       │   │   ├── Koshraj
         │       │       │       │   │   │   ├── Pushkar
         │       │       │       │   │   │   │   └── Umesh
+        │       │       │       │   │   │   │       └── Sulav
         │       │       │       │   │   │   ├── Bholanath
         │       │       │       │   │   │   │   └── Kiran
         │       │       │       │   │   │   └── Gopal
@@ -2039,7 +2040,9 @@
         │       │       │       │   │   ├── Ramji
         │       │       │       │   │   │   ├── Damodar
         │       │       │       │   │   │   │   ├── Sagar
+        │       │       │       │   │   │   │   │   └── Yog
         │       │       │       │   │   │   │   └── Bishwonath
+        │       │       │       │   │   │   │       └── Partha
         │       │       │       │   │   │   ├── Madan
         │       │       │       │   │   │   │   └── Suman
         │       │       │       │   │   │   └── Basudev
@@ -2068,7 +2071,7 @@
         │       │       │       │   │   └── Janardan
         │       │       │       │   │       ├── Bijay
         │       │       │       │   │       │   └── Manisha
-        │       │       │       │   │       └── Basanta
+        │       │       │       │   │       └── Ramesh
         │       │       │       │   │           ├── Aayush
         │       │       │       │   │           └── Suyush
         │       │       │       │   ├── Bodraj
@@ -2137,7 +2140,7 @@
         │       │       │           ├── Jagannath
         │       │       │           │   ├── KrishnaRaj
         │       │       │           │   └── HariPrasad
-        │       │       │           │       └── Ranjanath
+        │       │       │           │       └── Ranganath
         │       │       │           │           ├── Govinda
         │       │       │           │           │   ├── Rameshwor
         │       │       │           │           │   │   ├── Krishnahari
@@ -2158,11 +2161,40 @@
         │       │       │           │           │           └── Rabi
         │       │       │           │           │               └── Rishav
         │       │       │           │           └── Amrit
+        │       │       │           │               └── Muneshwor
+        │       │       │           │                   ├── Biswonath
+        │       │       │           │                   │   ├── Bhadreshwor
+        │       │       │           │                   │   │   └── Nimesh
+        │       │       │           │                   │   ├── Bhujakeshwor
+        │       │       │           │                   │   │   ├── Binamra
+        │       │       │           │                   │   │   └── Bibhav
+        │       │       │           │                   │   ├── Jageshwor
+        │       │       │           │                   │   │   └── Aayush
+        │       │       │           │                   │   ├── Purneshwor
+        │       │       │           │                   │   │   ├── Nipurna
+        │       │       │           │                   │   │   └── Sampurna
+        │       │       │           │                   │   └── Manohar
+        │       │       │           │                   │       ├── Manish
+        │       │       │           │                   │       └── Manjesh
+        │       │       │           │                   ├── Jagadishwor
+        │       │       │           │                   │   ├── Nutaneshwor
+        │       │       │           │                   │   │   └── Aashutosh
+        │       │       │           │                   │   ├── Gokarna
+        │       │       │           │                   │   └── Ishwor
+        │       │       │           │                   ├── Kavishwor
+        │       │       │           │                   │   ├── Khageshwor
+        │       │       │           │                   │   │   ├── Suprad
+        │       │       │           │                   │   │   └── Yehem
+        │       │       │           │                   │   └── Yagyashwor (Mohan)
+        │       │       │           │                   │       └── Shivansh
+        │       │       │           │                   ├── Sarweshwor
+        │       │       │           │                   └── Parameshwor
+        │       │       │           │                       └── Asim
         │       │       │           ├── Naranath
         │       │       │           └── Homnath
         │       │       │               ├── Ramji
         │       │       │               ├── TejPrasad
-        │       │       │               └── BhairavPrasad
+        │       │       │               └── TaraPrasad
         │       │       │                   ├── Krishnaprasad
         │       │       │                   │   └── Prashant
         │       │       │                   ├── Balaram
@@ -2242,7 +2274,7 @@
         │           └── Gokul
         └── Chamu
             └── Agnidhar
-                └── ShreeUpendra
+                └── Shree Upendra
                     ├── Dhananjaya
                     │   ├── Lokeshwor
                     │   ├── Jayamangal
@@ -2360,21 +2392,21 @@
                         │   │   │                   └── Rasish
                         │   │   ├── Pashupati
                         │   │   │   ├── Dinanath
-                        │   │   │   │   └── Hemlal
-                        │   │   │   │       ├── GitaPrasad
+                        │   │   │   │   └── Humanath
+                        │   │   │   │       ├── GitaPrasad (Krishna)
                         │   │   │   │       │   ├── Sitaram
                         │   │   │   │       │   │   └── Ishworchandra
                         │   │   │   │       │   └── Bishwonath
                         │   │   │   │       │       └── Anil
                         │   │   │   │       │           └── Osan
-                        │   │   │   │       └── TejPrasad
+                        │   │   │   │       └── TejPrasad (Madhusudan)
                         │   │   │   │           ├── Bishnukumar
                         │   │   │   │           │   ├── Chakrapani
                         │   │   │   │           │   └── Padmapani
                         │   │   │   │           │       └── Chatraraj
                         │   │   │   │           └── Shivakumar
                         │   │   │   │               └── Sreeniwas
-                        │   │   │   ├── Gothu
+                        │   │   │   ├── Divadutta (Gothu)
                         │   │   │   ├── Tikadutta
                         │   │   │   ├── Bhuminanda
                         │   │   │   │   ├── Damodar
@@ -2439,7 +2471,7 @@
                         │   │       │   │   ├── Preeti
                         │   │       │   │   └── Swayecha
                         │   │       │   ├── Bishwamitra
-                        │   │       │   └── Jagadeshwor
+                        │   │       │   └── Jagadishwor
                         │   │       │       └── Sarweshwor
                         │   │       ├── Umanath
                         │   │       │   ├── Bijay
@@ -2447,13 +2479,13 @@
                         │   │       │   │   └── Bipin
                         │   │       │   └── Naveen
                         │   │       │       └── Aavash
-                        │   │       │           └── Pranav
+                        │   │       │           └── Pranab
                         │   │       └── Megbilas
                         │   │           └── Pawan
                         │   └── Bharat
                         │       ├── Diwakar
                         │       │   ├── Tanka
-                        │       │   ├── RupPrasad
+                        │       │   ├── RudraPrasad
                         │       │   │   ├── ChandraPrasad
                         │       │   │   │   ├── Sudanprasad
                         │       │   │   │   │   ├── Santosh
