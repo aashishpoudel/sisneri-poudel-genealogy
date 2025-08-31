@@ -147,8 +147,7 @@
         │   │   │           │   │           │   ├── Narayan
         │   │   │           │   │           │   │   └── Aashish
         │   │   │           │   │           │   │       ├── Aayan
-        │   │   │           │   │           │   │       ├── Adwik
-        │   │   │           │   │           │   │       └── Aarvi
+        │   │   │           │   │           │   │       └── Adwik
         │   │   │           │   │           │   ├── Bhagawan
         │   │   │           │   │           │   │   └── Prabesh
         │   │   │           │   │           │   ├── Pushpa

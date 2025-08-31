@@ -2159,20 +2159,6 @@
                                                           "grandfather": "Narayan",
                                                           "grandfather_nep": "\u0935\u093f\u0937\u094d\u0923\u0941\u0917\u094b\u092a\u093e\u0932",
                                                           "children": []
-                                                        },
-                                                        {
-                                                          "name": "Aarvi",
-                                                          "name_nep": "\u0906\u0930\u0935\u0940",
-                                                          "gender": "Female",
-                                                          "birth_year": 2025,
-                                                          "death_year": null,
-                                                          "place": null,
-                                                          "comment": null,
-                                                          "father": "Aashish",
-                                                          "father_nep": "\u0906\u0936\u093f\u0937",
-                                                          "grandfather": "Narayan",
-                                                          "grandfather_nep": "\u0935\u093f\u0937\u094d\u0923\u0941\u0917\u094b\u092a\u093e\u0932",
-                                                          "children": []
                                                         }
                                                       ]
                                                     }

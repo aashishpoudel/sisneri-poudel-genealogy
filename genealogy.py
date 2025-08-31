@@ -79,6 +79,11 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     if getattr(person, "gender", "") == "Female":
         icon_html = f'<img src="{icon_src}" class="icon" alt="Girl Icon">'
 
+    # Optional "addition" plus sign
+    plus_html = ""
+    if getattr(person, "addition", False):
+        plus_html = ' <span style="color:{0}; font-weight:bold">+</span>'.format(my_color)
+
     # --- Comment asterisk (popup trigger) ---
     def _escape_attr(s: str) -> str:
         # Basic HTML attr escape + newline to &#10; so JS getAttribute() yields real newlines
@@ -99,7 +104,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
         )
 
     # Append this line
-    html_lines.append(f"<div>{html_prefix}{connector_html}{icon_html}{name_html}</div>")
+    html_lines.append(f"<div>{html_prefix}{connector_html}{icon_html}{name_html}{plus_html}</div>")
 
     # Prepare for children
     new_prefix = prefix + ("    " if is_last else "│   ")
