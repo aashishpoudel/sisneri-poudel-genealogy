@@ -938,6 +938,20 @@
                                                       "grandfather": "Janardan",
                                                       "grandfather_nep": "\u0930\u092e\u093e\u0928\u093e\u0925",
                                                       "children": []
+                                                    },
+                                                    {
+                                                      "name": "James",
+                                                      "name_nep": "\u091c\u0947\u092e\u094d\u0938",
+                                                      "gender": "Male",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "comment": null,
+                                                      "father": "Niranjan",
+                                                      "father_nep": "\u0928\u093f\u0930\u091e\u094d\u091c\u0928",
+                                                      "grandfather": "Janardan",
+                                                      "grandfather_nep": "\u0930\u092e\u093e\u0928\u093e\u0925",
+                                                      "children": []
                                                     }
                                                   ]
                                                 },
@@ -2137,20 +2151,6 @@
                                                           "name_nep": "\u0905\u0926\u094d\u0935\u093f\u0915",
                                                           "gender": "Male",
                                                           "birth_year": 2019,
-                                                          "death_year": null,
-                                                          "place": null,
-                                                          "comment": null,
-                                                          "father": "Aashish",
-                                                          "father_nep": "\u0906\u0936\u093f\u0937",
-                                                          "grandfather": "Narayan",
-                                                          "grandfather_nep": "\u0935\u093f\u0937\u094d\u0923\u0941\u0917\u094b\u092a\u093e\u0932",
-                                                          "children": []
-                                                        },
-                                                        {
-                                                          "name": "Aarvi",
-                                                          "name_nep": "\u0906\u0930\u0935\u0940",
-                                                          "gender": "Female",
-                                                          "birth_year": 2025,
                                                           "death_year": null,
                                                           "place": null,
                                                           "comment": null,
@@ -25098,8 +25098,8 @@
                                                   "grandfather_nep": "\u092d\u0935\u0928\u093e\u0925",
                                                   "children": [
                                                     {
-                                                      "name": "Afit",
-                                                      "name_nep": "\u0905\u092b\u093f\u0924",
+                                                      "name": "Ankit",
+                                                      "name_nep": "\u0905\u0902\u0915\u093f\u0924",
                                                       "gender": "Male",
                                                       "birth_year": null,
                                                       "death_year": null,
@@ -25186,7 +25186,7 @@
                                                   "children": [
                                                     {
                                                       "name": "Rajnish",
-                                                      "name_nep": "\u0930\u091c\u0928\u0940\u0936",
+                                                      "name_nep": "\u0930\u091c\u0928\u093f\u0938",
                                                       "gender": "Male",
                                                       "birth_year": null,
                                                       "death_year": null,
@@ -30510,7 +30510,7 @@
                                             },
                                             {
                                               "name": "Madhusudan",
-                                              "name_nep": "\u092e\u0927\u0941\u0938\u0942\u0926\u0928",
+                                              "name_nep": "\u092e\u0927\u0941\u0938\u0941\u0926\u0928",
                                               "gender": "Male",
                                               "birth_year": null,
                                               "death_year": null,
@@ -30530,9 +30530,9 @@
                                                   "place": null,
                                                   "comment": null,
                                                   "father": "Madhusudan",
-                                                  "father_nep": "\u092e\u0927\u0941\u0938\u0942\u0926\u0928",
+                                                  "father_nep": "\u092e\u0927\u0941\u0938\u0941\u0926\u0928",
                                                   "grandfather": "Bishwonath",
-                                                  "grandfather_nep": "\u092e\u0928\u094b\u0930\u0925",
+                                                  "grandfather_nep": "\u092a\u094d\u0930\u093e\u0923\u0928\u093e\u0925",
                                                   "children": []
                                                 }
                                               ]

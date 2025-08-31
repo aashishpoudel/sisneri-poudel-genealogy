@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ne">
+<head>
+  <meta charset="utf-8" />
+  <title>About • Sisneri Poudel Genealogy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="About sisneripoudel.com and how the genealogy data is compiled (Nepali & English)." />
+  <style>
+    :root{
+      --bg: #f7f9fb;
+      --card: #ffffff;
+      --text: #1f2a37;
+      --muted: #6b7280;
+      --primary: #0d6efd;
+      --ring: #1abc9c;
+      --line: #e5eef4;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --pill: #eef4f8;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0b1320;
+        --card: #0f1a2b;
+        --text: #e5eef7;
+        --muted: #99a3b2;
+        --primary: #7ab8ff;
+        --ring: #34d399;
+        --line: #1f2a37;
+        --shadow: 0 10px 30px rgba(0,0,0,.35);
+        --pill: #122239;
+      }
+    }
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(13,110,253,0.08), transparent 60%),
+                  radial-gradient(1000px 800px at 110% 10%, rgba(26,188,156,0.08), transparent 60%),
+                  var(--bg);
+    }
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 28px 20px 48px; }
+    header{
+      display: grid; gap: 10px; justify-items: start; margin: 10px 0 22px;
+    }
+    .crumbs a{ color: var(--muted); text-decoration: none; }
+    .crumbs a:hover{ text-decoration: underline; }
+    .title{
+      font-size: clamp(32px, 5vw, 48px); /* bigger title */
+      line-height: 1.08; margin: 0;
+      letter-spacing: .2px;
+    }
+    .subtitle{ margin: 6px 0 0; color: var(--muted); font-size: 18px; }
+    .pill{
+      display: inline-block; padding: 6px 10px; border-radius: 999px;
+      background: var(--pill); color: var(--muted); font-size: 14px;
+      border: 1px solid var(--line); margin-top: 6px;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .card{
+      grid-column: span 12;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(16px, 3.2vw, 24px);
+    }
+
+    .lang-block{ margin-bottom: 28px; }
+    .lang-head{
+      display: inline-flex; align-items: center; gap: 10px; margin: 0 0 8px;
+    }
+    .lang-head h2{
+      margin: 0; font-size: clamp(22px, 3vw, 28px); letter-spacing: .3px;
+    }
+    .lang-tag{
+      font-size: 14px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--line);
+      background: var(--pill); color: var(--muted);
+    }
+
+    h3{ margin: 16px 0 10px; font-size: 20px; }
+    p{ margin: 10px 0; line-height: 1.7; color: var(--muted); font-size: 18px; }
+
+    .media{
+      margin: 12px 0 8px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #fff;
+    }
+    .media img{ display: block; width: 100%; height: auto; }
+    .caption{
+      font-size: 16px; color: var(--muted);
+      padding: 10px 12px; border-top: 1px solid var(--line);
+      background: #fafcfe;
+    }
+
+    .qa{ border-top: 1px solid var(--line); padding-top: 12px; margin-top: 12px; }
+    .q{ font-weight: 700; margin: 0 0 6px; color: var(--text); font-size: 18px; }
+    .a{ margin: 0; color: var(--muted); font-size: 18px; }
+
+    .divider{
+      margin: 26px 0; height: 1px; background: var(--line);
+      border: none;
+    }
+
+    .footer{
+      margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap;
+    }
+    .btn{
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      background: var(--text);
+      color: #fff;
+      border: 1px solid var(--text);
+      transition: transform .06s ease, box-shadow .2s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.10); }
+    .btn--ghost{
+      background: transparent; color: var(--text);
+      border-color: var(--line);
+    }
+    .btn svg{ width: 18px; height: 18px; }
+    code{ background: rgba(125,125,125,.08); padding: 2px 6px; border-radius: 6px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="index.html">← Back to Home</a>
+      </nav>
+      <h1 class="title">About this site</h1>
+      <p class="subtitle">Nepali first, followed by English — same information in both languages.</p>
+      <span class="pill">sisneripoudel.com</span>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+
+        <!-- ===================== Nepali ===================== -->
+        <div class="lang-block" lang="ne">
+          <div class="lang-head">
+            <h2>वंशावली डेटा</h2>
+            <span class="lang-tag">नेपाली</span>
+          </div>
+
+          <h3>क) स्रोत के हो?</h3>
+          <p>
+            यो sisneripoudel.com को मुख्य स्रोत तल देखाइएको "पौडेल-कुल-प्रकाश" (द्वितीय संस्करण २०७४) हो।
+          </p>
+
+          <!-- Image + Nepali caption -->
+          <figure class="media">
+            <img src="images/bansawali_2074_front_second.jpg" alt="‘पौडेल कुल-प्रकाश’ (द्वितीय संस्करण २०७४) पुस्तकको आवरण" />
+            <figcaption class="caption">स्रोत: पौडेल कुल-प्रकाश (द्वितीय संस्करण २०७४)</figcaption>
+          </figure>
+
+          <h3>ख) व्यक्तिहरू कसरी थपिन्छन्?</h3>
+          <p>
+            माथिको पुस्तकलाई आधार मानिन्छ। सो पुस्तकका तथ्याङ्कबाट केही पनि हटाइएको छैन।
+            नयाँ विवरणका लागि केवल प्रमाणित स्रोतहरू मात्र थपिन्छन्।
+            कुनै नयाँ प्रमाणित व्यक्ति थपिँदा उनको नामको छेउमा <strong>(+)</strong> प्लस चिन्ह देखिन्छ।
+          </p>
+
+          <h3>ग) किन कोही व्यक्तिको छोराहरू मात्र, कोहीको छोरीहरू मात्र, र केहीको छोराछोरी दुबै (मिश्रण) देखिन्छ?</h3>
+          <p>
+            यो सबै "पौडेल-कुल-प्रकाश (द्वितीय संस्करण २०७४)" पुस्तकको अनुसार हो। उदाहरणको लागि - “मिश्रण” त्यतिबेला देखिन सक्छ जब द्वितीय संस्करणमा
+            छोरीहरू मात्र सूचीकृत थिए र पछि छोरासम्बन्धी प्रमाणित विवरण प्राप्त भएर थपियो।
+          </p>
+
+          <h3>घ) के यो sisneripoudel.com "पौडेल-कुल-प्रकाश"को आउने तेस्रो संस्मरणसगै अद्यावधिक हुन्छ ?</h3>
+          <p>
+            अवश्य हुन्छ।
+          </p>
+
+          <h3>ङ) sisneripoudel.com मा अरु के-के गर्न बाँकी छ?</h3>
+          <p>
+            १) "पौडेल-कुल-प्रकाश"मा कुनै हाँगाहरु मुलसँग जोडिएको छैन। जस्तै पृष्ठ १०४ मा विश्वम्भर कसको सन्तान हुन थाहा हुन सकेको छैन। त्यसतो हाँगालाई छुट्टैरुपमा प्रस्तुत गर्ने सोच छ।<br>
+            २) यो वंशावली प्रकाशन गर्ने समुहसँग सम्पर्क गर्ने (मिलेको खण्डमा उहाँहरुको पनि contact राख्ने)
+          </p>
+
+          <h3>च) sisneripoudel.com मा नयाँ व्यक्ति/सन्तान थप्न के गर्नुपर्छ?</h3>
+          <p>
+            sisneripoudel.com को <a href="contact.html">contact पेज</a>मा गएर WhatsApp Text वा email गर्नसक्नुहुन्छ। यसो गर्दा सम्पर्क गर्ने व्यक्तिले कृपया आफ्नो परिचय खुलाइदिनु होला (नाम/बुवाको नाम/हजुरबुवाको नाम) र जसलाई जोड्न पर्ने हो त्यसको पनि पूर्ण विवरण दिनु होला।
+          </p>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- ===================== English ===================== -->
+        <div class="lang-block" lang="en">
+          <div class="lang-head">
+            <h2>Genealogy Data</h2>
+            <span class="lang-tag">English</span>
+          </div>
+
+          <h3>a) What is the Source?</h3>
+          <p>
+            The primary source for this sisneripoudel.com is the published "Paudel-Kul-Prakash" book as shown below.
+          </p>
+
+          <!-- Image + English caption -->
+          <figure class="media">
+            <img src="images/bansawali_2074_front_second.jpg" alt="Cover of ‘Paudel Kul-Prakash’ (Second Edition, 2074)" />
+            <figcaption class="caption">Source: पौडेल कुल-प्रकाश (द्वितीय संस्करण २०७४)</figcaption>
+          </figure>
+
+          <h3>b) How are persons added?</h3>
+          <p>
+            The above book is treated as the authoritative source. Nothing is removed from the book’s data.
+            For new entries, only verified sources are added.
+            Any newly verified person will display a <strong>(+)</strong> plus sign next to his/her name.
+          </p>
+
+          <h3>c) Why do some people have sons, some only daughters, and some have a mix of sons/daughters?</h3>
+          <p>
+            This is all according to the book "Paudel-Kul-Prakash". A “mix” can appear when the book initially listed only daughters,
+            and a verified son record was later obtained and added.
+          </p>
+
+          <h3>d) Will this sisneripoudel.com be updated with the upcoming third edition of "Poudel-Kul-Prakash"?</h3>
+          <p>
+            Of course.
+          </p>
+
+          <h3>e) What else is left to be done on sisneripoudel.com?</h3>
+          <p>
+            1) In "Paudel-Kul-Prakash", some of the branches are connected not connected to the root. For example, on page 104, it is not known whose descendant Vishwambhar is. The idea is to present that branch separately. <br>
+            2) Contact/Be in touch with the group publishing this genealogy. Maybe give their details on the Contact page itself.
+          </p>
+
+          <h3>f) What should I do to add a new person/descendant to sisneripoudel.com?</h3>
+          <p>
+            You can go to the <a href="contact.html">contact page</a> of sisneripoudel.com and send a WhatsApp Text or email. In doing so, the person making the contact should identify themselves (name/father's name/grandfather's name) and provide full details of the person to be added as well.
+          </p>
+        </div>
+
+        <div class="footer">
+          <a class="btn" href="index.html" aria-label="Return to Home">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 12L12 3l9 9" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 10v10h14V10" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            Home
+          </a>
+          <a class="btn btn--ghost" href="contact.html" aria-label="Go to Contact page">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            Contact
+          </a>
+        </div>
+
+      </article>
+    </section>
+  </div>
+</body>
+</html>
