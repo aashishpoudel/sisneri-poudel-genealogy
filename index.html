@@ -5,7 +5,19 @@
   <title>Sisneri Poudel Family Tree (सिस्नेरी पौडेलको वंशावली)</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; }
-    .header { text-align: center; padding: 1rem; background:#f4f4f4; border-bottom:2px solid #2c3e50; }
+    .header {
+      display: flex;
+      align-items: center;     /* vertical center for hamburger + title */
+      justify-content: center; /* keep the whole row centered */
+      gap: 12px;               /* space between hamburger and title */
+      text-align: center;
+      padding: 1rem;
+      background: #f4f4f4;
+      border-bottom: 2px solid #2c3e50;
+    }
+    .site-title {
+      margin: 0;               /* remove default h1 margins so it centers nicely */
+    }
     .tabs { display:flex; background:#2c3e50; }
     .tab { flex:1; padding:0.8rem; color:#fff; text-align:center; cursor:pointer; background:#34495e; border:0; font-size:1.8em; }
     .tab.active { background:#1abc9c; font-weight:bold; }
@@ -128,7 +140,7 @@
       width: 56px;
       height: 50px;
       border: 0;
-      background: #fff9c4;
+      background: #1abc9c;
       border-radius: 8px;
       cursor: pointer;
       display: grid;
@@ -245,15 +257,13 @@
 </head>
 <body>
   <div class="header">
-    <h1>Sisneri Poudel Family Tree (सिस्नेरी पौडेलको वंशावली)</h1>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="aboutDrawer" aria-expanded="false">
+      <div class="bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </button>
+    <h1 class="site-title">सिस्नेरी पौडेलको वंशावली (Sisneri Poudel Family Tree)</h1>
   </div>
-
-  <!-- Hamburger button -->
-  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="aboutDrawer" aria-expanded="false">
-    <div class="bars" aria-hidden="true">
-      <span></span><span></span><span></span>
-    </div>
-  </button>
 
   <!-- Backdrop + Drawer -->
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
