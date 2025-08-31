@@ -13,6 +13,19 @@ with open(genealogy_json_file, "w") as f:
 def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                text_lines=None, html_lines=None, parent_color=None,
                vertical_color_map=None):
+    """
+    This prints genealogy in both text and html files
+    :param person: Person class
+    :param level:
+    :param prefix:
+    :param is_last:
+    :param print_language:"en" for english, "np" for nepali
+    :param text_lines:
+    :param html_lines:
+    :param parent_color:
+    :param vertical_color_map:
+    :return:
+    """
     if text_lines is None:
         text_lines = []
     if html_lines is None:
