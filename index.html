@@ -125,26 +125,31 @@
       position: fixed;
       top: 12px;
       left: 12px;
-      width: 56px;         /* larger button */
-      height: 4
-    .hamburger:focus {
-      outline: 3px solid #1abc9c;
-      outline-offset: 2px;
+      width: 38px;
+      height: 34px;
+      border: 0;
+      background: #2c3e50;
+      border-radius: 8px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 3000; /* above sticky search */
     }
+    .hamburger:focus { outline: 3px solid #1abc9c; outline-offset: 2px; }
     .hamburger .bars {
-      width: 28px;   /* bigger bars container */
-      height: 20px;
+      width: 22px;
+      height: 16px;
       position: relative;
     }
     .hamburger .bars span {
       position: absolute;
       left: 0; right: 0;
-      height: 3px;          /* thicker bars */
-      background: #fff;     /* white bars for contrast */
+      height: 2px;
+      background: #fff;
       border-radius: 2px;
     }
     .hamburger .bars span:nth-child(1) { top: 0; }
-    .hamburger .bars span:nth-child(2) { top: 8px; }
+    .hamburger .bars span:nth-child(2) { top: 7px; }
     .hamburger .bars span:nth-child(3) { bottom: 0; }
 
     /* backdrop */
