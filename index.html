@@ -120,12 +120,158 @@
         padding: 0;
       }
     }
+    /* === Side drawer & hamburger === */
+    .hamburger {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      width: 38px;
+      height: 34px;
+      border: 0;
+      background: #2c3e50;
+      border-radius: 8px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 3000; /* above sticky search */
+    }
+    .hamburger:focus { outline: 3px solid #1abc9c; outline-offset: 2px; }
+    .hamburger .bars {
+      width: 22px;
+      height: 16px;
+      position: relative;
+    }
+    .hamburger .bars span {
+      position: absolute;
+      left: 0; right: 0;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+    }
+    .hamburger .bars span:nth-child(1) { top: 0; }
+    .hamburger .bars span:nth-child(2) { top: 7px; }
+    .hamburger .bars span:nth-child(3) { bottom: 0; }
+
+    /* backdrop */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+      z-index: 2999;
+    }
+
+    /* drawer */
+    .drawer {
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh;
+      width: min(420px, 90vw);
+      background: #ffffff;
+      box-shadow: 2px 0 24px rgba(0,0,0,.2);
+      transform: translateX(-102%);
+      transition: transform .25s ease;
+      z-index: 3001;
+      display: flex;
+      flex-direction: column;
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer-backdrop.show {
+      opacity: 1; pointer-events: auto;
+    }
+
+    /* drawer header/content */
+    .drawer header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px;
+      background: #2c3e50; color: #fff;
+      border-bottom: 2px solid #1abc9c;
+    }
+    .drawer header h2 {
+      margin: 0; font-size: 1.1rem; letter-spacing: .3px;
+    }
+    .drawer header button {
+      background: transparent; border: 0; color: #fff; font-size: 1.6rem; cursor: pointer;
+    }
+    .drawer .drawer-body {
+      padding: 16px 18px 28px;
+      overflow: auto;
+    }
+    .drawer .section { margin: 14px 0 22px; }
+    .drawer .section h3 { margin: 0 0 8px; font-size: 1.05rem; color: #2c3e50; }
+    .drawer .section p { margin: 0 0 8px; color: #333; line-height: 1.45; }
+    .drawer .sub { margin-left: 14px; }
+
+    .page-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .page-link {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid #e5eef4;
+      border-radius: 10px;
+      background: #f7f9fb;
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    .page-link:focus {
+      outline: 3px solid #1abc9c;
+      outline-offset: 2px;
+    }
+    .page-link:hover {
+      background: #eef4f8;
+    }
+
+    /* contact chips */
+    .contact-list { display: grid; gap: 10px; margin-top: 8px; }
+    .contact-chip {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #f7f9fb; border: 1px solid #e5eef4; border-radius: 10px;
+      padding: 10px 12px; width: fit-content;
+    }
+    .contact-chip svg { width: 20px; height: 20px; }
+
+    /* small screens: keep button tappable */
+    @media (max-width: 600px) {
+      .hamburger { top: 8px; left: 8px; }
+    }
+
   </style>
 </head>
 <body>
   <div class="header">
     <h1>Sisneri Poudel Family Tree (सिस्नेरी पौडेलको वंशावली)</h1>
   </div>
+
+  <!-- Hamburger button -->
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="aboutDrawer" aria-expanded="false">
+    <div class="bars" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+  </button>
+
+  <!-- Backdrop + Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <aside class="drawer" id="aboutDrawer" aria-hidden="true" role="dialog" aria-labelledby="aboutTitle">
+    <header>
+      <h2 id="aboutTitle">About this site</h2>
+      <button id="drawerClose" aria-label="Close">×</button>
+    </header>
+    <div class="drawer-body">
+      <nav class="page-list" aria-label="Site pages">
+        <a class="page-link" href="About.html">About sisneripoudel.com</a>
+        <a class="page-link" href="Contact.html">Contact Me</a>
+      </nav>
+    </div>
+
+  </aside>
+
 
   <div class="tabs">
     <button class="tab active" onclick="showTab('np')">नेपाली</button>
@@ -501,6 +647,54 @@
         if (sugg) { sugg.innerHTML = ''; sugg.classList.add('hidden'); }
         clearHighlights();
       };
+    })();
+
+    // === Drawer controls ===
+    (function(){
+      const btn = document.getElementById('hamburgerBtn');
+      const drawer = document.getElementById('aboutDrawer');
+      const closeBtn = document.getElementById('drawerClose');
+      const backdrop = document.getElementById('drawerBackdrop');
+
+      function openDrawer(){
+        drawer.classList.add('open');
+        backdrop.classList.add('show');
+        drawer.setAttribute('aria-hidden','false');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      function closeDrawer(){
+        drawer.classList.remove('open');
+        backdrop.classList.remove('show');
+        drawer.setAttribute('aria-hidden','true');
+        btn.setAttribute('aria-expanded','false');
+      }
+
+      btn.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+      backdrop.addEventListener('click', closeDrawer);
+
+      // Close on ESC
+      document.addEventListener('keydown', (e)=>{
+        if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+      });
+    })();
+
+    // === Close drawer when clicking a page link ===
+    (function(){
+      const drawer = document.getElementById('aboutDrawer');
+      const backdrop = document.getElementById('drawerBackdrop');
+      const btn = document.getElementById('hamburgerBtn');
+
+      function closeDrawer(){
+        drawer.classList.remove('open');
+        backdrop.classList.remove('show');
+        drawer.setAttribute('aria-hidden','true');
+        btn.setAttribute('aria-expanded','false');
+      }
+
+      document.querySelectorAll('.page-link').forEach(a=>{
+        a.addEventListener('click', closeDrawer);
+      });
     })();
   </script>
 </body>
