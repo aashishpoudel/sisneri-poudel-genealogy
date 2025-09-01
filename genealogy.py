@@ -14,17 +14,20 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                text_lines=None, html_lines=None, parent_color=None,
                vertical_color_map=None):
     """
-    This prints genealogy in both text and html files
-    :param person: Person class
-    :param level:
-    :param prefix:
-    :param is_last:
-    :param print_language:"en" for english, "np" for nepali
-    :param text_lines:
-    :param html_lines:
-    :param parent_color:
-    :param vertical_color_map:
-    :return:
+    Recursively build the genealogy tree as HTML.
+
+    This function walks the `Person` hierarchy starting from the given node,
+    and produces an indented, styled HTML representation of the family tree.
+    It includes icons for gender, plus signs for newly added persons, and
+    asterisks with tooltips for comments.
+
+    :param person: The current Person node to render.
+    :param prefix: String prefix used for indentation and connector lines.
+    :param is_last: True if this person is the last child of the parent, controls connector rendering.
+    :param lang: Language code for rendering the name ("en" or "np").
+    :param my_color: Hex color string for styling connectors for this generation.
+    :param generation: Current generation depth, used for color-coding.
+    :return: List of HTML lines representing this person and all descendants.
     """
     if text_lines is None:
         text_lines = []
@@ -142,6 +145,19 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
 
 # Example usage:
 def export_tree(root_person, print_language="en"):
+    """
+    Export the complete genealogy tree to an HTML file.
+
+    Calls `print_tree` starting from the root ancestor, wraps the output in a
+    full HTML document template (with CSS), and writes it to a language-specific file.
+
+    :param root: The root Person object (earliest known ancestor).
+    :type root: Person
+    :param lang: Language code for rendering ("en" for English, "np" for Nepali).
+    :type lang: str
+    :return: Path of the generated HTML file.
+    :rtype: str
+    """
     text_lines = []
     html_lines = [
         '<html><head><meta charset="UTF-8">',
