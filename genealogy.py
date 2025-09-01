@@ -245,6 +245,142 @@ def export_tree(root_person, print_language="en"):
 
     print(f"✅ {html_file} - Tree exported for {'english' if print_language=='en' else 'nepali'}.")
 
+from html import escape
+import re
+
+def _strip_tags(html: str) -> str:
+    """Minimal HTML tag stripper for plain-text export."""
+    return re.sub(r"<[^>]+>", "", html)
+
+def export_roots_trees(roots, print_language="en",
+                       out_html_path=None, out_txt_path=None):
+    """
+    Export multiple root trees into ONE HTML and ONE TXT file, in order.
+
+    Example:
+        export_roots_trees([gopal_31, bishwamvar_34], print_language="np")
+
+    This will create:
+        - sisneri_poudel_tree_np.html
+        - sisneri_poudel_tree_np.txt
+
+    where Bishwamvar's full tree follows Gopal's full tree.
+    """
+    lang = print_language
+    if out_html_path is None:
+        out_html_path = f"sisneri_poudel_tree_{lang}.html"
+    if out_txt_path is None:
+        out_txt_path = f"sisneri_poudel_tree_{lang}.txt"
+
+    # ---- HTML prolog (mirrors your export_tree header & styles) ----
+    html_lines = [
+        '<html><head><meta charset="UTF-8">',
+        '<style>',
+        'div { font-family: monospace; font-size: 16px; white-space: pre; }',
+        'img.icon { height: 1.2em; width: auto; vertical-align: -0.15em; margin-right: 0.35em; }',
+        'a.cm { text-decoration: none; font-weight: bold; margin-left: 0.25rem; cursor: pointer; }',
+        'a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }',
+        '#comment-popup { position: fixed; z-index: 9999; display: none; display: inline-flex; align-items: center; width: auto; max-width: 70vw; padding: 8px 10px; '
+            'background: #fff; border: 1px solid #ccc; box-shadow: 0 6px 18px rgba(0,0,0,.15); '
+            'border-radius: 8px; font-size: 14px; line-height: 1.35; white-space: pre-wrap;}',
+        '#comment-popup .cp-body { display: inline;}',
+        '#comment-popup .cp-close { display: inline-block; margin-left: 10px; background: transparent; border: none; font-size: 16px; cursor: pointer; line-height: 1; }',
+        '</style>',
+        '</head><body>'
+    ]
+
+    text_lines = []
+
+    # ---- For each root, render a section then append the full tree ----
+    for idx, root in enumerate(roots):
+        # Section heading (per language)
+        root_title = (root.name_nep or root.name) if lang == "np" else (root.name or root.name_nep or "")
+        heading_html = f"<h2 style='margin:10px 0 6px'>{escape(root_title)}</h2>"
+        html_lines.append(heading_html)
+        text_lines.append(root_title)
+
+        # Render this root exactly like export_tree does (re-using your print_tree)
+        section_text = []
+        section_html = []
+
+        # Build colored/connected HTML prefix segments using your existing print_tree
+        print_tree(
+            root,
+            print_language=lang,
+            text_lines=section_text,
+            html_lines=section_html,
+            level=0
+        )
+
+        # Append tree to combined outputs
+        html_lines.extend(section_html)
+        text_lines.extend(section_text)
+
+        # Divider between sections (except after the last)
+        if idx < len(roots) - 1:
+            html_lines.append('<hr style="margin:16px 0">')
+            text_lines.append("\n" + ("=" * 40) + "\n")
+
+    # ---- Shared popup scripts (same as export_tree) ----
+    html_lines += [
+        '<div id="comment-popup" role="dialog" aria-modal="true" aria-label="Note">',
+        '  <div class="cp-body"></div>',
+        '  <button class="cp-close" aria-label="Close">×</button>',
+        '</div>',
+        '<script>',
+        '(function(){',
+        '  const popup = document.getElementById("comment-popup");',
+        '  const body = popup.querySelector(".cp-body");',
+        '  const closeBtn = popup.querySelector(".cp-close");',
+        '  let openFrom = null;',
+        '  function closePopup(){ popup.style.display="none"; openFrom=null; }',
+        '  function openPopup(anchor, text){',
+        '    body.textContent = text || "";',
+        '    popup.style.display = "block";',
+        '    const r = anchor.getBoundingClientRect();',
+        '    const pad = 8;',
+        '    let top = r.bottom + pad, left = r.left;',
+        '    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);',
+        '    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);',
+        '    const pw = popup.offsetWidth, ph = popup.offsetHeight;',
+        '    if (left + pw + pad > vw) left = vw - pw - pad;',
+        "    if (top + ph + pad > vh) top = r.top - ph - pad;",
+        '    if (top < pad) top = pad;',
+        '    if (left < pad) left = pad;',
+        '    popup.style.top = Math.round(top) + "px";',
+        '    popup.style.left = Math.round(left) + "px";',
+        '    openFrom = anchor;',
+        '  }',
+        '  document.addEventListener("click", function(e){',
+        '    const a = e.target.closest("a.cm");',
+        '    if (a){',
+        '      e.preventDefault();',
+        '      const txt = a.getAttribute("data-cmt") || "";',
+        '      if (popup.style.display==="block" && openFrom===a) { closePopup(); }',
+        '      else { openPopup(a, txt); }',
+        '      e.stopPropagation();',
+        '      return;',
+        '    }',
+        '    if (popup.style.display==="block" && !e.target.closest("#comment-popup")) closePopup();',
+        '  }, true);',
+        '  closeBtn.addEventListener("click", function(e){ e.preventDefault(); closePopup(); });',
+        '  ["scroll","keydown","resize"].forEach(evt => window.addEventListener(evt, closePopup, {passive:true}));',
+        '  document.addEventListener("visibilitychange", function(){ if (document.hidden) closePopup(); });',
+        '  document.addEventListener("input", closePopup, true);',
+        '})();',
+        '</script>',
+        '</body></html>'
+    ]
+
+    # ---- Write combined TXT & HTML ----
+    with open(out_txt_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(text_lines))
+
+    with open(out_html_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(html_lines))
+
+    print(f"✅ {out_html_path} and {out_txt_path} generated (order: {', '.join((r.name_nep or r.name) for r in roots)})")
+    return out_html_path, out_txt_path
 
 def update_index_html_in_place(index_path="index.html"):
     # Flatten tree with all required fields in one line
@@ -302,11 +438,25 @@ def update_index_html_in_place(index_path="index.html"):
 #
 # build_parent_map(root_person)
 
-for language in ("en", "np"):
-    print_tree(gopal_32, print_language=language)
-    export_tree(gopal_32, print_language=language)  # Make sure you have a Person instance assigned to `root_person`
+# for language in ("en", "np"):
+#     print_tree(gopal_32, print_language=language)
+#     export_tree(gopal_32, print_language=language)  # Make sure you have a Person instance assigned to `root_person`
 
-update_index_html_in_place("index.html")
+# update_index_html_in_place("index.html")
+
+if __name__ == "__main__":
+    # Example combined outputs: Gopal first, then Bishwamvar
+    for language in ("en", "np"):
+        export_roots_trees(
+            roots=[gopal_32, bishwamvar_34],   # order matters
+            print_language=language,
+            out_html_path=f"sisneri_poudel_tree_{language}.html",
+            out_txt_path=f"sisneri_poudel_tree_{language}.txt"
+        )
+
+    # Keep your index.html updater as-is
+    update_index_html_in_place("index.html")
+
 
 # Simple Tree
 # def print_tree(person, level=0):
