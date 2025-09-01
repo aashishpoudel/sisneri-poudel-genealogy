@@ -40,8 +40,11 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     colors = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown']
     my_color = colors[level % len(colors)]
 
-    # Connector characters
-    connector = "└── " if is_last else "├── "
+    # Connector characters (skip for root level)
+    if level == 0:
+        connector = ""  # no connector for root
+    else:
+        connector = "└── " if is_last else "├── "
 
     # --- TEXT OUTPUT ---
     text_line = prefix + connector + person.name
@@ -80,7 +83,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     grandfather_name = grandfather.name if grandfather else ""
 
     # Font-size: Nepali slightly bigger
-    font_size = 19 if print_language == "en" else 22
+    font_size = 24 if print_language == "en" else 28
 
     # Base label HTML
     name_html = (
@@ -163,7 +166,7 @@ def export_tree(root_person, print_language="en"):
         '<html><head><meta charset="UTF-8">',
         '<style>',
         # Your existing base styles:
-        'div { font-family: monospace; font-size: 16px; white-space: pre; }',
+        'div { font-family: monospace; font-size: 29px; white-space: pre; }',
         'img.icon { height: 1.2em; width: auto; vertical-align: -0.15em; margin-right: 0.35em; }',
 
         # NEW: asterisk and popup styles
@@ -276,7 +279,7 @@ def export_roots_trees(roots, print_language="en",
     html_lines = [
         '<html><head><meta charset="UTF-8">',
         '<style>',
-        'div { font-family: monospace; font-size: 16px; white-space: pre; }',
+        'div { font-family: monospace; font-size: 20px; white-space: pre; }',
         'img.icon { height: 1.2em; width: auto; vertical-align: -0.15em; margin-right: 0.35em; }',
         'a.cm { text-decoration: none; font-weight: bold; margin-left: 0.25rem; cursor: pointer; }',
         'a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }',
@@ -294,10 +297,10 @@ def export_roots_trees(roots, print_language="en",
     # ---- For each root, render a section then append the full tree ----
     for idx, root in enumerate(roots):
         # Section heading (per language)
-        root_title = (root.name_nep or root.name) if lang == "np" else (root.name or root.name_nep or "")
-        heading_html = f"<h2 style='margin:10px 0 6px'>{escape(root_title)}</h2>"
-        html_lines.append(heading_html)
-        text_lines.append(root_title)
+        # root_title = (root.name_nep or root.name) if lang == "np" else (root.name or root.name_nep or "")
+        # heading_html = f"<h2 style='margin:10px 0 6px'>{escape(root_title)}</h2>"
+        # html_lines.append(heading_html)
+        # text_lines.append(root_title)
 
         # Render this root exactly like export_tree does (re-using your print_tree)
         section_text = []

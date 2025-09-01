@@ -1,5 +1,4 @@
-गोपाल
-└── Gopal
+Gopal
     └── Ram Bhadra
         ├── Govinda
         │   ├── Gautam
@@ -2601,8 +2600,7 @@
 
 ========================================
 
-विश्वम्भर
-└── Bishwamvar
+Bishwamvar
     ├── Harisankar
     │   ├── Bansagopal
     │   │   ├── Laxminarayan
