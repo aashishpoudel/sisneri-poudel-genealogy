@@ -382,11 +382,25 @@ def export_roots_trees(roots, print_language="en",
     with open(out_html_path, "w", encoding="utf-8") as f:
         f.write("\n".join(html_lines))
 
-    print(f"✅ {out_html_path} and {out_txt_path} generated (order: {', '.join((r.name_nep or r.name) for r in roots)})")
+    print(f"✅ {out_html_path} and {out_txt_path} generated (order: {', '.join(r.name for r in roots) if print_language=='en' else ', '.join(r.name_nep for r in roots)})")
     return out_html_path, out_txt_path
 
-def update_index_html_in_place(index_path="index.html"):
-    # Flatten tree with all required fields in one line
+def update_index_html_in_place(roots, index_path="index.html"):
+    """
+    Inject per-root arrays and a merged array into index.html:
+      const genealogyData_<label> = [...];
+
+    Also writes a merged legacy:
+      const genealogyData = [...genealogyData_<label1>, ...genealogyData_<label2>, ...];
+
+    Formatting:
+      - One blank line between each const (including before the merged one)
+      - One tab ('\t') indent inside the <script> block
+      - Removes any prior genealogyData* const blocks before inserting
+    """
+    import json, re, unicodedata
+
+    # ---- helper: flatten one root tree like your existing code ----
     def flatten_person(person):
         people = [{
             "name": person.name,
@@ -411,24 +425,84 @@ def update_index_html_in_place(index_path="index.html"):
             people.extend(flatten_person(child))
         return people
 
-    genealogy_list = flatten_person(root_person)
-    genealogy_json = json.dumps(genealogy_list, ensure_ascii=False, separators=(",", ":"))  # compact, one-line JSON
+    # ---- helper: label for variable names (or accept explicit labels) ----
+    def slug_from_person(p):
+        base = p.name or p.name_nep or "root"
+        norm = unicodedata.normalize("NFKD", base).encode("ascii", "ignore").decode("ascii")
+        norm = norm.lower()
+        norm = re.sub(r"[^a-z0-9]+", "_", norm).strip("_")
+        return norm or "root"
 
-    # Read the original index.html
+    # normalize roots => list[(label, person)]
+    pairs = []
+    for item in roots:
+        if isinstance(item, tuple) and len(item) == 2:
+            label, person = item
+        else:
+            # derive label from the Python variable name in globals()
+            person = item
+            for varname, obj in globals().items():
+                if obj is person:
+                    label = varname
+                    break
+            else:
+                # fallback if not found in globals
+                label = slug_from_person(person)
+
+        # sanitize & de-dupe
+        label = re.sub(r"[^a-zA-Z0-9_]", "_", label)
+        if re.match(r"^[0-9]", label):
+            label = f"r_{label}"
+        original, n = label, 2
+        while any(lbl == label for lbl, _ in pairs):
+            label = f"{original}_{n}"
+            n += 1
+        pairs.append((label, person))
+
+    # build const strings (one per root) + merged
+    per_root_consts = []
+    merged_spreads = []
+    for label, person in pairs:
+        plist = flatten_person(person)
+        genealogy_json = json.dumps(plist, ensure_ascii=False, separators=(",", ":"))
+        per_root_consts.append(f"const genealogyData_{label} = {genealogy_json};")
+        merged_spreads.append(f"...genealogyData_{label}")
+
+    merged_const = f"const genealogyData = [{', '.join(merged_spreads)}];"
+
+    # read index.html
     with open(index_path, "r", encoding="utf-8") as f:
-        html_content = f.read()
+        html = f.read()
 
-    # Replace only the genealogyData line
-    pattern = r"(const\s+genealogyData\s*=\s*)\[[\s\S]*?\](\s*;)"
-    replacement = f"{pattern[0]}{genealogy_json}{pattern[1]}"
+    # 1) remove ANY existing genealogyData* arrays first (single or multiple)
+    #    pattern: const genealogyData or const genealogyData_<label> = [ ... ];
+    rm_pattern = r"""(?mx)
+        ^[ \t]*const[ \t]+genealogyData(?:_[A-Za-z0-9_]+)?[ \t]*=[ \t]*\[[\s\S]*?\][ \t]*;[ \t]*$
+    """
+    html = re.sub(rm_pattern, "", html)
 
-    new_html_content = re.sub(pattern, f"\\1{genealogy_json}\\2", html_content)
+    # 2) find the first <script ...> to inject after it; capture its leading indent
+    m = re.search(r"^([ \t]*)<script\b[^>]*>", html, flags=re.MULTILINE)
+    if m:
+        script_indent = m.group(1)
+        inner_indent = script_indent + "\t"  # one tab deeper than <script>
+        block = "\n\n".join(inner_indent + s for s in per_root_consts + [merged_const]) + "\n"
+        # insert right after the opening <script> tag
+        insert_pos = m.end()
+        html = html[:insert_pos] + "\n" + block + html[insert_pos:]
+    else:
+        # fallback: before </body> (indented with one tab)
+        inner_indent = "\t"
+        block = "\n\n".join(inner_indent + s for s in per_root_consts + [merged_const]) + "\n"
+        html = re.sub(r"</body>", block + "</body>", html, count=1, flags=re.IGNORECASE) or (html + "\n" + block)
 
-    # Overwrite the same file
+    # 3) compact extra blank lines introduced by deletions (optional tidy)
+    html = re.sub(r"\n{3,}", "\n\n", html)
+
     with open(index_path, "w", encoding="utf-8") as f:
-        f.write(new_html_content)
+        f.write(html)
 
-    print("✅ index.html successfully updated with genealogyData.")
+    print("✅ index.html updated with genealogyData blocks.")
 
 ###Todo take below thing out if no issue seen after Aug 15
 # # Build parent mapping: child -> parent
@@ -449,16 +523,17 @@ def update_index_html_in_place(index_path="index.html"):
 
 if __name__ == "__main__":
     # Example combined outputs: Gopal first, then Bishwamvar
+    roots = [gopal_32, bishwamvar_34]
     for language in ("en", "np"):
         export_roots_trees(
-            roots=[gopal_32, bishwamvar_34],   # order matters
+            roots,   # order matters
             print_language=language,
             out_html_path=f"sisneri_poudel_tree_{language}.html",
             out_txt_path=f"sisneri_poudel_tree_{language}.txt"
         )
 
-    # Keep your index.html updater as-is
-    update_index_html_in_place("index.html")
+    update_index_html_in_place(roots, index_path="index.html")
+
 
 
 # Simple Tree
