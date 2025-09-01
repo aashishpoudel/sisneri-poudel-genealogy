@@ -522,7 +522,7 @@ def update_index_html_in_place(roots, index_path="index.html"):
 # update_index_html_in_place("index.html")
 
 if __name__ == "__main__":
-    # Example combined outputs: Gopal first, then Bishwamvar
+    # roots is all the root Person of the unconnected family tree
     roots = [gopal_32, bishwamvar_34]
     for language in ("en", "np"):
         export_roots_trees(

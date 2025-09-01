@@ -5928,3 +5928,14 @@ damodar_42_7.add_children([suresh_43_2])
 batukrishna_43.add_children([sreedhar_44, subash_44_2])
 
 # page 116
+#### BELOW ARE FAKE DATA FOR 3rd ROOT PERSON trail ####
+#### AND IT WORKED!!! ####
+# manohar_37 = Person("Manohar", gender="Male", name_nep="मनॊहर")
+# jameshari_38 = Person("Jameshari", gender="Male", name_nep="जेम्सहरि")
+# bishnuhari_38  = Person("Bishnuhari",  gender="Male", name_nep="विष्णुहरि")
+# bishnudutta_38 = Person("Bishnudutta", gender="Male", name_nep="विष्णुदत्त")
+# shivahari_38   = Person("Shivahari",   gender="Male", name_nep="शिवहरि")
+# khemhari_38 = Person("Khemhari", gender="Male", name_nep="खेमहरि")
+# manohar_37.add_children([jameshari_38, bishnuhari_38, bishnudutta_38, shivahari_38])
+# jameshari_38.add_children([khemhari_38])
+
