@@ -284,6 +284,18 @@
       user-select: none;
       pointer-events: none;
     }
+    /* one-time label at the start of the banner */
+    #generationBanner .banner-label {
+      position: absolute;
+      top: 0;
+      transform: translateX(-100%); /* sit just to the left of Gen 32 */
+      font-weight: 800;
+      color: #2c3e50;
+      line-height: var(--gen-banner-h);
+      user-select: none;
+      pointer-events: none;
+      opacity: 0.9;
+    }
 
     /* color classes (same palette as genealogy.py) */
     .tick.c32 { color: red; }
@@ -821,30 +833,47 @@
       const iframeRect = frame.getBoundingClientRect();
       const rootX = Math.round(rSpan.getBoundingClientRect().left - iframeRect.left);
 
-      // Find next generation columns by the actual vertical lines '│'
-      const nextCols = getVerticalColumns(doc, iframeRect, rootX, END_GEN - START_GEN);
-      if (!nextCols.length) return;
+      // Measure vertical-line columns in the iframe
+      const cols = getVerticalColumns(doc, iframeRect, rootX, END_GEN - START_GEN);
+      if (!cols.length) return;
 
-      // Build ticks: gen 32 at root name start; gen 33.. at detected columns
+      // Uniform step so 33 is one indent to the right of 32
+      let step;
+      if (cols.length >= 2) {
+        const deltas = [];
+        for (let i = 1; i < cols.length; i++) deltas.push(cols[i] - cols[i - 1]);
+        const avg = deltas.reduce((a,b)=>a+b,0) / deltas.length;
+        const firstGap = cols[0] - rootX;
+        step = (avg + firstGap) / 2;
+      } else {
+        step = cols[0] - rootX;
+      }
+      if (!isFinite(step) || step < 4) return;
+
+      // Build: clear, add single label, then numeric ticks
       ruler.innerHTML = '';
 
-      // 32 at root name x
-      const t32 = document.createElement('div');
-      t32.className = 'tick ' + (COLORS[32] || '');
-      t32.textContent = isNepaliActive() ? toNepaliDigits('32') : '32';
-      t32.style.left = rootX + 'px';
-      ruler.appendChild(t32);
+      // Single label at start: "Gen" (EN) or "पुस्ता" (NP)
+      const labelEl = document.createElement('div');
+      labelEl.className = 'banner-label';
+      labelEl.textContent = isNepaliActive() ? 'पुस्ता' : 'Gen';
+      labelEl.style.left = rootX + 'px';          // anchor at Gen-32 column
+      ruler.appendChild(labelEl);
 
-      // 33.. up to END_GEN
-      for (let g = 33, i = 0; g <= END_GEN && i < nextCols.length; g++, i++) {
+      // Numeric ticks 32..END_GEN (no "Gen"/"पुस्ता" on each)
+      for (let g = START_GEN; g <= END_GEN; g++) {
         const tick = document.createElement('div');
         tick.className = 'tick ' + (COLORS[g] || '');
         const label = String(g);
         tick.textContent = isNepaliActive() ? toNepaliDigits(label) : label;
-        tick.style.left = nextCols[i] + 'px';
+
+        const x = rootX + (g - START_GEN) * step; // 33 = rootX + 1*step
+        tick.style.left = x + 'px';
         ruler.appendChild(tick);
       }
     }
+
+
 
     // re-render on:
     document.addEventListener('click', (e) => {        // tab switched
