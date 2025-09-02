@@ -3,6 +3,9 @@ from genealogy_poudel_data import *
 import json
 from genealogy_poudel_data import root_person  # or use gopal_31 if that is the root
 
+#Color palette
+GENERATION_COLORS = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown', '#C71585', 'navy', 'darkmagenta']
+
 # Save to file
 genealogy_json_file = "genealogy_tree.json"
 with open(genealogy_json_file, "w") as f:
@@ -36,13 +39,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     if vertical_color_map is None:
         vertical_color_map = {}
 
-    # Color palette
-    # colors = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown']
-    colors = [
-        'red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown',
-        '#C71585', 'navy', 'darkmagenta']
-
-    my_color = colors[level % len(colors)]
+    my_color = GENERATION_COLORS[level % len(GENERATION_COLORS)]
 
     # Connector characters (skip for root level)
     if level == 0:
