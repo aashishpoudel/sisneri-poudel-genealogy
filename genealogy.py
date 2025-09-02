@@ -388,20 +388,15 @@ def export_roots_trees(roots, print_language="en",
 
 def update_index_html_in_place(roots, index_path="index.html"):
     """
-    Inject per-root arrays and a merged array into index.html:
-      const genealogyData_<label> = [...];
-
-    Also writes a merged legacy:
-      const genealogyData = [...genealogyData_<label1>, ...genealogyData_<label2>, ...];
-
-    Formatting:
-      - One blank line between each const (including before the merged one)
-      - One tab ('\t') indent inside the <script> block
-      - Removes any prior genealogyData* const blocks before inserting
+    - Inserts per-root arrays and merged genealogyData into index.html.
+    - Regenerates .tick.cNN CSS color classes up to END_GEN using GENERATION_COLORS (cycles if needed).
+    - Updates JS:
+        const START_GEN = 32, END_GEN = NN;
+        const COLORS = { 32:'c32', 33:'c33', ..., NN:'cNN' };
     """
     import json, re, unicodedata
 
-    # ---- helper: flatten one root tree like your existing code ----
+    # ---------- helpers ----------
     def flatten_person(person):
         people = [{
             "name": person.name,
@@ -426,7 +421,6 @@ def update_index_html_in_place(roots, index_path="index.html"):
             people.extend(flatten_person(child))
         return people
 
-    # ---- helper: label for variable names (or accept explicit labels) ----
     def slug_from_person(p):
         base = p.name or p.name_nep or "root"
         norm = unicodedata.normalize("NFKD", base).encode("ascii", "ignore").decode("ascii")
@@ -434,33 +428,29 @@ def update_index_html_in_place(roots, index_path="index.html"):
         norm = re.sub(r"[^a-z0-9]+", "_", norm).strip("_")
         return norm or "root"
 
-    # normalize roots => list[(label, person)]
+    # ---------- normalize roots => list[(label, person)] ----------
     pairs = []
     for item in roots:
         if isinstance(item, tuple) and len(item) == 2:
             label, person = item
         else:
-            # derive label from the Python variable name in globals()
             person = item
             for varname, obj in globals().items():
                 if obj is person:
                     label = varname
                     break
             else:
-                # fallback if not found in globals
                 label = slug_from_person(person)
-
-        # sanitize & de-dupe
-        label = re.sub(r"[^a-zA-Z0-9_]", "_", label)
+        label = re.sub(r"[^A-Za-z0-9_]", "_", label)
         if re.match(r"^[0-9]", label):
             label = f"r_{label}"
-        original, n = label, 2
+        base, n = label, 2
         while any(lbl == label for lbl, _ in pairs):
-            label = f"{original}_{n}"
+            label = f"{base}_{n}"
             n += 1
         pairs.append((label, person))
 
-    # build const strings (one per root) + merged
+    # ---------- build const strings (per root) + merged ----------
     per_root_consts = []
     merged_spreads = []
     for label, person in pairs:
@@ -468,42 +458,131 @@ def update_index_html_in_place(roots, index_path="index.html"):
         genealogy_json = json.dumps(plist, ensure_ascii=False, separators=(",", ":"))
         per_root_consts.append(f"const genealogyData_{label} = {genealogy_json};")
         merged_spreads.append(f"...genealogyData_{label}")
-
     merged_const = f"const genealogyData = [{', '.join(merged_spreads)}];"
 
-    # read index.html
+    # ---------- read index.html ----------
     with open(index_path, "r", encoding="utf-8") as f:
         html = f.read()
 
-    # 1) remove ANY existing genealogyData* arrays first (single or multiple)
-    #    pattern: const genealogyData or const genealogyData_<label> = [ ... ];
+    # ---------- remove prior genealogyData* const blocks ----------
     rm_pattern = r"""(?mx)
         ^[ \t]*const[ \t]+genealogyData(?:_[A-Za-z0-9_]+)?[ \t]*=[ \t]*\[[\s\S]*?\][ \t]*;[ \t]*$
     """
     html = re.sub(rm_pattern, "", html)
 
-    # 2) find the first <script ...> to inject after it; capture its leading indent
+    # ---------- insert new consts after first <script> ----------
     m = re.search(r"^([ \t]*)<script\b[^>]*>", html, flags=re.MULTILINE)
     if m:
         script_indent = m.group(1)
-        inner_indent = script_indent + "\t"  # one tab deeper than <script>
+        inner_indent = script_indent + "\t"
         block = "\n\n".join(inner_indent + s for s in per_root_consts + [merged_const]) + "\n"
-        # insert right after the opening <script> tag
         insert_pos = m.end()
         html = html[:insert_pos] + "\n" + block + html[insert_pos:]
     else:
-        # fallback: before </body> (indented with one tab)
         inner_indent = "\t"
         block = "\n\n".join(inner_indent + s for s in per_root_consts + [merged_const]) + "\n"
         html = re.sub(r"</body>", block + "</body>", html, count=1, flags=re.IGNORECASE) or (html + "\n" + block)
 
-    # 3) compact extra blank lines introduced by deletions (optional tidy)
-    html = re.sub(r"\n{3,}", "\n\n", html)
+    # ---------- compute END_GEN from deepest depth across roots ----------
+    START_GEN = 32
+    def max_depth(p):
+        if not getattr(p, "children", None):
+            return 0
+        return 1 + max(max_depth(c) for c in p.children)
+    deepest = 0
+    for _, person in pairs:
+        d = max_depth(person)
+        if d > deepest:
+            deepest = d
+    END_GEN = START_GEN + deepest  # inclusive
 
+    # ---------- build .tick.cNN CSS from GENERATION_COLORS (cycle as needed) ----------
+    try:
+        palette = list(GENERATION_COLORS)
+    except NameError:
+        palette = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown',
+                   '#C71585', 'navy', 'darkmagenta']
+
+    css_lines_new = [
+        f".tick.c{g} {{ color: {palette[(g - START_GEN) % len(palette)]}; }}"
+        for g in range(START_GEN, END_GEN + 1)
+    ]
+
+    # Replace contiguous .tick.cNN block beginning at .tick.c32 in first <style>
+    def replace_tick_block(html_text: str) -> str:
+        style_match = re.search(r"(<style[^>]*>)([\s\S]*?)(</style>)", html_text, flags=re.IGNORECASE)
+        if style_match:
+            before, body, after = style_match.group(1), style_match.group(2), style_match.group(3)
+            lines = body.splitlines(keepends=False)
+            start_idx = -1
+            for i, line in enumerate(lines):
+                if re.match(r'^\s*\.tick\.c32\s*\{\s*color\s*:\s*[^}]+\}\s*;?\s*$', line):
+                    start_idx = i
+                    break
+            if start_idx == -1:
+                new_body = (body.rstrip() + ("\n" if not body.endswith("\n") else "")
+                            + "    " + "\n    ".join(css_lines_new) + "\n")
+                return html_text[:style_match.start()] + before + new_body + after + html_text[style_match.end():]
+            j = start_idx
+            while j < len(lines) and re.match(r'^\s*\.tick\.c\d+\s*\{\s*color\s*:\s*[^}]+\}\s*;?\s*$', lines[j]):
+                j += 1
+            indent_match = re.match(r'^(\s*)', lines[start_idx])
+            indent = indent_match.group(1) if indent_match else ""
+            new_block = indent + ("\n" + indent).join(css_lines_new)
+            new_lines = lines[:start_idx] + [new_block] + lines[j:]
+            new_body = "\n".join(new_lines)
+            if not new_body.endswith("\n"):
+                new_body += "\n"
+            return html_text[:style_match.start()] + before + new_body + after + html_text[style_match.end():]
+        inject_block = "<style>\n    " + "\n    ".join(css_lines_new) + "\n</style>\n"
+        return re.sub(r"</head>", inject_block + "</head>", html_text, count=1, flags=re.IGNORECASE) or (html_text + "\n" + inject_block)
+
+    html = replace_tick_block(html)
+
+    # ---------- UPDATE JS: START_GEN/END_GEN line ----------
+    start_end_line = f"const START_GEN = {START_GEN}, END_GEN = {END_GEN};"
+    html = re.sub(
+        r"const\s+START_GEN\s*=\s*\d+\s*,\s*END_GEN\s*=\s*\d+\s*;",
+        start_end_line,
+        html
+    )
+
+    # ---------- UPDATE JS: COLORS mapping ----------
+    colors_obj = "{ " + ", ".join(f"{g}:'c{g}'" for g in range(START_GEN, END_GEN + 1)) + " }"
+    # replace existing COLORS object if present
+    replaced = re.sub(
+        r"(const\s+(?:COLORS|colors)\s*=\s*)\{[\s\S]*?\};?",
+        r"\1" + colors_obj + ";",
+        html,
+        count=1,
+        flags=re.IGNORECASE
+    )
+    if replaced != html:
+        html = replaced
+    else:
+        # If not present, inject right after the first <script> tag
+        first_script = re.search(r"<script\b[^>]*>", html, flags=re.IGNORECASE)
+        if first_script:
+            insert_at = first_script.end()
+            inject = "\n\tconst START_GEN = " + str(START_GEN) + ", END_GEN = " + str(END_GEN) + ";\n" \
+                     "\tconst COLORS = " + colors_obj + ";\n"
+            html = html[:insert_at] + inject + html[insert_at:]
+        else:
+            # last resort: append at end of body
+            html = re.sub(
+                r"</body>",
+                "\n<script>\n\t" + start_end_line + "\n\tconst COLORS = " + colors_obj + ";\n</script>\n</body>",
+                html,
+                count=1,
+                flags=re.IGNORECASE
+            )
+
+    # ---------- tidy and write ----------
+    html = re.sub(r"\n{3,}", "\n\n", html)
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(html)
 
-    print("✅ index.html updated with genealogyData blocks.")
+    print(f"✅ index.html updated: data blocks inserted; .tick.c32..c{END_GEN} regenerated; START/END and COLORS synced.")
 
 ###Todo take below thing out if no issue seen after Aug 15
 # # Build parent mapping: child -> parent
