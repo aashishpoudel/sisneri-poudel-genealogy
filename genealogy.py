@@ -37,7 +37,11 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
         vertical_color_map = {}
 
     # Color palette
-    colors = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown']
+    # colors = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown']
+    colors = [
+        'red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown',
+        '#C71585', 'navy', 'darkmagenta']
+
     my_color = colors[level % len(colors)]
 
     # Connector characters (skip for root level)
