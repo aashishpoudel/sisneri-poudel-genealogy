@@ -33,7 +33,7 @@
       top: 0;
       background-color: white;
       padding: 1em;
-      z-index: 999;
+      z-index: 2500;
       border-bottom: 1px solid #ccc;
     }
     #searchInput {
@@ -98,7 +98,7 @@
       left: 0;
       right: 0;
       margin-top: 0.25rem;
-      z-index: 1000;
+      z-index: 2600;
       background: #fff;
       border: 1px solid #eee;
       border-radius: 6px;
@@ -253,6 +253,55 @@
       .hamburger { top: 8px; left: 8px; }
     }
 
+    /* === Generation Banner (fixed under tabs) === */
+    :root { --gen-banner-h: 50px; }
+
+    #generationBanner {
+      position: sticky;
+      top: 0;                 /* sits right under the tabs row */
+      z-index: 1500;
+      height: var(--gen-banner-h);
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      display: block;
+      overflow: hidden;
+    }
+
+    #generationBanner .ruler {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      font-family: monospace;  /* match the tree’s monospace alignment */
+      font-size: 1.6em;        /* bigger numbers */
+      line-height: var(--gen-banner-h);
+    }
+
+    #generationBanner .tick {
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%); /* center number on its column */
+      font-weight: 800;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* color classes (same palette as genealogy.py) */
+    .tick.c32 { color: red; }
+    .tick.c33 { color: green; }
+    .tick.c34 { color: blue; }
+    .tick.c35 { color: orange; }
+    .tick.c36 { color: purple; }
+    .tick.c37 { color: teal; }
+    .tick.c38 { color: brown; }
+
+    /* push sticky search below the banner */
+    #searchContainer { top: var(--gen-banner-h); }
+
+    @media (max-width: 600px) {
+      :root { --gen-banner-h: 44px; }
+      #generationBanner .ruler { font-size: 1.4em; }
+    }
+
   </style>
 </head>
 <body>
@@ -300,6 +349,10 @@
       <ul id="suggestions"></ul>
     </div>
     <div id="searchTagContainer"></div>
+  </div>
+
+  <div id="generationBanner">
+    <div class="ruler" id="genRuler"></div>
   </div>
 
   <div id="content">
@@ -709,6 +762,102 @@
         a.addEventListener('click', closeDrawer);
       });
     })();
+
+    (function() {
+    const START_GEN = 32, END_GEN = 38;                 // adjust if needed
+    const COLORS = {32:'c32',33:'c33',34:'c34',35:'c35',36:'c36',37:'c37',38:'c38'};
+
+    const ruler = document.getElementById('genRuler');
+    const frameNP = document.getElementById('frame_np');
+    const frameEN = document.getElementById('frame_en');
+
+    // root span: first span with data-name (your exporter sets data-name=English name)
+    function getRootSpan(doc) {
+      return doc.querySelector('span[data-name]');      // topmost person
+    }
+
+    // Return unique x positions (in px, relative to iframe left) of vertical lines '│'
+    function getVerticalColumns(doc, iframeRect, rootX, maxCols) {
+      const spans = Array.from(doc.querySelectorAll('span'));
+      const xs = [];
+
+      for (const s of spans) {
+        if (s.textContent === '│') {
+          const x = Math.round(s.getBoundingClientRect().left - iframeRect.left);
+          if (x > rootX + 4) xs.push(x);                // keep only columns to the right of root
+        }
+      }
+      if (!xs.length) return [];
+
+      // Sort & cluster to make positions robust (treat offsets within ~2px as the same column)
+      xs.sort((a,b) => a-b);
+      const uniq = [];
+      for (const x of xs) {
+        if (uniq.length === 0 || Math.abs(x - uniq[uniq.length-1]) > 2) uniq.push(x);
+      }
+      return uniq.slice(0, maxCols);
+    }
+
+    function isNepaliActive() {
+      const t = document.querySelector('.tab.active');
+      return t && /नेपाली/.test(t.textContent);
+    }
+    function activeFrame() {
+      return isNepaliActive() ? frameNP : frameEN;
+    }
+    function toNepaliDigits(s) {
+      const map={'0':'०','1':'१','2':'२','3':'३','4':'४','5':'५','6':'६','7':'७','8':'८','9':'९'};
+      return s.replace(/\d/g, d => map[d]);
+    }
+
+    function renderBanner() {
+      const frame = activeFrame();
+      const doc = frame && frame.contentDocument;
+      if (!doc) return;
+
+      const rSpan = getRootSpan(doc);
+      if (!rSpan) return;
+
+      const iframeRect = frame.getBoundingClientRect();
+      const rootX = Math.round(rSpan.getBoundingClientRect().left - iframeRect.left);
+
+      // Find next generation columns by the actual vertical lines '│'
+      const nextCols = getVerticalColumns(doc, iframeRect, rootX, END_GEN - START_GEN);
+      if (!nextCols.length) return;
+
+      // Build ticks: gen 32 at root name start; gen 33.. at detected columns
+      ruler.innerHTML = '';
+
+      // 32 at root name x
+      const t32 = document.createElement('div');
+      t32.className = 'tick ' + (COLORS[32] || '');
+      t32.textContent = isNepaliActive() ? toNepaliDigits('32') : '32';
+      t32.style.left = rootX + 'px';
+      ruler.appendChild(t32);
+
+      // 33.. up to END_GEN
+      for (let g = 33, i = 0; g <= END_GEN && i < nextCols.length; g++, i++) {
+        const tick = document.createElement('div');
+        tick.className = 'tick ' + (COLORS[g] || '');
+        const label = String(g);
+        tick.textContent = isNepaliActive() ? toNepaliDigits(label) : label;
+        tick.style.left = nextCols[i] + 'px';
+        ruler.appendChild(tick);
+      }
+    }
+
+    // re-render on:
+    document.addEventListener('click', (e) => {        // tab switched
+      if (e.target.closest('.tab')) setTimeout(renderBanner, 0);
+    });
+    window.addEventListener('resize', renderBanner, {passive:true});
+    frameNP.addEventListener('load', () => setTimeout(renderBanner, 0));
+    frameEN.addEventListener('load', () => setTimeout(renderBanner, 0));
+
+    // initial
+    renderBanner();
+  })();
+
   </script>
 </body>
 </html>
