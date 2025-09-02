@@ -856,8 +856,8 @@
       // Single label at start: "Gen" (EN) or "पुस्ता" (NP)
       const labelEl = document.createElement('div');
       labelEl.className = 'banner-label';
-      labelEl.textContent = isNepaliActive() ? 'पुस्ता' : 'Gen';
-      labelEl.style.left = rootX + 'px';          // anchor at Gen-32 column
+      labelEl.textContent = isNepaliActive() ? 'पुस्ता' : 'Gen'; // todo change here
+      labelEl.style.left = rootX + 35 + 'px';          // anchor at Gen-32 column
       ruler.appendChild(labelEl);
 
       // Numeric ticks 32..END_GEN (no "Gen"/"पुस्ता" on each)
@@ -867,7 +867,7 @@
         const label = String(g);
         tick.textContent = isNepaliActive() ? toNepaliDigits(label) : label;
 
-        const x = rootX + (g - START_GEN) * step; // 33 = rootX + 1*step
+        const x = rootX + step + 4 + (g - START_GEN) * step; // 33 = rootX + 1*step
         tick.style.left = x + 'px';
         ruler.appendChild(tick);
       }
