@@ -3673,7 +3673,7 @@ tikaprasad_41_2 = Person("Tikaprasad", gender="Male", name_nep="टिकाप�
 
 krishnaprasad_42 = Person("Krishnaprasad", gender="Male", name_nep="कृष्णप्रसाद")
 balram_42 = Person("Balram", gender="Male", name_nep="बलराम")
-baikuntha_42_2 = Person("Baikuntha", gender="Male", name_nep="बैкунठ")
+baikuntha_42_2 = Person("Baikuntha", gender="Male", name_nep="बैकुण्ठ")
 sitaram_42_2 = Person("Sitaram", gender="Male", name_nep="सीताराम")
 damodar_42_7 = Person("Damodar", gender="Male", name_nep="दामोदर")
 
