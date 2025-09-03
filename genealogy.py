@@ -3,6 +3,8 @@ from genealogy_poudel_data import *
 import json
 from genealogy_poudel_data import root_person  # or use gopal_31 if that is the root
 
+GENERATION_COLORS = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown', '#C71585', 'navy', 'darkmagenta']
+
 # Save to file
 genealogy_json_file = "genealogy_tree.json"
 with open(genealogy_json_file, "w") as f:
@@ -36,9 +38,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     if vertical_color_map is None:
         vertical_color_map = {}
 
-    # Color palette
-    colors = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown']
-    my_color = colors[level % len(colors)]
+    my_color = GENERATION_COLORS[level % len(GENERATION_COLORS)]
 
     # Connector characters (skip for root level)
     if level == 0:
@@ -258,27 +258,42 @@ def _strip_tags(html: str) -> str:
 def export_roots_trees(roots, print_language="en",
                        out_html_path=None, out_txt_path=None):
     """
-    Export multiple root trees into ONE HTML and ONE TXT file, in order.
-
-    Example:
-        export_roots_trees([gopal_31, bishwamvar_34], print_language="np")
-
-    This will create:
-        - sisneri_poudel_tree_np.html
-        - sisneri_poudel_tree_np.txt
-
-    where Bishwamvar's full tree follows Gopal's full tree.
+    Export multiple root trees into ONE HTML and ONE TXT file, with a fixed
+    generation banner aligned to the vertical lines.
     """
+    START_GEN = 32
+
+    # ---- compute END_GEN across all roots ----
+    def max_depth(p):
+        if not getattr(p, "children", None):
+            return 0
+        return 1 + max(max_depth(c) for c in p.children)
+
+    deepest = 0
+    for rt in roots:
+        d = max_depth(rt)
+        if d > deepest:
+            deepest = d
+    END_GEN = START_GEN + deepest  # inclusive
+
+    # ---- colors block (cycle palette) ----
+    palette = list(GENERATION_COLORS)
+    color_rules = [f".tick.c{g} {{ color: {palette[(g - START_GEN) % len(palette)]}; }}"
+                   for g in range(START_GEN, END_GEN + 1)]
+
     lang = print_language
     if out_html_path is None:
         out_html_path = f"sisneri_poudel_tree_{lang}.html"
     if out_txt_path is None:
         out_txt_path = f"sisneri_poudel_tree_{lang}.txt"
 
-    # ---- HTML prolog (mirrors your export_tree header & styles) ----
+    # ---- HTML prolog (with banner CSS) ----
     html_lines = [
         '<html><head><meta charset="UTF-8">',
+        '<meta name="viewport" content="width=device-width, initial-scale=1">',  # NEW: Add this for mobile scaling
         '<style>',
+        ':root{ --gen-banner-h: 48px; }',
+        'body{ margin:0; padding-top: var(--gen-banner-h); }',
         'div { font-family: monospace; font-size: 20px; white-space: pre; }',
         'img.icon { height: 1.2em; width: auto; vertical-align: -0.15em; margin-right: 0.35em; }',
         'a.cm { text-decoration: none; font-weight: bold; margin-left: 0.25rem; cursor: pointer; }',
@@ -288,25 +303,22 @@ def export_roots_trees(roots, print_language="en",
             'border-radius: 8px; font-size: 14px; line-height: 1.35; white-space: pre-wrap;}',
         '#comment-popup .cp-body { display: inline;}',
         '#comment-popup .cp-close { display: inline-block; margin-left: 10px; background: transparent; border: none; font-size: 16px; cursor: pointer; line-height: 1; }',
+        # banner
+        '#generationBanner{ position:fixed; top:0; left:0; right:0; height:var(--gen-banner-h); background:#fff; border-bottom:1px solid #e5e5e5; z-index:2000; }',
+        '#genRuler{ position:relative; height:100%; font-family:monospace; font-size:1.5em; line-height:var(--gen-banner-h); }',
+        '.tick{ position:absolute; top:0; transform:translateX(-50%); font-weight:800; user-select:none; pointer-events:none; }',
+        *color_rules,
         '</style>',
-        '</head><body>'
+        '</head><body>',
+        '<div id="generationBanner"><div id="genRuler"></div></div>'
     ]
 
     text_lines = []
 
-    # ---- For each root, render a section then append the full tree ----
+    # ---- Render each root ----
     for idx, root in enumerate(roots):
-        # Section heading (per language)
-        # root_title = (root.name_nep or root.name) if lang == "np" else (root.name or root.name_nep or "")
-        # heading_html = f"<h2 style='margin:10px 0 6px'>{escape(root_title)}</h2>"
-        # html_lines.append(heading_html)
-        # text_lines.append(root_title)
-
-        # Render this root exactly like export_tree does (re-using your print_tree)
         section_text = []
         section_html = []
-
-        # Build colored/connected HTML prefix segments using your existing print_tree
         print_tree(
             root,
             print_language=lang,
@@ -314,76 +326,94 @@ def export_roots_trees(roots, print_language="en",
             html_lines=section_html,
             level=0
         )
-
-        # Append tree to combined outputs
         html_lines.extend(section_html)
         text_lines.extend(section_text)
 
-        # Divider between sections (except after the last)
         if idx < len(roots) - 1:
             html_lines.append('<hr style="margin:16px 0">')
             text_lines.append("\n" + ("=" * 40) + "\n")
 
-    # ---- Shared popup scripts (same as export_tree) ----
+    # ---- shared popup & banner JS ----
     html_lines += [
-        '<div id="comment-popup" role="dialog" aria-modal="true" aria-label="Note">',
-        '  <div class="cp-body"></div>',
-        '  <button class="cp-close" aria-label="Close">×</button>',
-        '</div>',
         '<script>',
-        '(function(){',
-        '  const popup = document.getElementById("comment-popup");',
-        '  const body = popup.querySelector(".cp-body");',
-        '  const closeBtn = popup.querySelector(".cp-close");',
-        '  let openFrom = null;',
-        '  function closePopup(){ popup.style.display="none"; openFrom=null; }',
-        '  function openPopup(anchor, text){',
-        '    body.textContent = text || "";',
-        '    popup.style.display = "block";',
-        '    const r = anchor.getBoundingClientRect();',
-        '    const pad = 8;',
-        '    let top = r.bottom + pad, left = r.left;',
-        '    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);',
-        '    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);',
-        '    const pw = popup.offsetWidth, ph = popup.offsetHeight;',
-        '    if (left + pw + pad > vw) left = vw - pw - pad;',
-        "    if (top + ph + pad > vh) top = r.top - ph - pad;",
-        '    if (top < pad) top = pad;',
-        '    if (left < pad) left = pad;',
-        '    popup.style.top = Math.round(top) + "px";',
-        '    popup.style.left = Math.round(left) + "px";',
-        '    openFrom = anchor;',
-        '  }',
-        '  document.addEventListener("click", function(e){',
-        '    const a = e.target.closest("a.cm");',
-        '    if (a){',
-        '      e.preventDefault();',
-        '      const txt = a.getAttribute("data-cmt") || "";',
-        '      if (popup.style.display==="block" && openFrom===a) { closePopup(); }',
-        '      else { openPopup(a, txt); }',
-        '      e.stopPropagation();',
-        '      return;',
+        f'(function(){{',
+        f'  const START_GEN = {START_GEN}, END_GEN = {END_GEN};',
+        f'  const IS_NEPALI = {"true" if print_language == "np" else "false"};',
+        '  const ruler = document.getElementById("genRuler");',
+        '  function toNep(str){ const m={"0":"०","1":"१","2":"२","3":"३","4":"४","5":"५","6":"६","7":"७","8":"८","9":"९"}; return str.replace(/\\d/g,d=>m[d]); }',
+        '  function getRootSpan(){ return document.querySelector(\'span[data-name]\'); }',
+        '  function getVerticalColumns(rootX){',
+        '    const spans = Array.from(document.querySelectorAll("span"));',
+        '    const xs = [];',
+        '    for (const s of spans){',
+        '      if (s.textContent==="│"){',
+        '        const rect = s.getBoundingClientRect();',
+        '        xs.push(Math.round(rect.left));',
+        '      }',
         '    }',
-        '    if (popup.style.display==="block" && !e.target.closest("#comment-popup")) closePopup();',
-        '  }, true);',
-        '  closeBtn.addEventListener("click", function(e){ e.preventDefault(); closePopup(); });',
-        '  ["scroll","keydown","resize"].forEach(evt => window.addEventListener(evt, closePopup, {passive:true}));',
-        '  document.addEventListener("visibilitychange", function(){ if (document.hidden) closePopup(); });',
-        '  document.addEventListener("input", closePopup, true);',
+        '    xs.sort((a,b)=>a-b);',
+        '    const uniq=[]; for (const x of xs){ if (x>rootX+4 && (uniq.length===0 || Math.abs(x-uniq[uniq.length-1])>2)) uniq.push(x); }',
+        '    return uniq;',
+        '  }',
+        '  function render(){',
+        '    const root = getRootSpan(); if (!root) return;',
+        '    const rb = root.getBoundingClientRect();',
+        '    const rootX = Math.round(rb.left);',
+        '    const cols = getVerticalColumns(rootX);',
+        '    ruler.innerHTML = "";',
+        '    // --- robust step calculation ---',
+        '    let step;',
+        '    if (cols.length >= 2) {',
+        '      const deltas = [];',
+        '      for (let i = 1; i < cols.length; i++) deltas.push(cols[i] - cols[i - 1]);',
+        '      const avg = deltas.reduce((a,b)=>a+b,0) / deltas.length;',
+        '      const firstGap = cols[0] - rootX;',
+        '      step = (avg + firstGap) / 2;',
+        '    } else if (cols.length === 1) {',
+        '      step = cols[0] - rootX;',
+        '    } else {',
+        '      step = 48;',
+        '    }',
+        '    if (!isFinite(step) || step < 8) step = 48;',
+        '    // ---- label at far left ----',
+        '    const label = document.createElement("div");',
+        '    label.className = "tick";',
+        '    label.style.left = "0px";',
+        '    label.textContent = IS_NEPALI ? "    पुस्ता" : "   Gen";',
+        '    ruler.appendChild(label);',
+        '    // ---- ticks: uniform spacing ----',
+        '    for (let g = START_GEN; g <= END_GEN; g++) {',
+        '      const t = document.createElement("div");',
+        '      t.className = "tick c" + g;',
+        '      const lbl = String(g);',
+        '      t.textContent = IS_NEPALI ? toNep(lbl) : lbl;',
+        '      const x = rootX + 8 + (g - START_GEN + 1) * step;',
+        '      t.style.left = x + "px";',
+        '      ruler.appendChild(t);',
+        '    }',
+        '  }',
+        '  // NEW: Debounced render for performance (optional but recommended)',
+        '  let renderTimeout;',
+        '  function debouncedRender() {',
+        '    clearTimeout(renderTimeout);',
+        '    renderTimeout = setTimeout(render, 50);',  # Debounce by 50ms
+        '  }',
+        '  window.addEventListener("load", debouncedRender);',
+        '  window.addEventListener("resize", debouncedRender, {passive:true});',
+        '  window.addEventListener("scroll", debouncedRender, {passive:true});',  # NEW: Add scroll listener
         '})();',
         '</script>',
         '</body></html>'
     ]
 
-    # ---- Write combined TXT & HTML ----
     with open(out_txt_path, "w", encoding="utf-8") as f:
         f.write("\n".join(text_lines))
-
     with open(out_html_path, "w", encoding="utf-8") as f:
         f.write("\n".join(html_lines))
 
     print(f"✅ {out_html_path} and {out_txt_path} generated (order: {', '.join(r.name for r in roots) if print_language=='en' else ', '.join(r.name_nep for r in roots)})")
     return out_html_path, out_txt_path
+
 
 def update_index_html_in_place(roots, index_path="index.html"):
     """
