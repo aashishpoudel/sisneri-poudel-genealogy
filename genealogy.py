@@ -290,6 +290,7 @@ def export_roots_trees(roots, print_language="en",
     # ---- HTML prolog (with banner CSS) ----
     html_lines = [
         '<html><head><meta charset="UTF-8">',
+        '<meta name="viewport" content="width=device-width, initial-scale=1">',  # NEW: Add this for mobile scaling
         '<style>',
         ':root{ --gen-banner-h: 48px; }',
         'body{ margin:0; padding-top: var(--gen-banner-h); }',
@@ -332,9 +333,6 @@ def export_roots_trees(roots, print_language="en",
             html_lines.append('<hr style="margin:16px 0">')
             text_lines.append("\n" + ("=" * 40) + "\n")
 
-    # ---- shared popup & banner JS ----
-    # ---- shared popup & banner JS ----
-    # ---- shared popup & banner JS ----
     # ---- shared popup & banner JS ----
     html_lines += [
         '<script>',
@@ -394,8 +392,15 @@ def export_roots_trees(roots, print_language="en",
         '      ruler.appendChild(t);',
         '    }',
         '  }',
-        '  window.addEventListener("load", render);',
-        '  window.addEventListener("resize", render, {passive:true});',
+        '  // NEW: Debounced render for performance (optional but recommended)',
+        '  let renderTimeout;',
+        '  function debouncedRender() {',
+        '    clearTimeout(renderTimeout);',
+        '    renderTimeout = setTimeout(render, 50);',  # Debounce by 50ms
+        '  }',
+        '  window.addEventListener("load", debouncedRender);',
+        '  window.addEventListener("resize", debouncedRender, {passive:true});',
+        '  window.addEventListener("scroll", debouncedRender, {passive:true});',  # NEW: Add scroll listener
         '})();',
         '</script>',
         '</body></html>'
