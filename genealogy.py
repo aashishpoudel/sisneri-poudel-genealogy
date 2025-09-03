@@ -290,31 +290,23 @@ def export_roots_trees(roots, print_language="en",
     # ---- HTML prolog (with banner CSS) ----
     html_lines = [
         '<html><head><meta charset="UTF-8">',
-        '<meta name="viewport" content="width=device-width, initial-scale=1">',  # Already present, but confirm syntax
-        # Optional: Import a consistent monospace font with Devanagari support (add this line)
-        '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">',
         '<style>',
-        # Updated font-family for better consistency (use imported fonts if possible)
-        'div { font-family: "Noto Sans Mono", "Noto Sans Devanagari", monospace; font-size: 29px; white-space: pre; }',
+        ':root{ --gen-banner-h: 48px; }',
+        'body{ margin:0; padding-top: var(--gen-banner-h); }',
+        'div { font-family: monospace; font-size: 20px; white-space: pre; }',
         'img.icon { height: 1.2em; width: auto; vertical-align: -0.15em; margin-right: 0.35em; }',
         'a.cm { text-decoration: none; font-weight: bold; margin-left: 0.25rem; cursor: pointer; }',
         'a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }',
-        '#comment-popup { position: fixed; z-index: 9999; display: none; inline-flex; align-items: center; width: auto; max-width: 70vw; padding: 8px 10px; '
-        'background: #fff; border: 1px solid #ccc; box-shadow: 0 6px 18px rgba(0,0,0,.15); '
-        'border-radius: 8px; font-size: 14px; line-height: 1.35; white-space: pre-wrap;}',
-        # Fixed typo: removed duplicate 'display: none;'
+        '#comment-popup { position: fixed; z-index: 9999; display: none; display: inline-flex; align-items: center; width: auto; max-width: 70vw; padding: 8px 10px; '
+            'background: #fff; border: 1px solid #ccc; box-shadow: 0 6px 18px rgba(0,0,0,.15); '
+            'border-radius: 8px; font-size: 14px; line-height: 1.35; white-space: pre-wrap;}',
         '#comment-popup .cp-body { display: inline;}',
         '#comment-popup .cp-close { display: inline-block; margin-left: 10px; background: transparent; border: none; font-size: 16px; cursor: pointer; line-height: 1; }',
+        # banner
         '#generationBanner{ position:fixed; top:0; left:0; right:0; height:var(--gen-banner-h); background:#fff; border-bottom:1px solid #e5e5e5; z-index:2000; }',
         '#genRuler{ position:relative; height:100%; font-family:monospace; font-size:1.5em; line-height:var(--gen-banner-h); }',
         '.tick{ position:absolute; top:0; transform:translateX(-50%); font-weight:800; user-select:none; pointer-events:none; }',
         *color_rules,
-        # ADD: Media query for mobile (reduces squeezing by making text smaller)
-        '@media (max-width: 768px) {',
-        '  div { font-size: 20px; }',  # Smaller base font
-        '  span { font-size: inherit !important; }',  # Override inline font sizes
-        '  #genRuler { font-size: 1.2em; }',  # Slightly smaller banner text
-        '}',
         '</style>',
         '</head><body>',
         '<div id="generationBanner"><div id="genRuler"></div></div>'
@@ -346,7 +338,7 @@ def export_roots_trees(roots, print_language="en",
     # ---- shared popup & banner JS ----
     html_lines += [
         '<script>',
-        '(function(){',
+        f'(function(){{',
         f'  const START_GEN = {START_GEN}, END_GEN = {END_GEN};',
         f'  const IS_NEPALI = {"true" if print_language == "np" else "false"};',
         '  const ruler = document.getElementById("genRuler");',
@@ -371,6 +363,7 @@ def export_roots_trees(roots, print_language="en",
         '    const rootX = Math.round(rb.left);',
         '    const cols = getVerticalColumns(rootX);',
         '    ruler.innerHTML = "";',
+        '    // --- robust step calculation ---',
         '    let step;',
         '    if (cols.length >= 2) {',
         '      const deltas = [];',
@@ -384,11 +377,13 @@ def export_roots_trees(roots, print_language="en",
         '      step = 48;',
         '    }',
         '    if (!isFinite(step) || step < 8) step = 48;',
+        '    // ---- label at far left ----',
         '    const label = document.createElement("div");',
         '    label.className = "tick";',
         '    label.style.left = "0px";',
-        '    label.textContent = IS_NEPALI ? "    पुस्ता" : "   Gen";',
+        '    label.textContent = IS_NEPALI ? "    पुस्ता" : "     Gen";',
         '    ruler.appendChild(label);',
+        '    // ---- ticks: uniform spacing ----',
         '    for (let g = START_GEN; g <= END_GEN; g++) {',
         '      const t = document.createElement("div");',
         '      t.className = "tick c" + g;',
@@ -399,15 +394,8 @@ def export_roots_trees(roots, print_language="en",
         '      ruler.appendChild(t);',
         '    }',
         '  }',
-        '  let renderTimeout;',
-        '  function debouncedRender() {',
-        '    clearTimeout(renderTimeout);',
-        '    renderTimeout = setTimeout(render, 50);',  # 50ms debounce for smooth performance
-        '  }',
-        '  window.addEventListener("load", debouncedRender);',
-        '  window.addEventListener("resize", debouncedRender, {passive:true});',
-        '  window.addEventListener("scroll", debouncedRender, {passive:true});',
-        # Critical addition for horizontal scroll
+        '  window.addEventListener("load", render);',
+        '  window.addEventListener("resize", render, {passive:true});',
         '})();',
         '</script>',
         '</body></html>'
