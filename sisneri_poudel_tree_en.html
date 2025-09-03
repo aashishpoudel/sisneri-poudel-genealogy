@@ -1,4 +1,5 @@
 <html><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 :root{ --gen-banner-h: 48px; }
 body{ margin:0; padding-top: var(--gen-banner-h); }
@@ -29,6 +30,7 @@ a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }
 .tick.c46 { color: purple; }
 .tick.c47 { color: teal; }
 .tick.c48 { color: brown; }
+@media (max-width: 768px) { div { font-size: 20px; } }
 </style>
 </head><body>
 <div id="generationBanner"><div id="genRuler"></div></div>
@@ -3099,8 +3101,14 @@ a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }
       ruler.appendChild(t);
     }
   }
-  window.addEventListener("load", render);
-  window.addEventListener("resize", render, {passive:true});
+  let renderTimeout;
+  function debouncedRender() {
+    clearTimeout(renderTimeout);
+    renderTimeout = setTimeout(render, 50);
+  }
+  window.addEventListener("load", debouncedRender);
+  window.addEventListener("resize", debouncedRender, {passive:true});
+  window.addEventListener("scroll", debouncedRender, {passive:true});
 })();
 </script>
 </body></html>
