@@ -1,12 +1,12 @@
 <html><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
 <style>
-div { font-family: "Noto Sans Mono", "Noto Sans Devanagari", monospace; font-size: 29px; white-space: pre; }
+:root{ --gen-banner-h: 48px; }
+body{ margin:0; padding-top: var(--gen-banner-h); }
+div { font-family: monospace; font-size: 20px; white-space: pre; }
 img.icon { height: 1.2em; width: auto; vertical-align: -0.15em; margin-right: 0.35em; }
 a.cm { text-decoration: none; font-weight: bold; margin-left: 0.25rem; cursor: pointer; }
 a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }
-#comment-popup { position: fixed; z-index: 9999; display: none; inline-flex; align-items: center; width: auto; max-width: 70vw; padding: 8px 10px; background: #fff; border: 1px solid #ccc; box-shadow: 0 6px 18px rgba(0,0,0,.15); border-radius: 8px; font-size: 14px; line-height: 1.35; white-space: pre-wrap;}
+#comment-popup { position: fixed; z-index: 9999; display: none; display: inline-flex; align-items: center; width: auto; max-width: 70vw; padding: 8px 10px; background: #fff; border: 1px solid #ccc; box-shadow: 0 6px 18px rgba(0,0,0,.15); border-radius: 8px; font-size: 14px; line-height: 1.35; white-space: pre-wrap;}
 #comment-popup .cp-body { display: inline;}
 #comment-popup .cp-close { display: inline-block; margin-left: 10px; background: transparent; border: none; font-size: 16px; cursor: pointer; line-height: 1; }
 #generationBanner{ position:fixed; top:0; left:0; right:0; height:var(--gen-banner-h); background:#fff; border-bottom:1px solid #e5e5e5; z-index:2000; }
@@ -29,11 +29,6 @@ a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }
 .tick.c46 { color: purple; }
 .tick.c47 { color: teal; }
 .tick.c48 { color: brown; }
-@media (max-width: 768px) {
-  div { font-size: 20px; }
-  span { font-size: inherit !important; }
-  #genRuler { font-size: 1.2em; }
-}
 </style>
 </head><body>
 <div id="generationBanner"><div id="genRuler"></div></div>
@@ -3073,6 +3068,7 @@ a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }
     const rootX = Math.round(rb.left);
     const cols = getVerticalColumns(rootX);
     ruler.innerHTML = "";
+    // --- robust step calculation ---
     let step;
     if (cols.length >= 2) {
       const deltas = [];
@@ -3086,11 +3082,13 @@ a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }
       step = 48;
     }
     if (!isFinite(step) || step < 8) step = 48;
+    // ---- label at far left ----
     const label = document.createElement("div");
     label.className = "tick";
     label.style.left = "0px";
-    label.textContent = IS_NEPALI ? "    पुस्ता" : "   Gen";
+    label.textContent = IS_NEPALI ? "    पुस्ता" : "     Gen";
     ruler.appendChild(label);
+    // ---- ticks: uniform spacing ----
     for (let g = START_GEN; g <= END_GEN; g++) {
       const t = document.createElement("div");
       t.className = "tick c" + g;
@@ -3101,14 +3099,8 @@ a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }
       ruler.appendChild(t);
     }
   }
-  let renderTimeout;
-  function debouncedRender() {
-    clearTimeout(renderTimeout);
-    renderTimeout = setTimeout(render, 50);
-  }
-  window.addEventListener("load", debouncedRender);
-  window.addEventListener("resize", debouncedRender, {passive:true});
-  window.addEventListener("scroll", debouncedRender, {passive:true});
+  window.addEventListener("load", render);
+  window.addEventListener("resize", render, {passive:true});
 })();
 </script>
 </body></html>
