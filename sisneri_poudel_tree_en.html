@@ -1,5 +1,4 @@
 <html><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 :root{ --gen-banner-h: 48px; }
 body{ margin:0; padding-top: var(--gen-banner-h); }
@@ -3087,7 +3086,7 @@ a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }
     const label = document.createElement("div");
     label.className = "tick";
     label.style.left = "0px";
-    label.textContent = IS_NEPALI ? "    पुस्ता" : "   Gen";
+    label.textContent = IS_NEPALI ? "    पुस्ता" : "     Gen";
     ruler.appendChild(label);
     // ---- ticks: uniform spacing ----
     for (let g = START_GEN; g <= END_GEN; g++) {
@@ -3100,15 +3099,8 @@ a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }
       ruler.appendChild(t);
     }
   }
-  // NEW: Debounced render for performance (optional but recommended)
-  let renderTimeout;
-  function debouncedRender() {
-    clearTimeout(renderTimeout);
-    renderTimeout = setTimeout(render, 50);
-  }
-  window.addEventListener("load", debouncedRender);
-  window.addEventListener("resize", debouncedRender, {passive:true});
-  window.addEventListener("scroll", debouncedRender, {passive:true});
+  window.addEventListener("load", render);
+  window.addEventListener("resize", render, {passive:true});
 })();
 </script>
 </body></html>

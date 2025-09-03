@@ -290,8 +290,9 @@ def export_roots_trees(roots, print_language="en",
     # ---- HTML prolog (with banner CSS) ----
     html_lines = [
         '<html><head><meta charset="UTF-8">',
-        '<meta name="viewport" content="width=device-width, initial-scale=1">',  # NEW: Add this for mobile scaling
+        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">',
         '<style>',
+        'html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }',
         ':root{ --gen-banner-h: 48px; }',
         'body{ margin:0; padding-top: var(--gen-banner-h); }',
         'div { font-family: monospace; font-size: 20px; white-space: pre; }',
@@ -306,7 +307,7 @@ def export_roots_trees(roots, print_language="en",
         # banner
         '#generationBanner{ position:fixed; top:0; left:0; right:0; height:var(--gen-banner-h); background:#fff; border-bottom:1px solid #e5e5e5; z-index:2000; }',
         '#genRuler{ position:relative; height:100%; font-family:monospace; font-size:1.5em; line-height:var(--gen-banner-h); }',
-        '.tick{ position:absolute; top:0; transform:translateX(-50%); font-weight:800; user-select:none; pointer-events:none; }',
+        '.tick{ position:absolute; top:0; transform:none; font-weight:800; user-select:none; pointer-events:none; }',
         *color_rules,
         '</style>',
         '</head><body>',
@@ -333,6 +334,9 @@ def export_roots_trees(roots, print_language="en",
             html_lines.append('<hr style="margin:16px 0">')
             text_lines.append("\n" + ("=" * 40) + "\n")
 
+    # ---- shared popup & banner JS ----
+    # ---- shared popup & banner JS ----
+    # ---- shared popup & banner JS ----
     # ---- shared popup & banner JS ----
     html_lines += [
         '<script>',
@@ -379,7 +383,7 @@ def export_roots_trees(roots, print_language="en",
         '    const label = document.createElement("div");',
         '    label.className = "tick";',
         '    label.style.left = "0px";',
-        '    label.textContent = IS_NEPALI ? "    पुस्ता" : "   Gen";',
+        '    label.textContent = IS_NEPALI ? "    पुस्ता" : "     Gen";',
         '    ruler.appendChild(label);',
         '    // ---- ticks: uniform spacing ----',
         '    for (let g = START_GEN; g <= END_GEN; g++) {',
@@ -392,15 +396,8 @@ def export_roots_trees(roots, print_language="en",
         '      ruler.appendChild(t);',
         '    }',
         '  }',
-        '  // NEW: Debounced render for performance (optional but recommended)',
-        '  let renderTimeout;',
-        '  function debouncedRender() {',
-        '    clearTimeout(renderTimeout);',
-        '    renderTimeout = setTimeout(render, 50);',  # Debounce by 50ms
-        '  }',
-        '  window.addEventListener("load", debouncedRender);',
-        '  window.addEventListener("resize", debouncedRender, {passive:true});',
-        '  window.addEventListener("scroll", debouncedRender, {passive:true});',  # NEW: Add scroll listener
+        '  window.addEventListener("load", render);',
+        '  window.addEventListener("resize", render, {passive:true});',
         '})();',
         '</script>',
         '</body></html>'
