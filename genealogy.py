@@ -397,15 +397,48 @@ def update_index_html_in_place(roots, index_path="index.html"):
       - One blank line between each const (including before the merged one)
       - One tab ('\t') indent inside the <script> block
       - Removes any prior genealogyData* const blocks before inserting
+
+    NEW:
+      - Each person dict includes "gen_number", derived from the root's generation
+        (parsed from the root variable name, e.g., gopal_32 → 32; children increment by depth).
     """
     import json, re, unicodedata
 
-    # ---- helper: flatten one root tree like your existing code ----
-    def flatten_person(person):
-        people = [{
+    # ---------- helpers ----------
+    def slug_from_person(p):
+        base = p.name or p.name_nep or "root"
+        norm = unicodedata.normalize("NFKD", base).encode("ascii", "ignore").decode("ascii")
+        norm = re.sub(r"[^a-z0-9]+", "_", norm.lower()).strip("_")
+        return norm or "root"
+
+    def extract_root_gen(label, person):
+        """
+        Pick the root generation from the variable name.
+        Examples:
+          'gopal_32'      -> 32
+          'gopal_32_1'    -> 32   (first plausible 2+ digit number)
+          'bishwamvar_34' -> 34
+        Fallbacks: person.gen_number, else 32.
+        """
+        nums = [int(n) for n in re.findall(r'(\d+)', label)]
+        for n in nums:
+            if n >= 20:  # plausible generation window
+                return n
+        # fallback to object’s gen_number, then default
+        if getattr(person, "gen_number", None):
+            return int(person.gen_number)
+        return 32
+
+    def flatten_person(person, cur_gen):
+        """
+        Return a flat list of dicts for this subtree, tagging each with gen_number=cur_gen.
+        Also preserves father/grandfather (en/nep) like your existing payload.
+        """
+        entry = {
             "name": person.name,
             "name_nep": person.name_nep,
             "birth_year": person.birth_year,
+            "gen_number": cur_gen,  # <-- NEW
             "father": person.father.name if person.father else None,
             "grandfather": person.father.father.name if person.father and person.father.father else None,
             "ggfather": (
@@ -420,89 +453,81 @@ def update_index_html_in_place(roots, index_path="index.html"):
                 if person.father and person.father.father and person.father.father.father
                 else None
             ),
-        }]
+        }
+        people = [entry]
         for child in person.children:
-            people.extend(flatten_person(child))
+            people.extend(flatten_person(child, cur_gen + 1))
         return people
 
-    # ---- helper: label for variable names (or accept explicit labels) ----
-    def slug_from_person(p):
-        base = p.name or p.name_nep or "root"
-        norm = unicodedata.normalize("NFKD", base).encode("ascii", "ignore").decode("ascii")
-        norm = norm.lower()
-        norm = re.sub(r"[^a-z0-9]+", "_", norm).strip("_")
-        return norm or "root"
-
-    # normalize roots => list[(label, person)]
+    # ---------- normalize roots => list[(label, person, root_gen)] ----------
     pairs = []
     for item in roots:
         if isinstance(item, tuple) and len(item) == 2:
             label, person = item
         else:
-            # derive label from the Python variable name in globals()
             person = item
+            # try to recover the python variable name as label
+            label = None
             for varname, obj in globals().items():
                 if obj is person:
                     label = varname
                     break
-            else:
-                # fallback if not found in globals
+            if not label:
                 label = slug_from_person(person)
 
-        # sanitize & de-dupe
-        label = re.sub(r"[^a-zA-Z0-9_]", "_", label)
+        label = re.sub(r"[^A-Za-z0-9_]", "_", label)
         if re.match(r"^[0-9]", label):
-            label = f"r_{label}"
-        original, n = label, 2
-        while any(lbl == label for lbl, _ in pairs):
-            label = f"{original}_{n}"
-            n += 1
-        pairs.append((label, person))
+            label = "r_" + label
+        # de-dup labels if repeated
+        base, i = label, 2
+        while any(lbl == label for (lbl, _, __) in pairs):
+            label = f"{base}_{i}"
+            i += 1
 
-    # build const strings (one per root) + merged
+        root_gen = extract_root_gen(label, person)
+        pairs.append((label, person, root_gen))
+
+    # ---------- build const strings (per root) + merged ----------
     per_root_consts = []
     merged_spreads = []
-    for label, person in pairs:
-        plist = flatten_person(person)
+
+    for label, person, root_gen in pairs:
+        plist = flatten_person(person, root_gen)
         genealogy_json = json.dumps(plist, ensure_ascii=False, separators=(",", ":"))
         per_root_consts.append(f"const genealogyData_{label} = {genealogy_json};")
         merged_spreads.append(f"...genealogyData_{label}")
 
     merged_const = f"const genealogyData = [{', '.join(merged_spreads)}];"
 
-    # read index.html
+    # ---------- read/patch index.html ----------
     with open(index_path, "r", encoding="utf-8") as f:
         html = f.read()
 
-    # 1) remove ANY existing genealogyData* arrays first (single or multiple)
-    #    pattern: const genealogyData or const genealogyData_<label> = [ ... ];
+    # remove prior genealogyData const blocks (single or multiple)
     rm_pattern = r"""(?mx)
         ^[ \t]*const[ \t]+genealogyData(?:_[A-Za-z0-9_]+)?[ \t]*=[ \t]*\[[\s\S]*?\][ \t]*;[ \t]*$
     """
     html = re.sub(rm_pattern, "", html)
 
-    # 2) find the first <script ...> to inject after it; capture its leading indent
+    # insert new consts just after the first <script>, else before </body>
     m = re.search(r"^([ \t]*)<script\b[^>]*>", html, flags=re.MULTILINE)
     if m:
         script_indent = m.group(1)
-        inner_indent = script_indent + "\t"  # one tab deeper than <script>
+        inner_indent = script_indent + "\t"
         block = "\n\n".join(inner_indent + s for s in per_root_consts + [merged_const]) + "\n"
-        # insert right after the opening <script> tag
-        insert_pos = m.end()
-        html = html[:insert_pos] + "\n" + block + html[insert_pos:]
+        html = html[:m.end()] + "\n" + block + html[m.end():]
     else:
-        # fallback: before </body> (indented with one tab)
         inner_indent = "\t"
         block = "\n\n".join(inner_indent + s for s in per_root_consts + [merged_const]) + "\n"
         html = re.sub(r"</body>", block + "</body>", html, count=1, flags=re.IGNORECASE) or (html + "\n" + block)
 
-    # 3) compact extra blank lines introduced by deletions (optional tidy)
+    # tidy and write
     html = re.sub(r"\n{3,}", "\n\n", html)
-
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(html)
 
     print("✅ index.html updated with genealogyData blocks.")
+
 
 ###Todo take below thing out if no issue seen after Aug 15
 # # Build parent mapping: child -> parent
