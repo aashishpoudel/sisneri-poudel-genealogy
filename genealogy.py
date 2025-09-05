@@ -1,9 +1,9 @@
 import re
 from genealogy_poudel_data import *
 import json
-from genealogy_poudel_data import root_person  # or use gopal_31 if that is the root
 
-# Save to file
+GENERATION_COLORS = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown', '#C71585', 'navy', 'darkmagenta']
+
 genealogy_json_file = "genealogy_tree.json"
 with open(genealogy_json_file, "w") as f:
     json.dump(gopal_32.to_dict(), f, indent=2)
@@ -37,8 +37,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
         vertical_color_map = {}
 
     # Color palette
-    colors = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown']
-    my_color = colors[level % len(colors)]
+    my_color = GENERATION_COLORS[level % len(GENERATION_COLORS)]
 
     # Connector characters (skip for root level)
     if level == 0:
@@ -112,7 +111,6 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     plus_html = correction_html = ""
     if getattr(person, "edit", False) and len(person.edit):
         edit = person.edit
-        print(f"{edit=}")
         if edit.strip().startswith("+"):
             plus_comment = edit.strip().replace("+","").strip()
             if plus_comment:
@@ -125,10 +123,8 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                 plus_html += ' <span style="color:{0}; font-weight:bold">+</span>'.format(my_color)
         elif edit.strip().startswith("~"):
             correction_comment = edit.strip().replace("~", "").strip()
-            print(f"{correction_comment=}")
             if correction_comment:
                 esc = _escape_attr(correction_comment)
-                print(f"{esc=}")
                 correction_html += (
                     f' <a href="#" class="cm" style="color:{my_color}" title="View note" '
                     f'   data-cmt="{esc}">~</a>'
