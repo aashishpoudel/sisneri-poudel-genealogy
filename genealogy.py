@@ -98,11 +98,6 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     if getattr(person, "gender", "") == "Female":
         icon_html = f'<img src="{icon_src}" class="icon" alt="Girl Icon">'
 
-    # Optional "addition" plus sign
-    plus_html = ""
-    if getattr(person, "addition", False):
-        plus_html = ' <span style="color:{0}; font-weight:bold">+</span>'.format(my_color)
-
     # --- Comment asterisk (popup trigger) ---
     def _escape_attr(s: str) -> str:
         # Basic HTML attr escape + newline to &#10; so JS getAttribute() yields real newlines
@@ -112,6 +107,34 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                  .replace('"', "&quot;")
                  .replace("\r\n", "\n")
                  .replace("\n", "&#10;"))
+
+    # Optional "edit" plus sign
+    plus_html = correction_html = ""
+    if getattr(person, "edit", False) and len(person.edit):
+        edit = person.edit
+        print(f"{edit=}")
+        if edit.strip().startswith("+"):
+            plus_comment = edit.strip().replace("+","").strip()
+            if plus_comment:
+                esc = _escape_attr(plus_comment)
+                plus_html += (
+                    f' <a href="#" class="cm" style="color:{my_color}" title="View note" '
+                    f'   data-cmt="{esc}">+</a>'
+                )
+            else:
+                plus_html += ' <span style="color:{0}; font-weight:bold">+</span>'.format(my_color)
+        elif edit.strip().startswith("~"):
+            correction_comment = edit.strip().replace("~", "").strip()
+            print(f"{correction_comment=}")
+            if correction_comment:
+                esc = _escape_attr(correction_comment)
+                print(f"{esc=}")
+                correction_html += (
+                    f' <a href="#" class="cm" style="color:{my_color}" title="View note" '
+                    f'   data-cmt="{esc}">~</a>'
+                )
+            else:
+                correction_html += ' <span style="color:{0}; font-weight:bold">~</span>'.format(my_color)
 
     comment_text = getattr(person, "comment", "") or ""
     if comment_text.strip():
@@ -123,7 +146,7 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
         )
 
     # Append this line
-    html_lines.append(f"<div>{html_prefix}{connector_html}{icon_html}{name_html}{plus_html}</div>")
+    html_lines.append(f"<div>{html_prefix}{connector_html}{icon_html}{name_html}{plus_html}{correction_html}</div>")
 
     # Prepare for children
     new_prefix = prefix + ("    " if is_last else "│   ")

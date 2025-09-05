@@ -59,7 +59,18 @@
       background: var(--pill); color: var(--muted); font-size: 14px;
       border: 1px solid var(--line); margin-top: 6px;
     }
-
+    .legend-star {
+      color: #e67e22;   /* orange */
+      font-weight: bold;
+    }
+    .legend-plus {
+      color: #27ae60;   /* green */
+      font-weight: bold;
+    }
+    .legend-tilde {
+      color: #2980b9;   /* blue */
+      font-weight: bold;
+    }
     .grid{
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -167,41 +178,13 @@
             <figcaption class="caption">स्रोत: पौडेल कुल-प्रकाश (द्वितीय संस्करण २०७४)</figcaption>
           </figure>
 
-          <h3>ख) व्यक्तिहरू कसरी थपिन्छन्?</h3>
-          <p>
-            माथिको पुस्तकलाई आधार मानिन्छ। सो पुस्तकका तथ्याङ्कबाट केही पनि हटाइएको छैन।
-            नयाँ विवरणका लागि केवल प्रमाणित स्रोतहरू मात्र थपिन्छन्।
-            कुनै नयाँ प्रमाणित व्यक्ति थपिँदा उनको नामको छेउमा <strong>(+)</strong> प्लस चिन्ह देखिन्छ।
-          </p>
-
-          <h3>ग) किन कोही व्यक्तिको छोराहरू मात्र, कोहीको छोरीहरू मात्र, र केहीको छोराछोरी दुबै (मिश्रण) देखिन्छ?</h3>
-          <p>
-            यो सबै "पौडेल-कुल-प्रकाश (द्वितीय संस्करण २०७४)" पुस्तकको अनुसार हो। उदाहरणको लागि - “मिश्रण” त्यतिबेला देखिन सक्छ जब द्वितीय संस्करणमा
-            छोरीहरू मात्र सूचीकृत थिए र पछि छोरासम्बन्धी प्रमाणित विवरण प्राप्त भएर थपियो।
-          </p>
-
-          <h3>घ) के यो sisneripoudel.com "पौडेल-कुल-प्रकाश"को आउने तेस्रो संस्मरणसगै अद्यावधिक हुन्छ ?</h3>
-          <p>
-            अवश्य हुन्छ।
-          </p>
-
-          <h3>ङ) sisneripoudel.com मा अरु के-के गर्न बाँकी छ?</h3>
-          <p>
-            १) "पौडेल-कुल-प्रकाश"मा कुनै हाँगाहरु मुलसँग जोडिएको छैन। जस्तै पृष्ठ १०४ मा विश्वम्भर कसको सन्तान हुन थाहा हुन सकेको छैन। त्यसतो हाँगालाई छुट्टैरुपमा प्रस्तुत गर्ने सोच छ।<br>
-            २) यो वंशावली प्रकाशन गर्ने समुहसँग सम्पर्क गर्ने (मिलेको खण्डमा उहाँहरुको पनि contact राख्ने)
-          </p>
-
-          <h3>च) sisneripoudel.com मा नयाँ व्यक्ति/सन्तान थप्न के गर्नुपर्छ?</h3>
-          <p>
-            sisneripoudel.com को <a href="contact.html">contact पेज</a>मा गएर WhatsApp Text वा email गर्नसक्नुहुन्छ। यसो गर्दा सम्पर्क गर्ने व्यक्तिले कृपया आफ्नो परिचय खुलाइदिनु होला (नाम/बुवाको नाम/हजुरबुवाको नाम) र जसलाई जोड्न पर्ने हो त्यसको पनि पूर्ण विवरण दिनु होला।
-          </p>
-
-          <h3>छ) sisneripoudel.com चिन्नहरु?</h3>
+          <h3>ख) कुन चिन्नले के भन्छ?</h3>
           <p>
             <div class="legend" style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.4;">
-              <p><strong>*</strong> → व्यक्ति सम्बन्धित टिप्पणी (क्लिक गरेर हेर्नुहोस्) </p>
-              <p><strong>+</strong> → २०७४ को वंशावली पछि थपिएका प्रामाणिक व्यक्तिहरू</p>
-              <p><strong>Colors</strong> → एउटै पुस्ता, एउटै रंग। हरेक फरक पुस्ता, फरक रंग</p>
+              <p><span style="color:blue;">*</span> → व्यक्ति सम्बन्धित टिप्पणी (क्लिक गरेर हेर्नुहोस्) </p>
+              <p><span style="color:blue;">+</span> → २०७४ को वंशावली पछि थपिएका प्रामाणिक व्यक्तिहरू</p>
+              <p><span style="color:blue;">~</span> → २०७४ को वंशावलीको नाम त्रुटि सच्याइएको (प्रामाणिक) </p>
+              <p><span style="color:red;">रंग</span><span style="color:blue;">ह</span><span style="color:orange;">रु</span> → एउटै पुस्ता, एउटै रंग। हरेक फरक पुस्ता, फरक रंग। १० पुस्तापछि रंगहरु उही क्रममा दोहोरिन्छ।</p>
               <div style="margin-left: 0.5rem;">
                 <div><span style="color:red; font-weight:600;">पुस्ता ३२</span></div>
                 <div style="margin-left: 1.5rem;"><span style="color:green; font-weight:600;">└── पुस्ता ३३</span></div>
@@ -213,6 +196,36 @@
 
             </div>
           </p>
+
+          <h3>ग) व्यक्तिहरू कसरी थपिन्छन्?</h3>
+          <p>
+            माथिको पुस्तकलाई आधार मानिन्छ। सो पुस्तकका तथ्याङ्कबाट केही पनि हटाइएको छैन।
+            नयाँ विवरणका लागि केवल प्रमाणित स्रोतहरू मात्र थपिन्छन्।
+            कुनै नयाँ प्रमाणित व्यक्ति थपिँदा उनको नामको छेउमा <strong>(+)</strong> प्लस चिन्ह देखिन्छ।
+          </p>
+
+          <h3>घ) किन कोही व्यक्तिको छोराहरू मात्र, कोहीको छोरीहरू मात्र, र केहीको छोराछोरी दुबै (मिश्रण) देखिन्छ?</h3>
+          <p>
+            यो सबै "पौडेल-कुल-प्रकाश (द्वितीय संस्करण २०७४)" पुस्तकको अनुसार हो। उदाहरणको लागि - “मिश्रण” त्यतिबेला देखिन सक्छ जब द्वितीय संस्करणमा
+            छोरीहरू मात्र सूचीकृत थिए र पछि छोरासम्बन्धी प्रमाणित विवरण प्राप्त भएर थपियो।
+          </p>
+
+          <h3>ङ) के यो sisneripoudel.com "पौडेल-कुल-प्रकाश"को आउने तेस्रो संस्मरणसगै अद्यावधिक हुन्छ ?</h3>
+          <p>
+            अवश्य हुन्छ।
+          </p>
+
+          <h3>च) sisneripoudel.com मा अरु के-के गर्न बाँकी छ?</h3>
+          <p>
+            १) "पौडेल-कुल-प्रकाश"मा कुनै हाँगाहरु मुलसँग जोडिएको छैन। जस्तै पृष्ठ १०४ मा विश्वम्भर कसको सन्तान हुन थाहा हुन सकेको छैन। त्यसतो हाँगालाई छुट्टैरुपमा प्रस्तुत गर्ने सोच छ।<br>
+            २) यो वंशावली प्रकाशन गर्ने समुहसँग सम्पर्क गर्ने (मिलेको खण्डमा उहाँहरुको पनि contact राख्ने)
+          </p>
+
+          <h3>छ) sisneripoudel.com मा नयाँ व्यक्ति/सन्तान थप्न के गर्नुपर्छ?</h3>
+          <p>
+            sisneripoudel.com को <a href="contact.html">contact पेज</a>मा गएर WhatsApp Text वा email गर्नसक्नुहुन्छ। यसो गर्दा सम्पर्क गर्ने व्यक्तिले कृपया आफ्नो परिचय खुलाइदिनु होला (नाम/बुवाको नाम/हजुरबुवाको नाम) र जसलाई जोड्न पर्ने हो त्यसको पनि पूर्ण विवरण दिनु होला।
+          </p>
+
         </div>
 
         <hr class="divider" />
@@ -235,41 +248,13 @@
             <figcaption class="caption">Source: पौडेल कुल-प्रकाश (द्वितीय संस्करण २०७४)</figcaption>
           </figure>
 
-          <h3>b) How are persons added?</h3>
-          <p>
-            The above book is treated as the authoritative source. Nothing is removed from the book’s data.
-            For new entries, only verified sources are added.
-            Any newly verified person will display a <strong>(+)</strong> plus sign next to his/her name.
-          </p>
-
-          <h3>c) Why do some people have sons, some only daughters, and some have a mix of sons/daughters?</h3>
-          <p>
-            This is all according to the book "Paudel-Kul-Prakash". A “mix” can appear when the book initially listed only daughters,
-            and a verified son record was later obtained and added.
-          </p>
-
-          <h3>d) Will this sisneripoudel.com be updated with the upcoming third edition of "Poudel-Kul-Prakash"?</h3>
-          <p>
-            Of course.
-          </p>
-
-          <h3>e) What else is left to be done on sisneripoudel.com?</h3>
-          <p>
-            1) In "Paudel-Kul-Prakash", some of the branches are connected not connected to the root. For example, on page 104, it is not known whose descendant Vishwambhar is. The idea is to present that branch separately. <br>
-            2) Contact/Be in touch with the group publishing this genealogy. Maybe give their details on the Contact page itself.
-          </p>
-
-          <h3>f) What should I do to add a new person/descendant to sisneripoudel.com?</h3>
-          <p>
-            You can go to the <a href="contact.html">contact page</a> of sisneripoudel.com and send a WhatsApp Text or email. In doing so, the person making the contact should identify themselves (name/father's name/grandfather's name) and provide full details of the person to be added as well.
-          </p>
-
-          <h3>g) sisneripoudel.com signs?</h3>
+          <h3>b) What are the signs?</h3>
           <p>
             <div class="legend" style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.4;">
-              <p><strong>*</strong> clickable comment on a person</p>
-              <p><strong>+</strong> Authentic people added after the 2074 genealogy</p>
-              <p>Colors: Same generation, same color. Each different generation, different color</p>
+              <p><span class="legend-star">*</span> clickable comment on a person</p>
+              <p><span class="legend-plus">+</span> Authentic people added after 2074 genealogy</p>
+              <p><span class="legend-tilde">~</span> Name error corrected (authentic) from 2074 genealogy</p>
+              <p><span style="color:red;">C</span><span style="color:green;">o</span><span style="color:blue;">l</span><span style="color:orange;">o</span><span style="color:purple;">r</span><span style="color:green;">s</span>: Same generation, same color. Each different generation, different color. After 10 generations, colors repeat in order.</p>
               <div style="margin-left: 0.5rem;">
                 <div><span style="color:red; font-weight:600;">Generation 32</span></div>
                 <div style="margin-left: 1.5rem;"><span style="color:green; font-weight:600;">└── Generation 33</span></div>
@@ -281,6 +266,36 @@
               </div>
             </div>
           </p>
+
+          <h3>c) How are persons added?</h3>
+          <p>
+            The above book is treated as the authoritative source. Nothing is removed from the book’s data.
+            For new entries, only verified sources are added.
+            Any newly verified person will display a <strong>(+)</strong> plus sign next to his/her name.
+          </p>
+
+          <h3>d) Why do some people have sons, some only daughters, and some have a mix of sons/daughters?</h3>
+          <p>
+            This is all according to the book "Paudel-Kul-Prakash". A “mix” can appear when the book initially listed only daughters,
+            and a verified son record was later obtained and added.
+          </p>
+
+          <h3>e) Will this sisneripoudel.com be updated with the upcoming third edition of "Poudel-Kul-Prakash"?</h3>
+          <p>
+            Of course.
+          </p>
+
+          <h3>f) What else is left to be done on sisneripoudel.com?</h3>
+          <p>
+            1) In "Paudel-Kul-Prakash", some of the branches are connected not connected to the root. For example, on page 104, it is not known whose descendant Vishwambhar is. The idea is to present that branch separately. <br>
+            2) Contact/Be in touch with the group publishing this genealogy. Maybe give their details on the Contact page itself.
+          </p>
+
+          <h3>g) What should I do to add a new person/descendant to sisneripoudel.com?</h3>
+          <p>
+            You can go to the <a href="contact.html">contact page</a> of sisneripoudel.com and send a WhatsApp Text or email. In doing so, the person making the contact should identify themselves (name/father's name/grandfather's name) and provide full details of the person to be added as well.
+          </p>
+
         </div>
 
         <div class="footer">

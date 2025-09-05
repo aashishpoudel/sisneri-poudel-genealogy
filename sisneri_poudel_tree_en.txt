@@ -298,7 +298,7 @@ Gopal
         │   │   │       │   │   │           ├── GaneshPrasad
         │   │   │       │   │   │           │   ├── DharmaNanda
         │   │   │       │   │   │           │   └── TikaPrasad
-        │   │   │       │   │   │           │       ├── Madhusudan
+        │   │   │       │   │   │           │       ├── Madhuwan
         │   │   │       │   │   │           │       │   └── Ishwor
         │   │   │       │   │   │           │       ├── Rajendra
         │   │   │       │   │   │           │       │   └── Ananta
