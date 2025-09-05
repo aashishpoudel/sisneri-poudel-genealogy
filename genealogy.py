@@ -397,11 +397,30 @@ def update_index_html_in_place(roots, index_path="index.html"):
     import json, re, unicodedata
 
     # ---------- helpers ----------
-    def flatten_person(person):
+    def extract_root_gen(label, person):
+        """
+        Pick the root generation from the variable name.
+        Examples:
+          'gopal_32'      -> 32
+          'gopal_32_1'    -> 32   (first plausible 2+ digit number)
+          'bishwamvar_34' -> 34
+        Fallbacks: person.gen_number, else None.
+        """
+        nums = [int(n) for n in re.findall(r'(\d+)', label)]
+        for n in nums:
+            if n >= 1:  # plausible generation window
+                return n
+        # fallback to object’s gen_number, then default
+        if getattr(person, "gen_number", None):
+            return int(person.gen_number)
+        return None
+
+    def flatten_person(person, cur_gen):
         people = [{
             "name": person.name,
             "name_nep": person.name_nep,
             "birth_year": person.birth_year,
+            "gen_number": cur_gen,
             "father": person.father.name if person.father else None,
             "grandfather": person.father.father.name if person.father and person.father.father else None,
             "ggfather": (
@@ -418,7 +437,7 @@ def update_index_html_in_place(roots, index_path="index.html"):
             ),
         }]
         for child in person.children:
-            people.extend(flatten_person(child))
+            people.extend(flatten_person(child, cur_gen+1))
         return people
 
     def slug_from_person(p):
@@ -435,26 +454,30 @@ def update_index_html_in_place(roots, index_path="index.html"):
             label, person = item
         else:
             person = item
+            label = None
             for varname, obj in globals().items():
                 if obj is person:
                     label = varname
                     break
             else:
                 label = slug_from_person(person)
+
         label = re.sub(r"[^A-Za-z0-9_]", "_", label)
         if re.match(r"^[0-9]", label):
             label = f"r_{label}"
         base, n = label, 2
-        while any(lbl == label for lbl, _ in pairs):
+        while any(lbl == label for (lbl, _, __) in pairs):
             label = f"{base}_{n}"
             n += 1
-        pairs.append((label, person))
+
+        root_gen = extract_root_gen(label, person)
+        pairs.append((label, person, root_gen))
 
     # ---------- build const strings (per root) + merged ----------
     per_root_consts = []
     merged_spreads = []
-    for label, person in pairs:
-        plist = flatten_person(person)
+    for label, person, root_gen in pairs:
+        plist = flatten_person(person, root_gen)
         genealogy_json = json.dumps(plist, ensure_ascii=False, separators=(",", ":"))
         per_root_consts.append(f"const genealogyData_{label} = {genealogy_json};")
         merged_spreads.append(f"...genealogyData_{label}")
@@ -490,7 +513,7 @@ def update_index_html_in_place(roots, index_path="index.html"):
             return 0
         return 1 + max(max_depth(c) for c in p.children)
     deepest = 0
-    for _, person in pairs:
+    for _, person, _ in pairs:
         d = max_depth(person)
         if d > deepest:
             deepest = d

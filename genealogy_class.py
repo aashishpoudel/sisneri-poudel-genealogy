@@ -1,7 +1,7 @@
 import json
 
 class Person:
-    def __init__(self, name, gender="Male", name_nep=None, birth_year=None, death_year=None, children=None, place=None, comment=None, addition=False):
+    def __init__(self, name, gender="Male", name_nep=None, birth_year=None, death_year=None, gen_number=None, children=None, place=None, comment=None, addition=False):
         self.name = name
         self.name_nep = name_nep
         self.gender = gender
@@ -9,6 +9,7 @@ class Person:
         self.death_year = death_year
         self.place = place
         self.comment = comment
+        self.gen_number = gen_number,
         self.children = children or []
         self.father = None  # Person object
         self.father_nep = "" #actual nepali name
@@ -36,6 +37,7 @@ class Person:
             "birth_year": self.birth_year,
             "death_year": self.death_year,
             "place": self.place,
+            "gen_number": self.gen_number,
             "comment": self.comment,
             "father": father,
             "father_nep": father_nep,
