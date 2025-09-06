@@ -1,6 +1,5 @@
-import re
 from genealogy_poudel_data import *
-import json
+import json, re
 
 GENERATION_COLORS = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown', '#C71585', 'navy', 'darkmagenta']
 
@@ -12,7 +11,7 @@ with open(genealogy_json_file, "w") as f:
 # Print tree with visual guide indentation
 def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                text_lines=None, html_lines=None, parent_color=None,
-               vertical_color_map=None):
+               vertical_color_map=None, earliest_gen_number=None):
     """
     Recursively build the genealogy tree as HTML.
 
@@ -38,6 +37,31 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
 
     # Color palette
     my_color = GENERATION_COLORS[level % len(GENERATION_COLORS)]
+
+    # --- Root indent offset based on earliest_gen_number ---
+    if level == 0 and earliest_gen_number is not None:
+        def _root_gen(p):
+            gen = getattr(p, "gen_number", None)
+            if isinstance(gen, int) and 1 <= gen <= 100:
+                return gen
+            # fallback: try to recover the variable name and parse digits
+            var_name = None
+            for var, obj in globals().items():
+                if obj is p:
+                    var_name = var
+                    break
+            if var_name:
+                m = re.search(r'_(\d+)', var_name)
+                if m:
+                    return int(m.group(1))
+            # last resort: treat as earliest
+            return earliest_gen_number
+
+        root_gen = _root_gen(person)
+        offset = max(0, root_gen - earliest_gen_number)
+        if offset:
+            # 4 spaces per level to match existing tree spacing
+            prefix += "    " * offset
 
     # Connector characters (skip for root level)
     if level == 0:
@@ -121,16 +145,16 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                 )
             else:
                 plus_html += ' <span style="color:{0}; font-weight:bold">+</span>'.format(my_color)
-        elif edit.strip().startswith("~"):
-            correction_comment = edit.strip().replace("~", "").strip()
+        elif edit.strip().startswith("#"):
+            correction_comment = edit.strip().replace("#", "").strip()
             if correction_comment:
                 esc = _escape_attr(correction_comment)
                 correction_html += (
                     f' <a href="#" class="cm" style="color:{my_color}" title="View note" '
-                    f'   data-cmt="{esc}">~</a>'
+                    f'   data-cmt="{esc}">#</a>'
                 )
             else:
-                correction_html += ' <span style="color:{0}; font-weight:bold">~</span>'.format(my_color)
+                correction_html += ' <span style="color:{0}; font-weight:bold">#</span>'.format(my_color)
 
     comment_text = getattr(person, "comment", "") or ""
     if comment_text.strip():
@@ -165,110 +189,6 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
 
 
 
-# Example usage:
-def export_tree(root_person, print_language="en"):
-    """
-    Export the complete genealogy tree to an HTML file.
-
-    Calls `print_tree` starting from the root ancestor, wraps the output in a
-    full HTML document template (with CSS), and writes it to a language-specific file.
-
-    :param root: The root Person object (earliest known ancestor).
-    :type root: Person
-    :param lang: Language code for rendering ("en" for English, "np" for Nepali).
-    :type lang: str
-    :return: Path of the generated HTML file.
-    :rtype: str
-    """
-    text_lines = []
-    html_lines = [
-        '<html><head><meta charset="UTF-8">',
-        '<style>',
-        # Your existing base styles:
-        'div { font-family: monospace; font-size: 29px; white-space: pre; }',
-        'img.icon { height: 1.2em; width: auto; vertical-align: -0.15em; margin-right: 0.35em; }',
-
-        # NEW: asterisk and popup styles
-        'a.cm { text-decoration: none; font-weight: bold; margin-left: 0.25rem; cursor: pointer; }',
-        'a.cm:focus { outline: 2px solid #999; outline-offset: 2px; }',
-        '#comment-popup { position: fixed; z-index: 9999; display: none; display: inline-flex; align-items: center; width: auto; max-width: 70vw; padding: 8px 10px; '
-            'background: #fff; border: 1px solid #ccc; box-shadow: 0 6px 18px rgba(0,0,0,.15); '
-            'border-radius: 8px; font-size: 14px; line-height: 1.35; white-space: pre-wrap;}',
-        '#comment-popup .cp-body { display: inline;}',
-        '#comment-popup .cp-close { display: inline-block; margin-left: 10px; background: transparent; border: none; font-size: 16px; cursor: pointer; line-height: 1; }',
-        '</style>',
-        '</head><body>'
-    ]
-
-    print_tree(root_person, print_language=print_language,
-               text_lines=text_lines, html_lines=html_lines, level=0)
-
-    # Shared popup element + JS (added before closing body)
-    html_lines += [
-        '<div id="comment-popup" role="dialog" aria-modal="true" aria-label="Note">',
-        '  <div class="cp-body"></div>',
-        '  <button class="cp-close" aria-label="Close">×</button>',
-        '</div>',
-        '<script>',
-        '(function(){',
-        '  const popup = document.getElementById("comment-popup");',
-        '  const body = popup.querySelector(".cp-body");',
-        '  const closeBtn = popup.querySelector(".cp-close");',
-        '  let openFrom = null;',
-        '  function closePopup(){ popup.style.display="none"; openFrom=null; }',
-        '  function openPopup(anchor, text){',
-        '    body.textContent = text || "";',
-        '    popup.style.display = "block";',
-        '    const r = anchor.getBoundingClientRect();',
-        '    const pad = 8;',
-        '    let top = r.bottom + pad, left = r.left;',
-        '    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);',
-        '    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);',
-        '    const pw = popup.offsetWidth, ph = popup.offsetHeight;',
-        '    if (left + pw + pad > vw) left = vw - pw - pad;',
-        '    if (top + ph + pad > vh) top = r.top - ph - pad;',
-        '    if (top < pad) top = pad;',
-        '    if (left < pad) left = pad;',
-        '    popup.style.top = Math.round(top) + "px";',
-        '    popup.style.left = Math.round(left) + "px";',
-        '    openFrom = anchor;',
-        '  }',
-        '  document.addEventListener("click", function(e){',
-        '    const a = e.target.closest("a.cm");',
-        '    if (a){',
-        '      e.preventDefault();',
-        '      const txt = a.getAttribute("data-cmt") || "";',
-        '      // getAttribute returns real newlines from &#10;',
-        '      if (popup.style.display==="block" && openFrom===a) { closePopup(); }',
-        '      else { openPopup(a, txt); }',
-        '      e.stopPropagation();',
-        '      return;',
-        '    }',
-        '    if (popup.style.display==="block" && !e.target.closest("#comment-popup")) closePopup();',
-        '  }, true);',
-        '  closeBtn.addEventListener("click", function(e){ e.preventDefault(); closePopup(); });',
-        '  ["scroll","keydown","resize"].forEach(evt => window.addEventListener(evt, closePopup, {passive:true}));',
-        '  document.addEventListener("visibilitychange", function(){ if (document.hidden) closePopup(); });',
-        '  document.addEventListener("input", closePopup, true);',
-        '})();',
-        '</script>'
-    ]
-
-    html_lines.append('</body></html>')
-
-    # Write text output
-    with open(f"sisneri_poudel_tree_{print_language}.txt", "w", encoding="utf-8") as f:
-        f.write("\n".join(text_lines))
-
-    # Write HTML output
-    html_file = f"sisneri_poudel_tree_{print_language}.html"
-    with open(html_file, "w", encoding="utf-8") as f:
-        f.write("\n".join(html_lines))
-
-    print(f"✅ {html_file} - Tree exported for {'english' if print_language=='en' else 'nepali'}.")
-
-from html import escape
-import re
 
 def _strip_tags(html: str) -> str:
     """Minimal HTML tag stripper for plain-text export."""
@@ -288,6 +208,46 @@ def export_roots_trees(roots, print_language="en",
 
     where Bishwamvar's full tree follows Gopal's full tree.
     """
+
+    def get_var_name(obj, namespace=None):
+        if namespace is None:
+            namespace = globals()
+        return [name for name, val in namespace.items() if val is obj]
+
+    def get_earliest_generation(roots):
+        """
+        Given a list of Person objects, determine the earliest (minimum) generation number.
+        - If gen_number exists and is an integer between 1 and 100, use it.
+        - Otherwise, extract from the variable name (e.g., gopal_32 -> 32, hari_33_1 -> 33).
+
+        Args:
+            roots (list): list of Person objects
+
+        Returns:
+            int: the minimum generation number found
+        """
+        gen_numbers = []
+
+        for person in roots:
+            gen_num = getattr(person, "gen_number", None)
+            if isinstance(gen_num, int) and 1 <= gen_num <= 100:
+                gen_numbers.append(gen_num)
+            else:
+                # Fallback: extract digits after first underscore from variable name
+                var_name = get_var_name(person)[0]
+                if var_name is None:
+                    raise ValueError(f"No gen_number and no variable name for {person}")
+
+                match = re.search(r'_(\d+)', var_name)
+                if match:
+                    gen_numbers.append(int(match.group(1)))
+                else:
+                    raise ValueError(f"Could not determine generation number for {var_name}")
+
+        return min(gen_numbers) if gen_numbers else None
+
+    earliest_gen_number = get_earliest_generation(roots)
+
     lang = print_language
     if out_html_path is None:
         out_html_path = f"sisneri_poudel_tree_{lang}.html"
@@ -331,7 +291,8 @@ def export_roots_trees(roots, print_language="en",
             print_language=lang,
             text_lines=section_text,
             html_lines=section_html,
-            level=0
+            level=0,
+            earliest_gen_number=earliest_gen_number
         )
 
         # Append tree to combined outputs

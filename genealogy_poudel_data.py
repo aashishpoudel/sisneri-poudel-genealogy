@@ -1,11 +1,11 @@
 """This contains all the Person data of Sisneri Poudels"""
 from genealogy_class import Person
 
-gopal_32 = Person("Gopal", gender="Male", name_nep="गोपाल", birth_year="~1620", comment="काठमाण्डौ उपत्यका आउने")
+gopal_32 = Person("Gopal", gender="Male", name_nep="गोपाल", birth_year="~1620", gen_number=32, comment="काठमाण्डौ उपत्यका आउने")
 root_person = gopal_32
 ram_bhadra_33 = Person("Ram Bhadra", gender="Male", name_nep="रामभद्र", comment="लुभू सिस्नेरीमा बस्ने")
 govinda_34 = Person("Govinda", gender="Male", name_nep="गोविन्द", comment="ठूलाघरे पूर्वज")
-bishwamvar_34 = Person("Bishwamvar", gender="Male", name_nep="विश्वम्भर")
+bishwamvar_34 = Person("Bishwamvar", gender="Male", name_nep="विश्वम्भर", gen_number=34, comment="पुस्ता जोड्न सकिएको तर प्रजापतिभन्दा यिनको नाम अगाडि देखिएकोले पुस्ता ३४ अनुमानित")
 prajapati_34 = Person("Prajapati", gender="Male", name_nep="प्रजापति", birth_year=1650, comment="आँटीघरे पूर्वज\nसन् १६७७ मा श्रीनिवास मल्लबाट विर्ता")
 chamu_34 = Person("Chamu", gender="Male", name_nep="चामु", comment="तीनघरेका पूर्वज")
 
@@ -370,7 +370,7 @@ tika_prasad_44 = Person("TikaPrasad", gender="Male", name_nep="टीकाप�
 badri_prasad_44 = Person("BadriPrasad", gender="Male", name_nep="बद्रीप्रसाद")
 ramnath_44 = Person("Ramnath", gender="Male", name_nep="रामनाथ")
 
-madhuwan_45 = Person("Madhuwan", gender="Male", name_nep="मधुवन", edit="~ स्रोत: मधुवन (स्वयं)\nसच्याउनु अघिको नाम: मधुसूदन")
+madhuwan_45 = Person("Madhuwan", gender="Male", name_nep="मधुवन", edit="# स्रोत: मधुवन (स्वयं)\nसच्याउनु अघिको नाम: मधुसूदन")
 rajendra_45 = Person("Rajendra", gender="Male", name_nep="राजेन्द्र")
 raghunath_45 = Person("Raghunath", gender="Male", name_nep="रघुनाथ")
 mohan_45 = Person("Mohan", gender="Male", name_nep="मोहन")
