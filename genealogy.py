@@ -11,7 +11,7 @@ with open(genealogy_json_file, "w") as f:
 # Print tree with visual guide indentation
 def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                text_lines=None, html_lines=None, parent_color=None,
-               vertical_color_map=None, earliest_gen_number=None):
+               vertical_color_map=None, earliest_gen_number=None, color_offset=0):
     """
     Recursively build the genealogy tree as HTML.
 
@@ -35,10 +35,10 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     if vertical_color_map is None:
         vertical_color_map = {}
 
-    # Color palette
-    my_color = GENERATION_COLORS[level % len(GENERATION_COLORS)]
+
 
     # --- Root indent offset based on earliest_gen_number ---
+    indent_color_offset = 0
     if level == 0 and earliest_gen_number is not None:
         def _root_gen(p):
             gen = getattr(p, "gen_number", None)
@@ -58,10 +58,14 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
             return earliest_gen_number
 
         root_gen = _root_gen(person)
-        offset = max(0, root_gen - earliest_gen_number)
-        if offset:
+        root_offset = max(0, root_gen - earliest_gen_number)
+        color_offset += root_offset
+        if root_offset:
             # 4 spaces per level to match existing tree spacing
-            prefix += "    " * offset
+            prefix += "    " * root_offset
+
+    # Color palette
+    my_color = GENERATION_COLORS[(level + color_offset) % len(GENERATION_COLORS)]
 
     # Connector characters (skip for root level)
     if level == 0:
@@ -185,10 +189,9 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                    text_lines=text_lines,
                    html_lines=html_lines,
                    parent_color=my_color,
-                   vertical_color_map=vertical_color_map.copy())
-
-
-
+                   vertical_color_map=vertical_color_map.copy(),
+                   earliest_gen_number=earliest_gen_number,
+                   color_offset=color_offset)
 
 def _strip_tags(html: str) -> str:
     """Minimal HTML tag stripper for plain-text export."""
