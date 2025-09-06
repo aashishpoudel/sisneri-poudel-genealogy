@@ -530,6 +530,8 @@ Gopal
         │   │   │       │       │       │       │   │   └── Binamra
         │   │   │       │       │       │       │   └── Purushottam
         │   │   │       │       │       │       └── Sarad
+        │   │   │       │       │       │           ├── Akriti
+        │   │   │       │       │       │           └── Akanksha
         │   │   │       │       │       └── Gangasagar
         │   │   │       │       │           ├── Muktinath
         │   │   │       │       │           │   ├── Bhairav

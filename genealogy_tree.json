@@ -8251,7 +8251,38 @@
                                                   "father_nep": "\u092d\u094b\u091c\u0930\u093e\u091c",
                                                   "grandfather": "Sukadev",
                                                   "grandfather_nep": "\u091a\u093f\u0930\u091e\u094d\u091c\u0940\u0935\u0940",
-                                                  "children": []
+                                                  "children": [
+                                                    {
+                                                      "name": "Akriti",
+                                                      "name_nep": "\u0906\u0915\u0943\u0924\u093f",
+                                                      "gender": "Female",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "gen_number": null,
+                                                      "comment": null,
+                                                      "father": "Sarad",
+                                                      "father_nep": "\u0936\u0930\u0926",
+                                                      "grandfather": "Bhojraj",
+                                                      "grandfather_nep": "\u0936\u0941\u0915\u0926\u0947\u0935",
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Akanksha",
+                                                      "name_nep": "\u0906\u0915\u093e\u0919\u094d\u0915\u094d\u0937\u093e",
+                                                      "gender": "Female",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "gen_number": null,
+                                                      "comment": null,
+                                                      "father": "Sarad",
+                                                      "father_nep": "\u0936\u0930\u0926",
+                                                      "grandfather": "Bhojraj",
+                                                      "grandfather_nep": "\u0936\u0941\u0915\u0926\u0947\u0935",
+                                                      "children": []
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             }
