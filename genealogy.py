@@ -474,12 +474,19 @@ def update_index_html_in_place(roots, index_path="index.html"):
     per_root_consts = []
     merged_spreads = []
 
+    all_gen_ranges = []
     for label, person, root_gen in pairs:
         plist = flatten_person(person, root_gen)
+        print(f"{plist=}\n")
+        gen_numbers = [person.get('gen_number') for person in plist if isinstance(person.get('gen_number'), int) and 1 <= person.get('gen_number') <= 100]
+        gen_range_tuple = (min(gen_numbers), max(gen_numbers))
+        all_gen_ranges.append(gen_range_tuple)
         genealogy_json = json.dumps(plist, ensure_ascii=False, separators=(",", ":"))
         per_root_consts.append(f"const genealogyData_{label} = {genealogy_json};")
         merged_spreads.append(f"...genealogyData_{label}")
 
+    # Calculate total generation number range
+    total_gen_range = (min(r[0] for r in all_gen_ranges), max(r[1] for r in all_gen_ranges))
     merged_const = f"const genealogyData = [{', '.join(merged_spreads)}];"
 
     # ---------- read/patch index.html ----------
