@@ -532,7 +532,7 @@ def update_index_html_in_place(roots, index_path="index.html"):
         banner_html = (
             '<div id="gen-banner" style="border: 2px solid black; padding: 10px; text-align: center;">\n'
             '    <div class="gen-wrap">\n'
-            f'      {numbers_html} <strong class="gen-label">⬅ पुस्ता</strong>\n'
+            f'      {numbers_html} <strong class="gen-label"> पुस्ता</strong>\n'
             '    </div>\n'
             '</div>'
         )
