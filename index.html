@@ -132,6 +132,37 @@
         padding: 0;
       }
     }
+
+    /* === Styles for the generation banner === */
+    #gen-banner { text-align: center; }
+    #gen-banner .gen-wrap {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+    }
+    #gen-banner .gen-dot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px; height: 38px;
+      border: 2px solid #333;
+      border-radius: 9999px;
+      font: 700 16px/1.1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: #111;
+      background: #fff;
+      user-select: none;
+    }
+    /* Optional hover focus states for desktop accessibility */
+    #gen-banner .gen-dot:hover { border-color: #1abc9c; color: #1abc9c; }
+    #gen-banner .gen-dot:focus { outline: 3px solid #1abc9c; outline-offset: 2px; }
+    /* Responsive: slightly smaller circles on narrow screens */
+    @media (max-width: 600px) {
+      #gen-banner .gen-dot { width: 32px; height: 32px; font-size: 14px; }
+    }
+
     /* === Side drawer & hamburger === */
     .hamburger {
       position: fixed;
@@ -307,6 +338,28 @@
     </div>
     <div id="searchTagContainer"></div>
   </div>
+
+  <div id="gen-banner" style="border: 2px solid black; padding: 10px; text-align: center;">
+    <div class="gen-wrap">
+      <span class="gen-dot" aria-label="Generation 32">32</span>
+      <span class="gen-dot" aria-label="Generation 33">33</span>
+      <span class="gen-dot" aria-label="Generation 34">34</span>
+      <span class="gen-dot" aria-label="Generation 35">35</span>
+      <span class="gen-dot" aria-label="Generation 36">36</span>
+      <span class="gen-dot" aria-label="Generation 37">37</span>
+      <span class="gen-dot" aria-label="Generation 38">38</span>
+      <span class="gen-dot" aria-label="Generation 39">39</span>
+      <span class="gen-dot" aria-label="Generation 40">40</span>
+      <span class="gen-dot" aria-label="Generation 41">41</span>
+      <span class="gen-dot" aria-label="Generation 42">42</span>
+      <span class="gen-dot" aria-label="Generation 43">43</span>
+      <span class="gen-dot" aria-label="Generation 44">44</span>
+      <span class="gen-dot" aria-label="Generation 45">45</span>
+      <span class="gen-dot" aria-label="Generation 46">46</span>
+      <span class="gen-dot" aria-label="Generation 47">47</span>
+      <span class="gen-dot" aria-label="Generation 48">48</span>
+    </div>
+</div>
 
   <div id="content">
     <iframe id="frame_np" src="sisneri_poudel_tree_np.html"></iframe>
