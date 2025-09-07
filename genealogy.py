@@ -477,7 +477,6 @@ def update_index_html_in_place(roots, index_path="index.html"):
     all_gen_ranges = []
     for label, person, root_gen in pairs:
         plist = flatten_person(person, root_gen)
-        print(f"{plist=}\n")
         gen_numbers = [person.get('gen_number') for person in plist if isinstance(person.get('gen_number'), int) and 1 <= person.get('gen_number') <= 100]
         gen_range_tuple = (min(gen_numbers), max(gen_numbers))
         all_gen_ranges.append(gen_range_tuple)
@@ -518,23 +517,6 @@ def update_index_html_in_place(roots, index_path="index.html"):
 
     print("✅ index.html updated with genealogyData blocks.")
 
-
-###Todo take below thing out if no issue seen after Aug 15
-# # Build parent mapping: child -> parent
-# parent_map = {}
-#
-# def build_parent_map(person, parent=None):
-#     for child in person.children:
-#         parent_map[child] = person
-#         build_parent_map(child, child)
-#
-# build_parent_map(root_person)
-
-# for language in ("en", "np"):
-#     print_tree(gopal_32, print_language=language)
-#     export_tree(gopal_32, print_language=language)  # Make sure you have a Person instance assigned to `root_person`
-
-# update_index_html_in_place("index.html")
 
 if __name__ == "__main__":
     # roots is all the root Person of the unconnected family tree

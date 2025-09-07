@@ -25691,8 +25691,23 @@
                                                   "grandfather_nep": "\u092c\u094b\u0927\u0928\u093f\u0927\u093f",
                                                   "children": [
                                                     {
-                                                      "name": "Ritbij",
-                                                      "name_nep": "\u0930\u0940\u0924\u0935\u0940\u091c",
+                                                      "name": "Ritambhara",
+                                                      "name_nep": "\u0930\u093f\u0924\u092e\u094d\u092d\u0930\u093e",
+                                                      "gender": "Female",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "gen_number": null,
+                                                      "comment": null,
+                                                      "father": "Binod",
+                                                      "father_nep": "\u0935\u093f\u0928\u094b\u0926",
+                                                      "grandfather": "Pramod",
+                                                      "grandfather_nep": "\u0924\u094b\u092f\u0928\u093f\u0927\u093f",
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "Ritwiz",
+                                                      "name_nep": "\u0930\u093f\u0924\u094d\u0935\u093f\u091c",
                                                       "gender": "Male",
                                                       "birth_year": null,
                                                       "death_year": null,
