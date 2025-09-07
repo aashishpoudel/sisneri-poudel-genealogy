@@ -158,6 +158,18 @@
     /* Optional hover focus states for desktop accessibility */
     #gen-banner .gen-dot:hover { border-color: #1abc9c; color: #1abc9c; }
     #gen-banner .gen-dot:focus { outline: 3px solid #1abc9c; outline-offset: 2px; }
+    /* Filled/selected generation badge */
+    #gen-banner .gen-dot--filled {
+      background: #1abc9c;   /* brand accent */
+      border-color: #1abc9c;
+      color: #fff;
+    }
+    #gen-banner .gen-dot--filled:hover { border-color: #148f77; }
+    #gen-banner .gen-dot--filled:focus {
+      outline: 3px solid #148f77;
+      outline-offset: 2px;
+    }
+
     /* Responsive: slightly smaller circles on narrow screens */
     @media (max-width: 600px) {
       #gen-banner .gen-dot { width: 32px; height: 32px; font-size: 14px; }
@@ -451,6 +463,33 @@
       if (!items.length) ul.classList.add('hidden');   // ✅ hide again if nothing to show
     }
 
+    function modifyGenerationNumber(genNumber) {
+      // Find all span elements with class 'gen-dot' inside the gen-banner
+      const genSpans = document.querySelectorAll('#gen-banner .gen-dot');
+
+      // Iterate through spans to find the one matching the input generation number
+      for (const span of genSpans) {
+        if (span.textContent === String(genNumber)) {
+          // Add the gen-dot--filled class to apply the filled styling
+          span.classList.add('gen-dot--filled');
+          return true; // Indicate success
+        }
+      }
+
+      // Return false if the generation number was not found
+      return false;
+    }
+
+    function clearGenerationNumber() {
+      // Find all span elements with class 'gen-dot' inside the gen-banner
+      const genSpans = document.querySelectorAll('#gen-banner .gen-dot');
+
+      // Remove gen-dot--filled class from all matching spans
+      genSpans.forEach(span => span.classList.remove('gen-dot--filled'));
+
+      return true; // Indicate success
+    }
+
     // Highlight in the active iframe using data attributes + add ✅ next to the exact target
     function highlightNameInIframe(iframeId, name, father, grand) {
       const frame = document.getElementById(iframeId);
@@ -546,6 +585,7 @@
 
         // Resolve the selected person's record first (we have name, father, grandfather from the DOM)
         let rec = getExactRecordFlex(childName, childFather, childGrand, childGG || null);
+        const selectedRec = rec; // keep a copy before climbing ancestors
         const ancestorPath = []; // array of { name: 'Govinda', fatherOfThisPerson: 'Ram Bhadra' }
 
         // Walk up using DATA (not DOM): person -> person's father -> father’s father -> ...
@@ -598,6 +638,14 @@
 
         // 4) Center the selected match
         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        //5 Experiment
+
+        // When you need the generation number for the banner:
+        if (selectedRec && Number.isInteger(selectedRec.gen_number)) {
+          clearGenerationNumber();
+          modifyGenerationNumber(selectedRec.gen_number);
+        }
       }
 
     }
@@ -717,8 +765,10 @@
         // Also clear any highlights/suggestions
         const sugg = document.getElementById('suggestions');
         if (sugg) { sugg.innerHTML = ''; sugg.classList.add('hidden'); }
+        clearGenerationNumber();
         clearHighlights();
       };
+      clearGenerationNumber();
     })();
 
     // === Drawer controls ===
