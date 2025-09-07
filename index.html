@@ -175,6 +175,15 @@
       #gen-banner .gen-dot { width: 32px; height: 32px; font-size: 14px; }
     }
 
+    .gen-label {
+      font-size: 28px;   /* try 32px if you want bigger */
+      font-weight: 400;  /* strong already bolds; this makes it punchy */
+      line-height: 1.1;
+    }
+    @media (max-width: 600px) {
+      .gen-label { font-size: 22px; }  /* mobile-friendly */
+    }
+
     /* === Side drawer & hamburger === */
     .hamburger {
       position: fixed;
@@ -369,7 +378,7 @@
       <span class="gen-dot" aria-label="Generation 45">45</span>
       <span class="gen-dot" aria-label="Generation 46">46</span>
       <span class="gen-dot" aria-label="Generation 47">47</span>
-      <span class="gen-dot" aria-label="Generation 48">48</span>
+      <span class="gen-dot" aria-label="Generation 48">48</span> <strong class="gen-label">⬅ पुस्ता</strong>
     </div>
 </div>
 
