@@ -524,8 +524,10 @@ def update_index_html_in_place(roots, index_path="index.html"):
         # Build the circle badges
         circles = []
         for i in range(start, end + 1):
+            gen_color = GENERATION_COLORS[(i - total_gen_range[0]) % len(GENERATION_COLORS)]
             circles.append(
-                f'<span class="gen-dot" aria-label="Generation {i}">{i}</span>'
+                f'<span class="gen-dot" aria-label="Generation {i}" '
+                f'style="border-color:{gen_color}; color:{gen_color}">{i}</span>'
             )
         numbers_html = "\n      ".join(circles)
 
