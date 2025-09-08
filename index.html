@@ -134,7 +134,15 @@
     }
 
     /* === Styles for the generation banner === */
-    #gen-banner { text-align: center; }
+    #gen-banner {
+      position: sticky;
+      top: 70px;   /* adjust depending on searchContainer height */
+      background: white;
+      z-index: 998;   /* just below the search bar (z-index:999) */
+      border: 2px solid black;
+      padding: 10px;
+      text-align: center;
+    }
     #gen-banner .gen-wrap {
       display: inline-flex;
       flex-wrap: wrap;
