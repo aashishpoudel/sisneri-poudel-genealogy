@@ -532,9 +532,22 @@ def update_index_html_in_place(roots, index_path="index.html"):
         numbers_html = "\n      ".join(circles)
 
         banner_html = (
-            '<div id="gen-banner" style="border: 2px solid black; padding: 10px; text-align: center;">\n'
-            '    <div class="gen-wrap">\n'
-            f'      {numbers_html} <strong class="gen-label"> पुस्ता</strong>\n'
+            '<div id="gen-banner" style="'
+            'position: fixed !important; '
+            'top: 0 !important; '
+            'left: 0 !important; '
+            'width: 100% !important; '
+            'z-index: 9999 !important; '
+            'border: 2px solid black; '
+            'padding: 10px; '
+            'text-align: center; '
+            'background: white !important; '  # Prevents see-through during zoom
+            'box-shadow: 0 2px 10px rgba(0,0,0,0.1); '  # Subtle shadow for depth
+            'will-change: transform; '  # Optimizes for mobile scroll/zoom
+            'font-family: monospace; '  # Matches tree font
+            '">'
+            '    <div class="gen-wrap" style="display: flex; align-items: center; justify-content: center; gap: 5px;">\n'
+            f'      {numbers_html} <strong class="gen-label" style="font-size: 18px; margin-left: 10px;">पुस्ता</strong>\n'
             '    </div>\n'
             '</div>'
         )
