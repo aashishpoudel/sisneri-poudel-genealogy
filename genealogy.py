@@ -542,7 +542,7 @@ def update_index_html_in_place(roots, index_path="index.html"):
         with open(index_path, "r", encoding="utf-8") as f:
             html_content = f.read()
 
-        # Replace the whole <div id="gen-banner">...</div> block (single-pass)
+        # REPALCE  the whole <div id="gen-banner">...</div> block (single-pass)
         new_html = re.sub(
             r'<div id="gen-banner"[^>]*>[\s\S]*?<div class="gen-wrap">[\s\S]*?</div>[\s\S]*?</div>',
             banner_html,
