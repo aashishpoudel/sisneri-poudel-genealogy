@@ -1652,7 +1652,8 @@ Gopal
         │       │       │   │   │               ├── Manoj
         │       │       │   │   │               │   └── Aryan
         │       │       │   │   │               └── Binod
-        │       │       │   │   │                   └── Ritbij
+        │       │       │   │   │                   ├── Ritambhara
+        │       │       │   │   │                   └── Ritwiz
         │       │       │   │   ├── Loknath
         │       │       │   │   └── Rupnarayan
         │       │       │   └── Ramlal

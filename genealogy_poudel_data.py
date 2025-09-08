@@ -1987,7 +1987,8 @@ atul_44 = Person("Atul", gender="Male", name_nep="अतुल")
 manoj_44_4 = Person("Manoj", gender="Male", name_nep="मनोज")
 binod_44_7 = Person("Binod", gender="Male", name_nep="विनोद")
 aryan_45_3 = Person("Aryan", gender="Male", name_nep="आर्यन")
-ritbij_45 = Person("Ritbij", gender="Male", name_nep="रीतवीज")
+ritambhara_45 = Person("Ritambhara", gender="Female", name_nep="रितम्भरा", edit="+ स्रोत: विनोद (बुवा)")
+ritwiz_45 = Person("Ritwiz", gender="Male", name_nep="रित्विज", edit="~ सच्याइएको, स्रोत: विनोद (बुवा)")
 
 #page 75
 govinda_40_2 = Person("Govinda", gender="Male", name_nep="गोविन्द")
@@ -5000,7 +5001,7 @@ toyanidhi_42.add_children([bijay_prasad_43, pramod_prasad_43])
 bijay_prasad_43.add_child(atul_44)
 pramod_prasad_43.add_children([manoj_44_4, binod_44_7])
 manoj_44_4.add_child(aryan_45_3)
-binod_44_7.add_child(ritbij_45)
+binod_44_7.add_children([ritambhara_45, ritwiz_45])
 
 #page 75
 ramlal_39.add_children([govinda_40_2, bishwamitra_40, prajapati_40])

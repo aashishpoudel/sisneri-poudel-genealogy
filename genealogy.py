@@ -474,12 +474,18 @@ def update_index_html_in_place(roots, index_path="index.html"):
     per_root_consts = []
     merged_spreads = []
 
+    all_gen_ranges = []
     for label, person, root_gen in pairs:
         plist = flatten_person(person, root_gen)
+        gen_numbers = [person.get('gen_number') for person in plist if isinstance(person.get('gen_number'), int) and 1 <= person.get('gen_number') <= 100]
+        gen_range_tuple = (min(gen_numbers), max(gen_numbers))
+        all_gen_ranges.append(gen_range_tuple)
         genealogy_json = json.dumps(plist, ensure_ascii=False, separators=(",", ":"))
         per_root_consts.append(f"const genealogyData_{label} = {genealogy_json};")
         merged_spreads.append(f"...genealogyData_{label}")
 
+    # Calculate total generation number range
+    total_gen_range = (min(r[0] for r in all_gen_ranges), max(r[1] for r in all_gen_ranges))
     merged_const = f"const genealogyData = [{', '.join(merged_spreads)}];"
 
     # ---------- read/patch index.html ----------
@@ -511,23 +517,44 @@ def update_index_html_in_place(roots, index_path="index.html"):
 
     print("✅ index.html updated with genealogyData blocks.")
 
+    # ---------- Replace gen-banner with encircled numbers ----------
+    if total_gen_range:
+        start, end = total_gen_range
 
-###Todo take below thing out if no issue seen after Aug 15
-# # Build parent mapping: child -> parent
-# parent_map = {}
-#
-# def build_parent_map(person, parent=None):
-#     for child in person.children:
-#         parent_map[child] = person
-#         build_parent_map(child, child)
-#
-# build_parent_map(root_person)
+        # Build the circle badges
+        circles = []
+        for i in range(start, end + 1):
+            gen_color = GENERATION_COLORS[(i - total_gen_range[0]) % len(GENERATION_COLORS)]
+            circles.append(
+                f'<span class="gen-dot" aria-label="Generation {i}" '
+                f'style="border-color:{gen_color}; color:{gen_color}">{i}</span>'
+            )
+        numbers_html = "\n      ".join(circles)
 
-# for language in ("en", "np"):
-#     print_tree(gopal_32, print_language=language)
-#     export_tree(gopal_32, print_language=language)  # Make sure you have a Person instance assigned to `root_person`
+        banner_html = (
+            '<div id="gen-banner" style="border: 2px solid black; padding: 10px; text-align: center;">\n'
+            '    <div class="gen-wrap">\n'
+            f'      {numbers_html} <strong class="gen-label"> पुस्ता</strong>\n'
+            '    </div>\n'
+            '</div>'
+        )
 
-# update_index_html_in_place("index.html")
+        with open(index_path, "r", encoding="utf-8") as f:
+            html_content = f.read()
+
+        # Replace the whole <div id="gen-banner">...</div> block (single-pass)
+        new_html = re.sub(
+            r'<div id="gen-banner"[^>]*>[\s\S]*?<div class="gen-wrap">[\s\S]*?</div>[\s\S]*?</div>',
+            banner_html,
+            html_content,
+            flags=re.DOTALL
+        )
+
+        with open(index_path, "w", encoding="utf-8") as f:
+            f.write(new_html)
+
+        print(f"✅ gen-banner updated in {index_path} with encircled generations {start}–{end}")
+
 
 if __name__ == "__main__":
     # roots is all the root Person of the unconnected family tree
