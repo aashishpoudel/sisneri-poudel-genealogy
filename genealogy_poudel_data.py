@@ -1988,7 +1988,7 @@ manoj_44_4 = Person("Manoj", gender="Male", name_nep="मनोज")
 binod_44_7 = Person("Binod", gender="Male", name_nep="विनोद")
 aryan_45_3 = Person("Aryan", gender="Male", name_nep="आर्यन")
 ritambhara_45 = Person("Ritambhara", gender="Female", name_nep="रितम्भरा", edit="+ स्रोत: विनोद (बुवा)")
-ritwiz_45 = Person("Ritwiz", gender="Male", name_nep="रित्विज", edit="+ स्रोत: विनोद (बुवा)")
+ritwiz_45 = Person("Ritwiz", gender="Male", name_nep="रित्विज", edit="~ सच्याइएको, स्रोत: विनोद (बुवा)")
 
 #page 75
 govinda_40_2 = Person("Govinda", gender="Male", name_nep="गोविन्द")
