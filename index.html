@@ -532,14 +532,31 @@
         target.style.backgroundColor = 'yellow';
         target.style.border = '3px solid orange';
 
-        // Refresh ✅ badge
         doc.querySelectorAll('.match-badge').forEach(el => el.remove());
+        doc.querySelectorAll('.gen-badge').forEach(el => el.remove());
+
+        // ✅ badge
         const badge = doc.createElement('span');
         badge.className = 'match-badge';
         badge.textContent = '✅';
         badge.style.marginLeft = '0.3em';
         badge.style.fontSize = '1em';
         target.insertAdjacentElement('afterend', badge);
+
+        // Generation badge (from annotated attribute)
+        const genNumber = target.getAttribute('data-gen_number');
+        console.log('DEBUG genNumber =', genNumber, 'for', target); // <-- you wanted this
+        if (genNumber) {
+          const genBadge = doc.createElement('span');
+          genBadge.className = 'gen-badge';
+          genBadge.textContent = ` (${genNumber})`;
+          genBadge.style.marginLeft = '0.2em';
+          genBadge.style.fontSize  = '0.9em';
+          genBadge.style.color     = '#555';
+          badge.insertAdjacentElement('afterend', genBadge);
+        }
+
+        //data-gen_number="42"
 
         // 2) Build an unambiguous ancestor path FROM DATA, not the DOM
         //    We identify the *exact* record for the selected target using its own father/grandfather,
