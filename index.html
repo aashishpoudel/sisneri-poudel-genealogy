@@ -532,6 +532,7 @@
       });
       // Remove any previous badges so only the current target shows one
       doc.querySelectorAll('.match-badge').forEach(el => el.remove());
+      doc.querySelectorAll('.gen-badge, .gen-dot-inline').forEach(el => el.remove());
 
       // Try full triple match, then fallbacks (same as before)
       let selector = `[data-name="${CSS.escape(name)}"][data-father="${CSS.escape(father || '')}"][data-grandfather="${CSS.escape(grand || '')}"]`;
@@ -568,16 +569,55 @@
         const computed = doc.defaultView.getComputedStyle(target);
         const genColor  = computed.color || '#1abc9c';
 
+        function getContrastColor(hexOrRgb) {
+          // Parse hex like "#rrggbb" or rgb string
+          let r, g, b;
+          if (hexOrRgb.startsWith('#')) {
+            const bigint = parseInt(hexOrRgb.slice(1), 16);
+            r = (bigint >> 16) & 255;
+            g = (bigint >> 8) & 255;
+            b = bigint & 255;
+          } else if (hexOrRgb.startsWith('rgb')) {
+            [r, g, b] = hexOrRgb.match(/\d+/g).map(Number);
+          } else {
+            return '#fff'; // default
+          }
+
+          // Luminance check (YIQ)
+          const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+          return yiq >= 128 ? '#000' : '#fff';
+        }
+
         // Build encircled + filled badge (same style language as banner)
+        function ensureInlineBadgeCSS(doc) {
+          if (doc.getElementById('gen-dot-inline-styles')) return;
+          const style = doc.createElement('style');
+          style.id = 'gen-dot-inline-styles';
+          style.textContent = `
+            .gen-dot-inline{
+              display:inline-flex; align-items:center; justify-content:center;
+              width:32px; height:32px;
+              border:2px solid currentColor; border-radius:9999px;
+              font:700 15px/1.1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+              color:#111; background:#fff; vertical-align:middle; margin-left:.35em; user-select:none;
+            }
+            .gen-dot-inline--filled{ background: currentColor; color:#fff; }
+          `;
+          doc.head.appendChild(style);
+        }
+
+        // Call this before you create/insert the badge:
+        ensureInlineBadgeCSS(doc);
+
+        // Then your existing creation code:
         if (genNumber) {
           const genBadge = doc.createElement('span');
           genBadge.className = 'gen-dot-inline gen-dot-inline--filled gen-badge';
           genBadge.textContent = genNumber;
-
-          // Set the color once; border & fill follow via currentColor in CSS
-          genBadge.style.color = genColor;
-
-          // Insert after the ✅
+          genBadge.setAttribute('aria-label', `Generation ${genNumber}`);
+          genBadge.style.color = genColor; // drives border + fill via currentColor
+          genBadge.style.background = '#1abc9c';
+          //genBadge.style.background = getContrastColor(genColor);
           badge.insertAdjacentElement('afterend', genBadge);
         }
 
@@ -781,6 +821,7 @@
           el.style.border = '';
         });
         d.querySelectorAll('.match-badge').forEach(el => el.remove());
+        doc.querySelectorAll('.gen-badge, .gen-dot-inline').forEach(el => el.remove());
       }
     }
 
