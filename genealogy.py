@@ -11,7 +11,7 @@ with open(genealogy_json_file, "w") as f:
 # Print tree with visual guide indentation
 def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                text_lines=None, html_lines=None, parent_color=None,
-               vertical_color_map=None, earliest_gen_number=None, color_offset=0):
+               vertical_color_map=None, earliest_gen_number=None, color_offset=0, current_gen=None):
     """
     Recursively build the genealogy tree as HTML.
 
@@ -36,6 +36,21 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
         vertical_color_map = {}
 
 
+    # --- compute current generation number for this node ---
+    if current_gen is None:
+        # Prefer an explicit person.gen_number if present
+        gen_val = getattr(person, "gen_number", None)
+        if isinstance(gen_val, int):
+            current_gen = gen_val
+        else:
+            # Fallback: parse from the Python variable name (e.g. gopal_32 -> 32)
+            var_name = next((var for var, obj in globals().items() if obj is person), None)
+            m = re.search(r'_(\d+)', var_name) if var_name else None
+            if m:
+                current_gen = int(m.group(1))
+            else:
+                # Last resort: align to earliest_gen_number or default to 32
+                current_gen = earliest_gen_number if earliest_gen_number is not None else 32
 
     # --- Root indent offset based on earliest_gen_number ---
     indent_color_offset = 0
@@ -115,7 +130,8 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
     # Base label HTML
     name_html = (
         f'<span style="color:{my_color}; font-size:{font_size}px" '
-        f'data-name="{person.name}" data-father="{father_name}" data-grandfather="{grandfather_name}">'
+        f'data-name="{person.name}" data-father="{father_name}" '
+        f'data-grandfather="{grandfather_name}" data-gen_number="{current_gen}">'
         f'{print_words}</span>'
     )
 
@@ -191,7 +207,8 @@ def print_tree(person, level=0, prefix="", is_last=True, print_language="en",
                    parent_color=my_color,
                    vertical_color_map=vertical_color_map.copy(),
                    earliest_gen_number=earliest_gen_number,
-                   color_offset=color_offset)
+                   color_offset=color_offset,
+                   current_gen=current_gen + 1)  # <-- NEW
 
 def _strip_tags(html: str) -> str:
     """Minimal HTML tag stripper for plain-text export."""
@@ -542,7 +559,7 @@ def update_index_html_in_place(roots, index_path="index.html"):
         with open(index_path, "r", encoding="utf-8") as f:
             html_content = f.read()
 
-        # Replace the whole <div id="gen-banner">...</div> block (single-pass)
+        # REPALCE  the whole <div id="gen-banner">...</div> block (single-pass)
         new_html = re.sub(
             r'<div id="gen-banner"[^>]*>[\s\S]*?<div class="gen-wrap">[\s\S]*?</div>[\s\S]*?</div>',
             banner_html,

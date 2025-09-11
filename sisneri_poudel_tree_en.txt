@@ -145,9 +145,11 @@ Gopal
         │   │   │           │   │       └── Angirash
         │   │   │           │   │           ├── Bishnugopal
         │   │   │           │   │           │   ├── Narayan
+        │   │   │           │   │           │   │   ├── Aarati
         │   │   │           │   │           │   │   └── Aashish
         │   │   │           │   │           │   │       ├── Aayan
-        │   │   │           │   │           │   │       └── Adwik
+        │   │   │           │   │           │   │       ├── Adwik
+        │   │   │           │   │           │   │       └── Aarvi
         │   │   │           │   │           │   ├── Bhagawan
         │   │   │           │   │           │   │   └── Prabesh
         │   │   │           │   │           │   ├── Pushpa

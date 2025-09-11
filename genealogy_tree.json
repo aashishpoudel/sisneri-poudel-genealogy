@@ -2267,6 +2267,21 @@
                                                   "grandfather_nep": "\u0917\u0923\u0947\u0936\u0926\u0924\u094d\u0924",
                                                   "children": [
                                                     {
+                                                      "name": "Aarati",
+                                                      "name_nep": "\u0906\u0930\u0924\u0940",
+                                                      "gender": "Female",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "gen_number": null,
+                                                      "comment": null,
+                                                      "father": "Narayan",
+                                                      "father_nep": "\u0928\u093e\u0930\u093e\u092f\u0923",
+                                                      "grandfather": "Bishnugopal",
+                                                      "grandfather_nep": "\u0905\u0902\u0917\u093f\u0930\u0938",
+                                                      "children": []
+                                                    },
+                                                    {
                                                       "name": "Aashish",
                                                       "name_nep": "\u0906\u0936\u093f\u0937",
                                                       "gender": "Male",
@@ -2300,6 +2315,21 @@
                                                           "name_nep": "\u0905\u0926\u094d\u0935\u093f\u0915",
                                                           "gender": "Male",
                                                           "birth_year": 2019,
+                                                          "death_year": null,
+                                                          "place": null,
+                                                          "gen_number": null,
+                                                          "comment": null,
+                                                          "father": "Aashish",
+                                                          "father_nep": "\u0906\u0936\u093f\u0937",
+                                                          "grandfather": "Narayan",
+                                                          "grandfather_nep": "\u0935\u093f\u0937\u094d\u0923\u0941\u0917\u094b\u092a\u093e\u0932",
+                                                          "children": []
+                                                        },
+                                                        {
+                                                          "name": "Aarvi",
+                                                          "name_nep": "\u0906\u0930\u0935\u0940",
+                                                          "gender": "Female",
+                                                          "birth_year": 2025,
                                                           "death_year": null,
                                                           "place": null,
                                                           "gen_number": null,
