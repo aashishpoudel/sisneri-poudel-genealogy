@@ -189,7 +189,7 @@ subiksya_45 = Person("Subiksya", gender="Female", name_nep="सुविक्�
 sadiksya_45 = Person("Sadiksya", gender="Female", name_nep="सदिक्षा")
 yasonta_45 = Person("Yasonta", gender="Male", name_nep="यसोन्त")
 
-aarati_45 = Person("Aarati", gender="Female", name_nep="आरती") #myself
+aarati_45 = Person("Aarati", gender="Female", name_nep="आरती", edit="+ स्रोत:आशिष") #myself
 aashish_45 = Person("Aashish", gender="Male", name_nep="आशिष", birth_year=1983, comment="वंशावलीलाई sisneripoudel.com मा राख्ने") #myself
 prabesh_45 = Person("Prabesh", gender="Male", name_nep="प्रवेश")
 niraj_45 = Person("Niraj", gender="Male", name_nep="निरज")
