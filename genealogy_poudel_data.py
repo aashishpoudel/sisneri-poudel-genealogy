@@ -189,6 +189,7 @@ subiksya_45 = Person("Subiksya", gender="Female", name_nep="सुविक्�
 sadiksya_45 = Person("Sadiksya", gender="Female", name_nep="सदिक्षा")
 yasonta_45 = Person("Yasonta", gender="Male", name_nep="यसोन्त")
 
+aarati_45 = Person("Aarati", gender="Female", name_nep="आरती") #myself
 aashish_45 = Person("Aashish", gender="Male", name_nep="आशिष", birth_year=1983, comment="वंशावलीलाई sisneripoudel.com मा राख्ने") #myself
 prabesh_45 = Person("Prabesh", gender="Male", name_nep="प्रवेश")
 niraj_45 = Person("Niraj", gender="Male", name_nep="निरज")
@@ -1988,7 +1989,7 @@ manoj_44_4 = Person("Manoj", gender="Male", name_nep="मनोज")
 binod_44_7 = Person("Binod", gender="Male", name_nep="विनोद")
 aryan_45_3 = Person("Aryan", gender="Male", name_nep="आर्यन")
 ritambhara_45 = Person("Ritambhara", gender="Female", name_nep="रितम्भरा", edit="+ स्रोत: विनोद (बुवा)")
-ritwiz_45 = Person("Ritwiz", gender="Male", name_nep="रित्विज", edit="~ सच्याइएको, स्रोत: विनोद (बुवा)")
+ritwiz_45 = Person("Ritwiz", gender="Male", name_nep="रित्विज", edit="# सच्याइएको, स्रोत: विनोद (बुवा)")
 
 #page 75
 govinda_40_2 = Person("Govinda", gender="Male", name_nep="गोविन्द")
@@ -3936,7 +3937,7 @@ sanod_44.add_child(aashutosh_45)
 suresh_44.add_children([subiksya_45, sadiksya_45])
 dinesh_44.add_child(yasonta_45)
 
-narayan_44.add_child(aashish_45)
+narayan_44.add_children([aarati_45, aashish_45])
 bhagawan_44.add_child(prabesh_45)
 pushpa_raj_44.add_children([suraj_45, niraj_45])
 madhu_sudan_44.add_child(kushal_45)
@@ -3947,8 +3948,7 @@ ashok_45.add_child(aahwan_46)
 anil_45.add_child(adhit_46)
 amish_45.add_child(subhangana_46)
 
-aashish_45.add_children([aayan_46, adwik_46])
-# aashish_45.add_children([aayan_46, adwik_46, aarvi_46])
+aashish_45.add_children([aayan_46, adwik_46, aarvi_46])
 
 #page 29
 devhari_kancha_36.add_child(rishi_37)
