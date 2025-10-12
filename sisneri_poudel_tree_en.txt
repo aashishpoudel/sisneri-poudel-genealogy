@@ -44,7 +44,8 @@ Gopal
         │   │   │           │   │   │   │   ├── Dhruva
         │   │   │           │   │   │   │   │   ├── Rishiram
         │   │   │           │   │   │   │   │   │   ├── Saroj
-        │   │   │           │   │   │   │   │   │   │   └── Subham
+        │   │   │           │   │   │   │   │   │   │   ├── Sanskar
+        │   │   │           │   │   │   │   │   │   │   └── Sanskriti
         │   │   │           │   │   │   │   │   │   ├── Sabin
         │   │   │           │   │   │   │   │   │   └── Suman
         │   │   │           │   │   │   │   │   └── Rajan

@@ -171,7 +171,8 @@ sanjay_45 = Person("Sanjay", gender="Male", name_nep="संजय")
 bimal_45 = Person("Bimal", gender="Male", name_nep="विमल")
 sagar_45 = Person("Sagar", gender="Male", name_nep="सागर")
 
-subham_46 = Person("Subham", gender="Male", name_nep="शुभम")
+sanskar_46 = Person("Sanskar", gender="Male", name_nep="संस्कार", edit="# स्रोत: सरोज (बुवा)\nसच्याउनु अघिको नाम: शुभम")
+sanskriti_46 = Person("Sanskriti", gender="Female", name_nep="संस्कृति", edit="+ स्रोत: सरोज (बुवा)")
 nakchhit_46 = Person("Nakchhit", gender="Male", name_nep="नक्क्षित", edit="+ स्रोत: सञ्जय (बुवा)")
 
 ajij_45 = Person("Ajij", gender="Male", name_nep="अजिज")
@@ -3924,7 +3925,7 @@ basanta_44.add_child(sanjay_45)
 bishwonath_44.add_child(bimal_45)
 damodar_44.add_child(sagar_45)
 
-saroj_45.add_child(subham_46)
+saroj_45.add_children([sanskar_46, sanskriti_46])
 sanjay_45.add_child(nakchhit_46)
 
 ram_44.add_children([ashok_45, anup_45, anil_45])
