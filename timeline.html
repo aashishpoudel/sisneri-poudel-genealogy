@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ne">
+<head>
+  <meta charset="utf-8" />
+  <title>Timeline • Sisneri Poudel Genealogy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Project timeline (नेपाली & English) for sisneripoudel.com." />
+  <style>
+    :root{
+      --bg: #f7f9fb;
+      --card: #ffffff;
+      --text: #1f2a37;
+      --muted: #6b7280;
+      --primary: #0d6efd;
+      --ring: #1abc9c;
+      --line: #e5eef4;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 16px;
+      --pill: #eef4f8;
+      --tab-bg: #eff5fb;
+      --date-w: 36px; /* reduced left indentation */
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0b1320;
+        --card: #0f1a2b;
+        --text: #e5eef7;
+        --muted: #99a3b2;
+        --primary: #7ab8ff;
+        --ring: #34d399;
+        --line: #1f2a37;
+        --shadow: 0 10px 30px rgba(0,0,0,.35);
+        --pill: #122239;
+        --tab-bg: #11233d;
+      }
+    }
+    @media (max-width: 520px){
+      :root{ --date-w: 48px; } /* slightly larger touch target on small screens */
+    }
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(13,110,253,0.08), transparent 60%),
+                  radial-gradient(1000px 800px at 110% 10%, rgba(26,188,156,0.08), transparent 60%),
+                  var(--bg);
+    }
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 28px 20px 48px; }
+    header{ display: grid; gap: 10px; justify-items: start; margin: 10px 0 22px; }
+    .crumbs a{ color: var(--muted); text-decoration: none; }
+    .crumbs a:hover{ text-decoration: underline; }
+    .title{ font-size: clamp(32px, 5vw, 48px); line-height: 1.08; margin: 0; letter-spacing: .2px; }
+    .subtitle{ margin: 6px 0 0; color: var(--muted); font-size: 18px; }
+    .pill{ display: inline-block; padding: 6px 10px; border-radius: 999px; background: var(--pill); color: var(--muted); font-size: 14px; border: 1px solid var(--line); margin-top: 6px; }
+
+    .grid{ display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; margin-top: 18px; }
+    .card{ grid-column: span 12; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(16px, 3.2vw, 24px); }
+
+    /* Tabs */
+    .tabs{ display: flex; gap: 10px; background: var(--tab-bg); border: 1px solid var(--line); padding: 6px; border-radius: 12px; margin-bottom: 14px; }
+    .tab-btn{
+      appearance: none; border: 1px solid transparent; background: transparent; color: var(--text);
+      padding: 10px 14px; border-radius: 10px; cursor: pointer; font-weight: 600;
+    }
+    .tab-btn[aria-selected="true"]{ background: var(--card); border-color: var(--line); box-shadow: var(--shadow); }
+    .tabpanel{ display: none; }
+    .tabpanel.is-active{ display: block; animation: fade .18s ease-in; }
+    @keyframes fade{ from{opacity:0; transform: translateY(2px)} to{opacity:1; transform: translateY(0)} }
+
+    /* Timeline two-column grid */
+    .timeline-grid{
+      position: relative;
+      margin-top: 8px;
+    }
+    .timeline-grid::before{
+      content: "";
+      position: absolute;
+      left: var(--date-w);
+      top: 0; bottom: 0;
+      width: 2px; background: var(--line);
+    }
+    .tl-row{
+      position: relative;
+      display: grid;
+      grid-template-columns: var(--date-w) 1fr;
+      align-items: start;
+      gap: 12px;
+      padding: 6px 0 18px 0;
+    }
+    .tl-row:last-child{ padding-bottom: 0; }
+    .tl-time{
+      visibility: hidden; height: 1px;
+    }
+    .tl-dot{
+      position: absolute;
+      left: var(--date-w);
+      top: 10px;
+      width: 12px; height: 12px;
+      border-radius: 999px;
+      border: 2px solid var(--ring);
+      background: var(--card);
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 3px rgba(26,188,156,.08);
+    }
+    .tl-title{ margin: 0 0 4px; font-weight: 600; }
+    .tl-desc{ margin: 0; color: var(--muted); line-height: 1.65; }
+    .tl-meta{ font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+
+    .footer{ margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn{ display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 12px; text-decoration: none; background: var(--text); color: #fff; border: 1px solid var(--text); transition: transform .06s ease, box-shadow .2s ease; }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.10); }
+    .btn--ghost{ background: transparent; color: var(--text); border-color: var(--line); }
+    .btn svg{ width: 18px; height: 18px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="index.html">← Back</a>
+      </nav>
+      <h1 class="title">Project Timeline</h1>
+      <p class="subtitle">Key milestones of <strong>sisneripoudel.com</strong> — नेपाली & English.</p>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <div class="tabs" role="tablist" aria-label="Language tabs">
+          <button id="tab-ne" class="tab-btn" role="tab" aria-controls="panel-ne" aria-selected="true" tabindex="0">नेपाली</button>
+          <button id="tab-en" class="tab-btn" role="tab" aria-controls="panel-en" aria-selected="false" tabindex="-1">English</button>
+        </div>
+
+        <!-- Nepali -->
+        <div id="panel-ne" class="tabpanel is-active" role="tabpanel" aria-labelledby="tab-ne" lang="ne">
+          <h2 style="margin-top:0">वंशावली समयाक्रम</h2>
+          <div class="timeline-grid">
+            <div class="tl-row" aria-label="ई.पू ६००">
+              <span class="tl-time">ई.पू ६००</span>
+              <div>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="tl-meta">ई.पू ६००</div>
+                <div class="tl-title">आत्रेय</div>
+              </div>
+            </div>
+            <div class="tl-row" aria-label="ई.पू १५०">
+              <span class="tl-time">ई.पू १५०</span>
+              <div>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="tl-meta">ई.पू १५०</div>
+                <div class="tl-title">चरक</div>
+              </div>
+            </div>
+            <div class="tl-row" aria-label="वि.सं १८४">
+              <span class="tl-time">वि.सं १८४</span>
+              <div>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="tl-meta">वि.सं १८४</div>
+                <div class="tl-title">प्रद्युम्न</div>
+              </div>
+            </div>
+            <div class="tl-row" aria-label="वि.सं ५२०">
+              <span class="tl-time">वि.सं ५२०</span>
+              <div>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="tl-meta">वि.सं ५२०</div>
+                <div class="tl-title">श्री सोमनाथ आत्रेय</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- English -->
+        <div id="panel-en" class="tabpanel" role="tabpanel" aria-labelledby="tab-en" lang="en">
+          <h2 style="margin-top:0">Genealogy Timeline</h2>
+          <div class="timeline-grid">
+            <div class="tl-row" aria-label="600 BCE">
+              <span class="tl-time">600&nbsp;BCE</span>
+              <div>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="tl-meta">600&nbsp;BCE</div>
+                <div class="tl-title">Atreya</div>
+              </div>
+            </div>
+            <div class="tl-row" aria-label="150 BCE">
+              <span class="tl-time">150&nbsp;BCE</span>
+              <div>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="tl-meta">150&nbsp;BCE</div>
+                <div class="tl-title">Charaka</div>
+              </div>
+            </div>
+            <div class="tl-row" aria-label="B.S. 184">
+              <span class="tl-time">B.S.&nbsp;184</span>
+              <div>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="tl-meta">B.S.&nbsp;184</div>
+                <div class="tl-title">Pradyumna</div>
+              </div>
+            </div>
+            <div class="tl-row" aria-label="B.S. 520">
+              <span class="tl-time">B.S.&nbsp;520</span>
+              <div>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="tl-meta">B.S.&nbsp;520</div>
+                <div class="tl-title">Shri Somanath Atreya</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="footer">
+          <a class="btn" href="index.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12L12 3l9 9" stroke="currentColor" stroke-width="1.5"/><path d="M5 10v10h14V10" stroke="currentColor" stroke-width="1.5"/></svg>Home / गृहपृष्ठ</a>
+          <a class="btn btn--ghost" href="contact.html"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.5"/></svg>Contact / सम्पर्क</a>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('[role="tab"]');
+    const panels = document.querySelectorAll('.tabpanel');
+    function activateTab(nextTab){
+      tabs.forEach(t => {
+        const selected = t === nextTab;
+        t.setAttribute('aria-selected', selected);
+        t.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach(p => p.classList.remove('is-active'));
+      const panel = document.getElementById(nextTab.getAttribute('aria-controls'));
+      if(panel) panel.classList.add('is-active');
+      document.documentElement.setAttribute('lang', nextTab.id === 'tab-ne' ? 'ne' : 'en');
+    }
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (e) => {
+        const idx = Array.from(tabs).indexOf(tab);
+        if(e.key === 'ArrowRight'){ e.preventDefault(); activateTab(tabs[(idx+1)%tabs.length]); }
+        if(e.key === 'ArrowLeft'){ e.preventDefault(); activateTab(tabs[(idx-1+tabs.length)%tabs.length]); }
+      });
+    });
+  </script>
+</body>
+</html>
