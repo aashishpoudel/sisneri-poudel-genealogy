@@ -118,7 +118,7 @@ naranath_41 = Person("Naranath", gender="Male", name_nep="नरनाथ")
 ganesh_dutta_41 = Person("GaneshDutta", gender="Male", name_nep="गणेशदत्त", birth_year=1880)
 bhuminanda_42 = Person("Bhuminanda", gender="Male", name_nep="भूमिनन्द")
 buddhinath_42 = Person("Buddhinath", gender="Male", name_nep="बुद्धिनाथ")
-durga_42 = Person("Durga", gender="Male", name_nep="दुर्गा", edit="+")
+durga_42 = Person("Durga", gender="Male", name_nep="दुर्गा", edit="+ स्रोत: आशिष")
 angirash_42 = Person("Angirash", gender="Male", name_nep="अंगिरस", birth_year=1906, comment="वंशावली तयार पार्दा कुलदेवतासम्बन्धी जानकारी उहाँबाट प्राप्त भएको")
 dillinath_43 = Person("Dillinath", gender="Male", name_nep="डिल्लीनाथ")
 bashudev_43 = Person("Bashudev", gender="Male", name_nep="वासुदेव")
@@ -157,11 +157,11 @@ pujan_45 = Person("Pujan", gender="Male", name_nep="पुजन")
 utkrista_45 = Person("Utkrista", gender="Male", name_nep="उत्कृष्ठ")
 charan_45 = Person("Charan", gender="Male", name_nep="चरण")
 binuska_45 = Person("Binuska", gender="Female", name_nep="बिनुष्का")
-aalok_45 = Person("Aalok", gender="Male", name_nep="आलोक", edit="+")
-aamod_45 = Person("Aamod", gender="Male", name_nep="आमोद", edit="+")
+aalok_45 = Person("Aalok", gender="Male", name_nep="आलोक", edit="+ स्रोत: आशिष")
+aamod_45 = Person("Aamod", gender="Male", name_nep="आमोद", edit="+ स्रोत: आशिष")
 aayush_45 = Person("Aayush", gender="Male", name_nep="आयुष")
 jenisha_45 = Person("Jenisha", gender="Female", name_nep="जेनिशा")
-james_45 = Person("James", gender="Male", name_nep="जेम्स", edit="+")
+james_45 = Person("James", gender="Male", name_nep="जेम्स", edit="+ स्रोत: निरञ्जन (बुवा)")
 kritish_45 = Person("Kritish", gender="Male", name_nep="कृतिष")
 kritagya_45 = Person("Kritagya", gender="Male", name_nep="कृतज्ञ")
 
@@ -171,8 +171,9 @@ sanjay_45 = Person("Sanjay", gender="Male", name_nep="संजय")
 bimal_45 = Person("Bimal", gender="Male", name_nep="विमल")
 sagar_45 = Person("Sagar", gender="Male", name_nep="सागर")
 
-subham_46 = Person("Subham", gender="Male", name_nep="शुभम")
-nakchhit_46 = Person("Nakchhit", gender="Male", name_nep="नक्क्षित", edit="+")
+sanskar_46 = Person("Sanskar", gender="Male", name_nep="संस्कार", edit="# स्रोत: सरोज (बुवा)\nसच्याउनु अघिको नाम: शुभम")
+sanskriti_46 = Person("Sanskriti", gender="Female", name_nep="संस्कृति", edit="+ स्रोत: सरोज (बुवा)")
+nakchhit_46 = Person("Nakchhit", gender="Male", name_nep="नक्क्षित", edit="+ स्रोत: सञ्जय (बुवा)")
 
 ajij_45 = Person("Ajij", gender="Male", name_nep="अजिज")
 amish_45 = Person("Amish", gender="Male", name_nep="अमिश")
@@ -189,7 +190,7 @@ subiksya_45 = Person("Subiksya", gender="Female", name_nep="सुविक्�
 sadiksya_45 = Person("Sadiksya", gender="Female", name_nep="सदिक्षा")
 yasonta_45 = Person("Yasonta", gender="Male", name_nep="यसोन्त")
 
-aarati_45 = Person("Aarati", gender="Female", name_nep="आरती") #myself
+aarati_45 = Person("Aarati", gender="Female", name_nep="आरती", edit="+ स्रोत:आशिष") #myself
 aashish_45 = Person("Aashish", gender="Male", name_nep="आशिष", birth_year=1983, comment="वंशावलीलाई sisneripoudel.com मा राख्ने") #myself
 prabesh_45 = Person("Prabesh", gender="Male", name_nep="प्रवेश")
 niraj_45 = Person("Niraj", gender="Male", name_nep="निरज")
@@ -3924,7 +3925,7 @@ basanta_44.add_child(sanjay_45)
 bishwonath_44.add_child(bimal_45)
 damodar_44.add_child(sagar_45)
 
-saroj_45.add_child(subham_46)
+saroj_45.add_children([sanskar_46, sanskriti_46])
 sanjay_45.add_child(nakchhit_46)
 
 ram_44.add_children([ashok_45, anup_45, anil_45])
