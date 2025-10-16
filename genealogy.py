@@ -1,7 +1,6 @@
 from genealogy_poudel_data import *
+from genealogy_constants import *
 import json, re
-
-GENERATION_COLORS = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown', '#C71585', 'navy', 'darkmagenta']
 
 genealogy_json_file = "genealogy_tree.json"
 with open(genealogy_json_file, "w") as f:
