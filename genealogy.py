@@ -1,7 +1,7 @@
 from genealogy_poudel_data import *
+from genealogy_constants import *
+from bs4 import BeautifulSoup
 import json, re
-
-GENERATION_COLORS = ['red', 'green', 'blue', 'orange', 'purple', 'teal', 'brown', '#C71585', 'navy', 'darkmagenta']
 
 genealogy_json_file = "genealogy_tree.json"
 with open(genealogy_json_file, "w") as f:
@@ -572,6 +572,84 @@ def update_index_html_in_place(roots, index_path="index.html"):
 
         print(f"✅ gen-banner updated in {index_path} with encircled generations {start}–{end}")
 
+# --- Timeline HTML updater (robust & verified) ---
+def update_timeline_html(html_content, timeline_data):
+    """
+    Updates timeline.html by clearing existing timeline-grid content and inserting new timeline rows.
+
+    Args:
+        html_content (str): The HTML content of timeline.html
+        timeline_data (dict): Dictionary containing 'timeline_nep' and 'timeline_eng' data
+
+    Returns:
+        str: Updated HTML content
+    """
+    # Parse HTML content
+    soup = BeautifulSoup(html_content, 'html.parser')
+
+    def clear_and_insert_timeline(panel_id, timeline_items, lang):
+        """Helper function to clear and insert timeline for a specific panel"""
+        # Find the panel
+        panel = soup.find(id=panel_id)
+        if not panel:
+            print(f"Panel with id '{panel_id}' not found")
+            return
+
+        # Find all timeline-grid divs within the panel
+        timeline_grids = panel.find_all('div', class_='timeline-grid')
+
+        # Clear existing content in each timeline-grid
+        for grid in timeline_grids:
+            grid.clear()
+
+        # Insert new timeline rows
+        for item in timeline_items:
+            # Handle different data formats
+            if len(item) == 3:
+                time_label, title, description = item
+                tl_row_html = f'''
+                <div class="tl-row" aria-label="{time_label}">
+                    <span class="tl-time">{time_label}</span>
+                    <div>
+                        <span class="tl-dot" aria-hidden="true"></span>
+                        <div class="tl-meta">{time_label}</div>
+                        <div class="tl-title">{title}</div>
+                        <p class="tl-desc">{description}</p>
+                    </div>
+                </div>
+                '''
+            elif len(item) == 2:
+                time_label, title = item
+                tl_row_html = f'''
+                <div class="tl-row" aria-label="{time_label}">
+                    <span class="tl-time">{time_label}</span>
+                    <div>
+                        <span class="tl-dot" aria-hidden="true"></span>
+                        <div class="tl-meta">{time_label}</div>
+                        <div class="tl-title">{title}</div>
+                    </div>
+                </div>
+                '''
+            else:
+                print(f"Invalid item format: {item}")
+                continue
+
+            # Parse the HTML and append to each timeline-grid
+            tl_row = BeautifulSoup(tl_row_html, 'html.parser').find('div', class_='tl-row')
+            for grid in timeline_grids:
+                grid.append(tl_row)
+
+    # Update Nepali panel
+    nepali_data = timeline_data.get('timeline_nep', [])
+    clear_and_insert_timeline('panel-ne', nepali_data, 'ne')
+
+    # Update English panel
+    english_data = timeline_data.get('timeline_eng', [])
+    clear_and_insert_timeline('panel-en', english_data, 'en')
+
+    # Return updated HTML
+    return str(soup)
+
 
 if __name__ == "__main__":
     # roots is all the root Person of the unconnected family tree
@@ -583,14 +661,12 @@ if __name__ == "__main__":
             out_html_path=f"sisneri_poudel_tree_{language}.html",
             out_txt_path=f"sisneri_poudel_tree_{language}.txt"
         )
-
     update_index_html_in_place(roots, index_path="index.html")
 
-
-
-# Simple Tree
-# def print_tree(person, level=0):
-#     print("  " * level + f"{person.name} ({person.birth_year})")
-#     for child in person.children:
-#         print_tree(child, level + 1)
-
+    #Updating Timeline
+    with open('timeline.html', 'r', encoding='utf-8') as file:
+        html_content = file.read()
+    updated_html = update_timeline_html(html_content, TIMELINE_DATA)
+    with open('timeline.html', 'w', encoding='utf-8') as file:
+        file.write(updated_html)
+        print("✅ timeline.html updated with TIMELINE_DATA.")

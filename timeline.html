@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="ne">
+<head>
+<meta charset="utf-8"/>
+<title>Timeline • Sisneri Poudel Genealogy</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Project timeline (नेपाली &amp; English) for sisneripoudel.com." name="description"/>
+<style>
+    :root{
+      --bg: #f7f9fb;
+      --card: #ffffff;
+      --text: #1f2a37;
+      --muted: #6b7280;
+      --primary: #0d6efd;
+      --ring: #1abc9c;
+      --line: #e5eef4;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 16px;
+      --pill: #eef4f8;
+      --tab-bg: #eff5fb;
+      --date-w: 36px; /* reduced left indentation */
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0b1320;
+        --card: #0f1a2b;
+        --text: #e5eef7;
+        --muted: #99a3b2;
+        --primary: #7ab8ff;
+        --ring: #34d399;
+        --line: #1f2a37;
+        --shadow: 0 10px 30px rgba(0,0,0,.35);
+        --pill: #122239;
+        --tab-bg: #11233d;
+      }
+    }
+    @media (max-width: 520px){
+      :root{ --date-w: 48px; } /* slightly larger touch target on small screens */
+    }
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(13,110,253,0.08), transparent 60%),
+                  radial-gradient(1000px 800px at 110% 10%, rgba(26,188,156,0.08), transparent 60%),
+                  var(--bg);
+    }
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 28px 20px 48px; }
+    header{ display: grid; gap: 10px; justify-items: start; margin: 10px 0 22px; }
+    .crumbs a{ color: var(--muted); text-decoration: none; }
+    .crumbs a:hover{ text-decoration: underline; }
+    .title{ font-size: clamp(32px, 5vw, 48px); line-height: 1.08; margin: 0; letter-spacing: .2px; }
+    .subtitle{ margin: 6px 0 0; color: var(--muted); font-size: 18px; }
+    .pill{ display: inline-block; padding: 6px 10px; border-radius: 999px; background: var(--pill); color: var(--muted); font-size: 14px; border: 1px solid var(--line); margin-top: 6px; }
+
+    .grid{ display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; margin-top: 18px; }
+    .card{ grid-column: span 12; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(16px, 3.2vw, 24px); }
+
+    /* Tabs */
+    .tabs{ display: flex; gap: 10px; background: var(--tab-bg); border: 1px solid var(--line); padding: 6px; border-radius: 12px; margin-bottom: 14px; }
+    .tab-btn{
+      appearance: none; border: 1px solid transparent; background: transparent; color: var(--text);
+      padding: 10px 14px; border-radius: 10px; cursor: pointer; font-weight: 600;
+    }
+    .tab-btn[aria-selected="true"]{ background: var(--card); border-color: var(--line); box-shadow: var(--shadow); }
+    .tabpanel{ display: none; }
+    .tabpanel.is-active{ display: block; animation: fade .18s ease-in; }
+    @keyframes fade{ from{opacity:0; transform: translateY(2px)} to{opacity:1; transform: translateY(0)} }
+
+    /* Timeline two-column grid */
+    .timeline-grid{
+      position: relative;
+      margin-top: 8px;
+    }
+    .timeline-grid::before{
+      content: "";
+      position: absolute;
+      left: var(--date-w);
+      top: 0; bottom: 0;
+      width: 2px; background: var(--line);
+    }
+    .tl-row{
+      position: relative;
+      display: grid;
+      grid-template-columns: var(--date-w) 1fr;
+      align-items: start;
+      gap: 12px;
+      padding: 6px 0 18px 0;
+    }
+    .tl-row:last-child{ padding-bottom: 0; }
+    .tl-time{
+      visibility: hidden; height: 1px;
+    }
+    .tl-dot{
+      position: absolute;
+      left: var(--date-w);
+      top: 10px;
+      width: 12px; height: 12px;
+      border-radius: 999px;
+      border: 2px solid var(--ring);
+      background: var(--card);
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 3px rgba(26,188,156,.08);
+    }
+    .tl-title{ margin: 0 0 4px; font-weight: 600; }
+    .tl-desc{ margin: 0; color: var(--muted); line-height: 1.65; }
+    .tl-meta{ font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+
+    .footer{ margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn{ display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 12px; text-decoration: none; background: var(--text); color: #fff; border: 1px solid var(--text); transition: transform .06s ease, box-shadow .2s ease; }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.10); }
+    .btn--ghost{ background: transparent; color: var(--text); border-color: var(--line); }
+    .btn svg{ width: 18px; height: 18px; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<nav aria-label="Breadcrumb" class="crumbs">
+<a href="index.html">← Back</a>
+</nav>
+<h1 class="title">Sisneri Poudel Timeline</h1>
+</header>
+<section class="grid">
+<article class="card">
+<div aria-label="Language tabs" class="tabs" role="tablist">
+<button aria-controls="panel-ne" aria-selected="true" class="tab-btn" id="tab-ne" role="tab" tabindex="0">नेपाली</button>
+<button aria-controls="panel-en" aria-selected="false" class="tab-btn" id="tab-en" role="tab" tabindex="-1">English</button>
+</div>
+<!-- Nepali -->
+<div aria-labelledby="tab-ne" class="tabpanel is-active" id="panel-ne" lang="ne" role="tabpanel">
+<h2 style="margin-top:0">वंशावली समयाक्रम</h2>
+<div class="timeline-grid"><div aria-label="ई.पू ६००" class="tl-row">
+<span class="tl-time">ई.पू ६००</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">ई.पू ६००</div>
+<div class="tl-title">आत्रेय</div>
+</div>
+</div><div aria-label="ई.पू १५०" class="tl-row">
+<span class="tl-time">ई.पू १५०</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">ई.पू १५०</div>
+<div class="tl-title">चरक</div>
+</div>
+</div><div aria-label="वि.सं १८४" class="tl-row">
+<span class="tl-time">वि.सं १८४</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">वि.सं १८४</div>
+<div class="tl-title">प्रद्युम्न</div>
+</div>
+</div><div aria-label="वि.सं ५२०" class="tl-row">
+<span class="tl-time">वि.सं ५२०</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">वि.सं ५२०</div>
+<div class="tl-title">श्री सोमनाथ आत्रेय</div>
+</div>
+</div><div aria-label="वि.सं १२४६" class="tl-row">
+<span class="tl-time">वि.सं १२४६</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">वि.सं १२४६</div>
+<div class="tl-title">श्रीवत्सराज</div>
+<p class="tl-desc">डोटीका राजा श्री राधामाधवसिंह विष्टले राजकुमारीसँग यिनको विवाह गरी सम्पूर्ण राज्य दान दिएका। जेठी ब्राह्माणीबाट 'सिग्देल' थरका पूर्वज 'श्रीकृष्ण' र कान्छी ब्राह्माणी बाट 'पौड्याल' थरका पूर्वज 'श्रीदेव' भएको।</p>
+</div>
+</div><div aria-label="वि.सं १६८२" class="tl-row">
+<span class="tl-time">वि.सं १६८२</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">वि.सं १६८२</div>
+<div class="tl-title">गोपाल</div>
+<p class="tl-desc">राजा सिद्धिनरसिह मल्लबाट सिस्नेरीमा विर्ता पाई यही बसोबास गरेका। पुत्रेधिट यज्ञ गराएर पुत्र जन्मेवापत विर्ता पाएको कुरा जनश्रुति र युवराज श्रीनिवासको वि.सं. १६८४ मा जन्म भएअनुसार माथिको समय अनुमानित गरिएको।</p>
+</div>
+</div><div aria-label="वि.सं १७३४" class="tl-row">
+<span class="tl-time">वि.सं १७३४</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">वि.सं १७३४</div>
+<div class="tl-title">प्रजापति</div>
+<p class="tl-desc">ऑटीघरेका मुल पूर्खा। राजा श्रीनिवासबाट आफ्नै घर जग्गाको साँधमा विर्ता दान मिलेको ताम्रपत्रमा उल्लेख छ।</p>
+</div>
+</div><div aria-label="वि.सं १७३४" class="tl-row">
+<span class="tl-time">वि.सं १७३४</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">वि.सं १७३४</div>
+<div class="tl-title">देवाली</div>
+<p class="tl-desc">सिस्नेरीमा देवाली गर्न शुरू गरेको मिति।</p>
+</div>
+</div><div aria-label="वि.सं १८८६" class="tl-row">
+<span class="tl-time">वि.सं १८८६</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">वि.सं १८८६</div>
+<div class="tl-title">विश्वम्भर</div>
+<p class="tl-desc">राजा राजेन्द्र विक्रमको पौडेलहरूको नाममा जारी गरिएको लालमोहरमा उनको नाम उल्लेख भेटिन्छ।</p>
+</div>
+</div></div>
+</div>
+<!-- English -->
+<div aria-labelledby="tab-en" class="tabpanel" id="panel-en" lang="en" role="tabpanel">
+<h2 style="margin-top:0">Genealogy Timeline</h2>
+<div class="timeline-grid"><div aria-label="600 BCE" class="tl-row">
+<span class="tl-time">600 BCE</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">600 BCE</div>
+<div class="tl-title">Atreya</div>
+</div>
+</div><div aria-label="150 BCE" class="tl-row">
+<span class="tl-time">150 BCE</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">150 BCE</div>
+<div class="tl-title">Charaka</div>
+</div>
+</div><div aria-label="127 AD" class="tl-row">
+<span class="tl-time">127 AD</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">127 AD</div>
+<div class="tl-title">Pradyumna</div>
+</div>
+</div><div aria-label="463 AD" class="tl-row">
+<span class="tl-time">463 AD</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">463 AD</div>
+<div class="tl-title">Shri Somanath Atreya</div>
+</div>
+</div><div aria-label="1189 AD" class="tl-row">
+<span class="tl-time">1189 AD</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">1189 AD</div>
+<div class="tl-title">Shri Batsaraj</div>
+<p class="tl-desc">Doti King Shri Radhamadhav Bista married the princess to him and donated the entire Kingdom. From his elder wife, the ancestor of the 'Sigdel' clan ('Shri Krishna') started. Likewise, from younger wife, the ancestor of the 'Poudel' clan ['Shri Dev']</p>
+</div>
+</div><div aria-label="1625 AD" class="tl-row">
+<span class="tl-time">1625 AD</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">1625 AD</div>
+<div class="tl-title">Gopal</div>
+<p class="tl-desc">Received land grant from King Siddhinarsingh Malla in Sisneri and settled here. He supposedly performed Putredhit Yagya, and since prince Srinivas was born in 1627 AD, the above date is estimated</p>
+</div>
+</div><div aria-label="1677 AD" class="tl-row">
+<span class="tl-time">1677 AD</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">1677 AD</div>
+<div class="tl-title">Prajapati</div>
+<p class="tl-desc">The original ancestor of the AatiGhare family. He is mentioned in a King Srinivas' copper-plate inscription that the king granted him land next to his own land</p>
+</div>
+</div><div aria-label="1677 AD" class="tl-row">
+<span class="tl-time">1677 AD</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">1677 AD</div>
+<div class="tl-title">Dewali</div>
+<p class="tl-desc">Sisneri 'Dewali' festival (देववली) start year</p>
+</div>
+</div><div aria-label="1829 AD" class="tl-row">
+<span class="tl-time">1829 AD</span>
+<div>
+<span aria-hidden="true" class="tl-dot"></span>
+<div class="tl-meta">1829 AD</div>
+<div class="tl-title">Bishomvar</div>
+<p class="tl-desc">His name is mentioned in the red seal issued in the name of the Poudels of King Rajendra Vikram</p>
+</div>
+</div></div>
+</div>
+</article>
+<article class="card">
+<div class="footer">
+<a class="btn" href="index.html"><svg fill="none" viewbox="0 0 24 24"><path d="M3 12L12 3l9 9" stroke="currentColor" stroke-width="1.5"></path><path d="M5 10v10h14V10" stroke="currentColor" stroke-width="1.5"></path></svg>Home / गृहपृष्ठ</a>
+<a class="btn btn--ghost" href="contact.html"><svg fill="none" viewbox="0 0 24 24"><rect height="14" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" width="18" x="3" y="5"></rect><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.5"></path></svg>Contact / सम्पर्क</a>
+</div>
+</article>
+</section>
+</div>
+<script>
+    const tabs = document.querySelectorAll('[role="tab"]');
+    const panels = document.querySelectorAll('.tabpanel');
+    function activateTab(nextTab){
+      tabs.forEach(t => {
+        const selected = t === nextTab;
+        t.setAttribute('aria-selected', selected);
+        t.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach(p => p.classList.remove('is-active'));
+      const panel = document.getElementById(nextTab.getAttribute('aria-controls'));
+      if(panel) panel.classList.add('is-active');
+      document.documentElement.setAttribute('lang', nextTab.id === 'tab-ne' ? 'ne' : 'en');
+    }
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (e) => {
+        const idx = Array.from(tabs).indexOf(tab);
+        if(e.key === 'ArrowRight'){ e.preventDefault(); activateTab(tabs[(idx+1)%tabs.length]); }
+        if(e.key === 'ArrowLeft'){ e.preventDefault(); activateTab(tabs[(idx-1+tabs.length)%tabs.length]); }
+      });
+    });
+  </script>
+</body>
+</html>
