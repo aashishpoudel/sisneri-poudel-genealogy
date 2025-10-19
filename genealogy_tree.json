@@ -13945,8 +13945,8 @@
                                           ]
                                         },
                                         {
-                                          "name": "Grihanath",
-                                          "name_nep": "\u0917\u0943\u0939\u0928\u093e\u0925",
+                                          "name": "Guhanath",
+                                          "name_nep": "\u0917\u0941\u0939\u0928\u093e\u0925",
                                           "gender": "Male",
                                           "birth_year": null,
                                           "death_year": null,
@@ -13967,8 +13967,23 @@
                                               "place": null,
                                               "gen_number": null,
                                               "comment": null,
-                                              "father": "Grihanath",
-                                              "father_nep": "\u0917\u0943\u0939\u0928\u093e\u0925",
+                                              "father": "Guhanath",
+                                              "father_nep": "\u0917\u0941\u0939\u0928\u093e\u0925",
+                                              "grandfather": "Bholanath",
+                                              "grandfather_nep": "\u0927\u0930\u094d\u092e\u093e\u0928\u0928\u094d\u0926",
+                                              "children": []
+                                            },
+                                            {
+                                              "name": "Aava",
+                                              "name_nep": "\u0906\u092d\u093e",
+                                              "gender": "Female",
+                                              "birth_year": null,
+                                              "death_year": null,
+                                              "place": null,
+                                              "gen_number": null,
+                                              "comment": null,
+                                              "father": "Guhanath",
+                                              "father_nep": "\u0917\u0941\u0939\u0928\u093e\u0925",
                                               "grandfather": "Bholanath",
                                               "grandfather_nep": "\u0927\u0930\u094d\u092e\u093e\u0928\u0928\u094d\u0926",
                                               "children": []
