@@ -963,7 +963,7 @@ helinath_43 = Person("Helinath", gender="Male", name_nep="हेलीनाथ"
 heman_43 = Person("Heman", gender="Male", name_nep="हेमन")
 aamnaya_43 = Person("Aamnaya", gender="Male", name_nep="आम्नाय")
 aashutosh_43 = Person("Aashutosh", gender="Male", name_nep="आशुतोष")
-aava_43 = Person("Aava", gender="Female", name_nep="आभा")
+aava_43 = Person("Aava", gender="Female", name_nep="आभा", edit="+ स्रोत: गुहनाथ (बुवा)")
 prabodh_44 = Person("Prabodh", gender="Male", name_nep="प्रबोध")
 suhel_44 = Person("Suhel", gender="Male", name_nep="सुहेल")
 aryan_44 = Person("Aryan", gender="Male", name_nep="आर्यन")
