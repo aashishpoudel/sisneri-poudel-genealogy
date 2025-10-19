@@ -2437,7 +2437,7 @@ sankar_42 = Person("Sankar", gender="Male", name_nep="शंकर")
 #Page 64
 pushkar_43 = Person("Pushkar", gender="Male", name_nep="पुष्कर")
 bholanath_43 = Person("Bholanath", gender="Male", name_nep="भेलानाथ")
-gopal_43_3 = Person("Gopal", gender="Male", name_nep="गोपाल", comment="कोषराज वंशावली यिनको सौजन्यबाट प्राप्त")
+gopal_43_3 = Person("Gopal", gender="Male", name_nep="गोपाल", comment="कोषराज वंशावली यिनको सौजन्यबाट प्राप्त भएको")
 umesh_44_4 = Person("Umesh", gender="Male", name_nep="उमेश")
 rabindra_43_2 = Person("Rabindra", gender="Male", name_nep="रवीन्द्र")
 surendra_43_2 = Person("Surendra", gender="Male", name_nep="सुरेन्द्र", comment="वंशावली तयार पार्दा सहयोगी")
