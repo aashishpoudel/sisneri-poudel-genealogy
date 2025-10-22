@@ -57,7 +57,15 @@
   form{ display: grid; gap: 14px; }
   .row{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   @media (max-width: 640px){ .row{ grid-template-columns: 1fr; } }
-  label{ font-weight: 600; font-size: 14px; }
+  label{
+      display: block;           /* Force label to occupy full width */
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 6px;       /* Small space before input/textarea */
+    }
+  label[for="phone"] {
+      margin-bottom: 2px;  /* tighten space just before the phone field */
+  }
   .req{ color: #e11d48; margin-left: 4px; }
   input[type="text"], input[type="email"], textarea, select{
     width: 100%;
@@ -76,6 +84,7 @@
   .btn--ghost{ background: transparent; color: var(--text); border-color: var(--line); }
   .success{ display:none; padding:12px; border-radius:12px; border:1px solid var(--line); background: var(--pill); color: var(--text); }
   .phone-field{ display: grid; grid-template-columns: minmax(180px, 260px) 1fr; gap: 10px; align-items: center; }
+  .iti{ margin-bottom: 24px;}
 </style>
 </head>
 <body>
@@ -94,38 +103,34 @@
   <section class="grid">
     <article class="card">
       <form id="edit-form" novalidate>
-        <div class="row">
-          <div>
-            <label for="name">नाम/Name <span class="req">*</span></label>
-            <input id="name" name="name" type="text" required placeholder="आशिष"/>
-          </div>
-          <div>
-            <label for="email">इमेल/Email <span class="req">*</span></label>
-            <input id="email" name="email" type="email" required placeholder="you@example.com"/>
-          </div>
+        <div>
+          <label for="name">नाम<br>Name <span class="req">*</span></label>
+          <input id="name" name="name" type="text" required placeholder="आशिष" style="width:100%;"/>
         </div>
 
         <div class="row">
           <div>
-            <label for="father">बुबा /Father Name <span class="req">*</span></label>
+            <label for="father">बुबा<br>Father Name <span class="req">*</span></label>
             <input id="father" name="father" type="text" required placeholder="नारायण"/>
           </div>
           <div>
-            <label for="grandfather">हजुरबुबा /Grandfather Name <span class="req">*</span></label>
+            <label for="grandfather">हजुरबुबा<br>Grandfather Name <span class="req">*</span></label>
             <input id="grandfather" name="grandfather" type="text" required placeholder="विष्णुगोपाल"/>
           </div>
         </div>
-
-        <div>
-          <label for="phone">फोन / Phone (WhatsApp enabled)</label>
-        <input id="phone" name="phone" type="tel" required placeholder="(555) 555-5555" />
+        <div class="row" style="grid-template-columns: 1fr 1fr;">
+          <div style="grid-column: span 1;">
+            <label for="email">इमेल<br>Email <span class="req">*</span></label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com"/>
+          </div>
+        </div>
+        <label for="phone">फोन<br>Phone (Optional)</label>
+        <input id="phone" name="phone" type="tel" required placeholder="(555) 555-5555"/>
         <input type="hidden" name="phone_country_iso" id="phone_country_iso" />
         <input type="hidden" name="phone_dial_code" id="phone_dial_code" />
 
-        </div>
-
         <div>
-          <label for="message">के थप्न/सम्पादन गर्न चाहनुहुन्छ? / What you want to add/edit? <span class="req">*</span></label>
+          <label for="message">के थप्न/सम्पादन गर्न चाहनुहुन्छ?<br>What you want to add/edit? <span class="req">*</span></label>
           <textarea id="message" name="message" required placeholder="जस्तै:
 मेरो नाम गलत छ...
 मेरो भर्खर जन्मेको छोरी थप्न चाहन्छु"></textarea>
