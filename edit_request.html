@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="utf-8"/>
+<title>Edit Request • Sisneri Poudel Genealogy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Submit additions or edits for the Sisneri Poudel Family Tree (नेपाली & English labels)."/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/css/intlTelInput.css" />
+<style>
+  :root{
+    --bg: #f7f9fb;
+    --card: #ffffff;
+    --text: #1f2a37;
+    --muted: #6b7280;
+    --primary: #0d6efd;
+    --line: #e5eef4;
+    --shadow: 0 10px 30px rgba(0,0,0,.06);
+    --radius: 16px;
+    --pill: #eef4f8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg: #0b1320;
+      --card: #0f1a2b;
+      --text: #e5eef7;
+      --muted: #99a3b2;
+      --primary: #7ab8ff;
+      --line: #1f2a37;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --pill: #122239;
+    }
+  }
+  *{ box-sizing: border-box; }
+  html, body{ height: 100%; }
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+    color: var(--text);
+    background: radial-gradient(1200px 600px at 10% -10%, rgba(13,110,253,0.08), transparent 60%),
+                radial-gradient(1000px 800px at 110% 10%, rgba(26,188,156,0.08), transparent 60%),
+                var(--bg);
+  }
+  .wrap{ max-width: 980px; margin: 0 auto; padding: 28px 20px 48px; }
+  header{ display: grid; gap: 10px; justify-items: start; margin: 10px 0 22px; }
+  .crumbs a{ color: var(--muted); text-decoration: none; }
+  .crumbs a:hover{ text-decoration: underline; }
+  .title{ font-size: clamp(32px, 5vw, 48px); line-height: 1.08; margin: 0; letter-spacing: .2px; }
+  .subtitle{ margin: 6px 0 0; color: var(--muted); font-size: 18px; }
+  .card{
+      background: #fff4cc; /* cream/yellowish tone */
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(16px, 3.2vw, 24px);
+    }
+  .grid{ display: grid; grid-template-columns: 1fr; gap: 18px; }
+  form{ display: grid; gap: 14px; }
+  .row{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px){ .row{ grid-template-columns: 1fr; } }
+  label{
+      display: block;           /* Force label to occupy full width */
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 6px;       /* Small space before input/textarea */
+    }
+  label[for="phone"] {
+      margin-bottom: 2px;  /* tighten space just before the phone field */
+  }
+  .req{ color: #e11d48; margin-left: 4px; }
+  input[type="text"], input[type="email"], textarea, select{
+    width: 100%;
+    padding: 12px 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--text);
+    box-shadow: inset 0 1px 0 rgba(0,0,0,.02);
+  }
+  textarea{ min-height: 120px; resize: vertical; }
+  .help{ color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .actions{ display:flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 8px; text-align: center;}
+  .btn{ display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 12px; text-decoration: none; background: var(--text); color: #fff; border: 1px solid var(--text); transition: transform .06s ease, box-shadow .2s ease; cursor:pointer; }
+  .btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.10); }
+  .btn--ghost{ background: transparent; color: var(--text); border-color: var(--line); }
+  .success{ display:none; padding:12px; border-radius:12px; border:1px solid var(--line); background: var(--pill); color: var(--text); }
+  .phone-field{ display: grid; grid-template-columns: minmax(180px, 260px) 1fr; gap: 10px; align-items: center; }
+  .iti{ margin-bottom: 24px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">← Back</a>
+    </nav>
+    <h1 class="title">Add/Edit Names</h1>
+    <p class="subtitle">
+      <span style="color:#0d6efd; font-weight:600;">नेपाली</span> वा
+      <span style="color:#0d6efd; font-weight:600;">English</span> मा लेख्नुहोस्
+    </p>
+  </header>
+
+  <section class="grid">
+    <article class="card">
+      <form id="edit-form" novalidate>
+        <div>
+          <label for="name">नाम<br>Name <span class="req">*</span></label>
+          <input id="name" name="name" type="text" required placeholder="आशिष" style="width:100%;"/>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="father">बुबा<br>Father Name <span class="req">*</span></label>
+            <input id="father" name="father" type="text" required placeholder="नारायण"/>
+          </div>
+          <div>
+            <label for="grandfather">हजुरबुबा<br>Grandfather Name <span class="req">*</span></label>
+            <input id="grandfather" name="grandfather" type="text" required placeholder="विष्णुगोपाल"/>
+          </div>
+        </div>
+        <div>
+          <label for="email">इमेल<br>Email <span class="req">*</span></label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com" style="width:100%;"/>
+        </div>
+        <label for="phone">फोन<br>Phone (Optional)</label>
+        <input id="phone" name="phone" type="tel" required placeholder="(555) 555-5555"/>
+        <input type="hidden" name="phone_country_iso" id="phone_country_iso" />
+        <input type="hidden" name="phone_dial_code" id="phone_dial_code" />
+
+        <div>
+          <label for="message">के थप्न/सम्पादन गर्न चाहनुहुन्छ?<br>What you want to add/edit? <span class="req">*</span></label>
+          <textarea id="message" name="message" required placeholder="जस्तै:
+मेरो नाम गलत छ...
+मेरो भर्खर जन्मेको छोरी थप्न चाहन्छु"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn">पेश गर्नुहोस् / Submit</button>
+          <button type="reset" class="btn btn--ghost">रिसेट / Reset</button>
+        </div>
+
+        <div id="ok" class="success" role="status">धन्यवाद / Thanks! Your request passed local validation.</div>
+      </form>
+    </article>
+
+    <article class="card" style="display:flex; gap:14px; flex-wrap:wrap;">
+      <a class="btn" href="index.html">Home / गृहपृष्ठ</a>
+      <a class="btn btn--ghost" href="contact.html">Contact / सम्पर्क</a>
+    </article>
+  </section>
+</div>
+
+<script>
+  const form = document.getElementById('edit-form');
+  const ok = document.getElementById('ok');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    ok.style.display = 'block';
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js"></script>
+<script>
+    const phoneInput = document.querySelector("#phone");
+    const iti = window.intlTelInput(phoneInput, {
+      autoPlaceholder: "polite",
+      preferredCountries: ["np", "us", "in"],
+      separateDialCode: true
+    });
+
+    phoneInput.addEventListener("countrychange", () => {
+      const countryData = iti.getSelectedCountryData();
+      document.getElementById("phone_country_iso").value = countryData.iso2;
+      document.getElementById("phone_dial_code").value = countryData.dialCode;
+    });
+
+    document.getElementById("edit-form").addEventListener("submit", e => {
+      document.getElementById("phone_country_iso").value =
+        iti.getSelectedCountryData().iso2;
+      document.getElementById("phone_dial_code").value =
+        iti.getSelectedCountryData().dialCode;
+    });
+</script>
+</body>
+</html>
