@@ -182,5 +182,24 @@
         iti.getSelectedCountryData().dialCode;
     });
 </script>
+<script>
+    document.getElementById("edit-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      const fd = new FormData(form);
+      // intl-tel-input hidden fields already set in your page (iso, dial)
+      const res = await fetch("/api/edit_request", { method: "POST", body: fd });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.ok) {
+        document.getElementById("ok").style.display = "block";
+        form.reset();
+      } else {
+        alert("Sorry—could not submit. " + (data.error || res.status));
+      }
+    });
+</script>
 </body>
 </html>
