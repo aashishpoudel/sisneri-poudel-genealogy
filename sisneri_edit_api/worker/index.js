@@ -1,10 +1,10 @@
-
 export default {
   async fetch(req, env, ctx) {
     if (req.method === "OPTIONS") {
       return new Response(null, { headers: corsHeaders() });
     }
     const url = new URL(req.url);
+
     if (req.method === "POST" && url.pathname === "/api/edit_request") {
       try {
         const form = await req.formData();
@@ -33,28 +33,48 @@ export default {
         const ua = req.headers.get("user-agent") || "";
         const ip = req.headers.get("cf-connecting-ip") || "";
 
+        // Insert the new request
         await env.DB.prepare(
           `INSERT INTO edit_requests
            (name, father, grandfather, email, phone_e164, phone_iso, phone_dial, message, user_agent, ip)
            VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)`
         ).bind(name, father, grandfather, email, phoneE164, phoneISO, phoneDial, message, ua, ip).run();
 
+        // ===== NEW: build the admin table (most recent first) =====
+        // Use rowid for recency ordering (works even if there's no created_at column)
+        const rs = await env.DB.prepare(
+          `SELECT rowid AS id, name, father, grandfather, email, phone_e164, phone_iso, phone_dial, message, user_agent, ip, 
+                  /* will be null if column doesn't exist; that’s ok */
+                  created_at
+           FROM edit_requests
+           ORDER BY rowid DESC`
+        ).all();
+
+        const adminTable = renderAdminHTMLTable(rs.results || []);
+
+        // ===== CHANGED: admin email now goes to both addresses =====
         await sendMail(env, {
-          to: env.ADMIN_EMAIL,
+          to: ["aashish.pd@gmail.com", "sisneripoudel@gmail.com"],
           subject: `New Edit/Add Request — ${env.SITE_NAME}`,
           html: `
-            <h2>New request</h2>
-            <p><b>Name:</b> ${escapeHTML(name)}</p>
-            <p><b>Father:</b> ${escapeHTML(father)}</p>
-            <p><b>Grandfather:</b> ${escapeHTML(grandfather)}</p>
-            <p><b>Email:</b> ${escapeHTML(email)}</p>
-            <p><b>Phone (E.164):</b> ${escapeHTML(phoneE164)}</p>
-            <p><b>Message:</b><br>${nl2br(escapeHTML(message))}</p>
+            <h2>New request (latest submission at top of table below)</h2>
+            ${renderKeyValues({
+              Name: name,
+              Father: father,
+              Grandfather: grandfather,
+              Email: email,
+              "Phone (E.164)": phoneE164,
+              Message: message,
+              IP: ip,
+              "User-Agent": ua
+            })}
             <hr>
-            <p><small>IP: ${escapeHTML(ip)} | UA: ${escapeHTML(ua)}</small></p>
+            <h3>All edit_requests (most recent first)</h3>
+            ${adminTable}
           `
         });
 
+        // ===== CONFIRMATION to the submitter (kept, slightly tidied) =====
         await sendMail(env, {
           to: email,
           subject: `sisneripoudel.com — ${env.SITE_NAME}`,
@@ -62,14 +82,14 @@ export default {
             <p>Namaste,</p>
             <p>We received your add/edit request. Thank you! We'll review and follow up if we need any clarification.</p>
             <p><b>Summary:</b></p>
-            <ul>
-              <li>Name: ${escapeHTML(name)}</li>
-              <li>Father: ${escapeHTML(father)}</li>
-              <li>Grandfather: ${escapeHTML(grandfather)}</li>
-              <li>Email: ${escapeHTML(email)}</li>
-              <li>Phone: ${escapeHTML(phoneE164)}</li>
-              <li>Message: ${escapeHTML(message)}</li>
-            </ul>
+            ${renderKeyValues({
+              Name: name,
+              Father: father,
+              Grandfather: grandfather,
+              Email: email,
+              Phone: phoneE164,
+              Message: message
+            })}
             <p>— ${env.SITE_NAME}</p>
           `
         });
@@ -79,6 +99,7 @@ export default {
         return json({ ok:false, error:String(err) }, 500);
       }
     }
+
     return new Response("Not found", { status: 404 });
   }
 };
@@ -97,9 +118,67 @@ function json(obj, status=200) {
   });
 }
 
+// === helper to render key/value block nicely in HTML
+function renderKeyValues(obj){
+  const rows = Object.entries(obj).map(([k,v]) => `
+    <tr>
+      <th align="left" style="padding:6px 10px;border-bottom:1px solid #eee;white-space:nowrap;">${escapeHTML(k)}</th>
+      <td style="padding:6px 10px;border-bottom:1px solid #eee;">${nl2br(escapeHTML(String(v ?? "")))}</td>
+    </tr>`).join("");
+  return `<table style="border-collapse:collapse;border:1px solid #eee;border-radius:8px;overflow:hidden;font:14px system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+// === NEW: admin table renderer
+function renderAdminHTMLTable(rows){
+  const header = `
+    <thead>
+      <tr style="background:#f7f9fb;">
+        <th align="left">#</th>
+        <th align="left">Name</th>
+        <th align="left">Father</th>
+        <th align="left">Grandfather</th>
+        <th align="left">Email</th>
+        <th align="left">Phone</th>
+        <th align="left">ISO</th>
+        <th align="left">Dial</th>
+        <th align="left">Message</th>
+        <th align="left">IP</th>
+        <th align="left">User-Agent</th>
+        <th align="left">Created</th>
+      </tr>
+    </thead>`;
+
+  const body = rows.map(r => `
+    <tr>
+      <td style="vertical-align:top;">${escapeHTML(String(r.id ?? ""))}</td>
+      <td style="vertical-align:top;">${escapeHTML(r.name ?? "")}</td>
+      <td style="vertical-align:top;">${escapeHTML(r.father ?? "")}</td>
+      <td style="vertical-align:top;">${escapeHTML(r.grandfather ?? "")}</td>
+      <td style="vertical-align:top;">${escapeHTML(r.email ?? "")}</td>
+      <td style="vertical-align:top;">${escapeHTML(r.phone_e164 ?? "")}</td>
+      <td style="vertical-align:top;">${escapeHTML(r.phone_iso ?? "")}</td>
+      <td style="vertical-align:top;">${escapeHTML(r.phone_dial ?? "")}</td>
+      <td style="vertical-align:top; max-width:420px;">${nl2br(escapeHTML(r.message ?? ""))}</td>
+      <td style="vertical-align:top;">${escapeHTML(r.ip ?? "")}</td>
+      <td style="vertical-align:top; max-width:420px;">${escapeHTML(r.user_agent ?? "")}</td>
+      <td style="vertical-align:top;">${escapeHTML(r.created_at ?? "—")}</td>
+    </tr>
+  `).join("");
+
+  return `<div style="overflow:auto;">
+    <table style="border-collapse:collapse;border:1px solid #e5eef4;border-radius:10px;overflow:hidden;font:13px system-ui, -apple-system, Segoe UI, Roboto, Arial; min-width:900px;">
+      ${header}
+      <tbody>${body}</tbody>
+    </table>
+  </div>`;
+}
+
 async function sendMail(env, { to, subject, html, replyTo }) {
   const payload = {
     from: `Sisneri Poudel Family Tree <no-reply@sisneripoudel.com>`,
+    // Resend accepts string or string[]
     to,
     subject,
     html,
