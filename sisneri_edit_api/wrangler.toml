@@ -1,0 +1,23 @@
+name = "sisneri-edit-worker"
+main = "worker/index.js"
+compatibility_date = "2024-11-20"
+
+routes = [
+  { pattern = "sisneripoudel.com/api/edit_request*", zone_name = "sisneripoudel.com" },
+  { pattern = "www.sisneripoudel.com/api/edit_request*", zone_name = "sisneripoudel.com" }
+]
+
+[dev]
+port = 8787
+local_protocol = "http"
+
+[vars]
+SITE_NAME = "Sisneri Poudel Family Tree"
+ADMIN_EMAIL = "sisneripoudel@gmail.com"
+RESEND_API_KEY = "re_dad4ZdSJ_Q8pmgvWpykR3MrFLBHWVkbsw"
+# TURNSTILE_SECRET = "replace-with-your-secret"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sisneri_poudel_db"
+database_id = "c35fd7fe-09b7-4a52-89c8-f50c20bb0c6f"
