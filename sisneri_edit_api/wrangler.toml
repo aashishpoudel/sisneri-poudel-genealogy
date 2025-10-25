@@ -13,7 +13,7 @@ local_protocol = "http"
 
 [vars]
 SITE_NAME = "Sisneri Poudel Family Tree"
-ADMIN_EMAIL = "sisneripoudel@gmail.com"
+ADMIN_EMAILS = "aashish.pd@gmail.com,sisneripoudel@gmail.com"
 RESEND_API_KEY = "re_dad4ZdSJ_Q8pmgvWpykR3MrFLBHWVkbsw"
 # TURNSTILE_SECRET = "replace-with-your-secret"
 

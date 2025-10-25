@@ -52,6 +52,10 @@ export default {
 
         const rows = rs.results || [];
         const adminTable = renderAdminHTMLTable(rows);
+        const adminEmails = (env.ADMIN_EMAILS || "")
+          .split(",")
+          .map(s => s.trim())
+          .filter(Boolean);
 
         // ===== CHANGED: admin email now goes to both addresses =====
         await sendMail(env, {
