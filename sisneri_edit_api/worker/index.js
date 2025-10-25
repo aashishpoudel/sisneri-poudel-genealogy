@@ -42,15 +42,16 @@ export default {
 
         // ===== NEW: build the admin table (most recent first) =====
         // Use rowid for recency ordering (works even if there's no created_at column)
+        // Query all rows, newest first, using created_at then id
         const rs = await env.DB.prepare(
-          `SELECT rowid AS id, name, father, grandfather, email, phone_e164, phone_iso, phone_dial, message, user_agent, ip, 
-                  /* will be null if column doesn't exist; that’s ok */
-                  created_at
-           FROM edit_requests
-           ORDER BY rowid DESC`
+          `SELECT id, name, father, grandfather, email, phone_e164, phone_iso, phone_dial,
+                  message, user_agent, ip, created_at
+          FROM edit_requests
+          ORDER BY datetime(created_at) DESC, id DESC`
         ).all();
 
-        const adminTable = renderAdminHTMLTable(rs.results || []);
+        const rows = rs.results || [];
+        const adminTable = renderAdminHTMLTable(rows);
 
         // ===== CHANGED: admin email now goes to both addresses =====
         await sendMail(env, {
@@ -59,18 +60,13 @@ export default {
           html: `
             <h2>New request (latest submission at top of table below)</h2>
             ${renderKeyValues({
-              Name: name,
-              Father: father,
-              Grandfather: grandfather,
-              Email: email,
-              "Phone (E.164)": phoneE164,
-              Message: message,
-              IP: ip,
-              "User-Agent": ua
+              Name: name, Father: father, Grandfather: grandfather, Email: email,
+              "Phone (E.164)": phoneE164, Message: message, IP: ip, "User-Agent": ua
             })}
             <hr>
             <h3>All edit_requests (most recent first)</h3>
-            ${adminTable}
+            <p style="font:14px system-ui;margin:6px 0;">Row count: ${rows.length}</p>
+            ${rows.length ? adminTable : '<p style="font:14px system-ui;color:#666;">(No rows found in edit_requests)</p>'}
           `
         });
 
@@ -174,6 +170,7 @@ function renderAdminHTMLTable(rows){
     </table>
   </div>`;
 }
+
 
 async function sendMail(env, { to, subject, html, replyTo }) {
   const payload = {
