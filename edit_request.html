@@ -194,11 +194,19 @@
       const data = await res.json().catch(() => ({}));
 
       if (res.ok && data.ok) {
-        document.getElementById("ok").style.display = "block";
-        form.reset();
-      } else {
-        alert("Sorry—could not submit. " + (data.error || res.status));
-      }
+          const emailValue = form.email.value.trim();
+          const okDiv = document.getElementById("ok");
+
+          okDiv.innerHTML = `
+            तपाईंको अनुरोधको लागि धन्यवाद। हामी तपाईंलाई चाँडै इमेल मार्फत सम्पर्क गर्नेछौं।<br>
+            Thank you for your request. We will contact you shortly at <b>${emailValue}</b>.
+          `;
+          okDiv.style.display = "block";
+
+          form.reset();
+        } else {
+          alert("Sorry—could not submit. " + (data.error || res.status));
+        }
     });
 </script>
 </body>
