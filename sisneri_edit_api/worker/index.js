@@ -65,7 +65,7 @@ export default {
             <h2>New request (latest submission at top of table below)</h2>
             ${renderKeyValues({
               Name: name, Father: father, Grandfather: grandfather, Email: email,
-              "Phone (E.164)": phoneE164, Message: message, IP: ip, "User-Agent": ua
+              "Phone": phoneE164, Message: message, IP: ip, "User-Agent": ua
             })}
             <hr>
             <h3>All edit_requests (most recent first)</h3>
