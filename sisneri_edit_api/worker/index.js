@@ -13,11 +13,22 @@ export default {
         const father      = (form.get("father")||"").trim();
         const grandfather = (form.get("grandfather")||"").trim();
         const email       = (form.get("email")||"").trim();
-        const phoneRaw    = (form.get("phone")||"").trim();
-        const phoneISO    = (form.get("phone_country_iso")||"").trim();
-        const phoneDial   = (form.get("phone_dial_code")||"").trim();
-        const message     = (form.get("message")||"").trim();
+        let phoneRaw    = (form.get("phone")||"").trim();
+        let phoneISO    = (form.get("phone_country_iso")||"").trim();
+        let phoneDial   = (form.get("phone_dial_code")||"").trim();
 
+        const digitsOnly = phoneRaw.replace(/[^\d]/g, "");
+        if (!digitsOnly.length) {
+          // No phone entered → force ISO/Dial empty even if the page sent a default
+          phoneISO = "";
+          phoneDial = "";
+        }
+
+        const phoneProvided = !!(phoneDial && digitsOnly.length);
+        const cfCountry = ((req.cf && req.cf.country) || req.headers.get("cf-ipcountry") || "").toUpperCase();
+        const country = phoneProvided && phoneISO ? phoneISO.toUpperCase() : cfCountry;
+
+        const message     = (form.get("message")||"").trim();
         const missing = [];
         if (!name)        missing.push("name");
         if (!father)      missing.push("father");
@@ -34,20 +45,35 @@ export default {
         const ip = req.headers.get("cf-connecting-ip") || "";
 
         // Insert the new request
+        await env.DB.exec(`ALTER TABLE edit_requests ADD COLUMN cf_country TEXT`).catch(() => {});
+
+        // === Insert the new request (now includes cf_country) ===
         await env.DB.prepare(
           `INSERT INTO edit_requests
-           (name, father, grandfather, email, phone_e164, phone_iso, phone_dial, message, user_agent, ip)
-           VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)`
-        ).bind(name, father, grandfather, email, phoneE164, phoneISO, phoneDial, message, ua, ip).run();
+          (name, father, grandfather, email, phone_e164, phone_iso, phone_dial, message, user_agent, ip, cf_country)
+          VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)`
+        ).bind(
+          name,
+          father,
+          grandfather,
+          email,
+          phoneE164,
+          phoneISO,
+          phoneDial,
+          message,
+          ua,
+          ip,
+          country        // ✅ add the derived country here
+        ).run();
 
         // ===== NEW: build the admin table (most recent first) =====
         // Use rowid for recency ordering (works even if there's no created_at column)
         // Query all rows, newest first, using created_at then id
         const rs = await env.DB.prepare(
           `SELECT id, name, father, grandfather, email, phone_e164, phone_iso, phone_dial,
-                  message, user_agent, ip, created_at
-          FROM edit_requests
-          ORDER BY datetime(created_at) DESC, id DESC`
+                  message, user_agent, ip, created_at, cf_country
+           FROM edit_requests
+           ORDER BY datetime(created_at) DESC, id DESC`
         ).all();
 
         const rows = rs.results || [];
@@ -62,10 +88,17 @@ export default {
           to: ["aashish.pd@gmail.com", "sisneripoudel@gmail.com"],
           subject: `New Edit/Add Request — ${env.SITE_NAME}`,
           html: `
-            <h2>New request (latest submission at top of table below)</h2>
+            <h2>New request</h2>
             ${renderKeyValues({
-              Name: name, Father: father, Grandfather: grandfather, Email: email,
-              "Phone": phoneE164, Message: message, IP: ip, "User-Agent": ua
+              Name: name,
+              Father: father,
+              Grandfather: grandfather,
+              Email: email,
+              "Phone (E.164)": phoneE164,
+              Country: country,           // ← added
+              Message: message,
+              IP: ip                      // keep if you want it; ok to remove
+              // (User-Agent removed)
             })}
             <hr>
             <h3>All edit_requests (most recent first)</h3>
@@ -143,29 +176,37 @@ function renderAdminHTMLTable(rows){
         <th align="left">Phone</th>
         <th align="left">ISO</th>
         <th align="left">Dial</th>
+        <th align="left">Country</th>
         <th align="left">Message</th>
         <th align="left">IP</th>
-        <th align="left">User-Agent</th>
         <th align="left">Created</th>
       </tr>
     </thead>`;
 
-  const body = rows.map(r => `
-    <tr>
-      <td style="vertical-align:top;">${escapeHTML(String(r.id ?? ""))}</td>
-      <td style="vertical-align:top;">${escapeHTML(r.name ?? "")}</td>
-      <td style="vertical-align:top;">${escapeHTML(r.father ?? "")}</td>
-      <td style="vertical-align:top;">${escapeHTML(r.grandfather ?? "")}</td>
-      <td style="vertical-align:top;">${escapeHTML(r.email ?? "")}</td>
-      <td style="vertical-align:top;">${escapeHTML(r.phone_e164 ?? "")}</td>
-      <td style="vertical-align:top;">${escapeHTML(r.phone_iso ?? "")}</td>
-      <td style="vertical-align:top;">${escapeHTML(r.phone_dial ?? "")}</td>
-      <td style="vertical-align:top; max-width:420px;">${nl2br(escapeHTML(r.message ?? ""))}</td>
-      <td style="vertical-align:top;">${escapeHTML(r.ip ?? "")}</td>
-      <td style="vertical-align:top; max-width:420px;">${escapeHTML(r.user_agent ?? "")}</td>
-      <td style="vertical-align:top;">${escapeHTML(r.created_at ?? "—")}</td>
-    </tr>
-  `).join("");
+    const body = rows.map(r => {
+      const hasPhone = !!(r.phone_e164 && String(r.phone_e164).trim());
+      const isoShown = hasPhone ? (String(r.phone_iso || "").toUpperCase()) : "";
+      const countryShown = hasPhone
+        ? isoShown
+        : (String(r.cf_country || "").toUpperCase());
+    
+      return `
+        <tr>
+          <td style="vertical-align:top;">${escapeHTML(String(r.id ?? ""))}</td>
+          <td style="vertical-align:top;">${escapeHTML(r.name ?? "")}</td>
+          <td style="vertical-align:top;">${escapeHTML(r.father ?? "")}</td>
+          <td style="vertical-align:top;">${escapeHTML(r.grandfather ?? "")}</td>
+          <td style="vertical-align:top;">${escapeHTML(r.email ?? "")}</td>
+          <td style="vertical-align:top;">${escapeHTML(r.phone_e164 ?? "")}</td>
+          <td style="vertical-align:top;">${escapeHTML(isoShown)}</td>
+          <td style="vertical-align:top;">${escapeHTML(r.phone_dial ?? "")}</td>
+          <td style="vertical-align:top;">${escapeHTML(countryShown)}</td>
+          <td style="vertical-align:top; max-width:420px;">${nl2br(escapeHTML(r.message ?? ""))}</td>
+          <td style="vertical-align:top;">${escapeHTML(r.ip ?? "")}</td>
+          <td style="vertical-align:top;">${escapeHTML(r.created_at ?? "—")}</td>
+        </tr>
+      `;
+    }).join("");    
 
   return `<div style="overflow:auto;">
     <table style="border-collapse:collapse;border:1px solid #e5eef4;border-radius:10px;overflow:hidden;font:13px system-ui, -apple-system, Segoe UI, Roboto, Arial; min-width:900px;">

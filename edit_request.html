@@ -150,15 +150,6 @@
   </section>
 </div>
 
-<script>
-  const form = document.getElementById('edit-form');
-  const ok = document.getElementById('ok');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if(!form.checkValidity()){ form.reportValidity(); return; }
-    ok.style.display = 'block';
-  });
-</script>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js"></script>
 <script>
@@ -183,31 +174,43 @@
     });
 </script>
 <script>
-    document.getElementById("edit-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const form = e.currentTarget;
-      if (!form.checkValidity()) { form.reportValidity(); return; }
+  document.getElementById("edit-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (!form.checkValidity()) { form.reportValidity(); return; }
 
-      const fd = new FormData(form);
-      // intl-tel-input hidden fields already set in your page (iso, dial)
-      const res = await fetch("/api/edit_request", { method: "POST", body: fd });
-      const data = await res.json().catch(() => ({}));
+    const phoneVal = (form.phone.value || "").replace(/[^\d]/g, "");
+    if (phoneVal.length) {
+      // user entered phone → set iso/dial from the picker
+      const sel = iti.getSelectedCountryData();
+      document.getElementById("phone_country_iso").value = (sel.iso2 || "").toUpperCase();
+      document.getElementById("phone_dial_code").value = sel.dialCode || "";
+    } else {
+      // no phone → clear hidden fields so they don't default to NP
+      document.getElementById("phone_country_iso").value = "";
+      document.getElementById("phone_dial_code").value = "";
+    }
 
-      if (res.ok && data.ok) {
-          const emailValue = form.email.value.trim();
-          const okDiv = document.getElementById("ok");
+    const fd = new FormData(form);
+    const res = await fetch("/api/edit_request", { method: "POST", body: fd });
+    const data = await res.json().catch(() => ({}));
 
-          okDiv.innerHTML = `
-            अनुरोधको लागि धन्यवाद🙏 हामी हजुरलाई चाँडै <b>${emailValue}</b>मा सम्पर्क गर्नेछौं।<br>
-            Thank you for your request🙏. We will contact shortly at <b>${emailValue}</b>.
-          `;
-          okDiv.style.display = "block";
-
-          form.reset();
-        } else {
-          alert("Sorry—could not submit. " + (data.error || res.status));
-        }
-    });
+    if (res.ok && data.ok) {
+      const okDiv = document.getElementById("ok");
+      const emailValue = form.email.value.trim();
+      okDiv.innerHTML = `
+        तपाईंको अनुरोधको लागि धन्यवाद। हामी तपाईंलाई चाँडै <b>${emailValue}</b> इमेल मार्फत सम्पर्क गर्नेछौं।<br>
+        Thank you for your request. We will contact you shortly at <b>${emailValue}</b>.
+      `;
+      okDiv.style.display = "block";
+      form.reset();
+      // also clear hidden fields post-reset
+      document.getElementById("phone_country_iso").value = "";
+      document.getElementById("phone_dial_code").value = "";
+    } else {
+      alert("Sorry—could not submit. " + (data.error || res.status));
+    }
+  });
 </script>
 </body>
 </html>
