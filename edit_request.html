@@ -123,12 +123,12 @@
           <input id="email" name="email" type="email" required placeholder="you@example.com" style="width:100%;"/>
         </div>
         <label for="phone">फोन<br>Phone (Optional)</label>
-        <input id="phone" name="phone" type="tel" required placeholder="(555) 555-5555"/>
+        <input id="phone" name="phone" type="tel" placeholder="(555) 555-5555"/>
         <input type="hidden" name="phone_country_iso" id="phone_country_iso" />
         <input type="hidden" name="phone_dial_code" id="phone_dial_code" />
 
         <div>
-          <label for="message">के थप्न/सम्पादन गर्न चाहनुहुन्छ?<br>What you want to add/edit? <span class="req">*</span></label>
+          <label for="message">के थप्न/सच्याउन चाहनुहुन्छ?<br>What you wanna add/edit? <span class="req">*</span></label>
           <textarea id="message" name="message" required placeholder="जस्तै:
 मेरो नाम गलत छ...
 मेरो भर्खर जन्मेको छोरी थप्न चाहन्छु"></textarea>
@@ -139,7 +139,7 @@
           <button type="reset" class="btn btn--ghost">रिसेट / Reset</button>
         </div>
 
-        <div id="ok" class="success" role="status">धन्यवाद। हामीले हजुरको थप्ने/सच्याउने अनुरोध प्राप्त ग-यौं। कुनै स्पष्टीकरण आवश्यक परेमा हामी समीक्षा गर्नेछौं र फलोअप गर्नेछौं। <br>We received your add/edit request. Thank you! We'll review and follow up if we need any clarification.</div>
+        <div id="ok" class="success" role="status">तपाईंको अनुरोधको लागि धन्यवाद। हामी तपाईंलाई चाँडै इमेल मार्फत सम्पर्क गर्नेछौं। <br>Thank you for your request. We will contact you shortly in email.</div>
       </form>
     </article>
 
@@ -150,15 +150,6 @@
   </section>
 </div>
 
-<script>
-  const form = document.getElementById('edit-form');
-  const ok = document.getElementById('ok');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if(!form.checkValidity()){ form.reportValidity(); return; }
-    ok.style.display = 'block';
-  });
-</script>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js"></script>
 <script>
@@ -183,23 +174,46 @@
     });
 </script>
 <script>
-    document.getElementById("edit-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const form = e.currentTarget;
-      if (!form.checkValidity()) { form.reportValidity(); return; }
+  document.getElementById("edit-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (!form.checkValidity()) { form.reportValidity(); return; }
 
-      const fd = new FormData(form);
-      // intl-tel-input hidden fields already set in your page (iso, dial)
-      const res = await fetch("/api/edit_request", { method: "POST", body: fd });
-      const data = await res.json().catch(() => ({}));
+    const phoneVal = (form.phone.value || "").replace(/[^\d]/g, "");
+    if (phoneVal.length) {
+      // user entered phone → set iso/dial from the picker
+      const sel = iti.getSelectedCountryData();
+      document.getElementById("phone_country_iso").value = (sel.iso2 || "").toUpperCase();
+      document.getElementById("phone_dial_code").value = sel.dialCode || "";
+    } else {
+      // no phone → clear hidden fields so they don't default to NP
+      document.getElementById("phone_country_iso").value = "";
+      document.getElementById("phone_dial_code").value = "";
+    }
 
-      if (res.ok && data.ok) {
-        document.getElementById("ok").style.display = "block";
-        form.reset();
-      } else {
-        alert("Sorry—could not submit. " + (data.error || res.status));
-      }
-    });
+    const fd = new FormData(form);
+    const res = await fetch("/api/edit_request", { method: "POST", body: fd });
+    const data = await res.json().catch(() => ({}));
+
+    if (res.ok && data.ok) {
+      const okDiv = document.getElementById("ok");
+      const emailValue = form.email.value.trim();
+      okDiv.innerHTML = `
+          हजुरको अनुरोधको लागि धन्यवाद। हामी हजुरलाई छिट्टैनै
+          <b><span style="color:#0d6efd;">${emailValue}</span></b>
+          मार्फत सम्पर्क गर्नेछौं।<br>
+          <i>Thank you for your request. We will contact you shortly at
+          <b><span style="color:#0d6efd;">${emailValue}</span></b>.</i>
+        `;
+      okDiv.style.display = "block";
+      form.reset();
+      // also clear hidden fields post-reset
+      document.getElementById("phone_country_iso").value = "";
+      document.getElementById("phone_dial_code").value = "";
+    } else {
+      alert("Sorry—could not submit. " + (data.error || res.status));
+    }
+  });
 </script>
 </body>
 </html>
