@@ -199,9 +199,12 @@
       const okDiv = document.getElementById("ok");
       const emailValue = form.email.value.trim();
       okDiv.innerHTML = `
-        तपाईंको अनुरोधको लागि धन्यवाद। हामी तपाईंलाई छिट्टैनै <b>${emailValue}</b> इमेल मार्फत सम्पर्क गर्नेछौं।<br>
-        <i>Thank you for your request. We will contact you shortly at <b>${emailValue}</i>></b>.
-      `;
+          हजुरको अनुरोधको लागि धन्यवाद। हामी हजुरलाई छिट्टैनै
+          <b><span style="color:#0d6efd;">${emailValue}</span></b>
+          मार्फत सम्पर्क गर्नेछौं।<br>
+          <i>Thank you for your request. We will contact you shortly at
+          <b><span style="color:#0d6efd;">${emailValue}</span></b>.</i>
+        `;
       okDiv.style.display = "block";
       form.reset();
       // also clear hidden fields post-reset
