@@ -94,14 +94,14 @@ export default {
               Father: father,
               Grandfather: grandfather,
               Email: email,
-              "Phone (E.164)": phoneE164,
+              "Phone": phoneE164,
               Country: country,           // ← added
               Message: message,
               IP: ip                      // keep if you want it; ok to remove
               // (User-Agent removed)
             })}
             <hr>
-            <h3>All edit_requests (most recent first)</h3>
+            <h3>All Edit Requests (most recent first)</h3>
             <p style="font:14px system-ui;margin:6px 0;">Row count: ${rows.length}</p>
             ${rows.length ? adminTable : '<p style="font:14px system-ui;color:#666;">(No rows found in edit_requests)</p>'}
           `
