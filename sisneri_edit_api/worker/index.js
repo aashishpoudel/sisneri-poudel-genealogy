@@ -95,9 +95,9 @@ export default {
               Grandfather: grandfather,
               Email: email,
               "Phone": phoneE164,
-              Country: country,           // ← added
+              Country: country,
               Message: message,
-              IP: ip                      // keep if you want it; ok to remove
+              IP: ip
               // (User-Agent removed)
             })}
             <hr>
@@ -107,25 +107,45 @@ export default {
           `
         });
 
-        // ===== CONFIRMATION to the submitter (kept, slightly tidied) =====
+        // ===== CONFIRMATION to the submitter (Nepali + English, CC admin) =====
         await sendMail(env, {
-          to: email,
+          to: [email, "sisneripoudel@gmail.com"],  // send to both user + admin
           subject: `sisneripoudel.com — ${env.SITE_NAME}`,
           html: `
-            <p>Namaste,</p>
-            <p>We received your add/edit request. Thank you! We'll review and follow up if we need any clarification.</p>
-            <p><b>Summary:</b></p>
-            ${renderKeyValues({
-              Name: name,
-              Father: father,
-              Grandfather: grandfather,
-              Email: email,
-              Phone: phoneE164,
-              Message: message
-            })}
-            <p>— ${env.SITE_NAME}</p>
+            <div style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial;">
+              <p>नमस्ते 🙏,</p>
+              <p>हामीले तपाईँको थप/सच्याउने अनुरोध प्राप्त गरेका छौं। 
+              धन्यवाद! आवश्यक परेमा हामी थप विवरणका लागि सम्पर्क गर्नेछौं।</p>
+              
+              <p><b>सारांश:</b></p>
+              ${renderKeyValues({
+                नाम: name,
+                बुबा: father,
+                हजुरबुबा: grandfather,
+                इमेल: email,
+                फोन: phoneE164,
+                सन्देश: message
+              })}
+
+              <hr style="margin:24px 0; border:none; border-top:1px solid #ddd;">
+
+              <p>Namaste 🙏,</p>
+              <p>We received your add/edit request. Thank you! We'll review it and contact you if we need clarification.</p>
+              <p><b>Summary:</b></p>
+              ${renderKeyValues({
+                Name: name,
+                Father: father,
+                Grandfather: grandfather,
+                Email: email,
+                Phone: phoneE164,
+                Message: message
+              })}
+              
+              <p>— ${env.SITE_NAME}</p>
+            </div>
           `
         });
+
 
         return json({ ok:true }, 200);
       } catch (err) {
