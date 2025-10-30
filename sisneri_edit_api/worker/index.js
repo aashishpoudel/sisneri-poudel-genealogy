@@ -98,7 +98,7 @@ export default {
               Country: country,
               Message: message,
               IP: ip
-              // (User-Agent removed)
+              //(User-Agent removed)
             })}
             <hr>
             <h3>All Edit Requests (most recent first)</h3>
