@@ -85,6 +85,29 @@
   .success{ display:none; padding:12px; border-radius:12px; border:1px solid var(--line); background: var(--pill); color: var(--text); }
   .phone-field{ display: grid; grid-template-columns: minmax(180px, 260px) 1fr; gap: 10px; align-items: center; }
   .iti{ margin-bottom: 24px;}
+  .iti{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  /* the readonly country code box */
+  .iti .cc-box{
+    width: 88px;
+    min-width: 72px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--text);
+    text-align: center;
+    pointer-events: none;   /* cannot be manipulated */
+  }
+
+  /* let the actual phone input expand */
+  .iti input#phone{
+    flex: 1;
+  }
+  .iti__selected-dial-code{ display: none !important; }
 </style>
 </head>
 <body>
@@ -153,25 +176,56 @@
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js"></script>
 <script>
-    const phoneInput = document.querySelector("#phone");
-    const iti = window.intlTelInput(phoneInput, {
-      autoPlaceholder: "polite",
-      preferredCountries: ["np", "us", "in"],
-      separateDialCode: true
-    });
+  const phoneInput = document.querySelector("#phone");
+  const iti = window.intlTelInput(phoneInput, {
+    autoPlaceholder: "polite",
+    preferredCountries: ["np", "us", "in"],
+    // Important: we’ll show our own code box, so keep this false (or hide it via CSS if true)
+    separateDialCode: false,
+    nationalMode: true
+  });
 
-    phoneInput.addEventListener("countrychange", () => {
-      const countryData = iti.getSelectedCountryData();
-      document.getElementById("phone_country_iso").value = countryData.iso2;
-      document.getElementById("phone_dial_code").value = countryData.dialCode;
-    });
+  // 1) Create a read-only country code input and insert it just before #phone inside the .iti container
+  const itiContainer = phoneInput.closest(".iti");
+  const ccBox = document.createElement("input");
+  ccBox.type = "text";
+  ccBox.id = "phone_cc_display";
+  ccBox.className = "cc-box";
+  ccBox.readOnly = true;
+  ccBox.setAttribute("aria-label", "Country code");
+  ccBox.tabIndex = -1; // skip on tab
+  itiContainer.insertBefore(ccBox, phoneInput); // place between flag widget and phone input
 
-    document.getElementById("edit-form").addEventListener("submit", e => {
-      document.getElementById("phone_country_iso").value =
-        iti.getSelectedCountryData().iso2;
-      document.getElementById("phone_dial_code").value =
-        iti.getSelectedCountryData().dialCode;
-    });
+  // 2) Helper to sync code + hidden fields and move cursor into phone input
+  function syncCountryBits({ focusPhone } = { focusPhone: false }) {
+    const sel = iti.getSelectedCountryData();
+    const dial = sel?.dialCode ? `+${sel.dialCode}` : "";
+    ccBox.value = dial;
+
+    // keep your hidden fields in sync for submission
+    document.getElementById("phone_country_iso").value = (sel?.iso2 || "").toUpperCase();
+    document.getElementById("phone_dial_code").value = sel?.dialCode || "";
+
+    if (focusPhone) {
+      // Move cursor to the end of the phone number field
+      phoneInput.focus();
+      const len = phoneInput.value.length;
+      try { phoneInput.setSelectionRange(len, len); } catch {}
+    }
+  }
+
+  // 3) Initialize on load
+  syncCountryBits();
+
+  // 4) When country changes (user picked from the dropdown), update code and move focus
+  phoneInput.addEventListener("countrychange", () => {
+    syncCountryBits({ focusPhone: true });
+  });
+
+  // 5) On submit, ensure hidden fields are set EVEN if user didn’t type any phone number
+  document.getElementById("edit-form").addEventListener("submit", e => {
+    syncCountryBits(); // refresh ISO/dial code one more time
+  });
 </script>
 <script>
   document.getElementById("edit-form").addEventListener("submit", async (e) => {
