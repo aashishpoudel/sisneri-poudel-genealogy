@@ -2470,7 +2470,7 @@ yog_45 = Person("Yog", gender="Male", name_nep="योग")
 partha_45 = Person("Partha", gender="Male", name_nep="पार्थ")
 aadya_45 = Person("Aadya", gender="Female", name_nep="आद्या")
 kaya_45 = Person("Kaya", gender="Female", name_nep="काया")
-saisawa_45 = Person("Saisawa", gender="Male", name_nep="शैशव")
+shaishav_45 = Person("Shaishav", gender="Male", name_nep="शैशव")
 ojas_45 = Person("Ojas", gender="Male", name_nep="ओजेश")
 
 umesh_44_5 = Person("Umesh", gender="Male", name_nep="उमेश")
@@ -5308,7 +5308,7 @@ basudev_43_4.add_children([kantibikash_44, shantibikash_44, biswobikash_44])
 sagar_44_4.add_children([yog_45])
 bishwonath_44_3.add_children([partha_45])
 kantibikash_44.add_children([aadya_45, kaya_45])
-shantibikash_44.add_children([saisawa_45])
+shantibikash_44.add_children([shaishav_45])
 biswobikash_44.add_children([ojas_45])
 
 #page 89
