@@ -53,7 +53,14 @@
     .pill{ display: inline-block; padding: 6px 10px; border-radius: 999px; background: var(--pill); color: var(--muted); font-size: 14px; border: 1px solid var(--line); margin-top: 6px; }
 
     .grid{ display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; margin-top: 18px; }
-    .card{ grid-column: span 12; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(16px, 3.2vw, 24px); }
+    .card {
+      grid-column: span 12;
+      background: #fef9e7; /* ✅ light cream for text area */
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(16px, 3.2vw, 24px);
+    }
 
     /* Tabs */
     .tabs{ display: flex; gap: 10px; background: var(--tab-bg); border: 1px solid var(--line); padding: 6px; border-radius: 12px; margin-bottom: 14px; }

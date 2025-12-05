@@ -9229,7 +9229,23 @@
                                               "father_nep": "\u0938\u0941\u0926\u0930\u094d\u0936\u0928",
                                               "grandfather": "GaneshPrasad",
                                               "grandfather_nep": "\u0939\u0930\u093f\u0932\u093e\u0932",
-                                              "children": []
+                                              "children": [
+                                                {
+                                                  "name": "Kanchan",
+                                                  "name_nep": "\u0915\u091e\u094d\u091a\u0928",
+                                                  "gender": "Male",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "gen_number": null,
+                                                  "comment": null,
+                                                  "father": "Niraj",
+                                                  "father_nep": "\u0928\u093f\u0930\u091c",
+                                                  "grandfather": "Sudarshan",
+                                                  "grandfather_nep": "\u0917\u0923\u0947\u0936\u092a\u094d\u0930\u0938\u093e\u0926",
+                                                  "children": []
+                                                }
+                                              ]
                                             },
                                             {
                                               "name": "Rajan",
@@ -12023,6 +12039,21 @@
                                                   "name": "Rupesh",
                                                   "name_nep": "\u0930\u0941\u092a\u0947\u0936",
                                                   "gender": "Male",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "gen_number": null,
+                                                  "comment": null,
+                                                  "father": "Pradhumna",
+                                                  "father_nep": "\u092a\u094d\u0930\u0927\u0941\u092e\u094d\u0928",
+                                                  "grandfather": "Hari",
+                                                  "grandfather_nep": "\u0926\u0947\u0935\u0940\u092a\u094d\u0930\u0938\u093e\u0926",
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Rakshita",
+                                                  "name_nep": "\u0930\u0915\u094d\u0937\u093f\u0924\u093e",
+                                                  "gender": "Female",
                                                   "birth_year": null,
                                                   "death_year": null,
                                                   "place": null,
@@ -18318,7 +18349,7 @@
                                           "children": [
                                             {
                                               "name": "Prabhav",
-                                              "name_nep": "\u092a\u094d\u0930\u092d\u093e\u0935",
+                                              "name_nep": "\u092a\u094d\u0930\u092d\u092c",
                                               "gender": "Male",
                                               "birth_year": null,
                                               "death_year": null,
@@ -28916,7 +28947,38 @@
                                                       "father_nep": "\u0909\u092a\u0947\u0928\u094d\u0926\u094d\u0930",
                                                       "grandfather": "TrilokyaKeshari",
                                                       "grandfather_nep": "\u0926\u094d\u0935\u093f\u091c\u0930\u093e\u091c\u0915\u0947\u0936\u0930\u0940",
-                                                      "children": []
+                                                      "children": [
+                                                        {
+                                                          "name": "Prajwal",
+                                                          "name_nep": "\u092a\u094d\u0930\u091c\u094d\u0935\u0932",
+                                                          "gender": "Male",
+                                                          "birth_year": null,
+                                                          "death_year": null,
+                                                          "place": null,
+                                                          "gen_number": null,
+                                                          "comment": null,
+                                                          "father": "Prajwol",
+                                                          "father_nep": "\u092a\u094d\u0930\u091c\u094d\u0935\u0932",
+                                                          "grandfather": "Upendra",
+                                                          "grandfather_nep": "\u0924\u094d\u0930\u093f\u0932\u094b\u0915\u094d\u092f\u0915\u0947\u0936\u0930\u0940",
+                                                          "children": []
+                                                        },
+                                                        {
+                                                          "name": "Pranav",
+                                                          "name_nep": "\u092a\u094d\u0930\u0928\u092c",
+                                                          "gender": "Male",
+                                                          "birth_year": null,
+                                                          "death_year": null,
+                                                          "place": null,
+                                                          "gen_number": null,
+                                                          "comment": null,
+                                                          "father": "Prajwol",
+                                                          "father_nep": "\u092a\u094d\u0930\u091c\u094d\u0935\u0932",
+                                                          "grandfather": "Upendra",
+                                                          "grandfather_nep": "\u0924\u094d\u0930\u093f\u0932\u094b\u0915\u094d\u092f\u0915\u0947\u0936\u0930\u0940",
+                                                          "children": []
+                                                        }
+                                                      ]
                                                     }
                                                   ]
                                                 }

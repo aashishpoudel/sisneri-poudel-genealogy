@@ -699,6 +699,7 @@ surendra_44 = Person("Surendra", gender="Male", name_nep="सुरेन्द�
 pawan_44_2_2 = Person("Pawan", gender="Male", name_nep="पवन")
 sourya_44 = Person("Sourya", gender="Male", name_nep="सौर्य")
 saurav_44 = Person("Saurav", gender="Male", name_nep="सौरव")
+kanchan_44 = Person("Kanchan", gender="Male", name_nep="कञ्चन", edit="+ स्रोत: कञ्चन (स्वयं)")
 santosh_44 = Person("Santosh", gender="Male", name_nep="सन्तोष")
 saroj_44_2 = Person("Saroj", gender="Male", name_nep="सरोज")
 mahesh_44_3 = Person("Mahesh", gender="Male", name_nep="महेश")
@@ -1088,6 +1089,7 @@ arpana_44 = Person("Arpana", gender="Female", name_nep="अर्पणा")
 srijana_44 = Person("Srijana", gender="Female", name_nep="सृजना")
 pabina_44 = Person("Pabina", gender="Female", name_nep="पबिना")
 rupesh_44 = Person("Rupesh", gender="Male", name_nep="रुपेश")
+rakshita_44 = Person("Rakshita", gender="Female", name_nep="रक्षिता", edit="+ स्रोत: रक्षिता (स्वयं)")
 sumesh_44 = Person("Sumesh", gender="Male", name_nep="सुमेश")
 sandesh_44 = Person("Sandesh", gender="Male", name_nep="सन्देश")
 
@@ -1431,7 +1433,7 @@ ajay_43_2 = Person("Ajay", gender="Male", name_nep="अजय")
 ajar_43 = Person("Ajar", gender="Male", name_nep="अजर")
 amar_43 = Person("Amar", gender="Male", name_nep="अमर")
 biswas_43 = Person("Biswas", gender="Male", name_nep="विश्वास")
-prabhav_43 = Person("Prabhav", gender="Male", name_nep="प्रभाव")
+prabhav_43 = Person("Prabhav", gender="Male", name_nep="प्रभब", edit="# स्रोत: प्रभब (स्वयं)\nसच्याउनु अघिको नाम: प्रभाव")
 sudeep_43 = Person("Sudeep", gender="Male", name_nep="सुदीप")
 sunil_43_2 = Person("Sunil", gender="Male", name_nep="सुनिल")
 ujjwol_43 = Person("Ujjwol", gender="Male", name_nep="उज्ज्वल")
@@ -2294,6 +2296,8 @@ abhinavkeshari_45 = Person("AbhinavKeshari", gender="Male", name_nep="अभि�
 yogeshkeshari_45 = Person("YogeshKeshari", gender="Male", name_nep="योगेशकेशरी")
 
 abhinamra_46 = Person("Abhinamra", gender="Male", name_nep="अभिनम्र")
+prajwal_46 = Person("Prajwal", gender="Male", name_nep="प्रज्वल", edit="+ स्रोत: प्रज्वल (बुवा)")
+pranav_46 = Person("Pranav", gender="Male", name_nep="प्रनब", edit="+ स्रोत: प्रज्वल (बुवा)")
 parishit_46 = Person("Parishit", gender="Male", name_nep="परीक्षित")
 
 #page 83
@@ -4234,6 +4238,7 @@ krishna_prasad_43.add_children([suchit_44])
 baikuntha_43.add_children([dipendra_44, surendra_44])
 ramesh_43.add_children([pawan_44_2_2])
 saroj_43.add_children([sourya_44, saurav_44])
+niraj_43.add_children([kanchan_44])
 shreeram_43_1.add_children([santosh_44])
 mukunda_43_1.add_children([saroj_44_2])
 madhuwan_43.add_children([mahesh_44_3, anupam_44])
@@ -4456,7 +4461,7 @@ rishi_42.add_children([bimala_43, niru_43])
 #page 49
 hari_42.add_children([keshav_43, pradhumna_43_2, sudhumna_43])
 keshav_43.add_children([arpana_44, srijana_44, pabina_44])
-pradhumna_43_2.add_children([rupesh_44])
+pradhumna_43_2.add_children([rupesh_44, rakshita_44])
 sudhumna_43.add_children([sumesh_44, sandesh_44])
 
 bhairab_bahadur_39.add_children([bhakta_bahadur_40])
@@ -5188,6 +5193,7 @@ binay_44.add_children([abhinavkeshari_45])
 binod_44_5.add_children([yogeshkeshari_45])
 
 anup_45_3.add_children([abhinamra_46])
+prajwol_45_3.add_children([prajwal_46, pranav_46])
 biswas_45.add_children([parishit_46])
 
 #page 83
