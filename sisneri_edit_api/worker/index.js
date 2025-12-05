@@ -41,6 +41,12 @@ export default {
           ? `+${phoneDial}${phoneRaw.replace(/[^\d]/g,"")}`
           : "";
 
+        let whatsappLink = "";
+        if (phoneE164) {
+          const digitsOnly = phoneE164.replace(/[^\d]/g, "");
+          whatsappLink = `https://wa.me/${digitsOnly}`;
+        }
+
         const ua = req.headers.get("user-agent") || "";
         const ip = req.headers.get("cf-connecting-ip") || "";
 
@@ -94,7 +100,9 @@ export default {
               Father: father,
               Grandfather: grandfather,
               Email: email,
-              "Phone": phoneE164,
+              "Phone": phoneE164
+                ? `<a href="${whatsappLink}" style="color:#0d6efd;">${phoneE164}</a>`
+                : "",
               Country: country,
               Message: message,
               IP: ip
