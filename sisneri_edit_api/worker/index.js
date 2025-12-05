@@ -183,9 +183,18 @@ function json(obj, status=200) {
 function renderKeyValues(obj){
   const rows = Object.entries(obj).map(([k,v]) => `
     <tr>
-      <th align="left" style="padding:6px 10px;border-bottom:1px solid #eee;white-space:nowrap;">${escapeHTML(k)}</th>
-      <td style="padding:6px 10px;border-bottom:1px solid #eee;">${nl2br(escapeHTML(String(v ?? "")))}</td>
+      <th align="left" style="padding:6px 10px;border-bottom:1px solid #eee;white-space:nowrap;">
+        ${escapeHTML(k)}
+      </th>
+      <td style="padding:6px 10px;border-bottom:1px solid #eee;">
+        ${
+          (typeof v === "string" && v.trim().startsWith("<a"))
+          ? v   // preserve clickable HTML such as WhatsApp link
+          : nl2br(escapeHTML(String(v ?? "")))
+        }
+      </td>
     </tr>`).join("");
+
   return `<table style="border-collapse:collapse;border:1px solid #eee;border-radius:8px;overflow:hidden;font:14px system-ui, -apple-system, Segoe UI, Roboto, Arial;">
     <tbody>${rows}</tbody>
   </table>`;
