@@ -2090,7 +2090,7 @@ subhanan_44 = Person("Subhanan", gender="Male", name_nep="शुभानन्"
 suman_44_3 = Person("Suman", gender="Male", name_nep="सुमन")
 sunil_44_3 = Person("Sunil", gender="Male", name_nep="सुनिल")
 
-ishaan_45 = Person("Ishaan", gender="Male", name_nep="ईशान")
+adyant_45 = Person("Adyant", gender="Male", name_nep="आद्यान्त", edit="# स्रोत: आद्यान्त (स्वयम्) \nसच्याउनु अघिको नाम: ईशान")
 aayam_45_2 = Person("Aayam", gender="Male", name_nep="आयाम")
 
 padmanidhi_40_2 = Person("Padmanidhi", gender="Male", name_nep="पद्मनिधि", place="हिले")
@@ -5076,7 +5076,7 @@ saroj_43_2.add_children([sunandan_44])
 romharsha_43.add_children([subhanan_44])
 aatmaram_43.add_children([suman_44_3, sunil_44_3])
 
-kundan_44.add_children([ishaan_45])
+kundan_44.add_children([adyant_45])
 suman_44_3.add_children([aayam_45])
 
 #page 78

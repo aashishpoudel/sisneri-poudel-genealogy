@@ -1910,7 +1910,7 @@ Gopal
         │       │       │   │           │   ├── Rameshwor
         │       │       │   │           │   ├── Bhuwan
         │       │       │   │           │   │   ├── Kundan
-        │       │       │   │           │   │   │   └── Ishaan
+        │       │       │   │           │   │   │   └── Adyant
         │       │       │   │           │   │   └── Anandan
         │       │       │   │           │   ├── Saroj
         │       │       │   │           │   │   └── Sunandan
