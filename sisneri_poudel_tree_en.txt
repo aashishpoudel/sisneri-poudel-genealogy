@@ -1343,7 +1343,7 @@ Gopal
         │       │               │       │   ├── Sitaram
         │       │               │       │   │   └── RajuPrasad
         │       │               │       │   ├── Shivanath
-        │       │               │       │   │   └── Sancha
+        │       │               │       │   │   └── Sanjaya
         │       │               │       │   └── RamPrasad
         │       │               │       └── KapilDev
         │       │               │           └── HariPrasad
@@ -1588,14 +1588,16 @@ Gopal
         │       │       │   │   │   │   └── Pitambar
         │       │       │   │   │   │       ├── Bishnu
         │       │       │   │   │   │       │   ├── Rajkumar
-        │       │       │   │   │   │       │   │   └── Amrit
-        │       │       │   │   │   │       │   └── Shivaprasad
+        │       │       │   │   │   │       │   │   └── Amit
+        │       │       │   │   │   │       │   └── Shiva
+        │       │       │   │   │   │       │       └── Aarjan
         │       │       │   │   │   │       ├── Krishna
         │       │       │   │   │   │       │   ├── Dharmaraj
         │       │       │   │   │   │       │   │   └── Kebin
         │       │       │   │   │   │       │   └── Premraj
-        │       │       │   │   │   │       └── Ramsharan
+        │       │       │   │   │   │       └── Rajan
         │       │       │   │   │   │           ├── Pradeep
+        │       │       │   │   │   │           │   └── Aric
         │       │       │   │   │   │           └── Arjun
         │       │       │   │   │   ├── Tankanath
         │       │       │   │   │   │   ├── Hariprasad
