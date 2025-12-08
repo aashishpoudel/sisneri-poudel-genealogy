@@ -1864,7 +1864,7 @@ Gopal
         │       │       │   │       │       │       ├── Pankaj
         │       │       │   │       │       │       ├── Prasanna
         │       │       │   │       │       │       └── Prajwol
-        │       │       │   │       │       │           ├── Prajwal
+        │       │       │   │       │       │           ├── Prawal
         │       │       │   │       │       │           └── Pranav
         │       │       │   │       │       ├── Dilliraj
         │       │       │   │       │       │   ├── Rabindra
