@@ -2297,7 +2297,7 @@ abhinavkeshari_45 = Person("AbhinavKeshari", gender="Male", name_nep="अभि�
 yogeshkeshari_45 = Person("YogeshKeshari", gender="Male", name_nep="योगेशकेशरी")
 
 abhinamra_46 = Person("Abhinamra", gender="Male", name_nep="अभिनम्र")
-prajwal_46 = Person("Prajwal", gender="Male", name_nep="प्रज्वल", edit="+ स्रोत: प्रज्वल (बुवा)")
+prawal_46 = Person("Prawal", gender="Male", name_nep="प्रवल", edit="+ स्रोत: प्रज्वल (बुवा)")
 pranav_46 = Person("Pranav", gender="Male", name_nep="प्रनब", edit="+ स्रोत: प्रज्वल (बुवा)")
 parishit_46 = Person("Parishit", gender="Male", name_nep="परीक्षित")
 
@@ -5196,7 +5196,7 @@ binay_44.add_children([abhinavkeshari_45])
 binod_44_5.add_children([yogeshkeshari_45])
 
 anup_45_3.add_children([abhinamra_46])
-prajwol_45_3.add_children([prajwal_46, pranav_46])
+prajwol_45_3.add_children([prawal_46, pranav_46])
 biswas_45.add_children([parishit_46])
 
 #page 83
