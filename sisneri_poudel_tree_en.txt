@@ -1343,7 +1343,7 @@ Gopal
         │       │               │       │   ├── Sitaram
         │       │               │       │   │   └── RajuPrasad
         │       │               │       │   ├── Shivanath
-        │       │               │       │   │   └── Sancha
+        │       │               │       │   │   └── Sanjaya
         │       │               │       │   └── RamPrasad
         │       │               │       └── KapilDev
         │       │               │           └── HariPrasad
@@ -1588,14 +1588,16 @@ Gopal
         │       │       │   │   │   │   └── Pitambar
         │       │       │   │   │   │       ├── Bishnu
         │       │       │   │   │   │       │   ├── Rajkumar
-        │       │       │   │   │   │       │   │   └── Amrit
-        │       │       │   │   │   │       │   └── Shivaprasad
+        │       │       │   │   │   │       │   │   └── Amit
+        │       │       │   │   │   │       │   └── Shiva
+        │       │       │   │   │   │       │       └── Aarjan
         │       │       │   │   │   │       ├── Krishna
         │       │       │   │   │   │       │   ├── Dharmaraj
         │       │       │   │   │   │       │   │   └── Kebin
         │       │       │   │   │   │       │   └── Premraj
-        │       │       │   │   │   │       └── Ramsharan
+        │       │       │   │   │   │       └── Rajan
         │       │       │   │   │   │           ├── Pradeep
+        │       │       │   │   │   │           │   └── Aric
         │       │       │   │   │   │           └── Arjun
         │       │       │   │   │   ├── Tankanath
         │       │       │   │   │   │   ├── Hariprasad
@@ -1862,7 +1864,7 @@ Gopal
         │       │       │   │       │       │       ├── Pankaj
         │       │       │   │       │       │       ├── Prasanna
         │       │       │   │       │       │       └── Prajwol
-        │       │       │   │       │       │           ├── Prajwal
+        │       │       │   │       │       │           ├── Prawal
         │       │       │   │       │       │           └── Pranav
         │       │       │   │       │       ├── Dilliraj
         │       │       │   │       │       │   ├── Rabindra
@@ -1910,7 +1912,7 @@ Gopal
         │       │       │   │           │   ├── Rameshwor
         │       │       │   │           │   ├── Bhuwan
         │       │       │   │           │   │   ├── Kundan
-        │       │       │   │           │   │   │   └── Ishaan
+        │       │       │   │           │   │   │   └── Adyant
         │       │       │   │           │   │   └── Anandan
         │       │       │   │           │   ├── Saroj
         │       │       │   │           │   │   └── Sunandan
@@ -2061,7 +2063,7 @@ Gopal
         │       │       │       │   │   │       │   ├── Aadya
         │       │       │       │   │   │       │   └── Kaya
         │       │       │       │   │   │       ├── ShantiBikash
-        │       │       │       │   │   │       │   └── Saisawa
+        │       │       │       │   │   │       │   └── Shaishav
         │       │       │       │   │   │       └── BiswoBikash
         │       │       │       │   │   │           └── Ojas
         │       │       │       │   │   ├── Bijuli
