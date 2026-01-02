@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Poudel Lineage (Before Gopal)</title>
+<style>
+body {
+    font-family: system-ui, sans-serif;
+    background: #fafafa;
+}
+
+.person-block {
+    text-align: center;
+    margin: 30px auto;
+    position: relative;
+}
+
+.person-card {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background: white;
+    font-size: 16px;
+    position: relative;
+    z-index: 2;
+}
+
+/* vertical line from parent down */
+.person-block > .person-card::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: #333;
+    left: 50%;
+    bottom: -20px;
+    transform: translateX(-50%);
+}
+
+/* wrapper holds the horizontal connector */
+.children-wrapper {
+    position: relative;
+    margin-top: 20px;
+}
+
+
+/* row of siblings */
+.children-row {
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+    padding-top: 20px;
+}
+
+.children-inner {
+    display: flex;
+    gap: 40px;
+    position: relative;
+}
+
+.children-line {
+    position: absolute;
+    top: 0;
+    left: 20px;     /* half gap */
+    right: 20px;    /* half gap */
+    height: 2px;
+    background: red;   /* keep red for now */
+}
+
+
+
+
+
+/* vertical line from sibling bar down to child */
+.child-subtree::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: #333;
+    top: 0;            /* start at horizontal line */
+}
+
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">Poudel Lineage (Before Gopal)</h2>
+
+
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>गोपाल</strong> (~1620)
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>रामभद्र</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>गोविन्द</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>गौतम</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>लक्ष्मीधर</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>लक्ष्मीनारायण</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>विद्यानन्द</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>धर्मानन्द</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>हरिलाल</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree"><div class="person-block">
+        <div class="person-card">
+            <strong>शिवनिधि</strong>
+        </div>
+        </div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div><div class="child-subtree"><div class="person-block">
+        <div class="person-card">
+            <strong>रामभद्र(बलभद्र)</strong>
+        </div>
+        </div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div><div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>रामचन्द्र</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>रतन</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>नीनी</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree">
+        <div class="person-block">
+            
+        <div class="person-card">
+            <strong>विजयानन्द</strong>
+        </div>
+        
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        <div class="child-subtree"><div class="person-block">
+        <div class="person-card">
+            <strong>गौरीशंकर</strong>
+        </div>
+        </div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div><div class="child-subtree"><div class="person-block">
+        <div class="person-card">
+            <strong>देवहरि</strong>
+        </div>
+        </div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div><div class="child-subtree"><div class="person-block">
+        <div class="person-card">
+            <strong>गंगाराम</strong>
+        </div>
+        </div></div><div class="child-subtree"><div class="person-block">
+        <div class="person-card">
+            <strong>भृगु</strong>
+        </div>
+        </div></div><div class="child-subtree"><div class="person-block">
+        <div class="person-card">
+            <strong>बलि</strong>
+        </div>
+        </div></div><div class="child-subtree"><div class="person-block">
+        <div class="person-card">
+            <strong>परमानन्द</strong>
+        </div>
+        </div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div><div class="child-subtree"><div class="person-block">
+        <div class="person-card">
+            <strong>प्रजापति</strong> (1650)
+        </div>
+        </div></div><div class="child-subtree"><div class="person-block">
+        <div class="person-card">
+            <strong>चामु</strong>
+        </div>
+        </div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+</body>
+</html>
