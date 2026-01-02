@@ -1,8 +1,13 @@
 """This contains all the Person data of Sisneri Poudels"""
 from genealogy_class import Person
 
+
+
+
+
+
 gopal_32 = Person("Gopal", gender="Male", name_nep="गोपाल", birth_year="~1620", gen_number=32, comment="काठमाण्डौ उपत्यका आउने")
-root_person = gopal_32
+first_person_listed = gopal_32
 ram_bhadra_33 = Person("Ram Bhadra", gender="Male", name_nep="रामभद्र", comment="लुभू सिस्नेरीमा बस्ने")
 govinda_34 = Person("Govinda", gender="Male", name_nep="गोविन्द", comment="ठूलाघरे पूर्वज")
 bishwamvar_34 = Person("Bishwamvar", gender="Male", name_nep="विश्वम्भर", gen_number=34, comment="पुस्ता जोड्न नसकिएको तर प्रजापतिभन्दा यिनको नाम अगाडि देखिएकोले पुस्ता ३४ अनुमानित")

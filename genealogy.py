@@ -1,4 +1,5 @@
 from genealogy_poudel_data import *
+from genealogy_poudel_data_before_gopal import first_person_listed
 from genealogy_constants import *
 from bs4 import BeautifulSoup
 import json, re
@@ -650,6 +651,151 @@ def update_timeline_html(html_content, timeline_data):
     # Return updated HTML
     return str(soup)
 
+def generate_vertical_descendant_html(person):
+    """
+    Render a vertical-descendant / horizontal-sibling tree.
+    """
+
+    def render_person(p):
+        # Person label
+        name = p.name_nep or p.name
+        years = f" ({p.birth_year})" if p.birth_year else ""
+        header = f"""
+        <div class="person-card">
+            <strong>{name}</strong>{years}
+        </div>
+        """
+
+        if not p.children:
+            return f'<div class="person-block">{header}</div>'
+
+        # Render children horizontally
+        children_html = "".join(
+            f'<div class="child-subtree">{render_person(c)}</div>'
+            for c in p.children
+        )
+
+        return f"""
+        <div class="person-block">
+            {header}
+            <div class="children-wrapper">
+                <div class="children-row">
+                    <div class="children-inner">
+                        <div class="children-line"></div>
+                        {children_html}
+                    </div>
+                </div>
+            </div>
+        </div>
+        """
+
+    return render_person(person)
+
+def export_vertical_tree_html(root_person, output_file):
+    body_html = generate_vertical_descendant_html(root_person)
+
+    html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Poudel Lineage (Before Gopal)</title>
+<style>
+body {{
+    font-family: system-ui, sans-serif;
+    background: #fafafa;
+}}
+
+.person-block {{
+    text-align: center;
+    margin: 30px auto;
+    position: relative;
+}}
+
+.person-card {{
+    display: inline-block;
+    padding: 8px 14px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background: white;
+    font-size: 16px;
+    position: relative;
+    z-index: 2;
+}}
+
+/* vertical line from parent down */
+.person-block > .person-card::after {{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: #333;
+    left: 50%;
+    bottom: -20px;
+    transform: translateX(-50%);
+}}
+
+/* wrapper holds the horizontal connector */
+.children-wrapper {{
+    position: relative;
+    margin-top: 20px;
+}}
+
+
+/* row of siblings */
+.children-row {{
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+    padding-top: 20px;
+}}
+
+.children-inner {{
+    display: flex;
+    gap: 40px;
+    position: relative;
+}}
+
+.children-line {{
+    position: absolute;
+    top: 0;
+    left: 20px;     /* half gap */
+    right: 20px;    /* half gap */
+    height: 2px;
+    background: red;   /* keep red for now */
+}}
+
+
+
+
+
+/* vertical line from sibling bar down to child */
+.child-subtree::before {{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: #333;
+    top: 0;            /* start at horizontal line */
+}}
+
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">Poudel Lineage (Before Gopal)</h2>
+
+{body_html}
+
+</body>
+</html>
+"""
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(html)
+
+    print(f"✅ {output_file} generated")
+
 
 if __name__ == "__main__":
     # roots is all the root Person of the unconnected family tree
@@ -670,3 +816,10 @@ if __name__ == "__main__":
     with open('timeline.html', 'w', encoding='utf-8') as file:
         file.write(updated_html)
         print("✅ timeline.html updated with TIMELINE_DATA.")
+
+    export_vertical_tree_html(
+        first_person_listed,
+        "before_gopal.html"
+    )
+
+
