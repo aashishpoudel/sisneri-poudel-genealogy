@@ -2,19 +2,77 @@
 from genealogy_class import Person
 
 somnath_atreya_1 = Person("Shree Somnath Atreya", gender="Male", name_nep="श्री सोमनाथ आत्रेय", birth_year="463", gen_number=1)
+first_person_listed = somnath_atreya_1
 ranganav_2 = Person("Shree Ranganav", gender="Male", name_nep="श्री रङ्गनाभ")
 tatwanav_2 = Person("Tatwanav", gender="Male", name_nep="तत्वनाभ")
-puranav_2 = Person("Shree Puranav", gender="Male", name_nep="श्री पुरनाभ")
-bhramanav_2 = Person("Shree Bhramanav", gender="Male", name_nep="श्री ब्रह्मनाभ")
-fadindranav_2 = Person("Fadindranav", gender="Male", name_nep="फणिन्द्रनाभ")
-kamalnav_2 = Person("Kamalanav", gender="Male", name_nep="कमलनाभ")
+puranav_3 = Person("Shree Puranav", gender="Male", name_nep="श्री पुरनाभ")
+bhramanav_4 = Person("Shree Bhramanav", gender="Male", name_nep="श्री ब्रह्मनाभ")
+fadindranav_4 = Person("Fadindranav", gender="Male", name_nep="फणिन्द्रनाभ")
+kamalnav_4 = Person("Kamalanav", gender="Male", name_nep="कमलनाभ")
+
+shankardev_5 = Person("ShankarDev", gender="Male", name_nep="शंकरदेव")
+prasarnav_5 = Person("Prasarnav", gender="Male", name_nep="प्रसरनाभ")
+
+bhimdev_6 = Person("BhimDev", gender="Male", name_nep="भिमदेव")
+jayadev_6 = Person("JayaDev", gender="Male", name_nep="जयदेव")
+
+purnadev_7 = Person("PurnaDev", gender="Male", name_nep="पुर्णदेव")
+devdev_8 = Person("DevDev", gender="Male", name_nep="देवदेव")
+
+kumardev_9 = Person("KumarDev", gender="Male", name_nep="कुमारदेव")
+baldev_9 = Person("BalDev", gender="Male", name_nep="बलदेव")
+
+
+shaktibhatta_10 = Person("BalDev", gender="Male", name_nep="शक्तिभट्ट")
+nagdev_11 = Person("NagDev", gender="Male", name_nep="नागदेव")
+prithvibhatta_11 = Person("BalDev", gender="Male", name_nep="पृथ्वीभट्ट")
+shankar_bhattarak_11 = Person("BalDev", gender="Male", name_nep="शंकर भट्टारक")
+
+kuberbhatta_12 = Person("KuberBhatta", gender="Male", name_nep="कुबेरभट्ट")
+devendradev_12 = Person("DevendraDev", gender="Male", name_nep="देवेन्द्रदेव")
+
+udayananda_bhatta_13 = Person("UdayaNandaBhatta", gender="Male", name_nep="उदयानन्दभट्ट")
+sudayananda_bhatta_14 = Person("SudayaNandaBhatta", gender="Male", name_nep="सुदयानन्दभट्ट")
+raya_bhatta_15 = Person("RayaBhatta", gender="Male", name_nep="रायभट्ट")
+dev_dutta_16 = Person("DevDutta", gender="Male", name_nep="देवदत्त")
+
+batsaraj_17 = Person("BatsaRaj", gender="Male", name_nep="वत्सराज")
+upabatsaraj_18 = Person("UpabatsaRaj", gender="Male", name_nep="उपवत्सराज")
+shreebatsaraj_19 = Person("ShreeBatsaraj", gender="Male", name_nep="श्री वत्सराज")
+shreedev_20 = Person("ShreeDev", gender="Male", name_nep="श्रीदेव")
+
+shreenanda_21 = Person("ShreeNanda", gender="Male", name_nep="श्रीनन्द")
+shreeram_22 = Person("ShreeRam", gender="Male", name_nep="श्रीराम")
+haridutta_23 = Person("HariDutta", gender="Male", name_nep="हरिदत्त")
+krishnaram_24 = Person("KrishnaRam", gender="Male", name_nep="कृष्णराम")
+
+
+chawa_25 = Person("Chawa", gender="Male", name_nep="चावा")
+sawa_25 = Person("Sawa", gender="Male", name_nep="सावा")
+narsingh_aryal_26 = Person("Narsingh Aryal", gender="Male", name_nep="नरसिंह अर्याल")
+motiraj_26 = Person("MotiRaj", gender="Male", name_nep="मोतिराज")
+
+
+####################################
+somnath_atreya_1.add_children([ranganav_2, tatwanav_2])
+ranganav_2.add_children([puranav_3])
+puranav_3.add_children([bhramanav_4, fadindranav_4, kamalnav_4])
+bhramanav_4.add_children([shankardev_5])
+fadindranav_4.add_children([prasarnav_5])
+prasarnav_5.add_children([bhimdev_6, jayadev_6])
+bhimdev_6.add_children([purnadev_7])
+purnadev_7.add_children([devdev_8])
+devdev_8.add_children([kumardev_9, baldev_9])
+kumardev_9.add_children([shaktibhatta_10])
+
+shaktibhatta_10.add_children([nagdev_11, prithvibhatta_11, shankar_bhattarak_11])
 
 
 
 
 
+####################################
 gopal_32 = Person("Gopal", gender="Male", name_nep="गोपाल", birth_year="~1620", gen_number=32, comment="काठमाण्डौ उपत्यका आउने")
-first_person_listed = somnath_atreya_1
 ram_bhadra_33 = Person("Ram Bhadra", gender="Male", name_nep="रामभद्र", comment="लुभू सिस्नेरीमा बस्ने")
 govinda_34 = Person("Govinda", gender="Male", name_nep="गोविन्द", comment="ठूलाघरे पूर्वज")
 bishwamvar_34 = Person("Bishwamvar", gender="Male", name_nep="विश्वम्भर", gen_number=34, comment="पुस्ता जोड्न नसकिएको तर प्रजापतिभन्दा यिनको नाम अगाडि देखिएकोले पुस्ता ३४ अनुमानित")
