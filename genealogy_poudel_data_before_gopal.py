@@ -1,13 +1,20 @@
 """This contains all the Person data of Sisneri Poudels"""
 from genealogy_class import Person
 
+somnath_atreya_1 = Person("Shree Somnath Atreya", gender="Male", name_nep="श्री सोमनाथ आत्रेय", birth_year="463", gen_number=1)
+ranganav_2 = Person("Shree Ranganav", gender="Male", name_nep="श्री रङ्गनाभ")
+tatwanav_2 = Person("Tatwanav", gender="Male", name_nep="तत्वनाभ")
+puranav_2 = Person("Shree Puranav", gender="Male", name_nep="श्री पुरनाभ")
+bhramanav_2 = Person("Shree Bhramanav", gender="Male", name_nep="श्री ब्रह्मनाभ")
+fadindranav_2 = Person("Fadindranav", gender="Male", name_nep="फणिन्द्रनाभ")
+kamalnav_2 = Person("Kamalanav", gender="Male", name_nep="कमलनाभ")
 
 
 
 
 
 gopal_32 = Person("Gopal", gender="Male", name_nep="गोपाल", birth_year="~1620", gen_number=32, comment="काठमाण्डौ उपत्यका आउने")
-first_person_listed = gopal_32
+first_person_listed = somnath_atreya_1
 ram_bhadra_33 = Person("Ram Bhadra", gender="Male", name_nep="रामभद्र", comment="लुभू सिस्नेरीमा बस्ने")
 govinda_34 = Person("Govinda", gender="Male", name_nep="गोविन्द", comment="ठूलाघरे पूर्वज")
 bishwamvar_34 = Person("Bishwamvar", gender="Male", name_nep="विश्वम्भर", gen_number=34, comment="पुस्ता जोड्न नसकिएको तर प्रजापतिभन्दा यिनको नाम अगाडि देखिएकोले पुस्ता ३४ अनुमानित")
