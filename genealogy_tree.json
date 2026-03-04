@@ -1346,7 +1346,23 @@
                                                   "father_nep": "\u092e\u093e\u0927\u0935",
                                                   "grandfather": "Dilliram",
                                                   "grandfather_nep": "\u091a\u0915\u094d\u0930\u092a\u093e\u0923\u093f",
-                                                  "children": []
+                                                  "children": [
+                                                    {
+                                                      "name": "Aamod",
+                                                      "name_nep": "\u0906\u0930\u092e\u094d\u092d",
+                                                      "gender": "Male",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "gen_number": null,
+                                                      "comment": null,
+                                                      "father": "Tankaram",
+                                                      "father_nep": "\u091f\u0902\u0915\u0930\u093e\u092e",
+                                                      "grandfather": "Madhav",
+                                                      "grandfather_nep": "\u0921\u093f\u0932\u094d\u0932\u0940\u0930\u093e\u092e",
+                                                      "children": []
+                                                    }
+                                                  ]
                                                 },
                                                 {
                                                   "name": "Dadhiram",
@@ -1391,7 +1407,23 @@
                                                   "father_nep": "\u092e\u093e\u0927\u0935",
                                                   "grandfather": "Dilliram",
                                                   "grandfather_nep": "\u091a\u0915\u094d\u0930\u092a\u093e\u0923\u093f",
-                                                  "children": []
+                                                  "children": [
+                                                    {
+                                                      "name": "Aahan",
+                                                      "name_nep": "\u0906\u0939\u093e\u0928",
+                                                      "gender": "Male",
+                                                      "birth_year": null,
+                                                      "death_year": null,
+                                                      "place": null,
+                                                      "gen_number": null,
+                                                      "comment": null,
+                                                      "father": "Manoj",
+                                                      "father_nep": "\u092e\u0928\u094b\u091c",
+                                                      "grandfather": "Madhav",
+                                                      "grandfather_nep": "\u0921\u093f\u0932\u094d\u0932\u0940\u0930\u093e\u092e",
+                                                      "children": []
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             },

@@ -651,139 +651,132 @@ def update_timeline_html(html_content, timeline_data):
     # Return updated HTML
     return str(soup)
 
-def generate_vertical_descendant_html(person):
+def generate_vertical_ancestral_html(person):
     """
-    Render a vertical-descendant / horizontal-sibling tree.
+    Render a vertical ancestral tree:
+    - Parent on top
+    - Children in a horizontal row
     """
 
-    def render_person(p):
-        # Person label
-        name = p.name_nep or p.name
-        years = f" ({p.birth_year})" if p.birth_year else ""
-        header = f"""
-        <div class="person-card">
-            <strong>{name}</strong>{years}
-        </div>
+    def render_node(p):
+        label = p.name_nep or p.name
+        birth = f" ({p.birth_year})" if p.birth_year else ""
+
+        node_html = f"""
+        <div class="node">
+            <div class="person-box">{label}{birth}</div>
         """
 
         if not p.children:
-            return f'<div class="person-block">{header}</div>'
+            return node_html + "</div>"
 
-        # Render children horizontally
         children_html = "".join(
-            f'<div class="child-subtree">{render_person(c)}</div>'
-            for c in p.children
+            f'<div class="child">{render_node(child)}</div>'
+            for child in p.children
         )
 
-        return f"""
-        <div class="person-block">
-            {header}
-            <div class="children-wrapper">
+        return node_html + f"""
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        {children_html}
-                    </div>
+                    {children_html}
                 </div>
             </div>
         </div>
         """
 
-    return render_person(person)
+    return render_node(person)
 
-def export_vertical_tree_html(root_person, output_file):
-    body_html = generate_vertical_descendant_html(root_person)
+def export_ancestral_tree_html(root_person, output_file="before_gopal.html"):
+    body_html = generate_vertical_ancestral_html(root_person)
 
     html = f"""
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Poudel Lineage (Before Gopal)</title>
+<title>Ancestral Tree (Before Gopal)</title>
+
 <style>
 body {{
     font-family: system-ui, sans-serif;
     background: #fafafa;
 }}
 
-.person-block {{
+.node {{
     text-align: center;
-    margin: 30px auto;
     position: relative;
+    margin: 30px auto;
 }}
 
-.person-card {{
+.person-box {{
     display: inline-block;
     padding: 8px 14px;
     border: 2px solid #333;
     border-radius: 8px;
-    background: white;
-    font-size: 16px;
-    position: relative;
-    z-index: 2;
+    background: #fff;
+    font-weight: 600;
 }}
 
-/* vertical line from parent down */
-.person-block > .person-card::after {{
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 20px;
-    background: #333;
-    left: 50%;
-    bottom: -20px;
-    transform: translateX(-50%);
-}}
-
-/* wrapper holds the horizontal connector */
-.children-wrapper {{
+.children {{
     position: relative;
     margin-top: 20px;
 }}
 
-
-/* row of siblings */
+/* Row of siblings */
 .children-row {{
-    display: inline-flex;
+    display: flex;
     justify-content: center;
+    gap: 40px;
     position: relative;
     padding-top: 20px;
 }}
 
-.children-inner {{
-    display: flex;
-    gap: 40px;
+/* Horizontal line ONLY across children span */
+.children-row::before {{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #333;
+}}
+
+/* Individual child container */
+.child {{
     position: relative;
 }}
 
-.children-line {{
+/* Vertical line DOWN from horizontal bar to child */
+.child::before {{
+    content: "";
     position: absolute;
-    top: 0;
-    left: 20px;     /* half gap */
-    right: 20px;    /* half gap */
-    height: 2px;
-    background: red;   /* keep red for now */
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background: #333;
 }}
 
 
-
-
-
-/* vertical line from sibling bar down to child */
-.child-subtree::before {{
+.child::before {{
     content: "";
     position: absolute;
     width: 2px;
     height: 20px;
     background: #333;
-    top: 0;            /* start at horizontal line */
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
 }}
-
 </style>
+
 </head>
 <body>
 
-<h2 style="text-align:center">Poudel Lineage (Before Gopal)</h2>
+<h2 style="text-align:center;">Poudel Lineage (Before Gopal)</h2>
 
 {body_html}
 
@@ -794,7 +787,7 @@ body {{
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(html)
 
-    print(f"✅ {output_file} generated")
+    print(f"✅ Ancestral tree HTML generated: {output_file}")
 
 
 if __name__ == "__main__":
@@ -817,7 +810,9 @@ if __name__ == "__main__":
         file.write(updated_html)
         print("✅ timeline.html updated with TIMELINE_DATA.")
 
-    export_vertical_tree_html(
+    from genealogy_poudel_data_before_gopal import first_person_listed
+
+    export_ancestral_tree_html(
         first_person_listed,
         "before_gopal.html"
     )

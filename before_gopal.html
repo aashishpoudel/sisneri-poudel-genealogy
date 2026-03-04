@@ -3,297 +3,231 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Poudel Lineage (Before Gopal)</title>
+<title>Ancestral Tree (Before Gopal)</title>
+
 <style>
 body {
     font-family: system-ui, sans-serif;
     background: #fafafa;
 }
 
-.person-block {
+.node {
     text-align: center;
-    margin: 30px auto;
     position: relative;
+    margin: 30px auto;
 }
 
-.person-card {
+.person-box {
     display: inline-block;
     padding: 8px 14px;
     border: 2px solid #333;
     border-radius: 8px;
-    background: white;
-    font-size: 16px;
-    position: relative;
-    z-index: 2;
+    background: #fff;
+    font-weight: 600;
 }
 
-/* vertical line from parent down */
-.person-block > .person-card::after {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 20px;
-    background: #333;
-    left: 50%;
-    bottom: -20px;
-    transform: translateX(-50%);
-}
-
-/* wrapper holds the horizontal connector */
-.children-wrapper {
+.children {
     position: relative;
     margin-top: 20px;
 }
 
-
-/* row of siblings */
+/* Row of siblings */
 .children-row {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
+    gap: 40px;
     position: relative;
     padding-top: 20px;
 }
 
-.children-inner {
-    display: flex;
-    gap: 40px;
+/* Horizontal line ONLY across children span */
+.children-row::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #333;
+}
+
+/* Individual child container */
+.child {
     position: relative;
 }
 
-.children-line {
+/* Vertical line DOWN from horizontal bar to child */
+.child::before {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 20px;     /* half gap */
-    right: 20px;    /* half gap */
-    height: 2px;
-    background: red;   /* keep red for now */
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background: #333;
 }
 
 
-
-
-
-/* vertical line from sibling bar down to child */
-.child-subtree::before {
+.child::before {
     content: "";
     position: absolute;
     width: 2px;
     height: 20px;
     background: #333;
-    top: 0;            /* start at horizontal line */
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
-
 </style>
+
 </head>
 <body>
 
-<h2 style="text-align:center">Poudel Lineage (Before Gopal)</h2>
+<h2 style="text-align:center;">Poudel Lineage (Before Gopal)</h2>
 
 
-        <div class="person-block">
-            
-        <div class="person-card">
-            <strong>श्री सोमनाथ आत्रेय</strong> (463)
-        </div>
+        <div class="node">
+            <div class="person-box">श्री सोमनाथ आत्रेय (463)</div>
         
-            <div class="children-wrapper">
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        <div class="child-subtree">
-        <div class="person-block">
-            
-        <div class="person-card">
-            <strong>श्री रङ्गनाभ</strong>
-        </div>
+                    <div class="child">
+        <div class="node">
+            <div class="person-box">श्री रङ्गनाभ</div>
         
-            <div class="children-wrapper">
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        <div class="child-subtree">
-        <div class="person-block">
-            
-        <div class="person-card">
-            <strong>श्री पुरनाभ</strong>
-        </div>
+                    <div class="child">
+        <div class="node">
+            <div class="person-box">श्री पुरनाभ</div>
         
-            <div class="children-wrapper">
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        <div class="child-subtree">
-        <div class="person-block">
-            
-        <div class="person-card">
-            <strong>श्री ब्रह्मनाभ</strong>
-        </div>
+                    <div class="child">
+        <div class="node">
+            <div class="person-box">श्री ब्रह्मनाभ</div>
         
-            <div class="children-wrapper">
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        <div class="child-subtree"><div class="person-block">
-        <div class="person-card">
-            <strong>शंकरदेव</strong>
-        </div>
+                    <div class="child">
+        <div class="node">
+            <div class="person-box">शंकरदेव</div>
         </div></div>
-                    </div>
                 </div>
             </div>
         </div>
-        </div><div class="child-subtree">
-        <div class="person-block">
-            
-        <div class="person-card">
-            <strong>फणिन्द्रनाभ</strong>
-        </div>
+        </div><div class="child">
+        <div class="node">
+            <div class="person-box">फणिन्द्रनाभ</div>
         
-            <div class="children-wrapper">
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        <div class="child-subtree">
-        <div class="person-block">
-            
-        <div class="person-card">
-            <strong>प्रसरनाभ</strong>
-        </div>
+                    <div class="child">
+        <div class="node">
+            <div class="person-box">प्रसरनाभ</div>
         
-            <div class="children-wrapper">
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        <div class="child-subtree">
-        <div class="person-block">
-            
-        <div class="person-card">
-            <strong>भिमदेव</strong>
-        </div>
+                    <div class="child">
+        <div class="node">
+            <div class="person-box">भिमदेव</div>
         
-            <div class="children-wrapper">
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        <div class="child-subtree">
-        <div class="person-block">
-            
-        <div class="person-card">
-            <strong>पुर्णदेव</strong>
-        </div>
+                    <div class="child">
+        <div class="node">
+            <div class="person-box">पुर्णदेव</div>
         
-            <div class="children-wrapper">
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        <div class="child-subtree">
-        <div class="person-block">
-            
-        <div class="person-card">
-            <strong>देवदेव</strong>
-        </div>
+                    <div class="child">
+        <div class="node">
+            <div class="person-box">देवदेव</div>
         
-            <div class="children-wrapper">
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        <div class="child-subtree">
-        <div class="person-block">
-            
-        <div class="person-card">
-            <strong>कुमारदेव</strong>
-        </div>
+                    <div class="child">
+        <div class="node">
+            <div class="person-box">कुमारदेव</div>
         
-            <div class="children-wrapper">
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        <div class="child-subtree">
-        <div class="person-block">
-            
-        <div class="person-card">
-            <strong>शक्तिभट्ट</strong>
-        </div>
+                    <div class="child">
+        <div class="node">
+            <div class="person-box">शक्तिभट्ट</div>
         
-            <div class="children-wrapper">
+            <div class="children">
+                <div class="horizontal-line"></div>
                 <div class="children-row">
-                    <div class="children-inner">
-                        <div class="children-line"></div>
-                        <div class="child-subtree"><div class="person-block">
-        <div class="person-card">
-            <strong>नागदेव</strong>
-        </div>
-        </div></div><div class="child-subtree"><div class="person-block">
-        <div class="person-card">
-            <strong>पृथ्वीभट्ट</strong>
-        </div>
-        </div></div><div class="child-subtree"><div class="person-block">
-        <div class="person-card">
-            <strong>शंकर भट्टारक</strong>
-        </div>
+                    <div class="child">
+        <div class="node">
+            <div class="person-box">नागदेव</div>
+        </div></div><div class="child">
+        <div class="node">
+            <div class="person-box">पृथ्वीभट्ट</div>
+        </div></div><div class="child">
+        <div class="node">
+            <div class="person-box">शंकर भट्टारक</div>
         </div></div>
-                    </div>
                 </div>
             </div>
         </div>
         </div>
-                    </div>
                 </div>
             </div>
         </div>
-        </div><div class="child-subtree"><div class="person-block">
-        <div class="person-card">
-            <strong>बलदेव</strong>
-        </div>
+        </div><div class="child">
+        <div class="node">
+            <div class="person-box">बलदेव</div>
         </div></div>
-                    </div>
                 </div>
             </div>
         </div>
         </div>
-                    </div>
                 </div>
             </div>
         </div>
         </div>
-                    </div>
                 </div>
             </div>
         </div>
-        </div><div class="child-subtree"><div class="person-block">
-        <div class="person-card">
-            <strong>जयदेव</strong>
-        </div>
+        </div><div class="child">
+        <div class="node">
+            <div class="person-box">जयदेव</div>
         </div></div>
-                    </div>
                 </div>
             </div>
         </div>
         </div>
-                    </div>
                 </div>
             </div>
         </div>
-        </div><div class="child-subtree"><div class="person-block">
-        <div class="person-card">
-            <strong>कमलनाभ</strong>
-        </div>
+        </div><div class="child">
+        <div class="node">
+            <div class="person-box">कमलनाभ</div>
         </div></div>
-                    </div>
                 </div>
             </div>
         </div>
         </div>
-                    </div>
                 </div>
             </div>
         </div>
-        </div><div class="child-subtree"><div class="person-block">
-        <div class="person-card">
-            <strong>तत्वनाभ</strong>
-        </div>
+        </div><div class="child">
+        <div class="node">
+            <div class="person-box">तत्वनाभ</div>
         </div></div>
-                    </div>
                 </div>
             </div>
         </div>
