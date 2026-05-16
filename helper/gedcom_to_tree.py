@@ -247,7 +247,7 @@ class FamilyTreeHTMLGenerator:
     def _mark_direct_line(self, trees):
         """Mark nodes in direct line from ancestor to descendant."""
         if not self.ancestor_name or not self.descendant_name:
-            return set()
+            return [], {}
         
         ancestor_id = self._find_person_by_name(self.ancestor_name)
         descendant_id = self._find_person_by_name(self.descendant_name)
@@ -258,19 +258,22 @@ class FamilyTreeHTMLGenerator:
                 print(f"  Found ancestor: {self.individuals[ancestor_id]['name']}")
             if descendant_id:
                 print(f"  Found descendant: {self.individuals[descendant_id]['name']}")
-            return set()
+            return [], {}
         
         # Find path from ancestor down to descendant
         path = self._find_path_down_to_descendant(ancestor_id, descendant_id)
         
         if path:
             print(f"Direct line found with {len(path)} people:")
-            for pid in path:
-                print(f"  - {self.individuals[pid]['name']}")
-            return set(path)
+            # Create mapping of person ID to sequence number
+            line_numbers = {}
+            for idx, pid in enumerate(path, 1):
+                line_numbers[pid] = idx
+                print(f"  {idx}. {self.individuals[pid]['name']}")
+            return path, line_numbers
         else:
             print(f"Warning: No path found from {self.ancestor_name} to {self.descendant_name}")
-            return set()
+            return [], {}
     
     def _build_tree_structure(self):
         """Build a hierarchical tree structure for the family."""
@@ -336,9 +339,11 @@ class FamilyTreeHTMLGenerator:
     def _create_html(self) -> str:
         """Create the complete HTML document."""
         trees = self._build_tree_structure()
-        direct_line = self._mark_direct_line(trees)
+        direct_line, line_numbers = self._mark_direct_line(trees)
+        direct_line_set = set(direct_line)
         trees_json = json.dumps(trees)
-        direct_line_json = json.dumps(list(direct_line))
+        direct_line_json = json.dumps(list(direct_line_set))
+        line_numbers_json = json.dumps(line_numbers)
         
         html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -348,6 +353,77 @@ class FamilyTreeHTMLGenerator:
     <title>Family Tree</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <style>
+        :root{{
+            --bg: #f7f9fb;
+            --card: #ffffff;
+            --text: #1f2a37;
+            --muted: #6b7280;
+            --primary: #0d6efd;
+            --ring: #1abc9c;
+            --line: #e5eef4;
+            --shadow: 0 10px 30px rgba(0,0,0,.06);
+            --radius: 16px;
+            --radius-sm: 12px;
+        }}
+        @media (prefers-color-scheme: dark){{
+            :root{{
+                --bg: #0b1320;
+                --card: #0f1a2b;
+                --text: #e5eef7;
+                --muted: #99a3b2;
+                --primary: #7ab8ff;
+                --ring: #34d399;
+                --line: #1f2a37;
+                --shadow: 0 10px 30px rgba(0,0,0,.35);
+            }}
+        }}
+        
+        .page-header {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+            box-shadow: 0 2px 8px rgba(0,0,0,.05);
+        }}
+        
+        .header-wrap {{
+            max-width: 100%;
+            margin: 0;
+            padding: 16px 20px;
+        }}
+        
+        .crumbs {{
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }}
+        
+        .crumbs a {{
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color .2s ease;
+        }}
+        
+        .crumbs a:hover {{
+            text-decoration: underline;
+            color: var(--text);
+        }}
+        
+        .header-title {{
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 6px 0 0;
+            letter-spacing: .2px;
+        }}
+        
+        #container {{
+            margin-top: 80px;
+        }}
         * {{
             margin: 0;
             padding: 0;
@@ -441,6 +517,21 @@ class FamilyTreeHTMLGenerator:
             pointer-events: none;
         }}
         
+        .node-circle {{
+            fill: #d4af37;
+            stroke: #d4af37;
+            stroke-width: 2;
+        }}
+        
+        .node-circle-text {{
+            font-size: 30px;
+            font-weight: bold;
+            text-anchor: middle;
+            dominant-baseline: central;
+            fill: white;
+            pointer-events: none;
+        }}
+        
         .tooltip {{
             position: fixed;
             background: rgba(255, 248, 220, 0.98);
@@ -474,7 +565,7 @@ class FamilyTreeHTMLGenerator:
         
         .controls {{
             position: fixed;
-            top: 20px;
+            top: 100px;
             right: 20px;
             background: rgba(255, 248, 220, 0.95);
             padding: 15px 20px;
@@ -505,7 +596,7 @@ class FamilyTreeHTMLGenerator:
         
         .legend {{
             position: fixed;
-            top: 150px;
+            top: 190px;
             right: 20px;
             background: rgba(255, 248, 220, 0.95);
             padding: 15px 20px;
@@ -536,6 +627,15 @@ class FamilyTreeHTMLGenerator:
     </style>
 </head>
 <body>
+    <header class="page-header">
+        <div class="header-wrap">
+            <nav class="crumbs" aria-label="Breadcrumb">
+                <a href="index.html">← Back to Home</a>
+            </nav>
+            <h1 class="header-title">Somnath to Gopal</h1>
+        </div>
+    </header>
+    
     <div id="container">
         <svg id="tree"></svg>
     </div>
@@ -556,6 +656,7 @@ class FamilyTreeHTMLGenerator:
     <script>
         const treesData = {trees_json};
         const directLineIds = {direct_line_json};
+        const lineNumbers = {line_numbers_json};
         
         const margin = {{ top: 80, right: 100, bottom: 80, left: 100 }};
         let svgWidth = Math.max(1600, window.innerWidth);
@@ -687,6 +788,28 @@ class FamilyTreeHTMLGenerator:
                 .attr('height', 100)
                 .attr('x', -80)
                 .attr('y', -50);
+            
+            // Add circled number for direct line individuals
+            nodeGroups.each(function(d) {{
+                if (lineNumbers[d.data.id] !== undefined) {{
+                    const circleNum = lineNumbers[d.data.id];
+                    const circleX = -125;  // Position further left to add space
+                    const circleY = 0;     // Vertically centered
+                    const circleRadius = 28;  // 20% bigger (was 23)
+                    
+                    d3.select(this).append('circle')
+                        .attr('class', 'node-circle')
+                        .attr('cx', circleX)
+                        .attr('cy', circleY)
+                        .attr('r', circleRadius);
+                    
+                    d3.select(this).append('text')
+                        .attr('class', 'node-circle-text')
+                        .attr('x', circleX)
+                        .attr('y', circleY)
+                        .text(circleNum);
+                }}
+            }});
             
             // Add text group container for proper vertical centering
             const textGroups = nodeGroups.append('g')

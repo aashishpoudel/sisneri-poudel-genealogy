@@ -1,8 +1,8 @@
 0 HEAD
 1 SOUR Family Echo
 2 WWW https://www.familyecho.com/
-1 FILE My Family
-1 DATE 15 MAY 2026
+1 FILE Somnath_Gopal_sisneriPoudel
+1 DATE 16 MAY 2026
 1 DEST ANSTFILE
 1 GEDC
 2 VERS 5.5.1
@@ -12,17 +12,19 @@
 1 SUBN
 1 CHAR UTF-8
 0 @I1@ INDI
-1 NAME Somanath /Atreya/
-2 GIVN Somanath
+1 NAME ShreeSomnath /Atreya/
+2 GIVN ShreeSomnath
 2 SURN Atreya
 2 _MARNM Atreya
 1 SEX M
+1 BIRT
+2 DATE 0463
 1 DEAT Y
-1 FAMS @F2@
+1 FAMS @F33@
 1 FAMC @F1@
 0 @I2@ INDI
-1 NAME Ranganav /Atreya/
-2 GIVN Ranganav
+1 NAME PuraNav /Atreya/
+2 GIVN PuraNav
 2 SURN Atreya
 2 _MARNM Atreya
 1 SEX M
@@ -30,8 +32,8 @@
 1 FAMS @F3@
 1 FAMC @F2@
 0 @I3@ INDI
-1 NAME Shree Purnav /Atreya/
-2 GIVN Shree Purnav
+1 NAME FadindraNav /Atreya/
+2 GIVN FadindraNav
 2 SURN Atreya
 2 _MARNM Atreya
 1 SEX M
@@ -224,12 +226,13 @@
 2 _MARNM Bhatta
 1 SEX M
 1 DEAT Y
+1 FAMS @F32@
 1 FAMC @F24@
 0 @I26@ INDI
 1 NAME NaraSimha /Poudel/
 2 GIVN NaraSimha
 2 SURN Poudel
-2 _MARNM Poudel
+2 _MARNM Aryal
 1 SEX M
 1 DEAT Y
 1 FAMC @F25@
@@ -375,6 +378,7 @@
 2 _MARNM Poudel
 1 SEX M
 1 DEAT Y
+2 PLAC Kathmandu Valley
 1 FAMC @F31@
 0 @I44@ INDI
 1 NAME Rithu /Poudel/
@@ -392,12 +396,61 @@
 1 SEX M
 1 DEAT Y
 1 FAMC @F31@
+0 @I46@ INDI
+1 NAME KanthaRaj /Bhatta/
+2 GIVN KanthaRaj
+2 SURN Bhatta
+2 _MARNM Bhatta
+1 SEX M
+1 DEAT Y
+1 FAMC @F32@
+0 @I47@ INDI
+1 NAME NandaRaj /Bhatta/
+2 GIVN NandaRaj
+2 SURN Bhatta
+2 _MARNM Bhatta
+1 SEX M
+1 DEAT Y
+1 FAMC @F32@
+0 @I48@ INDI
+1 NAME ShivaRaj /Bhatta/
+2 GIVN ShivaRaj
+2 SURN Bhatta
+2 _MARNM Bhatta
+1 SEX M
+1 DEAT Y
+1 FAMC @F32@
+0 @I49@ INDI
+1 NAME BatsaRaj /Bhatta/
+2 GIVN BatsaRaj
+2 SURN Bhatta
+2 _MARNM Bhatta
+1 SEX M
+1 DEAT Y
+1 FAMC @F32@
+0 @I50@ INDI
+1 NAME Surupal /Bhatta/
+2 GIVN Surupal
+2 SURN Bhatta
+2 _MARNM Bhatta
+1 SEX M
+1 DEAT Y
+1 FAMC @F32@
+0 @I51@ INDI
+1 NAME ShreeRangaNav /Atreya/
+2 GIVN ShreeRangaNav
+2 SURN Atreya
+2 _MARNM Atreya
+1 SEX M
+1 DEAT Y
+1 FAMS @F2@
+1 FAMC @F33@
 0 @F1@ FAM
 1 CHIL @I1@
 1 _CURRENT N
 1 _PRIMARY N
 0 @F2@ FAM
-1 HUSB @I1@
+1 HUSB @I51@
 1 CHIL @I2@
 0 @F3@ FAM
 1 HUSB @I2@
@@ -500,4 +553,14 @@
 1 CHIL @I43@
 1 CHIL @I44@
 1 CHIL @I45@
+0 @F32@ FAM
+1 HUSB @I25@
+1 CHIL @I46@
+1 CHIL @I47@
+1 CHIL @I48@
+1 CHIL @I49@
+1 CHIL @I50@
+0 @F33@ FAM
+1 HUSB @I1@
+1 CHIL @I51@
 0 TRLR

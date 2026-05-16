@@ -6,6 +6,77 @@
     <title>Family Tree</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <style>
+        :root{
+            --bg: #f7f9fb;
+            --card: #ffffff;
+            --text: #1f2a37;
+            --muted: #6b7280;
+            --primary: #0d6efd;
+            --ring: #1abc9c;
+            --line: #e5eef4;
+            --shadow: 0 10px 30px rgba(0,0,0,.06);
+            --radius: 16px;
+            --radius-sm: 12px;
+        }
+        @media (prefers-color-scheme: dark){
+            :root{
+                --bg: #0b1320;
+                --card: #0f1a2b;
+                --text: #e5eef7;
+                --muted: #99a3b2;
+                --primary: #7ab8ff;
+                --ring: #34d399;
+                --line: #1f2a37;
+                --shadow: 0 10px 30px rgba(0,0,0,.35);
+            }
+        }
+        
+        .page-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+            box-shadow: 0 2px 8px rgba(0,0,0,.05);
+        }
+        
+        .header-wrap {
+            max-width: 100%;
+            margin: 0;
+            padding: 16px 20px;
+        }
+        
+        .crumbs {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .crumbs a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color .2s ease;
+        }
+        
+        .crumbs a:hover {
+            text-decoration: underline;
+            color: var(--text);
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 6px 0 0;
+            letter-spacing: .2px;
+        }
+        
+        #container {
+            margin-top: 80px;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -99,6 +170,21 @@
             pointer-events: none;
         }
         
+        .node-circle {
+            fill: #d4af37;
+            stroke: #d4af37;
+            stroke-width: 2;
+        }
+        
+        .node-circle-text {
+            font-size: 30px;
+            font-weight: bold;
+            text-anchor: middle;
+            dominant-baseline: central;
+            fill: white;
+            pointer-events: none;
+        }
+        
         .tooltip {
             position: fixed;
             background: rgba(255, 248, 220, 0.98);
@@ -132,7 +218,7 @@
         
         .controls {
             position: fixed;
-            top: 20px;
+            top: 100px;
             right: 20px;
             background: rgba(255, 248, 220, 0.95);
             padding: 15px 20px;
@@ -163,7 +249,7 @@
         
         .legend {
             position: fixed;
-            top: 150px;
+            top: 190px;
             right: 20px;
             background: rgba(255, 248, 220, 0.95);
             padding: 15px 20px;
@@ -194,6 +280,15 @@
     </style>
 </head>
 <body>
+    <header class="page-header">
+        <div class="header-wrap">
+            <nav class="crumbs" aria-label="Breadcrumb">
+                <a href="index.html">← Back to Home</a>
+            </nav>
+            <h1 class="header-title">Somnath to Gopal</h1>
+        </div>
+    </header>
+    
     <div id="container">
         <svg id="tree"></svg>
     </div>
@@ -213,7 +308,8 @@
     
     <script>
         const treesData = [{"id": "I1", "name": "ShreeSomnath Atreya", "given_name": "ShreeSomnath Atreya", "surname": "", "birth": "0463", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I51", "name": "ShreeRangaNav Atreya", "given_name": "ShreeRangaNav Atreya", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I2", "name": "PuraNav Atreya", "given_name": "PuraNav Atreya", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I3", "name": "FadindraNav Atreya", "given_name": "FadindraNav Atreya", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I4", "name": "ShreePrasarNav", "given_name": "ShreePrasarNav", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I5", "name": "BhimDev", "given_name": "BhimDev", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I6", "name": "PurnaDev", "given_name": "PurnaDev", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I7", "name": "Devdev", "given_name": "Devdev", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I8", "name": "KumarDev", "given_name": "KumarDev", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I9", "name": "Shakti Bhatta", "given_name": "Shakti Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I10", "name": "Prithvi Bhatta", "given_name": "Prithvi Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I11", "name": "Kuber Bhatta", "given_name": "Kuber Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I12", "name": "Udayananda Bhatta", "given_name": "Udayananda Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I13", "name": "Sudayananda Bhatta", "given_name": "Sudayananda Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I14", "name": "RayaBhatta Bhatta", "given_name": "RayaBhatta Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I15", "name": "DevDutta Bhatta", "given_name": "DevDutta Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I16", "name": "BatsaRaj Bhatta", "given_name": "BatsaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I17", "name": "UpaBatsaRaj Bhatta", "given_name": "UpaBatsaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I18", "name": "ShreeBatsaRaj Bhatta", "given_name": "ShreeBatsaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I19", "name": "ShreeDev Bhatta", "given_name": "ShreeDev Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I20", "name": "ShreeNanda Bhatta", "given_name": "ShreeNanda Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I21", "name": "ShreeRam Bhatta", "given_name": "ShreeRam Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I22", "name": "HariDutta Bhatta", "given_name": "HariDutta Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I23", "name": "KrishnaRam Bhatta", "given_name": "KrishnaRam Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I24", "name": "Chawa Poudel", "given_name": "Chawa Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I26", "name": "NaraSimha Poudel", "given_name": "NaraSimha Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I27", "name": "MotiRaj Poudel", "given_name": "MotiRaj Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I28", "name": "Jogu (JogRaj) Poudel", "given_name": "Jogu (JogRaj) Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I33", "name": "JayaDas Poudel", "given_name": "JayaDas Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I34", "name": "PremDas Poudel", "given_name": "PremDas Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I35", "name": "Kalu Poudel", "given_name": "Kalu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I37", "name": "Narayan Poudel", "given_name": "Narayan Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I40", "name": "DharmaDas Poudel", "given_name": "DharmaDas Poudel", "surname": "", "birth": "", "birth_place": "Lahachowk", "death": "", "sex": "M", "notes": "", "children": [{"id": "I43", "name": "Gopal Poudel", "given_name": "Gopal Poudel", "surname": "", "birth": "", "birth_place": "Kathmandu Valley", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I44", "name": "Rithu Poudel", "given_name": "Rithu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I45", "name": "Janardan Poudel", "given_name": "Janardan Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}, {"id": "I41", "name": "Dasrath Poudel", "given_name": "Dasrath Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I42", "name": "Damu Poudel", "given_name": "Damu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}, {"id": "I38", "name": "Ratan Poudel", "given_name": "Ratan Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I39", "name": "Dhurupati Poudel", "given_name": "Dhurupati Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}, {"id": "I36", "name": "Chanda (Kanpure) Poudel", "given_name": "Chanda (Kanpure) Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}]}, {"id": "I29", "name": "Siusu Poudel", "given_name": "Siusu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I30", "name": "Deusu Poudel", "given_name": "Deusu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I31", "name": "Jaisu Poudel", "given_name": "Jaisu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I32", "name": "Kripakar Poudel", "given_name": "Kripakar Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}]}, {"id": "I25", "name": "Sawa Bhatta", "given_name": "Sawa Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I46", "name": "KanthaRaj Bhatta", "given_name": "KanthaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I47", "name": "NandaRaj Bhatta", "given_name": "NandaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I48", "name": "ShivaRaj Bhatta", "given_name": "ShivaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I49", "name": "BatsaRaj Bhatta", "given_name": "BatsaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I50", "name": "Surupal Bhatta", "given_name": "Surupal Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}];
-        const directLineIds = ["I14", "I23", "I6", "I37", "I9", "I15", "I43", "I20", "I16", "I7", "I13", "I19", "I11", "I22", "I35", "I18", "I27", "I2", "I28", "I5", "I10", "I24", "I3", "I40", "I33", "I51", "I1", "I21", "I4", "I12", "I8", "I17"];
+        const directLineIds = ["I33", "I35", "I28", "I23", "I11", "I7", "I21", "I43", "I51", "I9", "I3", "I40", "I22", "I16", "I1", "I15", "I4", "I17", "I6", "I14", "I37", "I2", "I13", "I12", "I24", "I27", "I8", "I19", "I20", "I5", "I18", "I10"];
+        const lineNumbers = {"I1": 1, "I51": 2, "I2": 3, "I3": 4, "I4": 5, "I5": 6, "I6": 7, "I7": 8, "I8": 9, "I9": 10, "I10": 11, "I11": 12, "I12": 13, "I13": 14, "I14": 15, "I15": 16, "I16": 17, "I17": 18, "I18": 19, "I19": 20, "I20": 21, "I21": 22, "I22": 23, "I23": 24, "I24": 25, "I27": 26, "I28": 27, "I33": 28, "I35": 29, "I37": 30, "I40": 31, "I43": 32};
         
         const margin = { top: 80, right: 100, bottom: 80, left: 100 };
         let svgWidth = Math.max(1600, window.innerWidth);
@@ -345,6 +441,28 @@
                 .attr('height', 100)
                 .attr('x', -80)
                 .attr('y', -50);
+            
+            // Add circled number for direct line individuals
+            nodeGroups.each(function(d) {
+                if (lineNumbers[d.data.id] !== undefined) {
+                    const circleNum = lineNumbers[d.data.id];
+                    const circleX = -125;  // Position further left to add space
+                    const circleY = 0;     // Vertically centered
+                    const circleRadius = 28;  // 20% bigger (was 23)
+                    
+                    d3.select(this).append('circle')
+                        .attr('class', 'node-circle')
+                        .attr('cx', circleX)
+                        .attr('cy', circleY)
+                        .attr('r', circleRadius);
+                    
+                    d3.select(this).append('text')
+                        .attr('class', 'node-circle-text')
+                        .attr('x', circleX)
+                        .attr('y', circleY)
+                        .text(circleNum);
+                }
+            });
             
             // Add text group container for proper vertical centering
             const textGroups = nodeGroups.append('g')

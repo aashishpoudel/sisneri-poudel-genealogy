@@ -828,7 +828,7 @@ if __name__ == "__main__":
         from helper.gedcom_to_tree import FamilyTreeHTMLGenerator
         import sys
 
-        gedcom_file = "./data/Somnath_Gopal_sisneriPoudel-16-May-2026-093951272.ged"
+        gedcom_file = "./data/Somnath_to_Gopal.ged"
         output_file = "before_gopal.html"
 
         print(f"Parsing {gedcom_file}...")
