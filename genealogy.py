@@ -810,11 +810,46 @@ if __name__ == "__main__":
         file.write(updated_html)
         print("✅ timeline.html updated with TIMELINE_DATA.")
 
-    from genealogy_poudel_data_before_gopal import first_person_listed
+    ##########################################
+    #Before Gopal Timeline HTML
+    # Method I Trial - generate from Python data, starting from the first person listed in genealogy_poudel_data_before_gopal.py
+    # from genealogy_poudel_data_before_gopal import first_person_listed
 
-    export_ancestral_tree_html(
-        first_person_listed,
-        "before_gopal.html"
-    )
+    # export_ancestral_tree_html(
+    #     first_person_listed,
+    #     "before_gopal.html"
+    # )
+
+    #Before Gopal Timeline HTML
+    # Method II - from GEDCOM file and helper function (Claude code)
+    try:
+        # Parse GEDCOM
+        from helper.gedcom_to_tree import GEDCOMParser
+        from helper.gedcom_to_tree import FamilyTreeHTMLGenerator
+        import sys
+
+        gedcom_file = "./data/Somnath_Gopal_sisneriPoudel-16-May-2026-093951272.ged"
+        output_file = "before_gopal.html"
+
+        print(f"Parsing {gedcom_file}...")
+        parser = GEDCOMParser(gedcom_file)
+        parser.parse()
+        print(f"Found {len(parser.individuals)} individuals")
+        
+        # Generate HTML
+        print("Generating family tree visualization...")
+        generator = FamilyTreeHTMLGenerator(parser)
+        generator.generate(output_file, "ShreeSomnath Atreya", "Gopal Poudel")
+        
+        print(f"\n✓ Family tree successfully generated!")
+        print(f"  Output: {output_file}")
+        print(f"  Open in a web browser to view the interactive tree")
+        
+    except FileNotFoundError:
+        print(f"Error: File '{gedcom_file}' not found")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
 
 

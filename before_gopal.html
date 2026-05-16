@@ -1,237 +1,462 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Ancestral Tree (Before Gopal)</title>
-
-<style>
-body {
-    font-family: system-ui, sans-serif;
-    background: #fafafa;
-}
-
-.node {
-    text-align: center;
-    position: relative;
-    margin: 30px auto;
-}
-
-.person-box {
-    display: inline-block;
-    padding: 8px 14px;
-    border: 2px solid #333;
-    border-radius: 8px;
-    background: #fff;
-    font-weight: 600;
-}
-
-.children {
-    position: relative;
-    margin-top: 20px;
-}
-
-/* Row of siblings */
-.children-row {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    position: relative;
-    padding-top: 20px;
-}
-
-/* Horizontal line ONLY across children span */
-.children-row::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #333;
-}
-
-/* Individual child container */
-.child {
-    position: relative;
-}
-
-/* Vertical line DOWN from horizontal bar to child */
-.child::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 20px;
-    background: #333;
-}
-
-
-.child::before {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 20px;
-    background: #333;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
+            color: #3d3d3d;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        #container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: auto;
+            background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
+        }
+        
+        svg {
+            display: block;
+            margin: auto;
+        }
+        
+        .link {
+            fill: none;
+            stroke: rgba(180, 140, 80, 0.4);
+            stroke-width: 4px;
+        }
+        
+        .node {
+            cursor: pointer;
+        }
+        
+        .node-group {
+            transition: all 0.3s ease;
+        }
+        
+        .node-rect {
+            rx: 8;
+            ry: 8;
+            stroke-width: 2.5px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+            transition: all 0.3s ease;
+        }
+        
+        .node.male .node-rect {
+            fill: #e8f4f8;
+            stroke: #7fb3d5;
+        }
+        
+        .node.female .node-rect {
+            fill: #fce8f3;
+            stroke: #e8a8c8;
+        }
+        
+        .node.unknown .node-rect {
+            fill: #f5f5f5;
+            stroke: #c0c0c0;
+        }
+        
+        .node.on-direct-line .node-rect {
+            fill: #fff8dc !important;
+            stroke: #d4af37 !important;
+            stroke-width: 3px !important;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6)) !important;
+        }
+        
+        .node:hover .node-rect {
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+            stroke-width: 3px;
+        }
+        
+        .node-text {
+            font-size: 16px;
+            font-weight: bold;
+            text-anchor: middle;
+            pointer-events: none;
+            fill: #3d3d3d;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+        
+        .node-date {
+            font-size: 12px;
+            text-anchor: middle;
+            fill: #6b6b6b;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+        }
+        
+        .tooltip {
+            position: fixed;
+            background: rgba(255, 248, 220, 0.98);
+            color: #3d3d3d;
+            padding: 12px 16px;
+            border-radius: 6px;
+            border-left: 4px solid #d4af37;
+            font-size: 13px;
+            pointer-events: none;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            display: none;
+        }
+        
+        .tooltip.visible {
+            display: block;
+        }
+        
+        .tooltip-title {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #8b6914;
+        }
+        
+        .tooltip-line {
+            margin: 3px 0;
+            line-height: 1.3;
+        }
+        
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 248, 220, 0.95);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 2px solid #d4af37;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .control-btn {
+            background: #d4af37;
+            color: #3d3d3d;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px 5px 5px 0;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            background: #e8c547;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.4);
+        }
+        
+        .legend {
+            position: fixed;
+            top: 150px;
+            right: 20px;
+            background: rgba(255, 248, 220, 0.95);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 2px solid #d4af37;
+            font-size: 12px;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .legend-item {
+            margin: 6px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .legend-box {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            border-radius: 2px;
+            border: 1.5px solid #999;
+        }
+        
+        .male { background: #e8f4f8; }
+        .female { background: #fce8f3; }
+        .direct-line { background: #fff8dc; border: 2px solid #d4af37 !important; }
+    </style>
 </head>
 <body>
-
-<h2 style="text-align:center;">Poudel Lineage (Before Gopal)</h2>
-
-
-        <div class="node">
-            <div class="person-box">श्री सोमनाथ आत्रेय (463)</div>
+    <div id="container">
+        <svg id="tree"></svg>
+    </div>
+    
+    <div class="controls">
+        <button class="control-btn" onclick="fitView()">Fit View</button>
+    </div>
+    
+    <div class="legend">
+        <div style="margin-bottom: 10px; font-weight: bold; color: #8b6914;">Legend</div>
+        <div class="legend-item"><div class="legend-box male"></div> Male</div>
+        <div class="legend-item"><div class="legend-box female"></div> Female</div>
+        <div class="legend-item"><div class="legend-box direct-line"></div> Direct Line</div>
+    </div>
+    
+    <div id="tooltip" class="tooltip"></div>
+    
+    <script>
+        const treesData = [{"id": "I1", "name": "ShreeSomnath Atreya", "given_name": "ShreeSomnath Atreya", "surname": "", "birth": "0463", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I51", "name": "ShreeRangaNav Atreya", "given_name": "ShreeRangaNav Atreya", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I2", "name": "PuraNav Atreya", "given_name": "PuraNav Atreya", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I3", "name": "FadindraNav Atreya", "given_name": "FadindraNav Atreya", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I4", "name": "ShreePrasarNav", "given_name": "ShreePrasarNav", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I5", "name": "BhimDev", "given_name": "BhimDev", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I6", "name": "PurnaDev", "given_name": "PurnaDev", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I7", "name": "Devdev", "given_name": "Devdev", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I8", "name": "KumarDev", "given_name": "KumarDev", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I9", "name": "Shakti Bhatta", "given_name": "Shakti Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I10", "name": "Prithvi Bhatta", "given_name": "Prithvi Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I11", "name": "Kuber Bhatta", "given_name": "Kuber Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I12", "name": "Udayananda Bhatta", "given_name": "Udayananda Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I13", "name": "Sudayananda Bhatta", "given_name": "Sudayananda Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I14", "name": "RayaBhatta Bhatta", "given_name": "RayaBhatta Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I15", "name": "DevDutta Bhatta", "given_name": "DevDutta Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I16", "name": "BatsaRaj Bhatta", "given_name": "BatsaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I17", "name": "UpaBatsaRaj Bhatta", "given_name": "UpaBatsaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I18", "name": "ShreeBatsaRaj Bhatta", "given_name": "ShreeBatsaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I19", "name": "ShreeDev Bhatta", "given_name": "ShreeDev Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I20", "name": "ShreeNanda Bhatta", "given_name": "ShreeNanda Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I21", "name": "ShreeRam Bhatta", "given_name": "ShreeRam Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I22", "name": "HariDutta Bhatta", "given_name": "HariDutta Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I23", "name": "KrishnaRam Bhatta", "given_name": "KrishnaRam Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I24", "name": "Chawa Poudel", "given_name": "Chawa Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I26", "name": "NaraSimha Poudel", "given_name": "NaraSimha Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I27", "name": "MotiRaj Poudel", "given_name": "MotiRaj Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I28", "name": "Jogu (JogRaj) Poudel", "given_name": "Jogu (JogRaj) Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I33", "name": "JayaDas Poudel", "given_name": "JayaDas Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I34", "name": "PremDas Poudel", "given_name": "PremDas Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I35", "name": "Kalu Poudel", "given_name": "Kalu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I37", "name": "Narayan Poudel", "given_name": "Narayan Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I40", "name": "DharmaDas Poudel", "given_name": "DharmaDas Poudel", "surname": "", "birth": "", "birth_place": "Lahachowk", "death": "", "sex": "M", "notes": "", "children": [{"id": "I43", "name": "Gopal Poudel", "given_name": "Gopal Poudel", "surname": "", "birth": "", "birth_place": "Kathmandu Valley", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I44", "name": "Rithu Poudel", "given_name": "Rithu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I45", "name": "Janardan Poudel", "given_name": "Janardan Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}, {"id": "I41", "name": "Dasrath Poudel", "given_name": "Dasrath Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I42", "name": "Damu Poudel", "given_name": "Damu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}, {"id": "I38", "name": "Ratan Poudel", "given_name": "Ratan Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I39", "name": "Dhurupati Poudel", "given_name": "Dhurupati Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}, {"id": "I36", "name": "Chanda (Kanpure) Poudel", "given_name": "Chanda (Kanpure) Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}]}, {"id": "I29", "name": "Siusu Poudel", "given_name": "Siusu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I30", "name": "Deusu Poudel", "given_name": "Deusu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I31", "name": "Jaisu Poudel", "given_name": "Jaisu Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I32", "name": "Kripakar Poudel", "given_name": "Kripakar Poudel", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}]}, {"id": "I25", "name": "Sawa Bhatta", "given_name": "Sawa Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": [{"id": "I46", "name": "KanthaRaj Bhatta", "given_name": "KanthaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I47", "name": "NandaRaj Bhatta", "given_name": "NandaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I48", "name": "ShivaRaj Bhatta", "given_name": "ShivaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I49", "name": "BatsaRaj Bhatta", "given_name": "BatsaRaj Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}, {"id": "I50", "name": "Surupal Bhatta", "given_name": "Surupal Bhatta", "surname": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "children": []}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}];
+        const directLineIds = ["I14", "I23", "I6", "I37", "I9", "I15", "I43", "I20", "I16", "I7", "I13", "I19", "I11", "I22", "I35", "I18", "I27", "I2", "I28", "I5", "I10", "I24", "I3", "I40", "I33", "I51", "I1", "I21", "I4", "I12", "I8", "I17"];
         
-            <div class="children">
-                <div class="horizontal-line"></div>
-                <div class="children-row">
-                    <div class="child">
-        <div class="node">
-            <div class="person-box">श्री रङ्गनाभ</div>
+        const margin = { top: 80, right: 100, bottom: 80, left: 100 };
+        let svgWidth = Math.max(1600, window.innerWidth);
+        let svgHeight = Math.max(1200, window.innerHeight);
         
-            <div class="children">
-                <div class="horizontal-line"></div>
-                <div class="children-row">
-                    <div class="child">
-        <div class="node">
-            <div class="person-box">श्री पुरनाभ</div>
+        const svg = d3.select('#tree')
+            .attr('width', svgWidth)
+            .attr('height', svgHeight);
         
-            <div class="children">
-                <div class="horizontal-line"></div>
-                <div class="children-row">
-                    <div class="child">
-        <div class="node">
-            <div class="person-box">श्री ब्रह्मनाभ</div>
+        const container = d3.select('#container');
         
-            <div class="children">
-                <div class="horizontal-line"></div>
-                <div class="children-row">
-                    <div class="child">
-        <div class="node">
-            <div class="person-box">शंकरदेव</div>
-        </div></div>
-                </div>
-            </div>
-        </div>
-        </div><div class="child">
-        <div class="node">
-            <div class="person-box">फणिन्द्रनाभ</div>
-        
-            <div class="children">
-                <div class="horizontal-line"></div>
-                <div class="children-row">
-                    <div class="child">
-        <div class="node">
-            <div class="person-box">प्रसरनाभ</div>
-        
-            <div class="children">
-                <div class="horizontal-line"></div>
-                <div class="children-row">
-                    <div class="child">
-        <div class="node">
-            <div class="person-box">भिमदेव</div>
-        
-            <div class="children">
-                <div class="horizontal-line"></div>
-                <div class="children-row">
-                    <div class="child">
-        <div class="node">
-            <div class="person-box">पुर्णदेव</div>
-        
-            <div class="children">
-                <div class="horizontal-line"></div>
-                <div class="children-row">
-                    <div class="child">
-        <div class="node">
-            <div class="person-box">देवदेव</div>
-        
-            <div class="children">
-                <div class="horizontal-line"></div>
-                <div class="children-row">
-                    <div class="child">
-        <div class="node">
-            <div class="person-box">कुमारदेव</div>
-        
-            <div class="children">
-                <div class="horizontal-line"></div>
-                <div class="children-row">
-                    <div class="child">
-        <div class="node">
-            <div class="person-box">शक्तिभट्ट</div>
-        
-            <div class="children">
-                <div class="horizontal-line"></div>
-                <div class="children-row">
-                    <div class="child">
-        <div class="node">
-            <div class="person-box">नागदेव</div>
-        </div></div><div class="child">
-        <div class="node">
-            <div class="person-box">पृथ्वीभट्ट</div>
-        </div></div><div class="child">
-        <div class="node">
-            <div class="person-box">शंकर भट्टारक</div>
-        </div></div>
-                </div>
-            </div>
-        </div>
-        </div>
-                </div>
-            </div>
-        </div>
-        </div><div class="child">
-        <div class="node">
-            <div class="person-box">बलदेव</div>
-        </div></div>
-                </div>
-            </div>
-        </div>
-        </div>
-                </div>
-            </div>
-        </div>
-        </div>
-                </div>
-            </div>
-        </div>
-        </div><div class="child">
-        <div class="node">
-            <div class="person-box">जयदेव</div>
-        </div></div>
-                </div>
-            </div>
-        </div>
-        </div>
-                </div>
-            </div>
-        </div>
-        </div><div class="child">
-        <div class="node">
-            <div class="person-box">कमलनाभ</div>
-        </div></div>
-                </div>
-            </div>
-        </div>
-        </div>
-                </div>
-            </div>
-        </div>
-        </div><div class="child">
-        <div class="node">
-            <div class="person-box">तत्वनाभ</div>
-        </div></div>
-                </div>
-            </div>
-        </div>
+        let g = svg.append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`);
         
 
+        
+        // Helper function to wrap text - more aggressive wrapping
+        function wrapText(text, maxChars = 12) {
+            if (text.length <= maxChars) return [text];
+            const words = text.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (let word of words) {
+                if ((currentLine + word).length <= maxChars) {
+                    currentLine += (currentLine ? ' ' : '') + word;
+                } else {
+                    if (currentLine) lines.push(currentLine);
+                    currentLine = word;
+                }
+            }
+            if (currentLine) lines.push(currentLine);
+            return lines;
+        }
+        
+        const treeLayout = d3.tree()
+            .separation((a, b) => (a.parent === b.parent ? 0.8 : 1.2));
+        treesData.forEach((treeData, treeIndex) => {
+            const hierarchy = d3.hierarchy(treeData);
+            
+            // Calculate dimensions - HIGHLY COMPACT
+            const nodeCount = hierarchy.descendants().length;
+            const width = Math.max(400, nodeCount * 75);  // Reduced to 75 pixels per node for tight packing
+            const height = 400 + (hierarchy.height * 120);
+            
+            treeLayout.size([width, height]);
+            
+            const root = treeLayout(hierarchy);
+            
+            // Offset each tree vertically
+            const yOffset = treeIndex * (height + 200);
+            
+            // Draw links
+            g.selectAll(`.link-tree-${treeIndex}`)
+                .data(root.links())
+                .enter()
+                .append('path')
+                .attr('class', `link link-tree-${treeIndex}`)
+                .attr('d', d => {
+                    const x0 = d.source.x;
+                    const y0 = d.source.y + yOffset;
+                    const x1 = d.target.x;
+                    const y1 = d.target.y + yOffset;
+                    
+                    // Orthogonal path: vertical down, then horizontal
+                    const midY = (y0 + y1) / 2;
+                    return `M${x0},${y0}L${x0},${midY}L${x1},${midY}L${x1},${y1}`;
+                });
+            
+            // Draw nodes
+            const nodeGroups = g.selectAll(`.node-tree-${treeIndex}`)
+                .data(root.descendants())
+                .enter()
+                .append('g')
+                .attr('class', d => {
+                    let cls = 'node-group node ';
+                    if (d.data.sex === 'M') cls += 'male';
+                    else if (d.data.sex === 'F') cls += 'female';
+                    else cls += 'unknown';
+                    
+                    if (directLineIds.includes(d.data.id)) {
+                        cls += ' on-direct-line';
+                    }
+                    return cls;
+                })
+                .attr('transform', d => `translate(${d.x},${d.y + yOffset})`)
+                .on('mouseover', function(e, d) {
+                    d3.select(this).select('.node-rect')
+                        .transition()
+                        .duration(200);
+                    
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.classList.add('visible');
+                    
+                    let tooltipHTML = `<div class="tooltip-title">${d.data.name}</div>`;
+                    
+                    if (d.data.birth) {
+                        tooltipHTML += `<div class="tooltip-line"><strong>DOB:</strong> ${d.data.birth}</div>`;
+                    }
+                    
+                    if (d.data.birth_place) {
+                        tooltipHTML += `<div class="tooltip-line"><strong>Place:</strong> ${d.data.birth_place}</div>`;
+                    }
+                    
+                    if (d.data.notes) {
+                        tooltipHTML += `<div class="tooltip-line"><strong>Notes:</strong> ${d.data.notes}</div>`;
+                    }
+                    
+                    if (!d.data.birth && !d.data.birth_place && !d.data.notes) {
+                        tooltipHTML += `<div class="tooltip-line"><em>No additional information</em></div>`;
+                    }
+                    
+                    tooltip.innerHTML = tooltipHTML;
+                    tooltip.style.left = (e.pageX + 10) + 'px';
+                    tooltip.style.top = (e.pageY + 10) + 'px';
+                })
+                .on('mousemove', (e) => {
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.style.left = (e.pageX + 10) + 'px';
+                    tooltip.style.top = (e.pageY + 10) + 'px';
+                })
+                .on('mouseout', function() {
+                    document.getElementById('tooltip').classList.remove('visible');
+                });
+            
+            // Add rectangles - larger to accommodate more wrapped text
+            nodeGroups.append('rect')
+                .attr('class', 'node-rect')
+                .attr('width', 160)
+                .attr('height', 100)
+                .attr('x', -80)
+                .attr('y', -50);
+            
+            // Add text group container for proper vertical centering
+            const textGroups = nodeGroups.append('g')
+                .attr('class', 'text-container');
+            
+            // Add name text (given name) with wrapping - centered
+            textGroups.append('text')
+                .attr('class', 'node-text')
+                .attr('x', 0)
+                .attr('y', 0)
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'central')
+                .each(function(d) {
+                    const name = d.data.given_name || '(unknown)';
+                    const lines = wrapText(name, 16);
+                    d3.select(this)
+                        .selectAll('tspan')
+                        .remove();
+                    const lineHeight = 1.1;
+                    const totalHeight = (lines.length - 1) * lineHeight * 13 / 2;
+                    lines.forEach((line, i) => {
+                        d3.select(this).append('tspan')
+                            .attr('x', 0)
+                            .attr('dy', i === 0 ? -totalHeight : lineHeight + 'em')
+                            .text(line);
+                    });
+                });
+            
+            // Add surname text (if present) - centered
+            textGroups.append('text')
+                .attr('class', 'node-text')
+                .attr('x', 0)
+                .attr('y', 12)
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'central')
+                .each(function(d) {
+                    const surname = d.data.surname || '';
+                    if (!surname) {
+                        d3.select(this).text('');
+                        return;
+                    }
+                    const lines = wrapText(surname, 16);
+                    d3.select(this)
+                        .selectAll('tspan')
+                        .remove();
+                    const lineHeight = 1.1;
+                    const totalHeight = (lines.length - 1) * lineHeight * 13 / 2;
+                    lines.forEach((line, i) => {
+                        d3.select(this).append('tspan')
+                            .attr('x', 0)
+                            .attr('dy', i === 0 ? -totalHeight : lineHeight + 'em')
+                            .text(line);
+                    });
+                });
+            
+            // Add year text - at bottom, centered
+            textGroups.append('text')
+                .attr('class', 'node-date')
+                .attr('x', 0)
+                .attr('y', 32)
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'central')
+                .text(d => {
+                    let dateStr = '';
+                    if (d.data.birth) {
+                        const year = d.data.birth.split(' ').pop();
+                        dateStr += year;
+                    }
+                    if (d.data.death) {
+                        const year = d.data.death.split(' ').pop();
+                        dateStr += ' - ' + year;
+                    }
+                    return dateStr;
+                });
+        });
+        
+        // Update SVG height based on content
+        const bbox = g.node().getBBox();
+        svgHeight = bbox.height + margin.top + margin.bottom + 100;
+        svg.attr('height', svgHeight);
+        
+        // Zoom behavior
+        const zoom = d3.zoom()
+            .on('zoom', (e) => {
+                g.attr('transform', e.transform);
+            });
+        
+        svg.call(zoom);
+        
+        function fitView() {
+            const bbox = g.node().getBBox();
+            const fullWidth = window.innerWidth;
+            const fullHeight = window.innerHeight;
+            
+            const scale = 0.9 / Math.max(
+                bbox.width / fullWidth,
+                bbox.height / fullHeight
+            );
+            
+            const translate = [
+                (fullWidth - bbox.width * scale) / 2 - bbox.x * scale,
+                (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
+            ];
+            
+            svg.transition().duration(750).call(
+                zoom.transform,
+                d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale)
+            );
+        }
+        
+        // Initial fit
+        setTimeout(fitView, 200);
+    </script>
 </body>
 </html>
