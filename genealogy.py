@@ -1,4 +1,5 @@
 from genealogy_poudel_data import *
+from genealogy_poudel_data_before_gopal import first_person_listed
 from genealogy_constants import *
 from bs4 import BeautifulSoup
 import json, re
@@ -650,6 +651,144 @@ def update_timeline_html(html_content, timeline_data):
     # Return updated HTML
     return str(soup)
 
+def generate_vertical_ancestral_html(person):
+    """
+    Render a vertical ancestral tree:
+    - Parent on top
+    - Children in a horizontal row
+    """
+
+    def render_node(p):
+        label = p.name_nep or p.name
+        birth = f" ({p.birth_year})" if p.birth_year else ""
+
+        node_html = f"""
+        <div class="node">
+            <div class="person-box">{label}{birth}</div>
+        """
+
+        if not p.children:
+            return node_html + "</div>"
+
+        children_html = "".join(
+            f'<div class="child">{render_node(child)}</div>'
+            for child in p.children
+        )
+
+        return node_html + f"""
+            <div class="children">
+                <div class="horizontal-line"></div>
+                <div class="children-row">
+                    {children_html}
+                </div>
+            </div>
+        </div>
+        """
+
+    return render_node(person)
+
+def export_ancestral_tree_html(root_person, output_file="before_gopal.html"):
+    body_html = generate_vertical_ancestral_html(root_person)
+
+    html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ancestral Tree (Before Gopal)</title>
+
+<style>
+body {{
+    font-family: system-ui, sans-serif;
+    background: #fafafa;
+}}
+
+.node {{
+    text-align: center;
+    position: relative;
+    margin: 30px auto;
+}}
+
+.person-box {{
+    display: inline-block;
+    padding: 8px 14px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background: #fff;
+    font-weight: 600;
+}}
+
+.children {{
+    position: relative;
+    margin-top: 20px;
+}}
+
+/* Row of siblings */
+.children-row {{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+    padding-top: 20px;
+}}
+
+/* Horizontal line ONLY across children span */
+.children-row::before {{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #333;
+}}
+
+/* Individual child container */
+.child {{
+    position: relative;
+}}
+
+/* Vertical line DOWN from horizontal bar to child */
+.child::before {{
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background: #333;
+}}
+
+
+.child::before {{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: #333;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}}
+</style>
+
+</head>
+<body>
+
+<h2 style="text-align:center;">Poudel Lineage (Before Gopal)</h2>
+
+{body_html}
+
+</body>
+</html>
+"""
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(html)
+
+    print(f"✅ Ancestral tree HTML generated: {output_file}")
+
 
 if __name__ == "__main__":
     # roots is all the root Person of the unconnected family tree
@@ -670,3 +809,47 @@ if __name__ == "__main__":
     with open('timeline.html', 'w', encoding='utf-8') as file:
         file.write(updated_html)
         print("✅ timeline.html updated with TIMELINE_DATA.")
+
+    ##########################################
+    #Before Gopal Timeline HTML
+    # Method I Trial - generate from Python data, starting from the first person listed in genealogy_poudel_data_before_gopal.py
+    # from genealogy_poudel_data_before_gopal import first_person_listed
+
+    # export_ancestral_tree_html(
+    #     first_person_listed,
+    #     "before_gopal.html"
+    # )
+
+    #Before Gopal Timeline HTML
+    # Method II - from GEDCOM file and helper function (Claude code)
+    try:
+        # Parse GEDCOM
+        from helper.gedcom_to_tree import GEDCOMParser
+        from helper.gedcom_to_tree import FamilyTreeHTMLGenerator
+        import sys
+
+        gedcom_file = "./data/Somnath_to_Gopal.ged"
+        output_file = "before_gopal.html"
+
+        print(f"Parsing {gedcom_file}...")
+        parser = GEDCOMParser(gedcom_file)
+        parser.parse()
+        print(f"Found {len(parser.individuals)} individuals")
+        
+        # Generate HTML
+        print("Generating family tree visualization...")
+        generator = FamilyTreeHTMLGenerator(parser)
+        generator.generate(output_file, "ShreeSomnath Atreya", "Gopal Poudel")
+        
+        print(f"\n✓ Family tree successfully generated!")
+        print(f"  Output: {output_file}")
+        print(f"  Open in a web browser to view the interactive tree")
+        
+    except FileNotFoundError:
+        print(f"Error: File '{gedcom_file}' not found")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+
+
