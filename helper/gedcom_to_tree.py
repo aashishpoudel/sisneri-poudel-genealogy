@@ -451,9 +451,14 @@ class FamilyTreeHTMLGenerator:
             cursor: pointer;
             background: #34495e;
             border: none;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 500;
             transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            line-height: 1.2;
         }}
         
         .lang-tab:hover {{
@@ -545,7 +550,7 @@ class FamilyTreeHTMLGenerator:
         }}
         
         .node-text {{
-            font-size: 16px;
+            font-size: 19px;
             font-weight: bold;
             text-anchor: middle;
             pointer-events: none;
@@ -554,7 +559,7 @@ class FamilyTreeHTMLGenerator:
         }}
         
         .node-name.nepali-text {{
-            font-size: 24px;
+            font-size: 36px;
         }}
         
         .node-date {{
@@ -613,7 +618,7 @@ class FamilyTreeHTMLGenerator:
         
         .controls {{
             position: fixed;
-            top: 100px;
+            top: 150px;
             right: 20px;
             background: rgba(255, 248, 220, 0.95);
             padding: 15px 20px;
@@ -644,7 +649,7 @@ class FamilyTreeHTMLGenerator:
         
         .legend {{
             position: fixed;
-            top: 190px;
+            top: 270px;
             right: 20px;
             background: rgba(255, 248, 220, 0.95);
             padding: 15px 20px;
@@ -883,7 +888,15 @@ class FamilyTreeHTMLGenerator:
                     }}
                     
                     if (d.data.notes) {{
-                        tooltipHTML += `<div class="tooltip-line"><strong>Notes:</strong> ${{d.data.notes}}</div>`;
+                        // Clean up the notes by removing "Bio notes: " prefix if present
+                        let cleanNotes = d.data.notes;
+                        if (cleanNotes.startsWith('Bio notes:')) {{
+                            cleanNotes = cleanNotes.replace('Bio notes:', '').trim();
+                        }}
+                        // Only show notes if there's actual content after cleaning
+                        if (cleanNotes) {{
+                            tooltipHTML += `<div class="tooltip-line">${{cleanNotes}}</div>`;
+                        }}
                     }}
                     
                     if (!d.data.birth && !d.data.birth_place && !d.data.notes) {{
@@ -906,9 +919,9 @@ class FamilyTreeHTMLGenerator:
             // Add rectangles - larger to accommodate more wrapped text
             nodeGroups.append('rect')
                 .attr('class', 'node-rect')
-                .attr('width', 160)
+                .attr('width', 192)
                 .attr('height', 100)
-                .attr('x', -80)
+                .attr('x', -96)
                 .attr('y', -50);
             
             // Add circled number for direct line individuals
