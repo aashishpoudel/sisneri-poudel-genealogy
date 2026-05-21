@@ -434,7 +434,7 @@ class FamilyTreeHTMLGenerator:
         
         .language-tabs {{
             position: fixed;
-            top: 70px;
+            top: 80px;
             left: 0;
             right: 0;
             z-index: 998;
@@ -451,14 +451,14 @@ class FamilyTreeHTMLGenerator:
             cursor: pointer;
             background: #34495e;
             border: none;
-            font-size: 18px;
+            font-size: 40px;
             font-weight: 500;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 50px;
-            line-height: 1.2;
+            min-height: 75px;
+            line-height: 1;
         }}
         
         .lang-tab:hover {{
@@ -471,7 +471,7 @@ class FamilyTreeHTMLGenerator:
         }}
         
         #container {{
-            margin-top: 150px;
+            margin-top: 165px;
         }}
         * {{
             margin: 0;
@@ -550,7 +550,7 @@ class FamilyTreeHTMLGenerator:
         }}
         
         .node-text {{
-            font-size: 19px;
+            font-size: 21px;
             font-weight: bold;
             text-anchor: middle;
             pointer-events: none;
@@ -620,6 +620,7 @@ class FamilyTreeHTMLGenerator:
             position: fixed;
             top: 150px;
             right: 20px;
+            width: 200px;
             background: rgba(255, 248, 220, 0.95);
             padding: 15px 20px;
             border-radius: 8px;
@@ -651,6 +652,7 @@ class FamilyTreeHTMLGenerator:
             position: fixed;
             top: 230px;
             right: 20px;
+            width: 200px;
             background: rgba(255, 248, 220, 0.95);
             padding: 15px 20px;
             border-radius: 8px;
