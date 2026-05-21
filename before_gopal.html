@@ -67,20 +67,33 @@
         }
         
         .header-title {
-            font-size: 20px;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--text);
             margin: 6px 0 0;
             letter-spacing: .2px;
+            line-height: 1.2;
+            text-align: center;
+        }
+        
+        .title-nepali {
+            font-size: 35px;
+            font-weight: 600;
+            margin: 0 0 6px 0;
+        }
+        
+        .title-english {
+            font-size: 31px;
+            font-weight: 600;
+            margin: 0;
         }
         
         #container {
-            margin-top: 80px;
+            margin-top: 220px;
         }
         
         .language-tabs {
             position: fixed;
-            top: 80px;
+            top: 140px;
             left: 0;
             right: 0;
             z-index: 998;
@@ -117,7 +130,7 @@
         }
         
         #container {
-            margin-top: 165px;
+            margin-top: 220px;
         }
         * {
             margin: 0;
@@ -264,7 +277,7 @@
         
         .controls {
             position: fixed;
-            top: 150px;
+            top: 230px;
             right: 20px;
             width: 200px;
             background: rgba(255, 248, 220, 0.95);
@@ -282,8 +295,8 @@
             padding: 8px 14px;
             border-radius: 4px;
             cursor: pointer;
-            margin: 5px 5px 5px 0;
-            font-size: 12px;
+            margin: 5px 5px 5px 5px;
+            font-size: 25px;
             font-weight: bold;
             transition: all 0.3s ease;
         }
@@ -296,7 +309,7 @@
         
         .legend {
             position: fixed;
-            top: 230px;
+            top: 325px;
             right: 20px;
             width: 200px;
             background: rgba(255, 248, 220, 0.95);
@@ -333,7 +346,10 @@
             <nav class="crumbs" aria-label="Breadcrumb">
                 <a href="index.html">← Back to Home</a>
             </nav>
-            <h1 class="header-title">Somnath to Gopal</h1>
+            <h1 class="header-title">
+                <div class="title-nepali">सोमनाथ (पुस्ता 1) गोपाल (पुस्ता 32) सम्म</div>
+                <div class="title-english">From Somnath to Gopal</div>
+            </h1>
         </div>
     </header>
     
@@ -429,7 +445,7 @@
         }
         
         const treesData = [{"id": "I1", "name": "ShreeSomnath Atreya", "given_name": "ShreeSomnath Atreya", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u0938\u094b\u092e\u0928\u093e\u0925 \u0906\u0924\u094d\u0930\u0947\u092f", "birth": "0463", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u0938\u094b\u092e\u0928\u093e\u0925 \u0906\u0924\u094d\u0930\u0947\u092f", "children": [{"id": "I51", "name": "ShreeRangaNav Atreya", "given_name": "ShreeRangaNav Atreya", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u0930\u0919\u094d\u0917\u0928\u093e\u092d", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u0930\u0919\u094d\u0917\u0928\u093e\u092d", "children": [{"id": "I2", "name": "PuraNav Atreya", "given_name": "PuraNav Atreya", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u092a\u0941\u0930\u0928\u093e\u092d", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u092a\u0941\u0930\u0928\u093e\u092d", "children": [{"id": "I3", "name": "FadindraNav Atreya", "given_name": "FadindraNav Atreya", "surname": "", "nepali_name": "\u092b\u0923\u093f\u0928\u094d\u0926\u094d\u0930\u0928\u093e\u092d", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092b\u0923\u093f\u0928\u094d\u0926\u094d\u0930\u0928\u093e\u092d", "children": [{"id": "I4", "name": "ShreePrasarNav", "given_name": "ShreePrasarNav", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u092a\u094d\u0930\u0938\u0930\u0928\u093e\u092d", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u092a\u094d\u0930\u0938\u0930\u0928\u093e\u092d", "children": [{"id": "I5", "name": "BhimDev", "given_name": "BhimDev", "surname": "", "nepali_name": "\u092d\u0940\u092e\u0926\u0947\u0935", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092d\u0940\u092e\u0926\u0947\u0935", "children": [{"id": "I6", "name": "PurnaDev", "given_name": "PurnaDev", "surname": "", "nepali_name": "\u092a\u0942\u0930\u094d\u0923\u0926\u0947\u0935", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092a\u0942\u0930\u094d\u0923\u0926\u0947\u0935", "children": [{"id": "I7", "name": "Devdev", "given_name": "Devdev", "surname": "", "nepali_name": "\u0926\u0947\u0935\u0926\u0947\u0935", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0926\u0947\u0935\u0926\u0947\u0935", "children": [{"id": "I8", "name": "KumarDev", "given_name": "KumarDev", "surname": "", "nepali_name": "\u0915\u0941\u092e\u093e\u0930\u0926\u0947\u0935", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u0941\u092e\u093e\u0930\u0926\u0947\u0935", "children": [{"id": "I9", "name": "Shakti Bhatta", "given_name": "Shakti Bhatta", "surname": "", "nepali_name": "\u0936\u0915\u094d\u0924\u093f\u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u0915\u094d\u0924\u093f\u092d\u091f\u094d\u091f", "children": [{"id": "I10", "name": "Prithvi Bhatta", "given_name": "Prithvi Bhatta", "surname": "", "nepali_name": "\u092a\u0943\u0925\u094d\u0935\u0940 \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092a\u0943\u0925\u094d\u0935\u0940 \u092d\u091f\u094d\u091f", "children": [{"id": "I11", "name": "Kuber Bhatta", "given_name": "Kuber Bhatta", "surname": "", "nepali_name": "\u0915\u0941\u092c\u0947\u0930 \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u0941\u092c\u0947\u0930 \u092d\u091f\u094d\u091f", "children": [{"id": "I12", "name": "Udayananda Bhatta", "given_name": "Udayananda Bhatta", "surname": "", "nepali_name": "\u0909\u0926\u092f\u093e\u0928\u0928\u094d\u0926 \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0909\u0926\u092f\u093e\u0928\u0928\u094d\u0926 \u092d\u091f\u094d\u091f", "children": [{"id": "I13", "name": "Sudayananda Bhatta", "given_name": "Sudayananda Bhatta", "surname": "", "nepali_name": "\u0938\u0941\u0926\u092f\u093e\u0928\u0928\u094d\u0926 \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0938\u0941\u0926\u092f\u093e\u0928\u0928\u094d\u0926 \u092d\u091f\u094d\u091f", "children": [{"id": "I14", "name": "Raya Bhatta", "given_name": "Raya Bhatta", "surname": "", "nepali_name": "\u0930\u093e\u092f \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0930\u093e\u092f \u092d\u091f\u094d\u091f", "children": [{"id": "I15", "name": "DevDutta Bhatta", "given_name": "DevDutta Bhatta", "surname": "", "nepali_name": "\u0926\u0947\u0935\u0926\u0924\u094d\u0924 \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0926\u0947\u0935\u0926\u0924\u094d\u0924 \u092d\u091f\u094d\u091f", "children": [{"id": "I16", "name": "BatsaRaj Bhatta", "given_name": "BatsaRaj Bhatta", "surname": "", "nepali_name": "\u0935\u0924\u094d\u0938\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0935\u0924\u094d\u0938\u0930\u093e\u091c", "children": [{"id": "I17", "name": "UpaBatsaRaj Bhatta", "given_name": "UpaBatsaRaj Bhatta", "surname": "", "nepali_name": "\u0909\u092a\u0935\u0924\u094d\u0938\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0909\u092a\u0935\u0924\u094d\u0938\u0930\u093e\u091c", "children": [{"id": "I18", "name": "ShreeBatsaRaj Bhatta", "given_name": "ShreeBatsaRaj Bhatta", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u0935\u0924\u094d\u0938\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u0935\u0924\u094d\u0938\u0930\u093e\u091c", "children": [{"id": "I19", "name": "ShreeDev Bhatta", "given_name": "ShreeDev Bhatta", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u0926\u0947\u0935", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u0926\u0947\u0935", "children": [{"id": "I20", "name": "ShreeNanda Bhatta", "given_name": "ShreeNanda Bhatta", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940\u0928\u0928\u094d\u0926", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940\u0928\u0928\u094d\u0926", "children": [{"id": "I21", "name": "ShreeRam Bhatta", "given_name": "ShreeRam Bhatta", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940\u0930\u093e\u092e", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940\u0930\u093e\u092e", "children": [{"id": "I22", "name": "HariDutta Bhatta", "given_name": "HariDutta Bhatta", "surname": "", "nepali_name": "\u0939\u0930\u093f\u0926\u0924\u094d\u0924", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0939\u0930\u093f\u0926\u0924\u094d\u0924", "children": [{"id": "I23", "name": "KrishnaRam Bhatta", "given_name": "KrishnaRam Bhatta", "surname": "", "nepali_name": "\u0915\u0943\u0937\u094d\u0923\u0930\u093e\u092e", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u0943\u0937\u094d\u0923\u0930\u093e\u092e", "children": [{"id": "I24", "name": "Chawa Poudel", "given_name": "Chawa Poudel", "surname": "", "nepali_name": "\u091a\u093e\u0935\u093e (\u091a\u094d\u092f\u0935\u0928\u0930\u093e\u091c) \u092a\u094c\u0921\u0947\u0932", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091a\u093e\u0935\u093e (\u091a\u094d\u092f\u0935\u0928\u0930\u093e\u091c) \u092a\u094c\u0921\u0947\u0932", "children": [{"id": "I26", "name": "NaraSimha Poudel", "given_name": "NaraSimha Poudel", "surname": "", "nepali_name": "\u0928\u0930\u0938\u093f\u0902\u0939 \u0905\u0930\u094d\u091c\u094d\u092f\u093e\u0932 (\u091c\u0947\u0920\u0940\u092c\u093e\u091f)", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0928\u0930\u0938\u093f\u0902\u0939 \u0905\u0930\u094d\u091c\u094d\u092f\u093e\u0932 (\u091c\u0947\u0920\u0940\u092c\u093e\u091f)", "children": []}, {"id": "I27", "name": "MotiRaj Poudel", "given_name": "MotiRaj Poudel", "surname": "", "nepali_name": "\u092e\u094b\u0924\u0940\u0930\u093e\u091c (\u0915\u093e\u0928\u094d\u091b\u0940\u092c\u093e\u091f)", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092e\u094b\u0924\u0940\u0930\u093e\u091c (\u0915\u093e\u0928\u094d\u091b\u0940\u092c\u093e\u091f)", "children": [{"id": "I28", "name": "Jogu (JogRaj) Poudel", "given_name": "Jogu (JogRaj) Poudel", "surname": "", "nepali_name": "\u091c\u094b\u0917\u0941 (\u091c\u094b\u0917\u0930\u093e\u091c)", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091c\u094b\u0917\u0941 (\u091c\u094b\u0917\u0930\u093e\u091c)", "children": [{"id": "I33", "name": "JayaDas Poudel", "given_name": "JayaDas Poudel", "surname": "", "nepali_name": "\u091c\u0938\u0926\u093e\u0938 \u092a\u094c\u0921\u0947\u0932", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091c\u0938\u0926\u093e\u0938 \u092a\u094c\u0921\u0947\u0932", "children": [{"id": "I34", "name": "PremDas Poudel", "given_name": "PremDas Poudel", "surname": "", "nepali_name": "\u092a\u094d\u0930\u0947\u092e\u0926\u093e\u0938 \u092a\u094c\u0921\u0947\u0932", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092a\u094d\u0930\u0947\u092e\u0926\u093e\u0938 \u092a\u094c\u0921\u0947\u0932", "children": []}, {"id": "I35", "name": "Kalu Poudel", "given_name": "Kalu Poudel", "surname": "", "nepali_name": "\u0915\u093e\u0932\u0941 \u092a\u094c\u0921\u0947\u0932", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u093e\u0932\u0941 \u092a\u094c\u0921\u0947\u0932", "children": [{"id": "I37", "name": "Narayan Poudel", "given_name": "Narayan Poudel", "surname": "", "nepali_name": "\u0928\u093e\u0930\u093e\u092f\u0923", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0928\u093e\u0930\u093e\u092f\u0923", "children": [{"id": "I40", "name": "DharmaDas Poudel", "given_name": "DharmaDas Poudel", "surname": "", "nepali_name": "\u0927\u0930\u094d\u092e\u0926\u093e\u0938 (\u0932\u093e\u0939\u093e\u091a\u094b\u0915 \u0906\u0909\u0928\u0947)", "birth": "", "birth_place": "Lahachowk", "death": "", "sex": "M", "notes": "Bio notes: \u0927\u0930\u094d\u092e\u0926\u093e\u0938 (\u0932\u093e\u0939\u093e\u091a\u094b\u0915 \u0906\u0909\u0928\u0947)", "children": [{"id": "I43", "name": "Gopal Poudel", "given_name": "Gopal Poudel", "surname": "", "nepali_name": "\u0917\u094b\u092a\u093e\u0932 \u092a\u094c\u0921\u0947\u0932", "birth": "", "birth_place": "Kathmandu Valley", "death": "", "sex": "M", "notes": "Bio notes: \u0917\u094b\u092a\u093e\u0932 \u092a\u094c\u0921\u0947\u0932", "children": []}, {"id": "I44", "name": "Rithu Poudel", "given_name": "Rithu Poudel", "surname": "", "nepali_name": "\u0930\u0940\u0920\u0941", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0930\u0940\u0920\u0941", "children": []}, {"id": "I45", "name": "Janardan Poudel", "given_name": "Janardan Poudel", "surname": "", "nepali_name": "\u091c\u0928\u093e\u0930\u094d\u0926\u0928", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091c\u0928\u093e\u0930\u094d\u0926\u0928", "children": []}]}, {"id": "I41", "name": "Dasrath Poudel", "given_name": "Dasrath Poudel", "surname": "", "nepali_name": "\u0926\u0936\u0930\u0925", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0926\u0936\u0930\u0925", "children": []}, {"id": "I42", "name": "Damu Poudel", "given_name": "Damu Poudel", "surname": "", "nepali_name": "\u0926\u093e\u092e\u0941", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0926\u093e\u092e\u0941", "children": []}]}, {"id": "I38", "name": "Ratan Poudel", "given_name": "Ratan Poudel", "surname": "", "nepali_name": "\u0930\u0924\u0928", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0930\u0924\u0928", "children": []}, {"id": "I39", "name": "Dhurupati Poudel", "given_name": "Dhurupati Poudel", "surname": "", "nepali_name": "\u0927\u0941\u0930\u0941\u092a\u0924\u093f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0927\u0941\u0930\u0941\u092a\u0924\u093f", "children": []}]}, {"id": "I36", "name": "Chanda (Kanpure) Poudel", "given_name": "Chanda (Kanpure) Poudel", "surname": "", "nepali_name": "\u091a\u0928\u094d\u0926\u093e (\u0915\u093e\u0928\u092a\u0941\u0930\u0947)", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091a\u0928\u094d\u0926\u093e (\u0915\u093e\u0928\u092a\u0941\u0930\u0947)", "children": []}]}]}, {"id": "I29", "name": "Siusu Poudel", "given_name": "Siusu Poudel", "surname": "", "nepali_name": "\u0938\u093f\u0909\u0938\u0941", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0938\u093f\u0909\u0938\u0941", "children": []}, {"id": "I30", "name": "Deusu Poudel", "given_name": "Deusu Poudel", "surname": "", "nepali_name": "\u0926\u0947\u0909\u0938\u0941", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0926\u0947\u0909\u0938\u0941", "children": []}, {"id": "I31", "name": "Jaisu Poudel", "given_name": "Jaisu Poudel", "surname": "", "nepali_name": "\u091c\u0948\u0938\u0941", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091c\u0948\u0938\u0941", "children": []}, {"id": "I32", "name": "Kripakar Poudel", "given_name": "Kripakar Poudel", "surname": "", "nepali_name": "\u0915\u0943\u092a\u093e\u0915\u0930", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u0943\u092a\u093e\u0915\u0930", "children": []}]}]}, {"id": "I25", "name": "Sawa Bhatta", "given_name": "Sawa Bhatta", "surname": "", "nepali_name": "\u0938\u093e\u0935\u093e", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0938\u093e\u0935\u093e", "children": [{"id": "I46", "name": "KanthaRaj Bhatta", "given_name": "KanthaRaj Bhatta", "surname": "", "nepali_name": "\u0915\u0928\u094d\u0925\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u0928\u094d\u0925\u0930\u093e\u091c", "children": []}, {"id": "I47", "name": "NandaRaj Bhatta", "given_name": "NandaRaj Bhatta", "surname": "", "nepali_name": "\u0928\u0928\u094d\u0926\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0928\u0928\u094d\u0926\u0930\u093e\u091c", "children": []}, {"id": "I48", "name": "ShivaRaj Bhatta", "given_name": "ShivaRaj Bhatta", "surname": "", "nepali_name": "\u0936\u093f\u0935\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u093f\u0935\u0930\u093e\u091c", "children": []}, {"id": "I49", "name": "BatsaRaj Bhatta", "given_name": "BatsaRaj Bhatta", "surname": "", "nepali_name": "\u0935\u0924\u094d\u0938\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0935\u0924\u094d\u0938\u0930\u093e\u091c", "children": []}, {"id": "I50", "name": "Surupal Bhatta", "given_name": "Surupal Bhatta", "surname": "", "nepali_name": "\u0938\u0941\u0930\u0941\u092a\u093e\u0932", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0938\u0941\u0930\u0941\u092a\u093e\u0932", "children": []}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}];
-        const directLineIds = ["I27", "I13", "I24", "I37", "I40", "I21", "I43", "I2", "I12", "I17", "I3", "I9", "I51", "I33", "I5", "I10", "I18", "I19", "I11", "I15", "I16", "I35", "I20", "I22", "I23", "I1", "I7", "I28", "I8", "I4", "I6", "I14"];
+        const directLineIds = ["I24", "I2", "I51", "I8", "I11", "I43", "I21", "I13", "I33", "I12", "I19", "I15", "I6", "I5", "I1", "I10", "I28", "I14", "I17", "I37", "I16", "I27", "I35", "I22", "I40", "I9", "I20", "I3", "I23", "I7", "I18", "I4"];
         const lineNumbers = {"I1": 1, "I51": 2, "I2": 3, "I3": 4, "I4": 5, "I5": 6, "I6": 7, "I7": 8, "I8": 9, "I9": 10, "I10": 11, "I11": 12, "I12": 13, "I13": 14, "I14": 15, "I15": 16, "I16": 17, "I17": 18, "I18": 19, "I19": 20, "I20": 21, "I21": 22, "I22": 23, "I23": 24, "I24": 25, "I27": 26, "I28": 27, "I33": 28, "I35": 29, "I37": 30, "I40": 31, "I43": 32};
         
         const margin = { top: 80, right: 100, bottom: 80, left: 100 };

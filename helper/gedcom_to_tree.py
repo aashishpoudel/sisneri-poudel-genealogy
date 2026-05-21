@@ -421,20 +421,33 @@ class FamilyTreeHTMLGenerator:
         }}
         
         .header-title {{
-            font-size: 20px;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--text);
             margin: 6px 0 0;
             letter-spacing: .2px;
+            line-height: 1.2;
+            text-align: center;
+        }}
+        
+        .title-nepali {{
+            font-size: 35px;
+            font-weight: 600;
+            margin: 0 0 6px 0;
+        }}
+        
+        .title-english {{
+            font-size: 31px;
+            font-weight: 600;
+            margin: 0;
         }}
         
         #container {{
-            margin-top: 80px;
+            margin-top: 220px;
         }}
         
         .language-tabs {{
             position: fixed;
-            top: 80px;
+            top: 140px;
             left: 0;
             right: 0;
             z-index: 998;
@@ -471,7 +484,7 @@ class FamilyTreeHTMLGenerator:
         }}
         
         #container {{
-            margin-top: 165px;
+            margin-top: 220px;
         }}
         * {{
             margin: 0;
@@ -618,7 +631,7 @@ class FamilyTreeHTMLGenerator:
         
         .controls {{
             position: fixed;
-            top: 150px;
+            top: 230px;
             right: 20px;
             width: 200px;
             background: rgba(255, 248, 220, 0.95);
@@ -636,8 +649,8 @@ class FamilyTreeHTMLGenerator:
             padding: 8px 14px;
             border-radius: 4px;
             cursor: pointer;
-            margin: 5px 5px 5px 0;
-            font-size: 12px;
+            margin: 5px 5px 5px 5px;
+            font-size: 25px;
             font-weight: bold;
             transition: all 0.3s ease;
         }}
@@ -650,7 +663,7 @@ class FamilyTreeHTMLGenerator:
         
         .legend {{
             position: fixed;
-            top: 230px;
+            top: 325px;
             right: 20px;
             width: 200px;
             background: rgba(255, 248, 220, 0.95);
@@ -687,7 +700,10 @@ class FamilyTreeHTMLGenerator:
             <nav class="crumbs" aria-label="Breadcrumb">
                 <a href="index.html">← Back to Home</a>
             </nav>
-            <h1 class="header-title">Somnath to Gopal</h1>
+            <h1 class="header-title">
+                <div class="title-nepali">सोमनाथ (पुस्ता 1) गोपाल (पुस्ता 32) सम्म</div>
+                <div class="title-english">From Somnath to Gopal</div>
+            </h1>
         </div>
     </header>
     
