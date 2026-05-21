@@ -649,7 +649,7 @@ class FamilyTreeHTMLGenerator:
         
         .legend {{
             position: fixed;
-            top: 270px;
+            top: 230px;
             right: 20px;
             background: rgba(255, 248, 220, 0.95);
             padding: 15px 20px;
@@ -919,16 +919,16 @@ class FamilyTreeHTMLGenerator:
             // Add rectangles - larger to accommodate more wrapped text
             nodeGroups.append('rect')
                 .attr('class', 'node-rect')
-                .attr('width', 192)
+                .attr('width', 211)
                 .attr('height', 100)
-                .attr('x', -96)
+                .attr('x', -106)
                 .attr('y', -50);
             
             // Add circled number for direct line individuals
             nodeGroups.each(function(d) {{
                 if (lineNumbers[d.data.id] !== undefined) {{
                     const circleNum = lineNumbers[d.data.id];
-                    const circleX = -125;  // Position further left to add space
+                    const circleX = -150;  // Position further left for breathing space
                     const circleY = 0;     // Vertically centered
                     const circleRadius = 28;  // 20% bigger (was 23)
                     
