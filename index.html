@@ -572,31 +572,6 @@
         badge.style.fontSize = '1em';
         target.insertAdjacentElement('afterend', badge);
 
-        // Read generation number & a color to match that person’s generation
-        const genNumber = target.getAttribute('data-gen_number');
-        // Prefer computed color of the person name (this already reflects your generation color)
-        const computed = doc.defaultView.getComputedStyle(target);
-        const genColor  = computed.color || '#1abc9c';
-
-        function getContrastColor(hexOrRgb) {
-          // Parse hex like "#rrggbb" or rgb string
-          let r, g, b;
-          if (hexOrRgb.startsWith('#')) {
-            const bigint = parseInt(hexOrRgb.slice(1), 16);
-            r = (bigint >> 16) & 255;
-            g = (bigint >> 8) & 255;
-            b = bigint & 255;
-          } else if (hexOrRgb.startsWith('rgb')) {
-            [r, g, b] = hexOrRgb.match(/\d+/g).map(Number);
-          } else {
-            return '#fff'; // default
-          }
-
-          // Luminance check (YIQ)
-          const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-          return yiq >= 128 ? '#000' : '#fff';
-        }
-
         // Build encircled + filled badge (same style language as banner)
         function ensureInlineBadgeCSS(doc) {
           if (doc.getElementById('gen-dot-inline-styles')) return;
@@ -618,17 +593,24 @@
         // Call this before you create/insert the badge:
         ensureInlineBadgeCSS(doc);
 
-        // Then your existing creation code:
-        if (genNumber) {
-          const genBadge = doc.createElement('span');
-          genBadge.className = 'gen-dot-inline gen-dot-inline--filled gen-badge';
-          genBadge.textContent = genNumber;
-          genBadge.setAttribute('aria-label', `Generation ${genNumber}`);
-          genBadge.style.color = genColor; // drives border + fill via currentColor
-          genBadge.style.background = '#1abc9c';
-          //genBadge.style.background = getContrastColor(genColor);
-          badge.insertAdjacentElement('afterend', genBadge);
+        function addGenerationBadge(personEl, insertAfterEl = personEl) {
+          const genNumber = personEl.getAttribute('data-gen_number');
+          if (genNumber) {
+            const computed = doc.defaultView.getComputedStyle(personEl);
+            const genColor = computed.color || '#1abc9c';
+
+            const genBadge = doc.createElement('span');
+            genBadge.className = 'gen-dot-inline gen-dot-inline--filled gen-badge';
+            genBadge.textContent = genNumber;
+            genBadge.setAttribute('aria-label', `Generation ${genNumber}`);
+            genBadge.style.color = genColor; // drives border + fill via currentColor
+            genBadge.style.background = '#1abc9c';
+            insertAfterEl.insertAdjacentElement('afterend', genBadge);
+          }
         }
+
+        // Then your existing creation code:
+        addGenerationBadge(target, badge);
 
         // 2) Build an unambiguous ancestor path FROM DATA, not the DOM
         //    We identify the *exact* record for the selected target using its own father/grandfather,
@@ -732,6 +714,7 @@
           ancEl.style.fontWeight = 'bold';
           ancEl.style.backgroundColor = '';
           ancEl.style.border = '';
+          addGenerationBadge(ancEl);
         }
 
         // 4) Center the selected match
