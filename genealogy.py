@@ -687,7 +687,7 @@ def generate_vertical_ancestral_html(person):
 
     return render_node(person)
 
-def export_ancestral_tree_html(root_person, output_file="before_gopal.html"):
+def export_ancestral_tree_html(root_person, output_file="somnath_to_gopal.html"):
     body_html = generate_vertical_ancestral_html(root_person)
 
     html = f"""
@@ -817,7 +817,7 @@ if __name__ == "__main__":
 
     # export_ancestral_tree_html(
     #     first_person_listed,
-    #     "before_gopal.html"
+    #     "somnath_to_gopal.html"
     # )
 
     #Before Gopal Timeline HTML
@@ -828,8 +828,8 @@ if __name__ == "__main__":
         from helper.gedcom_to_tree import FamilyTreeHTMLGenerator
         import sys
 
-        gedcom_file = "./data/Somnath_to_Gopal.ged"
-        output_file = "before_gopal.html"
+        gedcom_file = "./data/Somnath_Gopal.ged"
+        output_file = "somnath_to_gopal.html"
 
         print(f"Parsing {gedcom_file}...")
         parser = GEDCOMParser(gedcom_file)

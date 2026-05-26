@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        :root{
+            --bg: #f7f9fb;
+            --card: #ffffff;
+            --text: #1f2a37;
+            --muted: #6b7280;
+            --primary: #0d6efd;
+            --ring: #1abc9c;
+            --line: #e5eef4;
+            --shadow: 0 10px 30px rgba(0,0,0,.06);
+            --radius: 16px;
+            --radius-sm: 12px;
+        }
+        @media (prefers-color-scheme: dark){
+            :root{
+                --bg: #0b1320;
+                --card: #0f1a2b;
+                --text: #e5eef7;
+                --muted: #99a3b2;
+                --primary: #7ab8ff;
+                --ring: #34d399;
+                --line: #1f2a37;
+                --shadow: 0 10px 30px rgba(0,0,0,.35);
+            }
+        }
+        
+        .page-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+            box-shadow: 0 2px 8px rgba(0,0,0,.05);
+        }
+        
+        .header-wrap {
+            max-width: 100%;
+            margin: 0;
+            padding: 16px 20px;
+        }
+        
+        .crumbs {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .crumbs a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color .2s ease;
+        }
+        
+        .crumbs a:hover {
+            text-decoration: underline;
+            color: var(--text);
+        }
+        
+        .header-title {
+            font-weight: 500;
+            color: var(--text);
+            margin: 6px 0 0;
+            letter-spacing: .2px;
+            line-height: 1.2;
+            text-align: center;
+        }
+        
+        .title-nepali {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .gen-dot-inline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border: 2px solid currentColor;
+            border-radius: 9999px;
+            font: 700 16px/1.1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: #1abc9c;
+            background: currentColor;
+            vertical-align: middle;
+            margin: 0 .18em;
+            user-select: none;
+        }
+
+        .gen-dot-inline span {
+            color: #fff;
+        }
+
+        .title-english-inline {
+            white-space: nowrap;
+        }
+        
+        #container {
+            margin-top: 169px;
+        }
+        
+        .language-tabs {
+            position: fixed;
+            top: 90px;
+            left: 0;
+            right: 0;
+            z-index: 998;
+            display: flex;
+            background: #2c3e50;
+            border-bottom: 2px solid #34495e;
+        }
+        
+        .lang-tab {
+            flex: 1;
+            padding: 12px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            background: #34495e;
+            border: none;
+            font-size: 38px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 65px;
+            line-height: 1;
+        }
+        
+        .lang-tab:hover {
+            background: #4a606f;
+        }
+        
+        .lang-tab.active {
+            background: #1abc9c;
+            font-weight: bold;
+        }
+        
+        #container {
+            margin-top: 169px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
+            color: #3d3d3d;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        #container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: auto;
+            background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
+        }
+        
+        svg {
+            display: block;
+            margin: auto;
+        }
+        
+        .link {
+            fill: none;
+            stroke: rgba(180, 140, 80, 0.4);
+            stroke-width: 4px;
+        }
+        
+        .node {
+            cursor: pointer;
+        }
+        
+        .node-group {
+            transition: all 0.3s ease;
+        }
+        
+        .node-rect {
+            rx: 8;
+            ry: 8;
+            stroke-width: 2.5px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+            transition: all 0.3s ease;
+        }
+        
+        .node.male .node-rect {
+            fill: #e8f4f8;
+            stroke: #7fb3d5;
+        }
+        
+        .node.female .node-rect {
+            fill: #fce8f3;
+            stroke: #e8a8c8;
+        }
+        
+        .node.unknown .node-rect {
+            fill: #f5f5f5;
+            stroke: #c0c0c0;
+        }
+        
+        .node.on-direct-line .node-rect {
+            fill: #fff8dc !important;
+            stroke: #d4af37 !important;
+            stroke-width: 3px !important;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6)) !important;
+        }
+        
+        .node:hover .node-rect {
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+            stroke-width: 3px;
+        }
+        
+        .node-text {
+            font-size: 21px;
+            font-weight: bold;
+            text-anchor: middle;
+            pointer-events: none;
+            fill: #3d3d3d;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+        
+        .node-name.nepali-text {
+            font-size: 36px;
+        }
+        
+        .node-date {
+            font-size: 12px;
+            text-anchor: middle;
+            fill: #6b6b6b;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+        }
+        
+        .node-circle {
+            fill: #d4af37;
+            stroke: #d4af37;
+            stroke-width: 2;
+        }
+        
+        .node-circle-text {
+            font-size: 30px;
+            font-weight: bold;
+            text-anchor: middle;
+            dominant-baseline: central;
+            fill: white;
+            pointer-events: none;
+        }
+        
+        .tooltip {
+            position: fixed;
+            background: rgba(255, 248, 220, 0.98);
+            color: #3d3d3d;
+            padding: 12px 16px;
+            border-radius: 6px;
+            border-left: 4px solid #d4af37;
+            font-size: 13px;
+            pointer-events: none;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            display: none;
+        }
+        
+        .tooltip.visible {
+            display: block;
+        }
+        
+        .tooltip-title {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #8b6914;
+        }
+        
+        .tooltip-line {
+            margin: 3px 0;
+            line-height: 1.3;
+        }
+        
+        .controls {
+            position: fixed;
+            top: 230px;
+            right: 20px;
+            width: 200px;
+            background: rgba(255, 248, 220, 0.95);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 2px solid #d4af37;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .control-btn {
+            background: #d4af37;
+            color: #3d3d3d;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px 5px 5px 5px;
+            font-size: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            background: #e8c547;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.4);
+        }
+        
+        .legend {
+            position: fixed;
+            top: 325px;
+            right: 20px;
+            width: 200px;
+            background: rgba(255, 248, 220, 0.95);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 2px solid #d4af37;
+            font-size: 12px;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .legend-item {
+            margin: 6px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .legend-box {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            border-radius: 2px;
+            border: 1.5px solid #999;
+        }
+        
+        .male { background: #e8f4f8; }
+        .female { background: #fce8f3; }
+        .direct-line { background: #fff8dc; border: 2px solid #d4af37 !important; }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="header-wrap">
+            <nav class="crumbs" aria-label="Breadcrumb">
+                <a href="index.html">← Back to Home</a>
+            </nav>
+            <h1 class="header-title">
+                <div class="title-nepali">सोमनाथ <span class="gen-dot-inline" aria-label="पुस्ता 1"><span>1</span></span> <strong>→</strong> गोपाल <span class="gen-dot-inline" aria-label="पुस्ता 32"><span>32</span></span> <span class="title-english-inline">(Somnath <span class="gen-dot-inline" aria-label="Generation 1"><span>1</span></span> <strong>→</strong> Gopal <span class="gen-dot-inline" aria-label="Generation 32"><span>32</span></span>)</span></div>
+            </h1>
+        </div>
+    </header>
+    
+    <div class="language-tabs">
+        <button class="lang-tab active" onclick="switchLanguage('nepali')">नेपाली</button>
+        <button class="lang-tab" onclick="switchLanguage('english')">English</button>
+    </div>
+    
+    <div id="container">
+        <svg id="tree"></svg>
+    </div>
+    
+    <div class="controls">
+        <button class="control-btn" onclick="fitView()">Fit View</button>
+    </div>
+    
+    <div class="legend">
+        <div style="margin-bottom: 10px; font-weight: bold; color: #8b6914;">Legend</div>
+        <div class="legend-item"><div class="legend-box male"></div> Male</div>
+        <div class="legend-item"><div class="legend-box female"></div> Female</div>
+        <div class="legend-item"><div class="legend-box direct-line"></div> Direct Line</div>
+    </div>
+    
+    <div id="tooltip" class="tooltip"></div>
+    
+    <script>
+        let currentLanguage = 'nepali';  // Default language is Nepali
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update tab active state
+            document.querySelectorAll('.lang-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update all node text based on language
+            document.querySelectorAll('.node-group').forEach(nodeGroup => {
+                const personId = nodeGroup.getAttribute('data-personId');
+                const person = findPersonInTrees(personId);
+                const nameElement = nodeGroup.querySelector('.node-name');
+                
+                if (person && nameElement) {
+                    if (currentLanguage === 'nepali' && person.nepali_name) {
+                        // For Nepali, display the nepali_name with larger font
+                        const nepaliLines = wrapText(person.nepali_name, 16);
+                        updateTspans(nameElement, nepaliLines);
+                        nameElement.classList.add('nepali-text');
+                    } else {
+                        // For English, display given name with normal font
+                        const englishLines = wrapText(person.given_name || person.name, 16);
+                        updateTspans(nameElement, englishLines);
+                        nameElement.classList.remove('nepali-text');
+                    }
+                }
+            });
+        }
+        
+        function updateTspans(textElement, lines) {
+            if (!textElement) return;
+            
+            // Remove all existing tspans
+            textElement.querySelectorAll('tspan').forEach(tspan => tspan.remove());
+            
+            // Add new tspans with updated text
+            const lineHeight = 1.1;
+            const totalHeight = (lines.length - 1) * lineHeight * 13 / 2;
+            
+            lines.forEach((line, i) => {
+                const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+                tspan.setAttribute('x', '0');
+                tspan.setAttribute('dy', i === 0 ? -totalHeight : lineHeight + 'em');
+                tspan.textContent = line;
+                textElement.appendChild(tspan);
+            });
+        }
+        
+        function findPersonInTrees(personId) {
+            function searchNode(node) {
+                if (node.id === personId) return node;
+                for (let child of node.children) {
+                    const result = searchNode(child);
+                    if (result) return result;
+                }
+                return null;
+            }
+            for (let tree of treesData) {
+                const result = searchNode(tree);
+                if (result) return result;
+            }
+            return null;
+        }
+        
+        const treesData = [{"id": "I1", "name": "ShreeSomnath Atreya", "given_name": "ShreeSomnath Atreya", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u0938\u094b\u092e\u0928\u093e\u0925 \u0906\u0924\u094d\u0930\u0947\u092f", "birth": "0463", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u0938\u094b\u092e\u0928\u093e\u0925 \u0906\u0924\u094d\u0930\u0947\u092f", "children": [{"id": "I51", "name": "ShreeRangaNav Atreya", "given_name": "ShreeRangaNav Atreya", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u0930\u0919\u094d\u0917\u0928\u093e\u092d", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u0930\u0919\u094d\u0917\u0928\u093e\u092d", "children": [{"id": "I2", "name": "PuraNav Atreya", "given_name": "PuraNav Atreya", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u092a\u0941\u0930\u0928\u093e\u092d", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u092a\u0941\u0930\u0928\u093e\u092d", "children": [{"id": "I3", "name": "FadindraNav Atreya", "given_name": "FadindraNav Atreya", "surname": "", "nepali_name": "\u092b\u0923\u093f\u0928\u094d\u0926\u094d\u0930\u0928\u093e\u092d", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092b\u0923\u093f\u0928\u094d\u0926\u094d\u0930\u0928\u093e\u092d", "children": [{"id": "I4", "name": "ShreePrasarNav", "given_name": "ShreePrasarNav", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u092a\u094d\u0930\u0938\u0930\u0928\u093e\u092d", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u092a\u094d\u0930\u0938\u0930\u0928\u093e\u092d", "children": [{"id": "I5", "name": "BhimDev", "given_name": "BhimDev", "surname": "", "nepali_name": "\u092d\u0940\u092e\u0926\u0947\u0935", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092d\u0940\u092e\u0926\u0947\u0935", "children": [{"id": "I6", "name": "PurnaDev", "given_name": "PurnaDev", "surname": "", "nepali_name": "\u092a\u0942\u0930\u094d\u0923\u0926\u0947\u0935", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092a\u0942\u0930\u094d\u0923\u0926\u0947\u0935", "children": [{"id": "I7", "name": "Devdev", "given_name": "Devdev", "surname": "", "nepali_name": "\u0926\u0947\u0935\u0926\u0947\u0935", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0926\u0947\u0935\u0926\u0947\u0935", "children": [{"id": "I8", "name": "KumarDev", "given_name": "KumarDev", "surname": "", "nepali_name": "\u0915\u0941\u092e\u093e\u0930\u0926\u0947\u0935", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u0941\u092e\u093e\u0930\u0926\u0947\u0935", "children": [{"id": "I9", "name": "Shakti Bhatta", "given_name": "Shakti Bhatta", "surname": "", "nepali_name": "\u0936\u0915\u094d\u0924\u093f\u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u0915\u094d\u0924\u093f\u092d\u091f\u094d\u091f", "children": [{"id": "I10", "name": "Prithvi Bhatta", "given_name": "Prithvi Bhatta", "surname": "", "nepali_name": "\u092a\u0943\u0925\u094d\u0935\u0940 \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092a\u0943\u0925\u094d\u0935\u0940 \u092d\u091f\u094d\u091f", "children": [{"id": "I11", "name": "Kuber Bhatta", "given_name": "Kuber Bhatta", "surname": "", "nepali_name": "\u0915\u0941\u092c\u0947\u0930 \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u0941\u092c\u0947\u0930 \u092d\u091f\u094d\u091f", "children": [{"id": "I12", "name": "Udayananda Bhatta", "given_name": "Udayananda Bhatta", "surname": "", "nepali_name": "\u0909\u0926\u092f\u093e\u0928\u0928\u094d\u0926 \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0909\u0926\u092f\u093e\u0928\u0928\u094d\u0926 \u092d\u091f\u094d\u091f", "children": [{"id": "I13", "name": "Sudayananda Bhatta", "given_name": "Sudayananda Bhatta", "surname": "", "nepali_name": "\u0938\u0941\u0926\u092f\u093e\u0928\u0928\u094d\u0926 \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0938\u0941\u0926\u092f\u093e\u0928\u0928\u094d\u0926 \u092d\u091f\u094d\u091f", "children": [{"id": "I14", "name": "Raya Bhatta", "given_name": "Raya Bhatta", "surname": "", "nepali_name": "\u0930\u093e\u092f \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0930\u093e\u092f \u092d\u091f\u094d\u091f", "children": [{"id": "I15", "name": "DevDutta Bhatta", "given_name": "DevDutta Bhatta", "surname": "", "nepali_name": "\u0926\u0947\u0935\u0926\u0924\u094d\u0924 \u092d\u091f\u094d\u091f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0926\u0947\u0935\u0926\u0924\u094d\u0924 \u092d\u091f\u094d\u091f", "children": [{"id": "I16", "name": "BatsaRaj Bhatta", "given_name": "BatsaRaj Bhatta", "surname": "", "nepali_name": "\u0935\u0924\u094d\u0938\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0935\u0924\u094d\u0938\u0930\u093e\u091c", "children": [{"id": "I17", "name": "UpaBatsaRaj Bhatta", "given_name": "UpaBatsaRaj Bhatta", "surname": "", "nepali_name": "\u0909\u092a\u0935\u0924\u094d\u0938\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0909\u092a\u0935\u0924\u094d\u0938\u0930\u093e\u091c", "children": [{"id": "I18", "name": "ShreeBatsaRaj Bhatta", "given_name": "ShreeBatsaRaj Bhatta", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u0935\u0924\u094d\u0938\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u0935\u0924\u094d\u0938\u0930\u093e\u091c", "children": [{"id": "I19", "name": "ShreeDev Bhatta", "given_name": "ShreeDev Bhatta", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940 \u0926\u0947\u0935", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940 \u0926\u0947\u0935", "children": [{"id": "I20", "name": "ShreeNanda Bhatta", "given_name": "ShreeNanda Bhatta", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940\u0928\u0928\u094d\u0926", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940\u0928\u0928\u094d\u0926", "children": [{"id": "I21", "name": "ShreeRam Bhatta", "given_name": "ShreeRam Bhatta", "surname": "", "nepali_name": "\u0936\u094d\u0930\u0940\u0930\u093e\u092e", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u094d\u0930\u0940\u0930\u093e\u092e", "children": [{"id": "I22", "name": "HariDutta Bhatta", "given_name": "HariDutta Bhatta", "surname": "", "nepali_name": "\u0939\u0930\u093f\u0926\u0924\u094d\u0924", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0939\u0930\u093f\u0926\u0924\u094d\u0924", "children": [{"id": "I23", "name": "KrishnaRam Bhatta", "given_name": "KrishnaRam Bhatta", "surname": "", "nepali_name": "\u0915\u0943\u0937\u094d\u0923\u0930\u093e\u092e", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u0943\u0937\u094d\u0923\u0930\u093e\u092e", "children": [{"id": "I24", "name": "Chawa Poudel", "given_name": "Chawa Poudel", "surname": "", "nepali_name": "\u091a\u093e\u0935\u093e (\u091a\u094d\u092f\u0935\u0928\u0930\u093e\u091c) \u092a\u094c\u0921\u0947\u0932", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091a\u093e\u0935\u093e (\u091a\u094d\u092f\u0935\u0928\u0930\u093e\u091c) \u092a\u094c\u0921\u0947\u0932", "children": [{"id": "I26", "name": "NaraSimha Poudel", "given_name": "NaraSimha Poudel", "surname": "", "nepali_name": "\u0928\u0930\u0938\u093f\u0902\u0939 \u0905\u0930\u094d\u091c\u094d\u092f\u093e\u0932 (\u091c\u0947\u0920\u0940\u092c\u093e\u091f)", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0928\u0930\u0938\u093f\u0902\u0939 \u0905\u0930\u094d\u091c\u094d\u092f\u093e\u0932 (\u091c\u0947\u0920\u0940\u092c\u093e\u091f)", "children": []}, {"id": "I27", "name": "MotiRaj Poudel", "given_name": "MotiRaj Poudel", "surname": "", "nepali_name": "\u092e\u094b\u0924\u0940\u0930\u093e\u091c (\u0915\u093e\u0928\u094d\u091b\u0940\u092c\u093e\u091f)", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092e\u094b\u0924\u0940\u0930\u093e\u091c (\u0915\u093e\u0928\u094d\u091b\u0940\u092c\u093e\u091f)", "children": [{"id": "I28", "name": "Jogu (JogRaj) Poudel", "given_name": "Jogu (JogRaj) Poudel", "surname": "", "nepali_name": "\u091c\u094b\u0917\u0941 (\u091c\u094b\u0917\u0930\u093e\u091c)", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091c\u094b\u0917\u0941 (\u091c\u094b\u0917\u0930\u093e\u091c)", "children": [{"id": "I33", "name": "JayaDas Poudel", "given_name": "JayaDas Poudel", "surname": "", "nepali_name": "\u091c\u0938\u0926\u093e\u0938 \u092a\u094c\u0921\u0947\u0932", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091c\u0938\u0926\u093e\u0938 \u092a\u094c\u0921\u0947\u0932", "children": [{"id": "I34", "name": "PremDas Poudel", "given_name": "PremDas Poudel", "surname": "", "nepali_name": "\u092a\u094d\u0930\u0947\u092e\u0926\u093e\u0938 \u092a\u094c\u0921\u0947\u0932", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u092a\u094d\u0930\u0947\u092e\u0926\u093e\u0938 \u092a\u094c\u0921\u0947\u0932", "children": []}, {"id": "I35", "name": "Kalu Poudel", "given_name": "Kalu Poudel", "surname": "", "nepali_name": "\u0915\u093e\u0932\u0941 \u092a\u094c\u0921\u0947\u0932", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u093e\u0932\u0941 \u092a\u094c\u0921\u0947\u0932", "children": [{"id": "I37", "name": "Narayan Poudel", "given_name": "Narayan Poudel", "surname": "", "nepali_name": "\u0928\u093e\u0930\u093e\u092f\u0923", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0928\u093e\u0930\u093e\u092f\u0923", "children": [{"id": "I40", "name": "DharmaDas Poudel", "given_name": "DharmaDas Poudel", "surname": "", "nepali_name": "\u0927\u0930\u094d\u092e\u0926\u093e\u0938 (\u0932\u093e\u0939\u093e\u091a\u094b\u0915 \u0906\u0909\u0928\u0947)", "birth": "", "birth_place": "Lahachowk", "death": "", "sex": "M", "notes": "Bio notes: \u0927\u0930\u094d\u092e\u0926\u093e\u0938 (\u0932\u093e\u0939\u093e\u091a\u094b\u0915 \u0906\u0909\u0928\u0947)", "children": [{"id": "I43", "name": "Gopal Poudel", "given_name": "Gopal Poudel", "surname": "", "nepali_name": "\u0917\u094b\u092a\u093e\u0932 \u092a\u094c\u0921\u0947\u0932", "birth": "", "birth_place": "Kathmandu Valley", "death": "", "sex": "M", "notes": "Bio notes: \u0917\u094b\u092a\u093e\u0932 \u092a\u094c\u0921\u0947\u0932", "children": []}, {"id": "I44", "name": "Rithu Poudel", "given_name": "Rithu Poudel", "surname": "", "nepali_name": "\u0930\u0940\u0920\u0941", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0930\u0940\u0920\u0941", "children": []}, {"id": "I45", "name": "Janardan Poudel", "given_name": "Janardan Poudel", "surname": "", "nepali_name": "\u091c\u0928\u093e\u0930\u094d\u0926\u0928", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091c\u0928\u093e\u0930\u094d\u0926\u0928", "children": []}]}, {"id": "I41", "name": "Dasrath Poudel", "given_name": "Dasrath Poudel", "surname": "", "nepali_name": "\u0926\u0936\u0930\u0925", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0926\u0936\u0930\u0925", "children": []}, {"id": "I42", "name": "Damu Poudel", "given_name": "Damu Poudel", "surname": "", "nepali_name": "\u0926\u093e\u092e\u0941", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0926\u093e\u092e\u0941", "children": []}]}, {"id": "I38", "name": "Ratan Poudel", "given_name": "Ratan Poudel", "surname": "", "nepali_name": "\u0930\u0924\u0928", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0930\u0924\u0928", "children": []}, {"id": "I39", "name": "Dhurupati Poudel", "given_name": "Dhurupati Poudel", "surname": "", "nepali_name": "\u0927\u0941\u0930\u0941\u092a\u0924\u093f", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0927\u0941\u0930\u0941\u092a\u0924\u093f", "children": []}]}, {"id": "I36", "name": "Chanda (Kanpure) Poudel", "given_name": "Chanda (Kanpure) Poudel", "surname": "", "nepali_name": "\u091a\u0928\u094d\u0926\u093e (\u0915\u093e\u0928\u092a\u0941\u0930\u0947)", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091a\u0928\u094d\u0926\u093e (\u0915\u093e\u0928\u092a\u0941\u0930\u0947)", "children": []}]}]}, {"id": "I29", "name": "Siusu Poudel", "given_name": "Siusu Poudel", "surname": "", "nepali_name": "\u0938\u093f\u0909\u0938\u0941", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0938\u093f\u0909\u0938\u0941", "children": []}, {"id": "I30", "name": "Deusu Poudel", "given_name": "Deusu Poudel", "surname": "", "nepali_name": "\u0926\u0947\u0909\u0938\u0941", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0926\u0947\u0909\u0938\u0941", "children": []}, {"id": "I31", "name": "Jaisu Poudel", "given_name": "Jaisu Poudel", "surname": "", "nepali_name": "\u091c\u0948\u0938\u0941", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u091c\u0948\u0938\u0941", "children": []}, {"id": "I32", "name": "Kripakar Poudel", "given_name": "Kripakar Poudel", "surname": "", "nepali_name": "\u0915\u0943\u092a\u093e\u0915\u0930", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u0943\u092a\u093e\u0915\u0930", "children": []}]}]}, {"id": "I25", "name": "Sawa Bhatta", "given_name": "Sawa Bhatta", "surname": "", "nepali_name": "\u0938\u093e\u0935\u093e", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0938\u093e\u0935\u093e", "children": [{"id": "I46", "name": "KanthaRaj Bhatta", "given_name": "KanthaRaj Bhatta", "surname": "", "nepali_name": "\u0915\u0928\u094d\u0925\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0915\u0928\u094d\u0925\u0930\u093e\u091c", "children": []}, {"id": "I47", "name": "NandaRaj Bhatta", "given_name": "NandaRaj Bhatta", "surname": "", "nepali_name": "\u0928\u0928\u094d\u0926\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0928\u0928\u094d\u0926\u0930\u093e\u091c", "children": []}, {"id": "I48", "name": "ShivaRaj Bhatta", "given_name": "ShivaRaj Bhatta", "surname": "", "nepali_name": "\u0936\u093f\u0935\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0936\u093f\u0935\u0930\u093e\u091c", "children": []}, {"id": "I49", "name": "BatsaRaj Bhatta", "given_name": "BatsaRaj Bhatta", "surname": "", "nepali_name": "\u0935\u0924\u094d\u0938\u0930\u093e\u091c", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0935\u0924\u094d\u0938\u0930\u093e\u091c", "children": []}, {"id": "I50", "name": "Surupal Bhatta", "given_name": "Surupal Bhatta", "surname": "", "nepali_name": "\u0938\u0941\u0930\u0941\u092a\u093e\u0932", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: \u0938\u0941\u0930\u0941\u092a\u093e\u0932", "children": []}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}];
+        const directLineIds = ["I1", "I51", "I2", "I3", "I4", "I5", "I6", "I7", "I8", "I9", "I10", "I11", "I12", "I13", "I14", "I15", "I16", "I17", "I18", "I19", "I20", "I21", "I22", "I23", "I24", "I27", "I28", "I33", "I35", "I37", "I40", "I43"];
+        const lineNumbers = {"I1": 1, "I51": 2, "I2": 3, "I3": 4, "I4": 5, "I5": 6, "I6": 7, "I7": 8, "I8": 9, "I9": 10, "I10": 11, "I11": 12, "I12": 13, "I13": 14, "I14": 15, "I15": 16, "I16": 17, "I17": 18, "I18": 19, "I19": 20, "I20": 21, "I21": 22, "I22": 23, "I23": 24, "I24": 25, "I27": 26, "I28": 27, "I33": 28, "I35": 29, "I37": 30, "I40": 31, "I43": 32};
+        
+        const margin = { top: 80, right: 100, bottom: 80, left: 100 };
+        let svgWidth = Math.max(1600, window.innerWidth);
+        let svgHeight = Math.max(1200, window.innerHeight);
+        
+        const svg = d3.select('#tree')
+            .attr('width', svgWidth)
+            .attr('height', svgHeight);
+        
+        const container = d3.select('#container');
+        
+        let g = svg.append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`);
+        
+
+        
+        // Helper function to wrap text - more aggressive wrapping
+        function wrapText(text, maxChars = 12) {
+            if (text.length <= maxChars) return [text];
+            const words = text.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (let word of words) {
+                if ((currentLine + word).length <= maxChars) {
+                    currentLine += (currentLine ? ' ' : '') + word;
+                } else {
+                    if (currentLine) lines.push(currentLine);
+                    currentLine = word;
+                }
+            }
+            if (currentLine) lines.push(currentLine);
+            return lines;
+        }
+        
+        const treeLayout = d3.tree()
+            .separation((a, b) => (a.parent === b.parent ? 0.8 : 1.2));
+        treesData.forEach((treeData, treeIndex) => {
+            const hierarchy = d3.hierarchy(treeData);
+            
+            // Calculate dimensions - HIGHLY COMPACT
+            const nodeCount = hierarchy.descendants().length;
+            const width = Math.max(400, nodeCount * 75);  // Reduced to 75 pixels per node for tight packing
+            const height = 400 + (hierarchy.height * 120);
+            
+            treeLayout.size([width, height]);
+            
+            const root = treeLayout(hierarchy);
+            
+            // Offset each tree vertically
+            const yOffset = treeIndex * (height + 200);
+            
+            // Draw links
+            g.selectAll(`.link-tree-${treeIndex}`)
+                .data(root.links())
+                .enter()
+                .append('path')
+                .attr('class', `link link-tree-${treeIndex}`)
+                .attr('d', d => {
+                    const x0 = d.source.x;
+                    const y0 = d.source.y + yOffset;
+                    const x1 = d.target.x;
+                    const y1 = d.target.y + yOffset;
+                    
+                    // Orthogonal path: vertical down, then horizontal
+                    const midY = (y0 + y1) / 2;
+                    return `M${x0},${y0}L${x0},${midY}L${x1},${midY}L${x1},${y1}`;
+                });
+            
+            // Draw nodes
+            const nodeGroups = g.selectAll(`.node-tree-${treeIndex}`)
+                .data(root.descendants())
+                .enter()
+                .append('g')
+                .attr('class', d => {
+                    let cls = 'node-group node ';
+                    if (d.data.sex === 'M') cls += 'male';
+                    else if (d.data.sex === 'F') cls += 'female';
+                    else cls += 'unknown';
+                    
+                    if (directLineIds.includes(d.data.id)) {
+                        cls += ' on-direct-line';
+                    }
+                    return cls;
+                })
+                .attr('data-personId', d => d.data.id)
+                .attr('transform', d => `translate(${d.x},${d.y + yOffset})`)
+                .on('mouseover', function(e, d) {
+                    d3.select(this).select('.node-rect')
+                        .transition()
+                        .duration(200);
+                    
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.classList.add('visible');
+                    
+                    let tooltipHTML = `<div class="tooltip-title">${d.data.name}</div>`;
+                    
+                    if (d.data.birth) {
+                        tooltipHTML += `<div class="tooltip-line"><strong>DOB:</strong> ${d.data.birth}</div>`;
+                    }
+                    
+                    if (d.data.birth_place) {
+                        tooltipHTML += `<div class="tooltip-line"><strong>Place:</strong> ${d.data.birth_place}</div>`;
+                    }
+                    
+                    if (d.data.notes) {
+                        // Clean up the notes by removing "Bio notes: " prefix if present
+                        let cleanNotes = d.data.notes;
+                        if (cleanNotes.startsWith('Bio notes:')) {
+                            cleanNotes = cleanNotes.replace('Bio notes:', '').trim();
+                        }
+                        // Only show notes if there's actual content after cleaning
+                        if (cleanNotes) {
+                            tooltipHTML += `<div class="tooltip-line">${cleanNotes}</div>`;
+                        }
+                    }
+                    
+                    if (!d.data.birth && !d.data.birth_place && !d.data.notes) {
+                        tooltipHTML += `<div class="tooltip-line"><em>No additional information</em></div>`;
+                    }
+                    
+                    tooltip.innerHTML = tooltipHTML;
+                    tooltip.style.left = (e.pageX + 10) + 'px';
+                    tooltip.style.top = (e.pageY + 10) + 'px';
+                })
+                .on('mousemove', (e) => {
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.style.left = (e.pageX + 10) + 'px';
+                    tooltip.style.top = (e.pageY + 10) + 'px';
+                })
+                .on('mouseout', function() {
+                    document.getElementById('tooltip').classList.remove('visible');
+                });
+            
+            // Add rectangles - larger to accommodate more wrapped text
+            nodeGroups.append('rect')
+                .attr('class', 'node-rect')
+                .attr('width', 211)
+                .attr('height', 100)
+                .attr('x', -106)
+                .attr('y', -50);
+            
+            // Add circled number for direct line individuals
+            nodeGroups.each(function(d) {
+                if (lineNumbers[d.data.id] !== undefined) {
+                    const circleNum = lineNumbers[d.data.id];
+                    const circleX = -150;  // Position further left for breathing space
+                    const circleY = 0;     // Vertically centered
+                    const circleRadius = 28;  // 20% bigger (was 23)
+                    
+                    d3.select(this).append('circle')
+                        .attr('class', 'node-circle')
+                        .attr('cx', circleX)
+                        .attr('cy', circleY)
+                        .attr('r', circleRadius);
+                    
+                    d3.select(this).append('text')
+                        .attr('class', 'node-circle-text')
+                        .attr('x', circleX)
+                        .attr('y', circleY)
+                        .text(circleNum);
+                }
+            });
+            
+            // Add text group container for proper vertical centering
+            const textGroups = nodeGroups.append('g')
+                .attr('class', 'text-container');
+            
+            // Add name text - supports both English (given + surname) and Nepali names
+            textGroups.append('text')
+                .attr('class', d => {
+                    // Add nepali-text class if Nepali name is available (default language)
+                    let cls = 'node-text node-name';
+                    if (d.data.nepali_name) {
+                        cls += ' nepali-text';
+                    }
+                    return cls;
+                })
+                .attr('x', 0)
+                .attr('y', 0)
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'central')
+                .each(function(d) {
+                    // Display Nepali name by default if available, otherwise English
+                    const displayName = d.data.nepali_name 
+                        ? d.data.nepali_name 
+                        : (d.data.given_name || '(unknown)');
+                    
+                    const lines = wrapText(displayName, 16);
+                    d3.select(this)
+                        .selectAll('tspan')
+                        .remove();
+                    const lineHeight = 1.1;
+                    const totalHeight = (lines.length - 1) * lineHeight * 13 / 2;
+                    lines.forEach((line, i) => {
+                        d3.select(this).append('tspan')
+                            .attr('x', 0)
+                            .attr('dy', i === 0 ? -totalHeight : lineHeight + 'em')
+                            .text(line);
+                    });
+                });
+            
+            // Add surname text (only for English, hidden by default)
+            textGroups.append('text')
+                .attr('class', 'node-text node-surname')
+                .attr('x', 0)
+                .attr('y', 12)
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'central')
+                .each(function(d) {
+                    const surname = d.data.surname || '';
+                    if (!surname) {
+                        d3.select(this).text('');
+                        return;
+                    }
+                    const lines = wrapText(surname, 16);
+                    d3.select(this)
+                        .selectAll('tspan')
+                        .remove();
+                    const lineHeight = 1.1;
+                    const totalHeight = (lines.length - 1) * lineHeight * 13 / 2;
+                    lines.forEach((line, i) => {
+                        d3.select(this).append('tspan')
+                            .attr('x', 0)
+                            .attr('dy', i === 0 ? -totalHeight : lineHeight + 'em')
+                            .text(line);
+                    });
+                });
+            
+            // Add year text - at bottom, centered
+            textGroups.append('text')
+                .attr('class', 'node-date')
+                .attr('x', 0)
+                .attr('y', 32)
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'central')
+                .text(d => {
+                    let dateStr = '';
+                    if (d.data.birth) {
+                        const year = d.data.birth.split(' ').pop();
+                        dateStr += year;
+                    }
+                    if (d.data.death) {
+                        const year = d.data.death.split(' ').pop();
+                        dateStr += ' - ' + year;
+                    }
+                    return dateStr;
+                });
+        });
+        
+        // Update SVG height based on content
+        const bbox = g.node().getBBox();
+        svgHeight = bbox.height + margin.top + margin.bottom + 100;
+        svg.attr('height', svgHeight);
+        
+        // Zoom behavior
+        const zoom = d3.zoom()
+            .on('zoom', (e) => {
+                g.attr('transform', e.transform);
+            });
+        
+        svg.call(zoom);
+        
+        function fitView() {
+            const bbox = g.node().getBBox();
+            const fullWidth = window.innerWidth;
+            const fullHeight = window.innerHeight;
+            
+            const scale = 0.9 / Math.max(
+                bbox.width / fullWidth,
+                bbox.height / fullHeight
+            );
+            
+            const translate = [
+                (fullWidth - bbox.width * scale) / 2 - bbox.x * scale,
+                (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
+            ];
+            
+            svg.transition().duration(750).call(
+                zoom.transform,
+                d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale)
+            );
+        }
+        
+        // Initial fit
+        setTimeout(fitView, 200);
+    </script>
+</body>
+</html>

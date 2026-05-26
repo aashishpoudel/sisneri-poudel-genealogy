@@ -53,6 +53,7 @@ class GEDCOMParser:
                     self.individuals[self.current_id] = {
                         'id': self.current_id,
                         'name': '',
+                        'nepali_name': '',
                         'birth': '',
                         'birth_place': '',
                         'death': '',
@@ -99,9 +100,14 @@ class GEDCOMParser:
                     if self.individuals[self.current_id]['death'] == '':
                         self.individuals[self.current_id]['death'] = value.strip()
                 
-                # Handle notes/comments
+                # Handle notes/comments and extract Nepali name
                 elif tag == 'NOTE' and level == 1 and self.current_id:
-                    self.individuals[self.current_id]['notes'] = value.strip()
+                    note_text = value.strip()
+                    self.individuals[self.current_id]['notes'] = note_text
+                    # Extract Nepali name from "Bio notes: [Nepali name]" format
+                    if note_text.startswith('Bio notes:'):
+                        nepali_part = note_text.replace('Bio notes:', '').strip()
+                        self.individuals[self.current_id]['nepali_name'] = nepali_part
                 elif tag == 'CONT' and level == 2 and self.current_id:
                     # Continuation of notes
                     if self.individuals[self.current_id]['notes']:
@@ -313,6 +319,7 @@ class FamilyTreeHTMLGenerator:
                 'name': name,
                 'given_name': given_name,
                 'surname': surname,
+                'nepali_name': person['nepali_name'],
                 'birth': person['birth'],
                 'birth_place': person['birth_place'],
                 'death': person['death'],
@@ -342,7 +349,7 @@ class FamilyTreeHTMLGenerator:
         direct_line, line_numbers = self._mark_direct_line(trees)
         direct_line_set = set(direct_line)
         trees_json = json.dumps(trees)
-        direct_line_json = json.dumps(list(direct_line_set))
+        direct_line_json = json.dumps(direct_line)
         line_numbers_json = json.dumps(line_numbers)
         
         html = f"""<!DOCTYPE html>
@@ -414,15 +421,88 @@ class FamilyTreeHTMLGenerator:
         }}
         
         .header-title {{
-            font-size: 20px;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--text);
             margin: 6px 0 0;
             letter-spacing: .2px;
+            line-height: 1.2;
+            text-align: center;
+        }}
+        
+        .title-nepali {{
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0;
+        }}
+
+        .gen-dot-inline {{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border: 2px solid currentColor;
+            border-radius: 9999px;
+            font: 700 16px/1.1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: #1abc9c;
+            background: currentColor;
+            vertical-align: middle;
+            margin: 0 .18em;
+            user-select: none;
+        }}
+
+        .gen-dot-inline span {{
+            color: #fff;
+        }}
+
+        .title-english-inline {{
+            white-space: nowrap;
         }}
         
         #container {{
-            margin-top: 80px;
+            margin-top: 169px;
+        }}
+        
+        .language-tabs {{
+            position: fixed;
+            top: 90px;
+            left: 0;
+            right: 0;
+            z-index: 998;
+            display: flex;
+            background: #2c3e50;
+            border-bottom: 2px solid #34495e;
+        }}
+        
+        .lang-tab {{
+            flex: 1;
+            padding: 12px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            background: #34495e;
+            border: none;
+            font-size: 38px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 65px;
+            line-height: 1;
+        }}
+        
+        .lang-tab:hover {{
+            background: #4a606f;
+        }}
+        
+        .lang-tab.active {{
+            background: #1abc9c;
+            font-weight: bold;
+        }}
+        
+        #container {{
+            margin-top: 169px;
         }}
         * {{
             margin: 0;
@@ -501,12 +581,16 @@ class FamilyTreeHTMLGenerator:
         }}
         
         .node-text {{
-            font-size: 16px;
+            font-size: 21px;
             font-weight: bold;
             text-anchor: middle;
             pointer-events: none;
             fill: #3d3d3d;
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        }}
+        
+        .node-name.nepali-text {{
+            font-size: 36px;
         }}
         
         .node-date {{
@@ -565,8 +649,9 @@ class FamilyTreeHTMLGenerator:
         
         .controls {{
             position: fixed;
-            top: 100px;
+            top: 230px;
             right: 20px;
+            width: 200px;
             background: rgba(255, 248, 220, 0.95);
             padding: 15px 20px;
             border-radius: 8px;
@@ -582,8 +667,8 @@ class FamilyTreeHTMLGenerator:
             padding: 8px 14px;
             border-radius: 4px;
             cursor: pointer;
-            margin: 5px 5px 5px 0;
-            font-size: 12px;
+            margin: 5px 5px 5px 5px;
+            font-size: 25px;
             font-weight: bold;
             transition: all 0.3s ease;
         }}
@@ -596,8 +681,9 @@ class FamilyTreeHTMLGenerator:
         
         .legend {{
             position: fixed;
-            top: 190px;
+            top: 325px;
             right: 20px;
+            width: 200px;
             background: rgba(255, 248, 220, 0.95);
             padding: 15px 20px;
             border-radius: 8px;
@@ -632,9 +718,16 @@ class FamilyTreeHTMLGenerator:
             <nav class="crumbs" aria-label="Breadcrumb">
                 <a href="index.html">← Back to Home</a>
             </nav>
-            <h1 class="header-title">Somnath to Gopal</h1>
+            <h1 class="header-title">
+                <div class="title-nepali">सोमनाथ <span class="gen-dot-inline" aria-label="पुस्ता 1"><span>1</span></span> <strong>→</strong> गोपाल <span class="gen-dot-inline" aria-label="पुस्ता 32"><span>32</span></span> <span class="title-english-inline">(Somnath <span class="gen-dot-inline" aria-label="Generation 1"><span>1</span></span> <strong>→</strong> Gopal <span class="gen-dot-inline" aria-label="Generation 32"><span>32</span></span>)</span></div>
+            </h1>
         </div>
     </header>
+    
+    <div class="language-tabs">
+        <button class="lang-tab active" onclick="switchLanguage('nepali')">नेपाली</button>
+        <button class="lang-tab" onclick="switchLanguage('english')">English</button>
+    </div>
     
     <div id="container">
         <svg id="tree"></svg>
@@ -654,6 +747,74 @@ class FamilyTreeHTMLGenerator:
     <div id="tooltip" class="tooltip"></div>
     
     <script>
+        let currentLanguage = 'nepali';  // Default language is Nepali
+        
+        function switchLanguage(lang) {{
+            currentLanguage = lang;
+            
+            // Update tab active state
+            document.querySelectorAll('.lang-tab').forEach(tab => {{
+                tab.classList.remove('active');
+            }});
+            event.target.classList.add('active');
+            
+            // Update all node text based on language
+            document.querySelectorAll('.node-group').forEach(nodeGroup => {{
+                const personId = nodeGroup.getAttribute('data-personId');
+                const person = findPersonInTrees(personId);
+                const nameElement = nodeGroup.querySelector('.node-name');
+                
+                if (person && nameElement) {{
+                    if (currentLanguage === 'nepali' && person.nepali_name) {{
+                        // For Nepali, display the nepali_name with larger font
+                        const nepaliLines = wrapText(person.nepali_name, 16);
+                        updateTspans(nameElement, nepaliLines);
+                        nameElement.classList.add('nepali-text');
+                    }} else {{
+                        // For English, display given name with normal font
+                        const englishLines = wrapText(person.given_name || person.name, 16);
+                        updateTspans(nameElement, englishLines);
+                        nameElement.classList.remove('nepali-text');
+                    }}
+                }}
+            }});
+        }}
+        
+        function updateTspans(textElement, lines) {{
+            if (!textElement) return;
+            
+            // Remove all existing tspans
+            textElement.querySelectorAll('tspan').forEach(tspan => tspan.remove());
+            
+            // Add new tspans with updated text
+            const lineHeight = 1.1;
+            const totalHeight = (lines.length - 1) * lineHeight * 13 / 2;
+            
+            lines.forEach((line, i) => {{
+                const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+                tspan.setAttribute('x', '0');
+                tspan.setAttribute('dy', i === 0 ? -totalHeight : lineHeight + 'em');
+                tspan.textContent = line;
+                textElement.appendChild(tspan);
+            }});
+        }}
+        
+        function findPersonInTrees(personId) {{
+            function searchNode(node) {{
+                if (node.id === personId) return node;
+                for (let child of node.children) {{
+                    const result = searchNode(child);
+                    if (result) return result;
+                }}
+                return null;
+            }}
+            for (let tree of treesData) {{
+                const result = searchNode(tree);
+                if (result) return result;
+            }}
+            return null;
+        }}
+        
         const treesData = {trees_json};
         const directLineIds = {direct_line_json};
         const lineNumbers = {line_numbers_json};
@@ -741,6 +902,7 @@ class FamilyTreeHTMLGenerator:
                     }}
                     return cls;
                 }})
+                .attr('data-personId', d => d.data.id)
                 .attr('transform', d => `translate(${{d.x}},${{d.y + yOffset}})`)
                 .on('mouseover', function(e, d) {{
                     d3.select(this).select('.node-rect')
@@ -761,7 +923,15 @@ class FamilyTreeHTMLGenerator:
                     }}
                     
                     if (d.data.notes) {{
-                        tooltipHTML += `<div class="tooltip-line"><strong>Notes:</strong> ${{d.data.notes}}</div>`;
+                        // Clean up the notes by removing "Bio notes: " prefix if present
+                        let cleanNotes = d.data.notes;
+                        if (cleanNotes.startsWith('Bio notes:')) {{
+                            cleanNotes = cleanNotes.replace('Bio notes:', '').trim();
+                        }}
+                        // Only show notes if there's actual content after cleaning
+                        if (cleanNotes) {{
+                            tooltipHTML += `<div class="tooltip-line">${{cleanNotes}}</div>`;
+                        }}
                     }}
                     
                     if (!d.data.birth && !d.data.birth_place && !d.data.notes) {{
@@ -784,16 +954,16 @@ class FamilyTreeHTMLGenerator:
             // Add rectangles - larger to accommodate more wrapped text
             nodeGroups.append('rect')
                 .attr('class', 'node-rect')
-                .attr('width', 160)
+                .attr('width', 211)
                 .attr('height', 100)
-                .attr('x', -80)
+                .attr('x', -106)
                 .attr('y', -50);
             
             // Add circled number for direct line individuals
             nodeGroups.each(function(d) {{
                 if (lineNumbers[d.data.id] !== undefined) {{
                     const circleNum = lineNumbers[d.data.id];
-                    const circleX = -125;  // Position further left to add space
+                    const circleX = -150;  // Position further left for breathing space
                     const circleY = 0;     // Vertically centered
                     const circleRadius = 28;  // 20% bigger (was 23)
                     
@@ -815,16 +985,27 @@ class FamilyTreeHTMLGenerator:
             const textGroups = nodeGroups.append('g')
                 .attr('class', 'text-container');
             
-            // Add name text (given name) with wrapping - centered
+            // Add name text - supports both English (given + surname) and Nepali names
             textGroups.append('text')
-                .attr('class', 'node-text')
+                .attr('class', d => {{
+                    // Add nepali-text class if Nepali name is available (default language)
+                    let cls = 'node-text node-name';
+                    if (d.data.nepali_name) {{
+                        cls += ' nepali-text';
+                    }}
+                    return cls;
+                }})
                 .attr('x', 0)
                 .attr('y', 0)
                 .attr('text-anchor', 'middle')
                 .attr('dominant-baseline', 'central')
                 .each(function(d) {{
-                    const name = d.data.given_name || '(unknown)';
-                    const lines = wrapText(name, 16);
+                    // Display Nepali name by default if available, otherwise English
+                    const displayName = d.data.nepali_name 
+                        ? d.data.nepali_name 
+                        : (d.data.given_name || '(unknown)');
+                    
+                    const lines = wrapText(displayName, 16);
                     d3.select(this)
                         .selectAll('tspan')
                         .remove();
@@ -838,9 +1019,9 @@ class FamilyTreeHTMLGenerator:
                     }});
                 }});
             
-            // Add surname text (if present) - centered
+            // Add surname text (only for English, hidden by default)
             textGroups.append('text')
-                .attr('class', 'node-text')
+                .attr('class', 'node-text node-surname')
                 .attr('x', 0)
                 .attr('y', 12)
                 .attr('text-anchor', 'middle')
