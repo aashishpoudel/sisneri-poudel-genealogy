@@ -430,7 +430,7 @@ class FamilyTreeHTMLGenerator:
         }}
         
         .title-nepali {{
-            font-size: 31px;
+            font-size: 25px;
             font-weight: 600;
             margin: 0;
         }}
