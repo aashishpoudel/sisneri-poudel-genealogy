@@ -844,12 +844,29 @@ if __name__ == "__main__":
         print(f"\n✓ Family tree successfully generated!")
         print(f"  Output: {output_file}")
         print(f"  Open in a web browser to view the interactive tree")
+
+        # Generate focused person trees from GEDCOM.
+        from helper.gedcom_person_tree import GEDCOMParser as FocusedGEDCOMParser
+        from helper.gedcom_person_tree import FocusedPersonTreeGenerator
+
+        focused_gedcom_file = "./data/Aashish_family.ged"
+        focused_people = ["Aashish Poudel", "Aayan Poudel", "Adwik Poudel", "Aarvi Poudel"]
+        focused_ancestor_generations = 5
+
+        print(f"\nParsing {focused_gedcom_file}...")
+        focused_parser = FocusedGEDCOMParser(focused_gedcom_file)
+        focused_parser.parse()
+        print(f"Found {len(focused_parser.individuals)} individuals")
+
+        print("Generating focused person family trees...")
+        focused_generator = FocusedPersonTreeGenerator(focused_parser)
+        for person_name in focused_people:
+            focused_generator.generate(person_name, focused_ancestor_generations)
         
     except FileNotFoundError:
-        print(f"Error: File '{gedcom_file}' not found")
+        missing_file = locals().get("focused_gedcom_file") or locals().get("gedcom_file")
+        print(f"Error: File '{missing_file}' not found")
         sys.exit(1)
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(1)
-
-
