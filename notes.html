@@ -182,6 +182,13 @@ wrangler d1 execute sisneri_poudel_db --remote --command "DELETE FROM edit_reque
 wrangler d1 execute sisneri_poudel_db --command "SELECT * FROM edit_requests ORDER BY id DESC LIMIT 25"
 wrangler d1 execute sisneri_poudel_db --remote --command "DELETE FROM edit_requests WHERE id=9;"</code></pre>
           </section>
+
+          <section class="note-section">
+            <h3>How to run changes with local server</h3>
+            <pre><code>python3 genealogy.py
+python3 -m http.server 8000
+on Browser -&gt; http://localhost:8000/index.html</code></pre>
+          </section>
         </div>
 
         <div aria-labelledby="tab-story" class="tabpanel" id="panel-story" role="tabpanel">

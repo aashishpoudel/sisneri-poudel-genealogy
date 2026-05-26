@@ -349,7 +349,7 @@ class FamilyTreeHTMLGenerator:
         direct_line, line_numbers = self._mark_direct_line(trees)
         direct_line_set = set(direct_line)
         trees_json = json.dumps(trees)
-        direct_line_json = json.dumps(list(direct_line_set))
+        direct_line_json = json.dumps(direct_line)
         line_numbers_json = json.dumps(line_numbers)
         
         html = f"""<!DOCTYPE html>
@@ -430,24 +430,42 @@ class FamilyTreeHTMLGenerator:
         }}
         
         .title-nepali {{
-            font-size: 35px;
-            font-weight: 600;
-            margin: 0 0 6px 0;
-        }}
-        
-        .title-english {{
             font-size: 31px;
             font-weight: 600;
             margin: 0;
         }}
+
+        .gen-dot-inline {{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border: 2px solid currentColor;
+            border-radius: 9999px;
+            font: 700 16px/1.1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: #1abc9c;
+            background: currentColor;
+            vertical-align: middle;
+            margin: 0 .18em;
+            user-select: none;
+        }}
+
+        .gen-dot-inline span {{
+            color: #fff;
+        }}
+
+        .title-english-inline {{
+            white-space: nowrap;
+        }}
         
         #container {{
-            margin-top: 220px;
+            margin-top: 169px;
         }}
         
         .language-tabs {{
             position: fixed;
-            top: 140px;
+            top: 94px;
             left: 0;
             right: 0;
             z-index: 998;
@@ -464,13 +482,13 @@ class FamilyTreeHTMLGenerator:
             cursor: pointer;
             background: #34495e;
             border: none;
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 500;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 75px;
+            min-height: 65px;
             line-height: 1;
         }}
         
@@ -484,7 +502,7 @@ class FamilyTreeHTMLGenerator:
         }}
         
         #container {{
-            margin-top: 220px;
+            margin-top: 169px;
         }}
         * {{
             margin: 0;
@@ -701,8 +719,7 @@ class FamilyTreeHTMLGenerator:
                 <a href="index.html">← Back to Home</a>
             </nav>
             <h1 class="header-title">
-                <div class="title-nepali">सोमनाथ (पुस्ता 1) गोपाल (पुस्ता 32) सम्म</div>
-                <div class="title-english">From Somnath to Gopal</div>
+                <div class="title-nepali">सोमनाथ <span class="gen-dot-inline" aria-label="पुस्ता 1"><span>1</span></span> <strong>→</strong> गोपाल <span class="gen-dot-inline" aria-label="पुस्ता 32"><span>32</span></span> <span class="title-english-inline">(Somnath <span class="gen-dot-inline" aria-label="Generation 1"><span>1</span></span> <strong>→</strong> Gopal <span class="gen-dot-inline" aria-label="Generation 32"><span>32</span></span>)</span></div>
             </h1>
         </div>
     </header>
