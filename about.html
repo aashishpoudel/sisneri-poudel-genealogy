@@ -18,6 +18,7 @@
       --radius: 16px;
       --radius-sm: 12px;
       --pill: #eef4f8;
+      --tab-bg: #eff5fb;
     }
     @media (prefers-color-scheme: dark){
       :root{
@@ -30,6 +31,7 @@
         --line: #1f2a37;
         --shadow: 0 10px 30px rgba(0,0,0,.35);
         --pill: #122239;
+        --tab-bg: #11233d;
       }
     }
     *{ box-sizing: border-box; }
@@ -79,12 +81,23 @@
     }
     .card{
       grid-column: span 12;
-      background: var(--card);
+      background: #fef9e7;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: clamp(16px, 3.2vw, 24px);
     }
+
+    /* Tabs */
+    .tabs{ display: flex; gap: 10px; background: var(--tab-bg); border: 1px solid var(--line); padding: 6px; border-radius: 12px; margin-bottom: 14px; }
+    .tab-btn{
+      appearance: none; border: 1px solid transparent; background: transparent; color: var(--text);
+      padding: 10px 14px; border-radius: 10px; cursor: pointer; font-weight: 600;
+    }
+    .tab-btn[aria-selected="true"]{ background: var(--card); border-color: var(--line); box-shadow: var(--shadow); }
+    .tabpanel{ display: none; }
+    .tabpanel.is-active{ display: block; animation: fade .18s ease-in; }
+    @keyframes fade{ from{opacity:0; transform: translateY(2px)} to{opacity:1; transform: translateY(0)} }
 
     .lang-block{ margin-bottom: 28px; }
     .lang-head{
@@ -153,15 +166,17 @@
         <a href="index.html">← Back to Home</a>
       </nav>
       <h1 class="title">FAQ</h1>
-      <p class="subtitle">Nepali first, followed by English — same information in both languages.</p>
-      <span class="pill">sisneripoudel.com</span>
     </header>
 
     <section class="grid">
       <article class="card">
+        <div aria-label="Language tabs" class="tabs" role="tablist">
+          <button aria-controls="panel-ne" aria-selected="true" class="tab-btn" id="tab-ne" role="tab" tabindex="0">नेपाली</button>
+          <button aria-controls="panel-en" aria-selected="false" class="tab-btn" id="tab-en" role="tab" tabindex="-1">English</button>
+        </div>
 
         <!-- ===================== Nepali ===================== -->
-        <div class="lang-block" lang="ne">
+        <div aria-labelledby="tab-ne" class="lang-block tabpanel is-active" id="panel-ne" lang="ne" role="tabpanel">
           <div class="lang-head">
             <h2>धेरै सोधिएका प्रश्नहरु</h2>
             <span class="lang-tag">नेपाली</span>
@@ -249,10 +264,8 @@
           </p>
         </div>
 
-        <hr class="divider" />
-
         <!-- ===================== English ===================== -->
-        <div class="lang-block" lang="en">
+        <div aria-labelledby="tab-en" class="lang-block tabpanel" id="panel-en" lang="en" role="tabpanel">
           <div class="lang-head">
             <h2>Frequently Asked Questions</h2>
             <span class="lang-tag">English</span>
@@ -356,5 +369,34 @@
       </article>
     </section>
   </div>
+  <script>
+    const tabs = document.querySelectorAll('[role="tab"]');
+    const panels = document.querySelectorAll('.tabpanel');
+    function activateTab(nextTab){
+      tabs.forEach(tab => {
+        const selected = tab === nextTab;
+        tab.setAttribute('aria-selected', selected);
+        tab.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach(panel => panel.classList.remove('is-active'));
+      const panel = document.getElementById(nextTab.getAttribute('aria-controls'));
+      if(panel) panel.classList.add('is-active');
+      document.documentElement.setAttribute('lang', nextTab.id === 'tab-ne' ? 'ne' : 'en');
+    }
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (e) => {
+        const idx = Array.from(tabs).indexOf(tab);
+        if(e.key === 'ArrowRight'){
+          e.preventDefault();
+          activateTab(tabs[(idx + 1) % tabs.length]);
+        }
+        if(e.key === 'ArrowLeft'){
+          e.preventDefault();
+          activateTab(tabs[(idx - 1 + tabs.length) % tabs.length]);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
