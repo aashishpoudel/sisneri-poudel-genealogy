@@ -430,7 +430,7 @@ class FamilyTreeHTMLGenerator:
         }}
         
         .title-nepali {{
-            font-size: 25px;
+            font-size: 22px;
             font-weight: 600;
             margin: 0;
         }}
@@ -465,7 +465,7 @@ class FamilyTreeHTMLGenerator:
         
         .language-tabs {{
             position: fixed;
-            top: 94px;
+            top: 90px;
             left: 0;
             right: 0;
             z-index: 998;
