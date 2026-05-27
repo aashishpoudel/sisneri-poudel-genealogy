@@ -394,37 +394,75 @@
             const minGeneration = d3.min(generations) || 0;
             const svgWidth = Math.max(1200, (generations.length - 1) * verticalColumnSpacingX + margin.left + margin.right + nodeWidth);
             let svgHeight = Math.max(800, (maxColumnCount - 1) * verticalNodeSpacingY + margin.top + margin.bottom + nodeHeight);
-            const centerY = svgHeight / 2;
+            let nextLeafY = margin.top + nodeHeight / 2;
 
-            generations.forEach(generation => {
-                const column = (rows.get(generation) || []).sort(sortByPath);
-                const fallbackHeight = (column.length - 1) * verticalNodeSpacingY;
-                const fallbackStartY = centerY - fallbackHeight / 2;
-
-                column.forEach((node, index) => {
-                    node.x = margin.left + (generation - minGeneration) * verticalColumnSpacingX;
-                    const parents = (parentLinksByTarget.get(node.id) || [])
-                        .map(parentLink => nodeById.get(parentLink.source))
-                        .filter(parent => parent && Number.isFinite(parent.y));
-                    node.desiredY = parents.length
-                        ? d3.mean(parents, parent => parent.y)
-                        : fallbackStartY + index * verticalNodeSpacingY;
-                });
-
-                column.sort((a, b) => d3.ascending(a.desiredY, b.desiredY) || sortByPath(a, b));
-                column.forEach((node, index) => {
-                    const minY = index === 0 ? -Infinity : column[index - 1].y + verticalNodeSpacingY;
-                    node.y = Math.max(node.desiredY, minY);
-                });
-
-                const columnTop = column.length ? column[0].y : centerY;
-                const columnBottom = column.length ? column[column.length - 1].y : centerY;
-                const targetTop = centerY - (columnBottom - columnTop) / 2;
-                const shiftY = Math.min(0, targetTop - columnTop);
-                column.forEach(node => {
-                    node.y += shiftY;
-                });
+            nodes.forEach(node => {
+                node.x = margin.left + (node.generation - minGeneration) * verticalColumnSpacingX;
             });
+
+            function displayedParentsFor(node) {
+                return (parentLinksByTarget.get(node.id) || [])
+                    .map(parentLink => nodeById.get(parentLink.source))
+                    .filter(parent => parent && parent.generation === node.generation - 1)
+                    .sort(sortByPath);
+            }
+
+            function placeAncestorSubtree(node) {
+                if (!node || Number.isFinite(node.y)) return node?.y;
+
+                const parents = displayedParentsFor(node);
+                if (!parents.length) {
+                    node.y = nextLeafY;
+                    nextLeafY += verticalNodeSpacingY;
+                    return node.y;
+                }
+
+                parents.forEach(parent => placeAncestorSubtree(parent));
+                node.y = d3.mean(parents, parent => parent.y);
+                return node.y;
+            }
+
+            const mainNode = nodes.find(node => node.is_main);
+            if (mainNode) {
+                placeAncestorSubtree(mainNode);
+            }
+
+            generations
+                .filter(generation => generation <= 0)
+                .forEach(generation => {
+                    (rows.get(generation) || []).sort(sortByPath).forEach(node => placeAncestorSubtree(node));
+                });
+
+            generations
+                .filter(generation => generation > 0)
+                .forEach(generation => {
+                    const column = (rows.get(generation) || []).sort(sortByPath);
+                    if (!column.length) return;
+
+                    if (generation === 1 && mainNode) {
+                        const columnHeight = (column.length - 1) * verticalNodeSpacingY;
+                        const startY = mainNode.y - columnHeight / 2;
+                        column.forEach((node, index) => {
+                            node.y = startY + index * verticalNodeSpacingY;
+                        });
+                        return;
+                    }
+
+                    column.forEach((node, index) => {
+                        const parents = (parentLinksByTarget.get(node.id) || [])
+                            .map(parentLink => nodeById.get(parentLink.source))
+                            .filter(parent => parent && Number.isFinite(parent.y));
+                        node.desiredY = parents.length
+                            ? d3.mean(parents, parent => parent.y)
+                            : nextLeafY + index * verticalNodeSpacingY;
+                    });
+
+                    column.sort((a, b) => d3.ascending(a.desiredY, b.desiredY) || sortByPath(a, b));
+                    column.forEach((node, index) => {
+                        const minY = index === 0 ? -Infinity : column[index - 1].y + verticalNodeSpacingY;
+                        node.y = Math.max(node.desiredY, minY);
+                    });
+                });
 
             const minY = d3.min(nodes, node => node.y - nodeHeight / 2) || 0;
             if (minY < margin.top) {
