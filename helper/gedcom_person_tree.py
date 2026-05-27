@@ -12,6 +12,7 @@ and spouse-only boxes.
 """
 
 import argparse
+import html
 import json
 import re
 from collections import defaultdict
@@ -21,6 +22,15 @@ from pathlib import Path
 DEFAULT_PERSON = "Aashish Poudel"
 DEFAULT_ANCESTOR_GENERATIONS = 3
 DEFAULT_GEDCOM = "/Users/aashishpoudel/repos/sisneri-poudel-genealogy/data/Aashish_family.ged"
+NEPALI_GIVEN_NAME_FALLBACKS = {
+    "Aarvi": "आरवी",
+    "Aashish": "आशिष",
+    "Aayan": "आयन",
+    "Adwik": "अद्विक",
+}
+NEPALI_SURNAME_FALLBACKS = {
+    "Poudel": "पौडेल",
+}
 
 
 def normalize_name(name: str) -> str:
@@ -32,6 +42,22 @@ def output_filename_for(name: str) -> str:
     cleaned = re.sub(r"[^a-z0-9]+", "_", cleaned)
     cleaned = cleaned.strip("_") or "family_tree"
     return f"{cleaned}.html"
+
+
+def nepali_digits(value) -> str:
+    return str(value).translate(str.maketrans("0123456789", "०१२३४५६७८९"))
+
+
+def fallback_nepali_name(node: dict, default_name: str) -> str:
+    given_name = node.get("given_name", "").strip()
+    surname = node.get("surname", "").strip()
+    nepali_given = NEPALI_GIVEN_NAME_FALLBACKS.get(given_name)
+    nepali_surname = NEPALI_SURNAME_FALLBACKS.get(surname)
+    if nepali_given and nepali_surname:
+        return f"{nepali_given} {nepali_surname}"
+    if nepali_given:
+        return nepali_given
+    return default_name
 
 
 class GEDCOMParser:
@@ -313,14 +339,21 @@ class FocusedPersonTreeGenerator:
     def _create_html(self, main_person, nodes, links, num_ancestor_generations):
         nodes_json = json.dumps(nodes, ensure_ascii=False)
         links_json = json.dumps(links, ensure_ascii=False)
-        safe_title = main_person.replace("<", "&lt;").replace(">", "&gt;")
+        main_node = next((node for node in nodes if node.get("is_main")), {})
+        nepali_name = main_node.get("nepali_name") or fallback_nepali_name(main_node, main_person)
+        nepali_generation_count = nepali_digits(num_ancestor_generations)
+        safe_header_title = html.escape(f"{nepali_name}को वंशावली ({main_person} Family Tree)")
+        safe_subtitle = html.escape(
+            f"प्रत्यक्ष पुर्खा {nepali_generation_count} पुस्ता र वंशजहरू "
+            f"(Direct Ancestors {num_ancestor_generations} generations/Descendents)"
+        )
 
         return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{safe_title} Family Tree</title>
+    <title>{safe_header_title}</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <style>
         :root {{
@@ -394,6 +427,10 @@ class FocusedPersonTreeGenerator:
             position: relative;
             overflow: auto;
             background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
+        }}
+
+        .hidden-tree {{
+            display: none;
         }}
 
         svg {{
@@ -537,13 +574,14 @@ class FocusedPersonTreeGenerator:
             <nav class="crumbs" aria-label="Breadcrumb">
                 <a href="index.html">← Back to Home</a>
             </nav>
-            <h1 class="header-title">{safe_title} Family Tree</h1>
-            <div class="header-subtitle">Direct ancestors up to {num_ancestor_generations} generation(s), plus direct descendants</div>
+            <h1 class="header-title">{safe_header_title}</h1>
+            <div class="header-subtitle">{safe_subtitle}</div>
         </div>
     </header>
 
     <div id="container">
-        <svg id="tree"></svg>
+        <svg aria-hidden="true" class="hidden-tree" id="tree-horizontal"></svg>
+        <svg id="tree-vertical"></svg>
     </div>
 
     <div class="controls">
@@ -553,95 +591,198 @@ class FocusedPersonTreeGenerator:
     <div id="tooltip" class="tooltip"></div>
 
     <script>
-        const nodesData = {nodes_json};
+        const sourceNodesData = {nodes_json};
         const linksData = {links_json};
-        const nodeById = new Map(nodesData.map(node => [node.id, node]));
 
         const nodeWidth = 211;
         const nodeHeight = 100;
         const nodeSpacingX = 280;
         const generationSpacingY = 160;
+        const verticalColumnSpacingX = 340;
+        const verticalNodeSpacingY = 128;
+        const headerHeight = 104;
         const margin = {{ top: 80, right: 120, bottom: 120, left: 120 }};
+        const renderStates = new Map();
 
-        const rows = d3.group(nodesData, d => d.generation);
-        const generations = Array.from(rows.keys()).sort((a, b) => a - b);
-        const maxRowCount = d3.max(Array.from(rows.values()), row => row.length) || 1;
-        let svgWidth = Math.max(1200, (maxRowCount - 1) * nodeSpacingX + margin.left + margin.right + nodeWidth);
-        const svgHeight = Math.max(800, (generations.length - 1) * generationSpacingY + margin.top + margin.bottom + nodeHeight);
-        const minGeneration = d3.min(generations) || 0;
-        const centerX = svgWidth / 2;
-        const mainNode = nodesData.find(node => node.is_main);
-        const parentLinksByTarget = d3.group(linksData, link => link.target);
-        const maxAncestorDepth = Math.abs(Math.min(0, minGeneration));
-
-        generations.forEach(generation => {{
-            (rows.get(generation) || []).forEach(node => {{
-                node.y = margin.top + (generation - minGeneration) * generationSpacingY;
-            }});
-        }});
-
-        if (mainNode) {{
-            mainNode.x = centerX;
+        function cloneNodes() {{
+            return sourceNodesData.map(node => ({{ ...node }}));
         }}
 
-        for (let childGeneration = 0; childGeneration > minGeneration; childGeneration--) {{
-            const children = (rows.get(childGeneration) || []).sort((a, b) =>
-                d3.ascending(a.path, b.path) || d3.ascending(a.name, b.name)
-            );
-            children.forEach(child => {{
-                if (!Number.isFinite(child.x)) return;
-                const parents = (parentLinksByTarget.get(child.id) || [])
-                    .map(link => nodeById.get(link.source))
-                    .filter(parent => parent && parent.generation === childGeneration - 1)
-                    .sort((a, b) => d3.ascending(a.path, b.path) || d3.ascending(a.name, b.name));
-                if (!parents.length) return;
-
-                const parentGeneration = childGeneration - 1;
-                const parentOffset = Math.max(
-                    nodeSpacingX / 2,
-                    nodeSpacingX * Math.pow(2, maxAncestorDepth - Math.abs(parentGeneration) - 1)
-                );
-
-                if (parents.length === 1) {{
-                    parents[0].x = child.x;
-                }} else {{
-                    const pairWidth = (parents.length - 1) * parentOffset * 2;
-                    const startX = child.x - pairWidth / 2;
-                    parents.forEach((parent, index) => {{
-                        parent.x = startX + index * parentOffset * 2;
-                    }});
-                }}
-            }});
+        function orderedRows(nodes) {{
+            const rows = d3.group(nodes, d => d.generation);
+            const generations = Array.from(rows.keys()).sort((a, b) => a - b);
+            return {{ rows, generations }};
         }}
 
-        generations
-            .filter(generation => generation > 0)
-            .forEach(generation => {{
-                const row = (rows.get(generation) || []).sort((a, b) =>
-                    d3.ascending(a.path, b.path) || d3.ascending(a.name, b.name)
-                );
-                const rowWidth = (row.length - 1) * nodeSpacingX;
-                const startX = (mainNode?.x || centerX) - rowWidth / 2;
-                row.forEach((node, index) => {{
-                    node.x = startX + index * nodeSpacingX;
+        function sortByPath(a, b) {{
+            return d3.ascending(a.path, b.path) || d3.ascending(a.name, b.name);
+        }}
+
+        function applyHorizontalLayout(nodes, links) {{
+            const nodeById = new Map(nodes.map(node => [node.id, node]));
+            const {{ rows, generations }} = orderedRows(nodes);
+            const maxRowCount = d3.max(Array.from(rows.values()), row => row.length) || 1;
+            let svgWidth = Math.max(1200, (maxRowCount - 1) * nodeSpacingX + margin.left + margin.right + nodeWidth);
+            const svgHeight = Math.max(800, (generations.length - 1) * generationSpacingY + margin.top + margin.bottom + nodeHeight);
+            const minGeneration = d3.min(generations) || 0;
+            const centerX = svgWidth / 2;
+            const mainNode = nodes.find(node => node.is_main);
+            const parentLinksByTarget = d3.group(links, link => link.target);
+            const maxAncestorDepth = Math.abs(Math.min(0, minGeneration));
+
+            generations.forEach(generation => {{
+                (rows.get(generation) || []).forEach(node => {{
+                    node.y = margin.top + (generation - minGeneration) * generationSpacingY;
                 }});
             }});
 
-        const minX = d3.min(nodesData, node => node.x - nodeWidth / 2) || 0;
-        if (minX < margin.left) {{
-            const shiftRight = margin.left - minX;
-            nodesData.forEach(node => node.x += shiftRight);
-        }}
-        const maxX = d3.max(nodesData, node => node.x + nodeWidth / 2) || svgWidth;
-        if (maxX > svgWidth - margin.right) {{
-            svgWidth = maxX + margin.right;
+            if (mainNode) {{
+                mainNode.x = centerX;
+            }}
+
+            for (let childGeneration = 0; childGeneration > minGeneration; childGeneration--) {{
+                const children = (rows.get(childGeneration) || []).sort(sortByPath);
+                children.forEach(child => {{
+                    if (!Number.isFinite(child.x)) return;
+                    const parents = (parentLinksByTarget.get(child.id) || [])
+                        .map(link => nodeById.get(link.source))
+                        .filter(parent => parent && parent.generation === childGeneration - 1)
+                        .sort(sortByPath);
+                    if (!parents.length) return;
+
+                    const parentGeneration = childGeneration - 1;
+                    const parentOffset = Math.max(
+                        nodeSpacingX / 2,
+                        nodeSpacingX * Math.pow(2, maxAncestorDepth - Math.abs(parentGeneration) - 1)
+                    );
+
+                    if (parents.length === 1) {{
+                        parents[0].x = child.x;
+                    }} else {{
+                        const pairWidth = (parents.length - 1) * parentOffset * 2;
+                        const startX = child.x - pairWidth / 2;
+                        parents.forEach((parent, index) => {{
+                            parent.x = startX + index * parentOffset * 2;
+                        }});
+                    }}
+                }});
+            }}
+
+            generations
+                .filter(generation => generation > 0)
+                .forEach(generation => {{
+                    const row = (rows.get(generation) || []).sort(sortByPath);
+                    const rowWidth = (row.length - 1) * nodeSpacingX;
+                    const startX = (mainNode?.x || centerX) - rowWidth / 2;
+                    row.forEach((node, index) => {{
+                        node.x = startX + index * nodeSpacingX;
+                    }});
+                }});
+
+            const minX = d3.min(nodes, node => node.x - nodeWidth / 2) || 0;
+            if (minX < margin.left) {{
+                const shiftRight = margin.left - minX;
+                nodes.forEach(node => node.x += shiftRight);
+            }}
+            const maxX = d3.max(nodes, node => node.x + nodeWidth / 2) || svgWidth;
+            if (maxX > svgWidth - margin.right) {{
+                svgWidth = maxX + margin.right;
+            }}
+
+            return {{ svgWidth, svgHeight }};
         }}
 
-        const svg = d3.select('#tree')
-            .attr('width', svgWidth)
-            .attr('height', svgHeight);
+        function applyVerticalLayout(nodes, links) {{
+            const nodeById = new Map(nodes.map(node => [node.id, node]));
+            const parentLinksByTarget = d3.group(links, link => link.target);
+            const {{ rows, generations }} = orderedRows(nodes);
+            const maxColumnCount = d3.max(Array.from(rows.values()), row => row.length) || 1;
+            const minGeneration = d3.min(generations) || 0;
+            const svgWidth = Math.max(1200, (generations.length - 1) * verticalColumnSpacingX + margin.left + margin.right + nodeWidth);
+            let svgHeight = Math.max(800, (maxColumnCount - 1) * verticalNodeSpacingY + margin.top + margin.bottom + nodeHeight);
+            let nextLeafY = margin.top + nodeHeight / 2;
 
-        const g = svg.append('g');
+            nodes.forEach(node => {{
+                node.x = margin.left + (node.generation - minGeneration) * verticalColumnSpacingX;
+            }});
+
+            function displayedParentsFor(node) {{
+                return (parentLinksByTarget.get(node.id) || [])
+                    .map(parentLink => nodeById.get(parentLink.source))
+                    .filter(parent => parent && parent.generation === node.generation - 1)
+                    .sort(sortByPath);
+            }}
+
+            function placeAncestorSubtree(node) {{
+                if (!node || Number.isFinite(node.y)) return node?.y;
+
+                const parents = displayedParentsFor(node);
+                if (!parents.length) {{
+                    node.y = nextLeafY;
+                    nextLeafY += verticalNodeSpacingY;
+                    return node.y;
+                }}
+
+                parents.forEach(parent => placeAncestorSubtree(parent));
+                node.y = d3.mean(parents, parent => parent.y);
+                return node.y;
+            }}
+
+            const mainNode = nodes.find(node => node.is_main);
+            if (mainNode) {{
+                placeAncestorSubtree(mainNode);
+            }}
+
+            generations
+                .filter(generation => generation <= 0)
+                .forEach(generation => {{
+                    (rows.get(generation) || []).sort(sortByPath).forEach(node => placeAncestorSubtree(node));
+                }});
+
+            generations
+                .filter(generation => generation > 0)
+                .forEach(generation => {{
+                    const column = (rows.get(generation) || []).sort(sortByPath);
+                    if (!column.length) return;
+
+                    if (generation === 1 && mainNode) {{
+                        const columnHeight = (column.length - 1) * verticalNodeSpacingY;
+                        const startY = mainNode.y - columnHeight / 2;
+                        column.forEach((node, index) => {{
+                            node.y = startY + index * verticalNodeSpacingY;
+                        }});
+                        return;
+                    }}
+
+                    column.forEach((node, index) => {{
+                        const parents = (parentLinksByTarget.get(node.id) || [])
+                            .map(parentLink => nodeById.get(parentLink.source))
+                            .filter(parent => parent && Number.isFinite(parent.y));
+                        node.desiredY = parents.length
+                            ? d3.mean(parents, parent => parent.y)
+                            : nextLeafY + index * verticalNodeSpacingY;
+                    }});
+
+                    column.sort((a, b) => d3.ascending(a.desiredY, b.desiredY) || sortByPath(a, b));
+                    column.forEach((node, index) => {{
+                        const minY = index === 0 ? -Infinity : column[index - 1].y + verticalNodeSpacingY;
+                        node.y = Math.max(node.desiredY, minY);
+                    }});
+                }});
+
+            const minY = d3.min(nodes, node => node.y - nodeHeight / 2) || 0;
+            if (minY < margin.top) {{
+                const shiftDown = margin.top - minY;
+                nodes.forEach(node => node.y += shiftDown);
+            }}
+
+            const maxY = d3.max(nodes, node => node.y + nodeHeight / 2) || svgHeight;
+            if (maxY > svgHeight - margin.bottom) {{
+                svgHeight = maxY + margin.bottom;
+            }}
+
+            return {{ svgWidth, svgHeight }};
+        }}
 
         function wrapText(text, maxChars = 16) {{
             text = text || '(unknown)';
@@ -661,115 +802,168 @@ class FocusedPersonTreeGenerator:
             return lines;
         }}
 
-        g.selectAll('.link')
-            .data(linksData)
-            .enter()
-            .append('path')
-            .attr('class', 'link')
-            .attr('d', d => {{
-                const source = nodeById.get(d.source);
-                const target = nodeById.get(d.target);
-                if (!source || !target) return '';
-                const x0 = source.x;
-                const y0 = source.y;
-                const x1 = target.x;
-                const y1 = target.y;
-                const midY = (y0 + y1) / 2;
-                return `M${{x0}},${{y0}}L${{x0}},${{midY}}L${{x1}},${{midY}}L${{x1}},${{y1}}`;
-            }});
+        function linkPath(link, nodeById, orientation, parentLinksByTarget) {{
+            const source = nodeById.get(link.source);
+            const target = nodeById.get(link.target);
+            if (!source || !target) return '';
+            const x0 = source.x;
+            const y0 = source.y;
+            const x1 = target.x;
+            const y1 = target.y;
 
-        const nodeGroups = g.selectAll('.node')
-            .data(nodesData)
-            .enter()
-            .append('g')
-            .attr('class', d => {{
-                let cls = 'node-group node ';
-                if (d.sex === 'M') cls += 'male';
-                else if (d.sex === 'F') cls += 'female';
-                else cls += 'unknown';
-                if (d.is_main) cls += ' main-person';
-                return cls;
-            }})
-            .attr('transform', d => `translate(${{d.x}},${{d.y}})`)
-            .on('mouseover', function(e, d) {{
-                const tooltip = document.getElementById('tooltip');
-                tooltip.classList.add('visible');
-                let tooltipHTML = `<div class="tooltip-title">${{d.name}}</div>`;
-                if (d.birth) tooltipHTML += `<div class="tooltip-line"><strong>DOB:</strong> ${{d.birth}}</div>`;
-                if (d.birth_place) tooltipHTML += `<div class="tooltip-line"><strong>Place:</strong> ${{d.birth_place}}</div>`;
-                if (d.death) tooltipHTML += `<div class="tooltip-line"><strong>DOD:</strong> ${{d.death}}</div>`;
-                if (d.notes) {{
-                    let cleanNotes = d.notes.startsWith('Bio notes:') ? d.notes.replace('Bio notes:', '').trim() : d.notes;
-                    if (cleanNotes) tooltipHTML += `<div class="tooltip-line">${{cleanNotes}}</div>`;
+            if (orientation === 'vertical') {{
+                const sourceExitX = x0 + nodeWidth / 2;
+                const targetEntryX = x1 - nodeWidth / 2;
+                const trunkX = (sourceExitX + targetEntryX) / 2;
+                const parents = (parentLinksByTarget.get(link.target) || [])
+                    .map(parentLink => nodeById.get(parentLink.source))
+                    .filter(parent => parent && parent.generation === source.generation);
+                if (parents.length < 2) {{
+                    return `M${{sourceExitX}},${{y0}}L${{trunkX}},${{y0}}L${{trunkX}},${{y1}}L${{targetEntryX}},${{y1}}`;
                 }}
-                if (!d.birth && !d.birth_place && !d.death && !d.notes) {{
-                    tooltipHTML += `<div class="tooltip-line"><em>No additional information</em></div>`;
-                }}
-                tooltip.innerHTML = tooltipHTML;
-                tooltip.style.left = (e.pageX + 10) + 'px';
-                tooltip.style.top = (e.pageY + 10) + 'px';
-            }})
-            .on('mousemove', e => {{
-                const tooltip = document.getElementById('tooltip');
-                tooltip.style.left = (e.pageX + 10) + 'px';
-                tooltip.style.top = (e.pageY + 10) + 'px';
-            }})
-            .on('mouseout', () => document.getElementById('tooltip').classList.remove('visible'));
+                const parentYs = parents.length ? parents.map(parent => parent.y) : [y0];
+                const parentTopY = d3.min([...parentYs, y1]);
+                const parentBottomY = d3.max([...parentYs, y1]);
+                return `M${{sourceExitX}},${{y0}}L${{trunkX}},${{y0}}M${{trunkX}},${{parentTopY}}L${{trunkX}},${{parentBottomY}}M${{trunkX}},${{y1}}L${{targetEntryX}},${{y1}}`;
+            }}
 
-        nodeGroups.append('rect')
-            .attr('class', 'node-rect')
-            .attr('width', nodeWidth)
-            .attr('height', nodeHeight)
-            .attr('x', -nodeWidth / 2)
-            .attr('y', -nodeHeight / 2);
+            const midY = (y0 + y1) / 2;
+            return `M${{x0}},${{y0}}L${{x0}},${{midY}}L${{x1}},${{midY}}L${{x1}},${{y1}}`;
+        }}
 
-        const textGroups = nodeGroups.append('g').attr('class', 'text-container');
+        function renderTree(svgSelector, nodes, links, dimensions, orientation) {{
+            const nodeById = new Map(nodes.map(node => [node.id, node]));
+            const parentLinksByTarget = d3.group(links, link => link.target);
+            const svg = d3.select(svgSelector)
+                .attr('width', dimensions.svgWidth)
+                .attr('height', dimensions.svgHeight);
+            const g = svg.append('g');
 
-        textGroups.append('text')
-            .attr('class', 'node-text node-name')
-            .attr('x', 0)
-            .attr('y', 0)
-            .attr('text-anchor', 'middle')
-            .attr('dominant-baseline', 'central')
-            .each(function(d) {{
-                const lines = wrapText(d.given_name || d.name, 16);
-                const lineHeight = 1.1;
-                const totalHeight = (lines.length - 1) * lineHeight * 13 / 2;
-                lines.forEach((line, i) => {{
-                    d3.select(this).append('tspan')
-                        .attr('x', 0)
-                        .attr('dy', i === 0 ? -totalHeight : lineHeight + 'em')
-                        .text(line);
+            g.selectAll('.link')
+                .data(links)
+                .enter()
+                .append('path')
+                .attr('class', 'link')
+                .attr('d', d => linkPath(d, nodeById, orientation, parentLinksByTarget));
+
+            const nodeGroups = g.selectAll('.node')
+                .data(nodes)
+                .enter()
+                .append('g')
+                .attr('class', d => {{
+                    let cls = 'node-group node ';
+                    if (d.sex === 'M') cls += 'male';
+                    else if (d.sex === 'F') cls += 'female';
+                    else cls += 'unknown';
+                    if (d.is_main) cls += ' main-person';
+                    return cls;
+                }})
+                .attr('transform', d => `translate(${{d.x}},${{d.y}})`)
+                .on('mouseover', function(e, d) {{
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.classList.add('visible');
+                    let tooltipHTML = `<div class="tooltip-title">${{d.name}}</div>`;
+                    if (d.birth) tooltipHTML += `<div class="tooltip-line"><strong>DOB:</strong> ${{d.birth}}</div>`;
+                    if (d.birth_place) tooltipHTML += `<div class="tooltip-line"><strong>Place:</strong> ${{d.birth_place}}</div>`;
+                    if (d.death) tooltipHTML += `<div class="tooltip-line"><strong>DOD:</strong> ${{d.death}}</div>`;
+                    if (d.notes) {{
+                        let cleanNotes = d.notes.startsWith('Bio notes:') ? d.notes.replace('Bio notes:', '').trim() : d.notes;
+                        if (cleanNotes) tooltipHTML += `<div class="tooltip-line">${{cleanNotes}}</div>`;
+                    }}
+                    if (!d.birth && !d.birth_place && !d.death && !d.notes) {{
+                        tooltipHTML += `<div class="tooltip-line"><em>No additional information</em></div>`;
+                    }}
+                    tooltip.innerHTML = tooltipHTML;
+                    tooltip.style.left = (e.pageX + 10) + 'px';
+                    tooltip.style.top = (e.pageY + 10) + 'px';
+                }})
+                .on('mousemove', e => {{
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.style.left = (e.pageX + 10) + 'px';
+                    tooltip.style.top = (e.pageY + 10) + 'px';
+                }})
+                .on('mouseout', () => document.getElementById('tooltip').classList.remove('visible'));
+
+            nodeGroups.append('rect')
+                .attr('class', 'node-rect')
+                .attr('width', nodeWidth)
+                .attr('height', nodeHeight)
+                .attr('x', -nodeWidth / 2)
+                .attr('y', -nodeHeight / 2);
+
+            const textGroups = nodeGroups.append('g').attr('class', 'text-container');
+
+            textGroups.append('text')
+                .attr('class', 'node-text node-name')
+                .attr('x', 0)
+                .attr('y', 0)
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'central')
+                .each(function(d) {{
+                    const lines = wrapText(d.given_name || d.name, 16);
+                    const lineHeight = 1.1;
+                    const totalHeight = (lines.length - 1) * lineHeight * 13 / 2;
+                    lines.forEach((line, i) => {{
+                        d3.select(this).append('tspan')
+                            .attr('x', 0)
+                            .attr('dy', i === 0 ? -totalHeight : lineHeight + 'em')
+                            .text(line);
+                    }});
                 }});
-            }});
 
-        textGroups.append('text')
-            .attr('class', 'node-date')
-            .attr('x', 0)
-            .attr('y', 32)
-            .attr('text-anchor', 'middle')
-            .attr('dominant-baseline', 'central')
-            .text(d => {{
-                let dateStr = '';
-                if (d.birth) dateStr += d.birth.split(' ').pop();
-                if (d.death) dateStr += ' - ' + d.death.split(' ').pop();
-                return dateStr;
-            }});
+            textGroups.append('text')
+                .attr('class', 'node-date')
+                .attr('x', 0)
+                .attr('y', 32)
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'central')
+                .text(d => {{
+                    let dateStr = '';
+                    if (d.birth) dateStr += d.birth.split(' ').pop();
+                    if (d.death) dateStr += ' - ' + d.death.split(' ').pop();
+                    return dateStr;
+                }});
 
-        const zoom = d3.zoom().on('zoom', e => g.attr('transform', e.transform));
-        svg.call(zoom);
+            const zoom = d3.zoom().on('zoom', e => g.attr('transform', e.transform));
+            svg.call(zoom);
+            renderStates.set(svgSelector, {{ svg, g, zoom }});
+        }}
+
+        const horizontalNodes = cloneNodes();
+        renderTree(
+            '#tree-horizontal',
+            horizontalNodes,
+            linksData,
+            applyHorizontalLayout(horizontalNodes, linksData),
+            'horizontal'
+        );
+
+        const verticalNodes = cloneNodes();
+        renderTree(
+            '#tree-vertical',
+            verticalNodes,
+            linksData,
+            applyVerticalLayout(verticalNodes, linksData),
+            'vertical'
+        );
+
+        function activeSvgSelector() {{
+            return '#tree-vertical';
+        }}
 
         function fitView() {{
-            const bbox = g.node().getBBox();
+            const state = renderStates.get(activeSvgSelector());
+            if (!state) return;
+            const bbox = state.g.node().getBBox();
             const fullWidth = window.innerWidth;
-            const fullHeight = window.innerHeight - 104;
+            const fullHeight = window.innerHeight - headerHeight;
             const scale = Math.min(1, 0.9 / Math.max(bbox.width / fullWidth, bbox.height / fullHeight));
             const translate = [
                 (fullWidth - bbox.width * scale) / 2 - bbox.x * scale,
-                124 + (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
+                headerHeight + (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
             ];
-            svg.transition().duration(750).call(
-                zoom.transform,
+            state.svg.transition().duration(750).call(
+                state.zoom.transform,
                 d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale)
             );
         }}
