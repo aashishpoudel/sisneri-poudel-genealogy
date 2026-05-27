@@ -12,6 +12,7 @@ and spouse-only boxes.
 """
 
 import argparse
+import html
 import json
 import re
 from collections import defaultdict
@@ -21,6 +22,15 @@ from pathlib import Path
 DEFAULT_PERSON = "Aashish Poudel"
 DEFAULT_ANCESTOR_GENERATIONS = 3
 DEFAULT_GEDCOM = "/Users/aashishpoudel/repos/sisneri-poudel-genealogy/data/Aashish_family.ged"
+NEPALI_GIVEN_NAME_FALLBACKS = {
+    "Aarvi": "आरवी",
+    "Aashish": "आशिष",
+    "Aayan": "आयन",
+    "Adwik": "अद्विक",
+}
+NEPALI_SURNAME_FALLBACKS = {
+    "Poudel": "पौडेल",
+}
 
 
 def normalize_name(name: str) -> str:
@@ -32,6 +42,22 @@ def output_filename_for(name: str) -> str:
     cleaned = re.sub(r"[^a-z0-9]+", "_", cleaned)
     cleaned = cleaned.strip("_") or "family_tree"
     return f"{cleaned}.html"
+
+
+def nepali_digits(value) -> str:
+    return str(value).translate(str.maketrans("0123456789", "०१२३४५६७८९"))
+
+
+def fallback_nepali_name(node: dict, default_name: str) -> str:
+    given_name = node.get("given_name", "").strip()
+    surname = node.get("surname", "").strip()
+    nepali_given = NEPALI_GIVEN_NAME_FALLBACKS.get(given_name)
+    nepali_surname = NEPALI_SURNAME_FALLBACKS.get(surname)
+    if nepali_given and nepali_surname:
+        return f"{nepali_given} {nepali_surname}"
+    if nepali_given:
+        return nepali_given
+    return default_name
 
 
 class GEDCOMParser:
@@ -313,14 +339,21 @@ class FocusedPersonTreeGenerator:
     def _create_html(self, main_person, nodes, links, num_ancestor_generations):
         nodes_json = json.dumps(nodes, ensure_ascii=False)
         links_json = json.dumps(links, ensure_ascii=False)
-        safe_title = main_person.replace("<", "&lt;").replace(">", "&gt;")
+        main_node = next((node for node in nodes if node.get("is_main")), {})
+        nepali_name = main_node.get("nepali_name") or fallback_nepali_name(main_node, main_person)
+        nepali_generation_count = nepali_digits(num_ancestor_generations)
+        safe_header_title = html.escape(f"{nepali_name}को वंशावली ({main_person} Family Tree)")
+        safe_subtitle = html.escape(
+            f"प्रत्यक्ष पुर्खा {nepali_generation_count} पुस्ता र वंशजहरू "
+            f"(Direct Ancestors {num_ancestor_generations} generations/Descendents)"
+        )
 
         return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{safe_title} Family Tree</title>
+    <title>{safe_header_title}</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <style>
         :root {{
@@ -390,49 +423,14 @@ class FocusedPersonTreeGenerator:
         #container {{
             width: 100%;
             height: 100%;
-            margin-top: 156px;
+            margin-top: 104px;
             position: relative;
             overflow: auto;
             background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
         }}
 
-        .alignment-tabs {{
-            position: fixed;
-            top: 104px;
-            left: 0;
-            right: 0;
-            z-index: 998;
-            display: flex;
-            gap: 10px;
-            padding: 8px 20px;
-            background: #eff5fb;
-            border-bottom: 1px solid var(--line);
-            justify-content: center;
-        }}
-
-        .alignment-tab {{
-            appearance: none;
-            border: 1px solid transparent;
-            background: transparent;
-            color: var(--text);
-            padding: 10px 14px;
-            border-radius: 10px;
-            cursor: pointer;
-            font: 600 16px system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        }}
-
-        .alignment-tab[aria-selected="true"] {{
-            background: var(--card);
-            border-color: var(--line);
-            box-shadow: var(--shadow);
-        }}
-
-        .tree-panel {{
+        .hidden-tree {{
             display: none;
-        }}
-
-        .tree-panel.is-active {{
-            display: block;
         }}
 
         svg {{
@@ -539,7 +537,7 @@ class FocusedPersonTreeGenerator:
 
         .controls {{
             position: fixed;
-            top: 170px;
+            top: 125px;
             right: 20px;
             width: 200px;
             background: rgba(255, 248, 220, 0.95);
@@ -576,23 +574,14 @@ class FocusedPersonTreeGenerator:
             <nav class="crumbs" aria-label="Breadcrumb">
                 <a href="index.html">← Back to Home</a>
             </nav>
-            <h1 class="header-title">{safe_title} Family Tree</h1>
-            <div class="header-subtitle">Direct ancestors up to {num_ancestor_generations} generation(s), plus direct descendants</div>
+            <h1 class="header-title">{safe_header_title}</h1>
+            <div class="header-subtitle">{safe_subtitle}</div>
         </div>
     </header>
 
-    <div aria-label="Alignment tabs" class="alignment-tabs" role="tablist">
-        <button aria-controls="panel-horizontal" aria-selected="true" class="alignment-tab" id="tab-horizontal" role="tab" tabindex="0">Horizontal Alignment</button>
-        <button aria-controls="panel-vertical" aria-selected="false" class="alignment-tab" id="tab-vertical" role="tab" tabindex="-1">Vertical Alignment</button>
-    </div>
-
     <div id="container">
-        <div aria-labelledby="tab-horizontal" class="tree-panel is-active" id="panel-horizontal" role="tabpanel">
-            <svg id="tree-horizontal"></svg>
-        </div>
-        <div aria-labelledby="tab-vertical" class="tree-panel" id="panel-vertical" role="tabpanel">
-            <svg id="tree-vertical"></svg>
-        </div>
+        <svg aria-hidden="true" class="hidden-tree" id="tree-horizontal"></svg>
+        <svg id="tree-vertical"></svg>
     </div>
 
     <div class="controls">
@@ -611,7 +600,7 @@ class FocusedPersonTreeGenerator:
         const generationSpacingY = 160;
         const verticalColumnSpacingX = 340;
         const verticalNodeSpacingY = 128;
-        const headerAndTabsHeight = 156;
+        const headerHeight = 104;
         const margin = {{ top: 80, right: 120, bottom: 120, left: 120 }};
         const renderStates = new Map();
 
@@ -959,9 +948,7 @@ class FocusedPersonTreeGenerator:
         );
 
         function activeSvgSelector() {{
-            const activePanel = document.querySelector('.tree-panel.is-active');
-            const activeSvg = activePanel?.querySelector('svg');
-            return activeSvg ? `#${{activeSvg.id}}` : '#tree-horizontal';
+            return '#tree-vertical';
         }}
 
         function fitView() {{
@@ -969,30 +956,17 @@ class FocusedPersonTreeGenerator:
             if (!state) return;
             const bbox = state.g.node().getBBox();
             const fullWidth = window.innerWidth;
-            const fullHeight = window.innerHeight - headerAndTabsHeight;
+            const fullHeight = window.innerHeight - headerHeight;
             const scale = Math.min(1, 0.9 / Math.max(bbox.width / fullWidth, bbox.height / fullHeight));
             const translate = [
                 (fullWidth - bbox.width * scale) / 2 - bbox.x * scale,
-                headerAndTabsHeight + (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
+                headerHeight + (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
             ];
             state.svg.transition().duration(750).call(
                 state.zoom.transform,
                 d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale)
             );
         }}
-
-        document.querySelectorAll('.alignment-tab').forEach(tab => {{
-            tab.addEventListener('click', () => {{
-                document.querySelectorAll('.alignment-tab').forEach(item => {{
-                    item.setAttribute('aria-selected', item === tab ? 'true' : 'false');
-                    item.tabIndex = item === tab ? 0 : -1;
-                }});
-                document.querySelectorAll('.tree-panel').forEach(panel => {{
-                    panel.classList.toggle('is-active', panel.id === tab.getAttribute('aria-controls'));
-                }});
-                setTimeout(fitView, 80);
-            }});
-        }});
 
         setTimeout(fitView, 200);
     </script>

@@ -2,7 +2,7 @@
 1 SOUR Family Echo
 2 WWW https://www.familyecho.com/
 1 FILE Aashish_family
-1 DATE 26 MAY 2026
+1 DATE 27 MAY 2026
 1 DEST ANSTFILE
 1 GEDC
 2 VERS 5.5.1
@@ -2527,6 +2527,8 @@
 1 SEX M
 1 BIRT
 2 DATE 1954
+2 PLAC लुभू, ललितपुर, नेपाल
+1 NOTE Bio notes: नारायण पौडेल
 1 FAMS @F3@
 1 FAMC @F115@
 0 @I333@ INDI
@@ -2537,6 +2539,8 @@
 1 SEX F
 1 BIRT
 2 DATE 1962
+2 PLAC दुवाकोट, भक्तपुर, नेपाल
+1 NOTE Bio notes: पुण्यवती पौडेल
 1 FAMS @F3@
 1 FAMC @F116@
 0 @I334@ INDI
@@ -2547,6 +2551,7 @@
 1 SEX M
 1 BIRT
 2 DATE 1924
+2 PLAC दुवाकोट, नेपाल
 1 DEAT Y
 1 FAMS @F116@
 1 FAMC @F117@
@@ -2558,6 +2563,7 @@
 1 SEX F
 1 BIRT
 2 DATE 1927
+2 PLAC कौडल, नेपाल
 1 FAMS @F116@
 1 FAMC @F118@
 0 @I336@ INDI
@@ -2907,6 +2913,7 @@
 1 SEX M
 1 BIRT
 2 DATE 28 NOV 1984
+2 PLAC जैंसीदेवल, काठमाण्डौ
 1 FAMS @F133@
 1 FAMS @F134@
 1 FAMC @F3@
@@ -2918,6 +2925,8 @@
 1 SEX F
 1 BIRT
 2 DATE 10 NOV 1985
+2 PLAC मधुमल्ला, मोरङ, नेपाल
+1 NOTE Bio notes: मुना पौडेल
 1 FAMS @F133@
 1 FAMS @F135@
 1 FAMS @F136@
@@ -2934,6 +2943,7 @@
 1 SEX M
 1 BIRT
 2 DATE 8 APR 2017
+1 NOTE Bio notes: आयन पौडेल
 1 FAMC @F133@
 0 @I384@ INDI
 1 NAME Adwik /Poudel/
@@ -2943,6 +2953,7 @@
 1 SEX M
 1 BIRT
 2 DATE 25 JAN 2019
+1 NOTE Bio notes: अद्विक पौडेल
 1 FAMC @F133@
 0 @I385@ INDI
 1 NAME Aarvi /Poudel/
@@ -2952,6 +2963,7 @@
 1 SEX F
 1 BIRT
 2 DATE 27 JAN 2025
+1 NOTE Bio notes: आरवी पौडेल
 1 FAMC @F133@
 0 @I386@ INDI
 1 NAME Bishnu Gopal Sharma /Poudel/
@@ -2962,6 +2974,7 @@
 1 BIRT
 2 DATE 1936
 1 DEAT Y
+1 NOTE Bio notes: विष्णुप्रसाद पौडेल
 1 FAMS @F115@
 1 FAMC @F141@
 0 @I387@ INDI
@@ -2974,6 +2987,7 @@
 2 DATE 1936
 2 PLAC Satghumti, Dhading
 1 DEAT Y
+1 NOTE Bio notes: विन्दू पौडेल
 1 FAMS @F115@
 1 FAMC @F142@
 0 @I388@ INDI
@@ -2985,6 +2999,7 @@
 1 BIRT
 2 DATE 21 JUN 1906
 1 DEAT Y
+1 NOTE Bio notes: अंगिरस पौडेल
 1 FAMS @F141@
 1 FAMC @F143@
 0 @I389@ INDI
@@ -2996,6 +3011,7 @@
 1 BIRT
 2 PLAC Basdol
 1 DEAT Y
+1 NOTE Bio notes: शिवकुमारी पौडेल
 1 FAMS @F141@
 0 @I390@ INDI
 1 NAME GaneshDutta /Poudel/
@@ -3006,6 +3022,7 @@
 1 BIRT
 2 DATE 1889
 1 DEAT Y
+1 NOTE Bio notes: गणेशदत्त पौडेल
 1 FAMS @F143@
 1 FAMC @F144@
 0 @I391@ INDI
@@ -3018,6 +3035,7 @@
 2 PLAC Sankhu
 1 DEAT Y
 2 DATE 1954
+1 NOTE Bio notes: पूर्णकुमारी पौडेल
 1 FAMS @F143@
 0 @I392@ INDI
 1 NAME Jeevnath /Poudel/
@@ -3026,6 +3044,7 @@
 2 _MARNM Poudel
 1 SEX M
 1 DEAT Y
+1 NOTE Bio notes: जीवनाथ पौडेल
 1 FAMS @F144@
 1 FAMC @F145@
 0 @I393@ INDI
@@ -3058,12 +3077,14 @@
 2 _MARNM Poudel
 1 SEX M
 1 DEAT Y
+1 NOTE Bio notes: घनश्याम पौडेल
 1 FAMS @F146@
 1 FAMC @F147@
 0 @I397@ INDI
 1 NAME
 1 SEX F
 1 DEAT Y
+1 NOTE Bio notes: रामदत्त पौडेल
 1 FAMS @F146@
 0 @I398@ INDI
 1 NAME Rambhadra /Poudel/
