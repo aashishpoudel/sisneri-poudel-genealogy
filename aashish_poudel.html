@@ -14,6 +14,8 @@
             --ring: #1abc9c;
             --line: #e5eef4;
             --shadow: 0 10px 30px rgba(0,0,0,.06);
+            --header-height: 104px;
+            --control-top: 125px;
         }
 
         * {
@@ -72,8 +74,8 @@
 
         #container {
             width: 100%;
-            height: 100%;
-            margin-top: 104px;
+            height: calc(100vh - var(--header-height));
+            margin-top: var(--header-height);
             position: relative;
             overflow: auto;
             background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
@@ -187,14 +189,13 @@
 
         .controls {
             position: fixed;
-            top: 125px;
+            top: var(--control-top);
             right: 20px;
-            width: 200px;
-            background: rgba(255, 248, 220, 0.95);
-            padding: 15px 20px;
-            border-radius: 8px;
+            background: #d4af37;
+            padding: 0;
+            border-radius: 4px;
             border: 2px solid #d4af37;
-            z-index: 100;
+            z-index: 998;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
@@ -205,8 +206,8 @@
             padding: 8px 14px;
             border-radius: 4px;
             cursor: pointer;
-            margin: 5px;
-            font-size: 25px;
+            margin: 0;
+            font-size: 18px;
             font-weight: bold;
             transition: all 0.3s ease;
         }
@@ -250,9 +251,21 @@
         const generationSpacingY = 160;
         const verticalColumnSpacingX = 340;
         const verticalNodeSpacingY = 128;
-        const headerHeight = 104;
+        const headerMargin = 14;
         const margin = { top: 80, right: 120, bottom: 120, left: 120 };
         const renderStates = new Map();
+
+        function measuredHeaderHeight() {
+            const header = document.querySelector('.page-header');
+            return header ? Math.ceil(header.getBoundingClientRect().height) : 104;
+        }
+
+        function updateLayoutChrome() {
+            const headerHeight = measuredHeaderHeight();
+            document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+            document.documentElement.style.setProperty('--control-top', `${headerHeight + headerMargin}px`);
+            return headerHeight;
+        }
 
         function cloneNodes() {
             return sourceNodesData.map(node => ({ ...node }));
@@ -604,13 +617,14 @@
         function fitView() {
             const state = renderStates.get(activeSvgSelector());
             if (!state) return;
+            const headerHeight = updateLayoutChrome();
             const bbox = state.g.node().getBBox();
             const fullWidth = window.innerWidth;
             const fullHeight = window.innerHeight - headerHeight;
             const scale = Math.min(1, 0.9 / Math.max(bbox.width / fullWidth, bbox.height / fullHeight));
             const translate = [
                 (fullWidth - bbox.width * scale) / 2 - bbox.x * scale,
-                headerHeight + (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
+                (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
             ];
             state.svg.transition().duration(750).call(
                 state.zoom.transform,
@@ -618,6 +632,12 @@
             );
         }
 
+        window.addEventListener('resize', () => {
+            updateLayoutChrome();
+            fitView();
+        });
+
+        updateLayoutChrome();
         setTimeout(fitView, 200);
     </script>
 </body>
