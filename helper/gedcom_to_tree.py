@@ -476,19 +476,19 @@ class FamilyTreeHTMLGenerator:
         
         .lang-tab {{
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             color: #fff;
             text-align: center;
             cursor: pointer;
             background: #34495e;
             border: none;
-            font-size: 38px;
+            font-size: 30px;
             font-weight: 500;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 65px;
+            min-height: 52px;
             line-height: 1;
         }}
         
