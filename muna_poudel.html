@@ -840,9 +840,10 @@
             const fullWidth = window.innerWidth;
             const fullHeight = window.innerHeight - headerHeight;
             const scale = Math.min(1, 0.9 / Math.max(bbox.width / fullWidth, bbox.height / fullHeight));
+            const embeddedMobileLift = embeddedInFrame && window.innerWidth <= 700 ? 18 : 0;
             const translate = [
                 (fullWidth - bbox.width * scale) / 2 - bbox.x * scale,
-                (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
+                (fullHeight - bbox.height * scale) / 2 - bbox.y * scale - embeddedMobileLift
             ];
             state.svg.transition().duration(750).call(
                 state.zoom.transform,
