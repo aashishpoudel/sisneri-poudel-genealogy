@@ -391,7 +391,7 @@ class FocusedPersonTreeGenerator:
             --header-height: 104px;
             --control-top: 125px;
             --legend-top: 184px;
-            --control-width: 88px;
+            --control-width: 112px;
         }}
 
         * {{
@@ -589,13 +589,14 @@ class FocusedPersonTreeGenerator:
             background: #d4af37;
             color: #3d3d3d;
             border: none;
-            padding: 8px 14px;
+            padding: 7px 14px;
             width: 100%;
             border-radius: 4px;
             cursor: pointer;
             margin: 0;
             font-size: 18px;
             font-weight: bold;
+            white-space: nowrap;
             transition: all 0.3s ease;
         }}
 
