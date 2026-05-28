@@ -618,8 +618,8 @@ class FocusedPersonTreeGenerator:
             z-index: 998;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 1px;
+            justify-content: flex-end;
+            gap: 0;
         }}
 
         .legend-row {{

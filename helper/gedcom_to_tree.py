@@ -371,6 +371,10 @@ class FamilyTreeHTMLGenerator:
             --shadow: 0 10px 30px rgba(0,0,0,.06);
             --radius: 16px;
             --radius-sm: 12px;
+            --header-height: 90px;
+            --tabs-height: 58px;
+            --control-top: 125px;
+            --control-width: 112px;
         }}
         @media (prefers-color-scheme: dark){{
             :root{{
@@ -459,13 +463,9 @@ class FamilyTreeHTMLGenerator:
             white-space: nowrap;
         }}
         
-        #container {{
-            margin-top: 169px;
-        }}
-        
         .language-tabs {{
             position: fixed;
-            top: 90px;
+            top: var(--header-height);
             left: 0;
             right: 0;
             z-index: 998;
@@ -501,9 +501,6 @@ class FamilyTreeHTMLGenerator:
             font-weight: bold;
         }}
         
-        #container {{
-            margin-top: 169px;
-        }}
         * {{
             margin: 0;
             padding: 0;
@@ -520,7 +517,8 @@ class FamilyTreeHTMLGenerator:
         
         #container {{
             width: 100%;
-            height: 100%;
+            height: calc(100vh - var(--header-height) - var(--tabs-height));
+            margin-top: calc(var(--header-height) + var(--tabs-height));
             position: relative;
             overflow: auto;
             background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
@@ -649,14 +647,14 @@ class FamilyTreeHTMLGenerator:
         
         .controls {{
             position: fixed;
-            top: 230px;
+            top: var(--control-top);
             right: 20px;
-            width: 200px;
-            background: rgba(255, 248, 220, 0.95);
-            padding: 15px 20px;
-            border-radius: 8px;
+            width: var(--control-width);
+            background: #d4af37;
+            padding: 0;
+            border-radius: 4px;
             border: 2px solid #d4af37;
-            z-index: 100;
+            z-index: 997;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }}
         
@@ -664,12 +662,14 @@ class FamilyTreeHTMLGenerator:
             background: #d4af37;
             color: #3d3d3d;
             border: none;
-            padding: 8px 14px;
+            width: 100%;
+            padding: 7px 14px;
             border-radius: 4px;
             cursor: pointer;
-            margin: 5px 5px 5px 5px;
-            font-size: 25px;
+            margin: 0;
+            font-size: 18px;
             font-weight: bold;
+            white-space: nowrap;
             transition: all 0.3s ease;
         }}
         
@@ -678,38 +678,6 @@ class FamilyTreeHTMLGenerator:
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(212, 175, 55, 0.4);
         }}
-        
-        .legend {{
-            position: fixed;
-            top: 325px;
-            right: 20px;
-            width: 200px;
-            background: rgba(255, 248, 220, 0.95);
-            padding: 15px 20px;
-            border-radius: 8px;
-            border: 2px solid #d4af37;
-            font-size: 12px;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }}
-        
-        .legend-item {{
-            margin: 6px 0;
-            display: flex;
-            align-items: center;
-        }}
-        
-        .legend-box {{
-            width: 16px;
-            height: 16px;
-            margin-right: 10px;
-            border-radius: 2px;
-            border: 1.5px solid #999;
-        }}
-        
-        .male {{ background: #e8f4f8; }}
-        .female {{ background: #fce8f3; }}
-        .direct-line {{ background: #fff8dc; border: 2px solid #d4af37 !important; }}
     </style>
 </head>
 <body>
@@ -719,7 +687,7 @@ class FamilyTreeHTMLGenerator:
                 <a href="index.html">← Back to Home</a>
             </nav>
             <h1 class="header-title">
-                <div class="title-nepali">सोमनाथ <span class="gen-dot-inline" aria-label="पुस्ता 1"><span>1</span></span> <strong>→</strong> गोपाल <span class="gen-dot-inline" aria-label="पुस्ता 32"><span>32</span></span> <span class="title-english-inline">(Somnath <span class="gen-dot-inline" aria-label="Generation 1"><span>1</span></span> <strong>→</strong> Gopal <span class="gen-dot-inline" aria-label="Generation 32"><span>32</span></span>)</span></div>
+                <div class="title-nepali">सोमनाथ <strong>→</strong> गोपाल <span class="title-english-inline">(Somnath <span class="gen-dot-inline" aria-label="Generation 1"><span>1</span></span> <strong>→</strong> Gopal <span class="gen-dot-inline" aria-label="Generation 32"><span>32</span></span>)</span></div>
             </h1>
         </div>
     </header>
@@ -736,21 +704,25 @@ class FamilyTreeHTMLGenerator:
     <div class="controls">
         <button class="control-btn" onclick="fitView()">Fit View</button>
     </div>
-    
-    <div class="legend">
-        <div style="margin-bottom: 10px; font-weight: bold; color: #8b6914;">Legend</div>
-        <div class="legend-item"><div class="legend-box male"></div> Male</div>
-        <div class="legend-item"><div class="legend-box female"></div> Female</div>
-        <div class="legend-item"><div class="legend-box direct-line"></div> Direct Line</div>
-    </div>
-    
     <div id="tooltip" class="tooltip"></div>
     
     <script>
         let currentLanguage = 'nepali';  // Default language is Nepali
+
+        function updateLayoutChrome() {{
+            const header = document.querySelector('.page-header');
+            const tabs = document.querySelector('.language-tabs');
+            const headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 90;
+            const tabsHeight = tabs ? Math.ceil(tabs.getBoundingClientRect().height) : 58;
+            document.documentElement.style.setProperty('--header-height', `${{headerHeight}}px`);
+            document.documentElement.style.setProperty('--tabs-height', `${{tabsHeight}}px`);
+            document.documentElement.style.setProperty('--control-top', `${{headerHeight + tabsHeight + 14}}px`);
+            return {{ headerHeight, tabsHeight }};
+        }}
         
         function switchLanguage(lang) {{
             currentLanguage = lang;
+            updateLayoutChrome();
             
             // Update tab active state
             document.querySelectorAll('.lang-tab').forEach(tab => {{
@@ -818,6 +790,8 @@ class FamilyTreeHTMLGenerator:
         const treesData = {trees_json};
         const directLineIds = {direct_line_json};
         const lineNumbers = {line_numbers_json};
+
+        updateLayoutChrome();
         
         const margin = {{ top: 80, right: 100, bottom: 80, left: 100 }};
         let svgWidth = Math.max(1600, window.innerWidth);
@@ -1081,9 +1055,13 @@ class FamilyTreeHTMLGenerator:
         svg.call(zoom);
         
         function fitView() {{
+            const chrome = updateLayoutChrome();
             const bbox = g.node().getBBox();
             const fullWidth = window.innerWidth;
-            const fullHeight = window.innerHeight;
+            const fullHeight = Math.max(
+                320,
+                window.innerHeight - chrome.headerHeight - chrome.tabsHeight
+            );
             
             const scale = 0.9 / Math.max(
                 bbox.width / fullWidth,
@@ -1100,6 +1078,10 @@ class FamilyTreeHTMLGenerator:
                 d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale)
             );
         }}
+
+        window.addEventListener('resize', () => {{
+            updateLayoutChrome();
+        }});
         
         // Initial fit
         setTimeout(fitView, 200);
