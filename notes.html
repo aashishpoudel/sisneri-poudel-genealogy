@@ -122,6 +122,17 @@
       background: rgba(255,255,255,.38);
       color: var(--muted);
     }
+    .note-link{ color: var(--ring); overflow-wrap: anywhere; }
+    .note-image{
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      background: var(--card);
+    }
 
     .footer{ margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
     .btn{
@@ -167,6 +178,13 @@
             <h2>Backend Notes</h2>
             <h3>Domain provider</h3>
             <p>Cloudflare.com -&gt; {ipythontime@gmail.com, hgD!}</p>
+          </section>
+
+          <section class="note-section">
+            <h3>Domain Hosting</h3>
+            <p><a class="note-link" href="https://github.com/aashishpoudel/sisneri-poudel-genealogy">aashishpoudel/sisneri-poudel-genealogy</a></p>
+            <p class="muted">Github Pages setting screenshot:</p>
+            <img alt="Github Pages settings screenshot for sisneripoudel.com" class="note-image" src="images/Github_Pages_sisneripoudel_screenshot.com.png" />
           </section>
 
           <section class="note-section">

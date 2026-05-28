@@ -14,6 +14,8 @@
             --ring: #1abc9c;
             --line: #e5eef4;
             --shadow: 0 10px 30px rgba(0,0,0,.06);
+            --header-height: 104px;
+            --control-top: 125px;
         }
 
         * {
@@ -72,8 +74,8 @@
 
         #container {
             width: 100%;
-            height: 100%;
-            margin-top: 104px;
+            height: calc(100vh - var(--header-height));
+            margin-top: var(--header-height);
             position: relative;
             overflow: auto;
             background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
@@ -187,14 +189,13 @@
 
         .controls {
             position: fixed;
-            top: 125px;
+            top: var(--control-top);
             right: 20px;
-            width: 200px;
-            background: rgba(255, 248, 220, 0.95);
-            padding: 15px 20px;
-            border-radius: 8px;
+            background: #d4af37;
+            padding: 0;
+            border-radius: 4px;
             border: 2px solid #d4af37;
-            z-index: 100;
+            z-index: 998;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
@@ -205,8 +206,8 @@
             padding: 8px 14px;
             border-radius: 4px;
             cursor: pointer;
-            margin: 5px;
-            font-size: 25px;
+            margin: 0;
+            font-size: 18px;
             font-weight: bold;
             transition: all 0.3s ease;
         }
@@ -241,7 +242,7 @@
     <div id="tooltip" class="tooltip"></div>
 
     <script>
-        const sourceNodesData = [{"id": "I384", "name": "Adwik Poudel", "given_name": "Adwik", "surname": "Poudel", "nepali_name": "अद्विक पौडेल", "birth": "25 JAN 2019", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: अद्विक पौडेल", "generation": 0, "path": "m", "is_main": true}, {"id": "I381", "name": "Aashish Poudel", "given_name": "Aashish", "surname": "Poudel", "nepali_name": "", "birth": "28 NOV 1984", "birth_place": "जैंसीदेवल, काठमाण्डौ", "death": "", "sex": "M", "notes": "", "generation": -1, "path": "a0", "is_main": false}, {"id": "I332", "name": "Narayan Poudel", "given_name": "Narayan", "surname": "Poudel", "nepali_name": "नारायण पौडेल", "birth": "1954", "birth_place": "लुभू, ललितपुर, नेपाल", "death": "", "sex": "M", "notes": "Bio notes: नारायण पौडेल", "generation": -2, "path": "a00", "is_main": false}, {"id": "I386", "name": "Bishnu Gopal Sharma Poudel", "given_name": "Bishnu Gopal Sharma", "surname": "Poudel", "nepali_name": "विष्णुप्रसाद पौडेल", "birth": "1936", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: विष्णुप्रसाद पौडेल", "generation": -3, "path": "a000", "is_main": false}, {"id": "I388", "name": "Angirash Poudel", "given_name": "Angirash", "surname": "Poudel", "nepali_name": "अंगिरस पौडेल", "birth": "21 JUN 1906", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: अंगिरस पौडेल", "generation": -4, "path": "a0000", "is_main": false}, {"id": "I390", "name": "GaneshDutta Poudel", "given_name": "GaneshDutta", "surname": "Poudel", "nepali_name": "गणेशदत्त पौडेल", "birth": "1889", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: गणेशदत्त पौडेल", "generation": -5, "path": "a00000", "is_main": false}, {"id": "I391", "name": "PurnaKumari Acharya", "given_name": "PurnaKumari", "surname": "Acharya", "nepali_name": "पूर्णकुमारी पौडेल", "birth": "", "birth_place": "Sankhu", "death": "1954", "sex": "F", "notes": "Bio notes: पूर्णकुमारी पौडेल", "generation": -5, "path": "a00001", "is_main": false}, {"id": "I389", "name": "ShivaKumari Wagle", "given_name": "ShivaKumari", "surname": "Wagle", "nepali_name": "शिवकुमारी पौडेल", "birth": "", "birth_place": "Basdol", "death": "", "sex": "F", "notes": "Bio notes: शिवकुमारी पौडेल", "generation": -4, "path": "a0001", "is_main": false}, {"id": "I387", "name": "Bindu Subedi", "given_name": "Bindu", "surname": "Subedi", "nepali_name": "विन्दू पौडेल", "birth": "1936", "birth_place": "Satghumti, Dhading", "death": "", "sex": "F", "notes": "Bio notes: विन्दू पौडेल", "generation": -3, "path": "a001", "is_main": false}, {"id": "I400", "name": "Uttam Kumar Subedi", "given_name": "Uttam Kumar", "surname": "Subedi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -4, "path": "a0010", "is_main": false}, {"id": "I433", "name": "Balbhadra Subedi", "given_name": "Balbhadra", "surname": "Subedi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -5, "path": "a00100", "is_main": false}, {"id": "I434", "name": "Rukmini Devi Subedi", "given_name": "Rukmini Devi", "surname": "Subedi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -5, "path": "a00101", "is_main": false}, {"id": "I401", "name": "Indrakumari Regmi", "given_name": "Indrakumari", "surname": "Regmi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a0011", "is_main": false}, {"id": "I333", "name": "Punyawati Poudel", "given_name": "Punyawati", "surname": "Poudel", "nepali_name": "पुण्यवती पौडेल", "birth": "1962", "birth_place": "दुवाकोट, भक्तपुर, नेपाल", "death": "", "sex": "F", "notes": "Bio notes: पुण्यवती पौडेल", "generation": -2, "path": "a01", "is_main": false}, {"id": "I334", "name": "Krishna Prasad Neupane", "given_name": "Krishna Prasad", "surname": "Neupane", "nepali_name": "", "birth": "1924", "birth_place": "दुवाकोट, नेपाल", "death": "", "sex": "M", "notes": "", "generation": -3, "path": "a010", "is_main": false}, {"id": "I336", "name": "GopiKrishna Neupane", "given_name": "GopiKrishna", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -4, "path": "a0100", "is_main": false}, {"id": "I338", "name": "PadamLal Neupane", "given_name": "PadamLal", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -5, "path": "a01000", "is_main": false}, {"id": "I339", "name": "Neupane", "given_name": "Neupane", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -5, "path": "a01001", "is_main": false}, {"id": "I337", "name": "PadmaKumari Dawadi", "given_name": "PadmaKumari", "surname": "Dawadi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a0101", "is_main": false}, {"id": "I335", "name": "Radheshwori Regmi", "given_name": "Radheshwori", "surname": "Regmi", "nepali_name": "", "birth": "1927", "birth_place": "कौडल, नेपाल", "death": "", "sex": "F", "notes": "", "generation": -3, "path": "a011", "is_main": false}, {"id": "I645", "name": "BhimRudra Regmi", "given_name": "BhimRudra", "surname": "Regmi", "nepali_name": "", "birth": "", "birth_place": "", "death": "1937", "sex": "M", "notes": "", "generation": -4, "path": "a0110", "is_main": false}, {"id": "I647", "name": "(unknown)", "given_name": "(unknown)", "surname": "", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -5, "path": "a01100", "is_main": false}, {"id": "I648", "name": "(unknown)", "given_name": "(unknown)", "surname": "", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -5, "path": "a01101", "is_main": false}, {"id": "I646", "name": "SumitraDevi Regmi", "given_name": "SumitraDevi", "surname": "Regmi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a0111", "is_main": false}, {"id": "I382", "name": "Muna Khatiwada", "given_name": "Muna", "surname": "Khatiwada", "nepali_name": "मुना पौडेल", "birth": "10 NOV 1985", "birth_place": "मधुमल्ला, मोरङ, नेपाल", "death": "", "sex": "F", "notes": "Bio notes: मुना पौडेल", "generation": -1, "path": "a1", "is_main": false}, {"id": "I554", "name": "Khem Khatiwada", "given_name": "Khem", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -2, "path": "a10", "is_main": false}, {"id": "I556", "name": "RamPrasad Khatiwada", "given_name": "RamPrasad", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -3, "path": "a100", "is_main": false}, {"id": "I611", "name": "Chudamani Khatiwada", "given_name": "Chudamani", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -4, "path": "a1000", "is_main": false}, {"id": "I618", "name": "Devidas Khatiwada", "given_name": "Devidas", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -5, "path": "a10000", "is_main": false}, {"id": "I617", "name": "DevidasWife Khatiwada", "given_name": "DevidasWife", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -5, "path": "a10001", "is_main": false}, {"id": "I610", "name": "Manamaya Khatiwada", "given_name": "Manamaya", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a1001", "is_main": false}, {"id": "I555", "name": "Bhadrakala Adhikari", "given_name": "Bhadrakala", "surname": "Adhikari", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -3, "path": "a101", "is_main": false}, {"id": "I553", "name": "Binda Bhattarai", "given_name": "Binda", "surname": "Bhattarai", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -2, "path": "a11", "is_main": false}, {"id": "I585", "name": "BhimPrasad Bhattarai", "given_name": "BhimPrasad", "surname": "Bhattarai", "nepali_name": "", "birth": "", "birth_place": "", "death": "2022", "sex": "M", "notes": "", "generation": -3, "path": "a110", "is_main": false}, {"id": "I624", "name": "BhimPrasadFather Bhattarai", "given_name": "BhimPrasadFather", "surname": "Bhattarai", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -4, "path": "a1100", "is_main": false}, {"id": "I623", "name": "BhimPrasadMother Bhattarai", "given_name": "BhimPrasadMother", "surname": "Bhattarai", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a1101", "is_main": false}, {"id": "I584", "name": "RatnaMaya Bhattarai", "given_name": "RatnaMaya", "surname": "Bhattarai", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -3, "path": "a111", "is_main": false}];
+        const sourceNodesData = [{"id": "I384", "name": "Adwik Poudel", "given_name": "Adwik", "surname": "Poudel", "nepali_name": "अद्विक पौडेल", "birth": "25 JAN 2019", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: अद्विक पौडेल", "generation": 0, "path": "m", "is_main": true, "is_spouse": false}, {"id": "I381", "name": "Aashish Poudel", "given_name": "Aashish", "surname": "Poudel", "nepali_name": "", "birth": "28 NOV 1984", "birth_place": "जैंसीदेवल, काठमाण्डौ", "death": "", "sex": "M", "notes": "", "generation": -1, "path": "a0", "is_main": false, "is_spouse": false}, {"id": "I332", "name": "Narayan Poudel", "given_name": "Narayan", "surname": "Poudel", "nepali_name": "नारायण पौडेल", "birth": "1954", "birth_place": "लुभू, ललितपुर, नेपाल", "death": "", "sex": "M", "notes": "Bio notes: नारायण पौडेल", "generation": -2, "path": "a00", "is_main": false, "is_spouse": false}, {"id": "I386", "name": "Bishnu Gopal Sharma Poudel", "given_name": "Bishnu Gopal Sharma", "surname": "Poudel", "nepali_name": "विष्णुप्रसाद पौडेल", "birth": "1936", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: विष्णुप्रसाद पौडेल", "generation": -3, "path": "a000", "is_main": false, "is_spouse": false}, {"id": "I388", "name": "Angirash Poudel", "given_name": "Angirash", "surname": "Poudel", "nepali_name": "अंगिरस पौडेल", "birth": "21 JUN 1906", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: अंगिरस पौडेल", "generation": -4, "path": "a0000", "is_main": false, "is_spouse": false}, {"id": "I390", "name": "GaneshDutta Poudel", "given_name": "GaneshDutta", "surname": "Poudel", "nepali_name": "गणेशदत्त पौडेल", "birth": "1889", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: गणेशदत्त पौडेल", "generation": -5, "path": "a00000", "is_main": false, "is_spouse": false}, {"id": "I391", "name": "PurnaKumari Acharya", "given_name": "PurnaKumari", "surname": "Acharya", "nepali_name": "पूर्णकुमारी पौडेल", "birth": "", "birth_place": "Sankhu", "death": "1954", "sex": "F", "notes": "Bio notes: पूर्णकुमारी पौडेल", "generation": -5, "path": "a00001", "is_main": false, "is_spouse": false}, {"id": "I389", "name": "ShivaKumari Wagle", "given_name": "ShivaKumari", "surname": "Wagle", "nepali_name": "शिवकुमारी पौडेल", "birth": "", "birth_place": "Basdol", "death": "", "sex": "F", "notes": "Bio notes: शिवकुमारी पौडेल", "generation": -4, "path": "a0001", "is_main": false, "is_spouse": false}, {"id": "I387", "name": "Bindu Subedi", "given_name": "Bindu", "surname": "Subedi", "nepali_name": "विन्दू पौडेल", "birth": "1936", "birth_place": "Satghumti, Dhading", "death": "", "sex": "F", "notes": "Bio notes: विन्दू पौडेल", "generation": -3, "path": "a001", "is_main": false, "is_spouse": false}, {"id": "I400", "name": "Uttam Kumar Subedi", "given_name": "Uttam Kumar", "surname": "Subedi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -4, "path": "a0010", "is_main": false, "is_spouse": false}, {"id": "I433", "name": "Balbhadra Subedi", "given_name": "Balbhadra", "surname": "Subedi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -5, "path": "a00100", "is_main": false, "is_spouse": false}, {"id": "I434", "name": "Rukmini Devi Subedi", "given_name": "Rukmini Devi", "surname": "Subedi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -5, "path": "a00101", "is_main": false, "is_spouse": false}, {"id": "I401", "name": "Indrakumari Regmi", "given_name": "Indrakumari", "surname": "Regmi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a0011", "is_main": false, "is_spouse": false}, {"id": "I333", "name": "Punyawati Poudel", "given_name": "Punyawati", "surname": "Poudel", "nepali_name": "पुण्यवती पौडेल", "birth": "1962", "birth_place": "दुवाकोट, भक्तपुर, नेपाल", "death": "", "sex": "F", "notes": "Bio notes: पुण्यवती पौडेल", "generation": -2, "path": "a01", "is_main": false, "is_spouse": false}, {"id": "I334", "name": "Krishna Prasad Neupane", "given_name": "Krishna Prasad", "surname": "Neupane", "nepali_name": "", "birth": "1924", "birth_place": "दुवाकोट, नेपाल", "death": "", "sex": "M", "notes": "", "generation": -3, "path": "a010", "is_main": false, "is_spouse": false}, {"id": "I336", "name": "GopiKrishna Neupane", "given_name": "GopiKrishna", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -4, "path": "a0100", "is_main": false, "is_spouse": false}, {"id": "I338", "name": "PadamLal Neupane", "given_name": "PadamLal", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -5, "path": "a01000", "is_main": false, "is_spouse": false}, {"id": "I339", "name": "Neupane", "given_name": "Neupane", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -5, "path": "a01001", "is_main": false, "is_spouse": false}, {"id": "I337", "name": "PadmaKumari Dawadi", "given_name": "PadmaKumari", "surname": "Dawadi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a0101", "is_main": false, "is_spouse": false}, {"id": "I335", "name": "Radheshwori Regmi", "given_name": "Radheshwori", "surname": "Regmi", "nepali_name": "", "birth": "1927", "birth_place": "कौडल, नेपाल", "death": "", "sex": "F", "notes": "", "generation": -3, "path": "a011", "is_main": false, "is_spouse": false}, {"id": "I645", "name": "BhimRudra Regmi", "given_name": "BhimRudra", "surname": "Regmi", "nepali_name": "", "birth": "", "birth_place": "", "death": "1937", "sex": "M", "notes": "", "generation": -4, "path": "a0110", "is_main": false, "is_spouse": false}, {"id": "I647", "name": "(unknown)", "given_name": "(unknown)", "surname": "", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -5, "path": "a01100", "is_main": false, "is_spouse": false}, {"id": "I648", "name": "(unknown)", "given_name": "(unknown)", "surname": "", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -5, "path": "a01101", "is_main": false, "is_spouse": false}, {"id": "I646", "name": "SumitraDevi Regmi", "given_name": "SumitraDevi", "surname": "Regmi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a0111", "is_main": false, "is_spouse": false}, {"id": "I382", "name": "Muna Poudel", "given_name": "Muna", "surname": "Poudel", "nepali_name": "मुना पौडेल", "birth": "10 NOV 1985", "birth_place": "मधुमल्ला, मोरङ, नेपाल", "death": "", "sex": "F", "notes": "Bio notes: मुना पौडेल", "generation": -1, "path": "a1", "is_main": false, "is_spouse": false}, {"id": "I554", "name": "Khem Khatiwada", "given_name": "Khem", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -2, "path": "a10", "is_main": false, "is_spouse": false}, {"id": "I556", "name": "RamPrasad Khatiwada", "given_name": "RamPrasad", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -3, "path": "a100", "is_main": false, "is_spouse": false}, {"id": "I611", "name": "Chudamani Khatiwada", "given_name": "Chudamani", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -4, "path": "a1000", "is_main": false, "is_spouse": false}, {"id": "I618", "name": "Devidas Khatiwada", "given_name": "Devidas", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -5, "path": "a10000", "is_main": false, "is_spouse": false}, {"id": "I617", "name": "DevidasWife Khatiwada", "given_name": "DevidasWife", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -5, "path": "a10001", "is_main": false, "is_spouse": false}, {"id": "I610", "name": "Manamaya Khatiwada", "given_name": "Manamaya", "surname": "Khatiwada", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a1001", "is_main": false, "is_spouse": false}, {"id": "I555", "name": "Bhadrakala Adhikari", "given_name": "Bhadrakala", "surname": "Adhikari", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -3, "path": "a101", "is_main": false, "is_spouse": false}, {"id": "I553", "name": "Binda Bhattarai", "given_name": "Binda", "surname": "Bhattarai", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -2, "path": "a11", "is_main": false, "is_spouse": false}, {"id": "I585", "name": "BhimPrasad Bhattarai", "given_name": "BhimPrasad", "surname": "Bhattarai", "nepali_name": "", "birth": "", "birth_place": "", "death": "2022", "sex": "M", "notes": "", "generation": -3, "path": "a110", "is_main": false, "is_spouse": false}, {"id": "I624", "name": "BhimPrasadFather Bhattarai", "given_name": "BhimPrasadFather", "surname": "Bhattarai", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -4, "path": "a1100", "is_main": false, "is_spouse": false}, {"id": "I623", "name": "BhimPrasadMother Bhattarai", "given_name": "BhimPrasadMother", "surname": "Bhattarai", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a1101", "is_main": false, "is_spouse": false}, {"id": "I584", "name": "RatnaMaya Bhattarai", "given_name": "RatnaMaya", "surname": "Bhattarai", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -3, "path": "a111", "is_main": false, "is_spouse": false}];
         const linksData = [{"source": "I332", "target": "I381"}, {"source": "I333", "target": "I381"}, {"source": "I334", "target": "I333"}, {"source": "I335", "target": "I333"}, {"source": "I336", "target": "I334"}, {"source": "I337", "target": "I334"}, {"source": "I338", "target": "I336"}, {"source": "I339", "target": "I336"}, {"source": "I381", "target": "I384"}, {"source": "I382", "target": "I384"}, {"source": "I386", "target": "I332"}, {"source": "I387", "target": "I332"}, {"source": "I388", "target": "I386"}, {"source": "I389", "target": "I386"}, {"source": "I390", "target": "I388"}, {"source": "I391", "target": "I388"}, {"source": "I400", "target": "I387"}, {"source": "I401", "target": "I387"}, {"source": "I433", "target": "I400"}, {"source": "I434", "target": "I400"}, {"source": "I553", "target": "I382"}, {"source": "I554", "target": "I382"}, {"source": "I555", "target": "I554"}, {"source": "I556", "target": "I554"}, {"source": "I584", "target": "I553"}, {"source": "I585", "target": "I553"}, {"source": "I610", "target": "I556"}, {"source": "I611", "target": "I556"}, {"source": "I617", "target": "I611"}, {"source": "I618", "target": "I611"}, {"source": "I623", "target": "I585"}, {"source": "I624", "target": "I585"}, {"source": "I645", "target": "I335"}, {"source": "I646", "target": "I335"}, {"source": "I647", "target": "I645"}, {"source": "I648", "target": "I645"}];
 
         const nodeWidth = 211;
@@ -250,9 +251,21 @@
         const generationSpacingY = 160;
         const verticalColumnSpacingX = 340;
         const verticalNodeSpacingY = 128;
-        const headerHeight = 104;
+        const headerMargin = 14;
         const margin = { top: 80, right: 120, bottom: 120, left: 120 };
         const renderStates = new Map();
+
+        function measuredHeaderHeight() {
+            const header = document.querySelector('.page-header');
+            return header ? Math.ceil(header.getBoundingClientRect().height) : 104;
+        }
+
+        function updateLayoutChrome() {
+            const headerHeight = measuredHeaderHeight();
+            document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+            document.documentElement.style.setProperty('--control-top', `${headerHeight + headerMargin}px`);
+            return headerHeight;
+        }
 
         function cloneNodes() {
             return sourceNodesData.map(node => ({ ...node }));
@@ -289,6 +302,11 @@
             if (mainNode) {
                 mainNode.x = centerX;
             }
+
+            const spouseNodes = nodes.filter(node => node.is_spouse).sort(sortByPath);
+            spouseNodes.forEach((node, index) => {
+                node.x = centerX + (index + 1) * nodeSpacingX;
+            });
 
             for (let childGeneration = 0; childGeneration > minGeneration; childGeneration--) {
                 const children = (rows.get(childGeneration) || []).sort(sortByPath);
@@ -345,6 +363,7 @@
         function applyVerticalLayout(nodes, links) {
             const nodeById = new Map(nodes.map(node => [node.id, node]));
             const parentLinksByTarget = d3.group(links, link => link.target);
+            const childLinksBySource = d3.group(links, link => link.source);
             const { rows, generations } = orderedRows(nodes);
             const maxColumnCount = d3.max(Array.from(rows.values()), row => row.length) || 1;
             const minGeneration = d3.min(generations) || 0;
@@ -360,6 +379,20 @@
                 return (parentLinksByTarget.get(node.id) || [])
                     .map(parentLink => nodeById.get(parentLink.source))
                     .filter(parent => parent && parent.generation === node.generation - 1)
+                    .sort(sortByPath);
+            }
+
+            function displayedChildrenFor(node) {
+                const seen = new Set();
+                return (childLinksBySource.get(node.id) || [])
+                    .map(childLink => nodeById.get(childLink.target))
+                    .filter(child => {
+                        if (!child || child.generation !== node.generation + 1 || seen.has(child.id)) {
+                            return false;
+                        }
+                        seen.add(child.id);
+                        return true;
+                    })
                     .sort(sortByPath);
             }
 
@@ -383,42 +416,62 @@
                 placeAncestorSubtree(mainNode);
             }
 
+            const spouseNodes = nodes.filter(node => node.is_spouse).sort(sortByPath);
+            spouseNodes.forEach((node, index) => {
+                if (mainNode && Number.isFinite(mainNode.y)) {
+                    node.y = mainNode.y + (index + 1) * verticalNodeSpacingY;
+                }
+            });
+
             generations
                 .filter(generation => generation <= 0)
                 .forEach(generation => {
-                    (rows.get(generation) || []).sort(sortByPath).forEach(node => placeAncestorSubtree(node));
+                    (rows.get(generation) || [])
+                        .filter(node => !node.is_spouse)
+                        .sort(sortByPath)
+                        .forEach(node => placeAncestorSubtree(node));
                 });
 
-            generations
-                .filter(generation => generation > 0)
-                .forEach(generation => {
-                    const column = (rows.get(generation) || []).sort(sortByPath);
-                    if (!column.length) return;
+            let nextDescendantLeafY = 0;
+            function placeDescendantSubtree(node) {
+                if (!node) return 0;
+                if (Number.isFinite(node.descY)) return node.descY;
 
-                    if (generation === 1 && mainNode) {
-                        const columnHeight = (column.length - 1) * verticalNodeSpacingY;
-                        const startY = mainNode.y - columnHeight / 2;
-                        column.forEach((node, index) => {
-                            node.y = startY + index * verticalNodeSpacingY;
+                const children = displayedChildrenFor(node);
+                if (!children.length) {
+                    node.descY = nextDescendantLeafY;
+                    nextDescendantLeafY += verticalNodeSpacingY;
+                    return node.descY;
+                }
+
+                children.forEach(child => placeDescendantSubtree(child));
+                node.descY = d3.mean(children, child => child.descY);
+                return node.descY;
+            }
+
+            const descendantRoots = (rows.get(1) || []).sort(sortByPath);
+            descendantRoots.forEach(root => placeDescendantSubtree(root));
+
+            if (descendantRoots.length) {
+                const firstRootParents = displayedParentsFor(descendantRoots[0])
+                    .filter(parent => Number.isFinite(parent.y));
+                const descendantAnchorY = firstRootParents.length
+                    ? d3.mean(firstRootParents, parent => parent.y)
+                    : mainNode?.y || margin.top;
+                const descendantTop = d3.min(descendantRoots, root => root.descY);
+                const descendantBottom = d3.max(descendantRoots, root => root.descY);
+                const descendantShiftY = descendantAnchorY - (descendantTop + descendantBottom) / 2;
+
+                generations
+                    .filter(generation => generation > 0)
+                    .forEach(generation => {
+                        (rows.get(generation) || []).forEach(node => {
+                            if (Number.isFinite(node.descY)) {
+                                node.y = node.descY + descendantShiftY;
+                            }
                         });
-                        return;
-                    }
-
-                    column.forEach((node, index) => {
-                        const parents = (parentLinksByTarget.get(node.id) || [])
-                            .map(parentLink => nodeById.get(parentLink.source))
-                            .filter(parent => parent && Number.isFinite(parent.y));
-                        node.desiredY = parents.length
-                            ? d3.mean(parents, parent => parent.y)
-                            : nextLeafY + index * verticalNodeSpacingY;
                     });
-
-                    column.sort((a, b) => d3.ascending(a.desiredY, b.desiredY) || sortByPath(a, b));
-                    column.forEach((node, index) => {
-                        const minY = index === 0 ? -Infinity : column[index - 1].y + verticalNodeSpacingY;
-                        node.y = Math.max(node.desiredY, minY);
-                    });
-                });
+            }
 
             const minY = d3.min(nodes, node => node.y - nodeHeight / 2) || 0;
             if (minY < margin.top) {
@@ -462,6 +515,12 @@
             const y1 = target.y;
 
             if (orientation === 'vertical') {
+                if (source.generation === target.generation) {
+                    const sourceExitX = x0 + nodeWidth / 2;
+                    const targetEntryX = x1 + nodeWidth / 2;
+                    return `M${sourceExitX},${y0}L${sourceExitX},${y1}L${targetEntryX},${y1}`;
+                }
+
                 const sourceExitX = x0 + nodeWidth / 2;
                 const targetEntryX = x1 - nodeWidth / 2;
                 const trunkX = (sourceExitX + targetEntryX) / 2;
@@ -481,20 +540,109 @@
             return `M${x0},${y0}L${x0},${midY}L${x1},${midY}L${x1},${y1}`;
         }
 
+        function parentKey(parents) {
+            return parents.map(parent => parent.id).sort().join('|');
+        }
+
+        function buildRenderedLinks(links, nodeById, orientation, parentLinksByTarget) {
+            if (orientation !== 'vertical') {
+                return links.map(link => ({
+                    path: linkPath(link, nodeById, orientation, parentLinksByTarget)
+                }));
+            }
+
+            const rendered = [];
+            const groupedChildren = new Map();
+
+            for (const [targetId, parentLinks] of parentLinksByTarget.entries()) {
+                const target = nodeById.get(targetId);
+                if (!target) continue;
+                const parents = parentLinks
+                    .map(parentLink => nodeById.get(parentLink.source))
+                    .filter(parent => parent && parent.generation === target.generation - 1)
+                    .sort(sortByPath);
+
+                if (parents.length < 2) {
+                    parentLinks.forEach(parentLink => {
+                        rendered.push({
+                            path: linkPath(parentLink, nodeById, orientation, parentLinksByTarget)
+                        });
+                    });
+                    continue;
+                }
+
+                const key = `${parentKey(parents)}:${target.generation}`;
+                if (!groupedChildren.has(key)) {
+                    groupedChildren.set(key, { parents, children: [] });
+                }
+                groupedChildren.get(key).children.push(target);
+            }
+
+            groupedChildren.forEach(group => {
+                const parents = group.parents;
+                const children = group.children.sort(sortByPath);
+                const sourceExitX = d3.max(parents, parent => parent.x + nodeWidth / 2);
+                const targetEntryX = d3.min(children, child => child.x - nodeWidth / 2);
+                const availableWidth = Math.max(1, targetEntryX - sourceExitX);
+
+                if (children.length < 2) {
+                    const child = children[0];
+                    const trunkX = sourceExitX + availableWidth / 2;
+                    const parentYs = parents.map(parent => parent.y);
+                    const parentTopY = d3.min([...parentYs, child.y]);
+                    const parentBottomY = d3.max([...parentYs, child.y]);
+                    parents.forEach(parent => {
+                        rendered.push({ path: `M${parent.x + nodeWidth / 2},${parent.y}L${trunkX},${parent.y}` });
+                    });
+                    rendered.push({ path: `M${trunkX},${parentTopY}L${trunkX},${parentBottomY}` });
+                    rendered.push({ path: `M${trunkX},${child.y}L${child.x - nodeWidth / 2},${child.y}` });
+                    return;
+                }
+
+                let parentTrunkX = sourceExitX + Math.min(90, Math.max(40, availableWidth * 0.28));
+                let childTrunkX = targetEntryX - Math.min(90, Math.max(40, availableWidth * 0.28));
+                if (childTrunkX <= parentTrunkX + 24) {
+                    parentTrunkX = sourceExitX + availableWidth / 3;
+                    childTrunkX = sourceExitX + availableWidth * 2 / 3;
+                }
+
+                const parentYs = parents.map(parent => parent.y);
+                const childYs = children.map(child => child.y);
+                const parentTopY = d3.min(parentYs);
+                const parentBottomY = d3.max(parentYs);
+                const parentMidY = d3.mean(parentYs);
+                const childTopY = d3.min(childYs);
+                const childBottomY = d3.max(childYs);
+
+                parents.forEach(parent => {
+                    rendered.push({ path: `M${parent.x + nodeWidth / 2},${parent.y}L${parentTrunkX},${parent.y}` });
+                });
+                rendered.push({ path: `M${parentTrunkX},${parentTopY}L${parentTrunkX},${parentBottomY}` });
+                rendered.push({ path: `M${parentTrunkX},${parentMidY}L${childTrunkX},${parentMidY}` });
+                rendered.push({ path: `M${childTrunkX},${childTopY}L${childTrunkX},${childBottomY}` });
+                children.forEach(child => {
+                    rendered.push({ path: `M${childTrunkX},${child.y}L${child.x - nodeWidth / 2},${child.y}` });
+                });
+            });
+
+            return rendered;
+        }
+
         function renderTree(svgSelector, nodes, links, dimensions, orientation) {
             const nodeById = new Map(nodes.map(node => [node.id, node]));
             const parentLinksByTarget = d3.group(links, link => link.target);
+            const renderedLinks = buildRenderedLinks(links, nodeById, orientation, parentLinksByTarget);
             const svg = d3.select(svgSelector)
                 .attr('width', dimensions.svgWidth)
                 .attr('height', dimensions.svgHeight);
             const g = svg.append('g');
 
             g.selectAll('.link')
-                .data(links)
+                .data(renderedLinks)
                 .enter()
                 .append('path')
                 .attr('class', 'link')
-                .attr('d', d => linkPath(d, nodeById, orientation, parentLinksByTarget));
+                .attr('d', d => d.path);
 
             const nodeGroups = g.selectAll('.node')
                 .data(nodes)
@@ -604,13 +752,14 @@
         function fitView() {
             const state = renderStates.get(activeSvgSelector());
             if (!state) return;
+            const headerHeight = updateLayoutChrome();
             const bbox = state.g.node().getBBox();
             const fullWidth = window.innerWidth;
             const fullHeight = window.innerHeight - headerHeight;
             const scale = Math.min(1, 0.9 / Math.max(bbox.width / fullWidth, bbox.height / fullHeight));
             const translate = [
                 (fullWidth - bbox.width * scale) / 2 - bbox.x * scale,
-                headerHeight + (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
+                (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
             ];
             state.svg.transition().duration(750).call(
                 state.zoom.transform,
@@ -618,6 +767,12 @@
             );
         }
 
+        window.addEventListener('resize', () => {
+            updateLayoutChrome();
+            fitView();
+        });
+
+        updateLayoutChrome();
         setTimeout(fitView, 200);
     </script>
 </body>

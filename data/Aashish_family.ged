@@ -22,13 +22,14 @@
 1 FAMS @F1@
 1 FAMC @F2@
 0 @I2@ INDI
-1 NAME Aarati /Poudel/
+1 NAME Aarati /Subedi/
 2 GIVN Aarati
-2 SURN Poudel
+2 SURN Subedi
 2 _MARNM Subedi
 1 SEX F
 1 BIRT
 2 DATE 1982
+1 NOTE Bio notes: आरती सुवेदी
 1 FAMS @F1@
 1 FAMC @F3@
 0 @I3@ INDI
@@ -2918,9 +2919,9 @@
 1 FAMS @F134@
 1 FAMC @F3@
 0 @I382@ INDI
-1 NAME Muna /Khatiwada/
+1 NAME Muna /Poudel/
 2 GIVN Muna
-2 SURN Khatiwada
+2 SURN Poudel
 2 _MARNM Poudel
 1 SEX F
 1 BIRT

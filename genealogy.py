@@ -850,7 +850,7 @@ if __name__ == "__main__":
         from helper.gedcom_person_tree import FocusedPersonTreeGenerator
 
         focused_gedcom_file = "./data/Aashish_family.ged"
-        focused_people = ["Aashish Poudel", "Aayan Poudel", "Adwik Poudel", "Aarvi Poudel"]
+        focused_people = ["Aashish Poudel", "Aayan Poudel", "Adwik Poudel", "Aarvi Poudel", "Punyawati Poudel", "Narayan Poudel", "Aarati Subedi", "Muna Poudel"]
         focused_ancestor_generations = 5
 
         print(f"\nParsing {focused_gedcom_file}...")

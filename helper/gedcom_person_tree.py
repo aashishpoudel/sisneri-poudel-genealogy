@@ -6,9 +6,10 @@ The output includes:
 - the main person
 - direct descendants of the main person
 - direct ancestors from both father and mother sides up to N generations
+- spouse(s) of the main person
 
 It intentionally excludes siblings, uncles, aunts, cousins, nieces, nephews,
-and spouse-only boxes.
+and spouses outside the main person.
 """
 
 import argparse
@@ -231,6 +232,7 @@ class FocusedPersonTreeGenerator:
             return True
 
         add_person(main_id, 0, "m")
+        self._collect_spouses(main_id, selected, links)
         self._collect_ancestors(main_id, num_ancestor_generations, selected, links, "a")
         self._collect_descendants(main_id, selected, links, "d")
 
@@ -251,6 +253,7 @@ class FocusedPersonTreeGenerator:
                 "generation": meta["generation"],
                 "path": meta["path"],
                 "is_main": person_id == main_id,
+                "is_spouse": meta.get("is_spouse", False),
             })
 
         links_list = [{"source": source, "target": target} for source, target in sorted(links)]
@@ -326,6 +329,25 @@ class FocusedPersonTreeGenerator:
                 ordered.append(child_id)
         return ordered
 
+    def _spouse_ids_for(self, person_id):
+        person = self.individuals.get(person_id)
+        if not person:
+            return []
+        ordered = []
+        for fam_id in person["fams"]:
+            family = self.families.get(fam_id)
+            if not family:
+                continue
+            for spouse_id in [family.get("husband"), family.get("wife")]:
+                if spouse_id and spouse_id != person_id and spouse_id in self.individuals and spouse_id not in ordered:
+                    ordered.append(spouse_id)
+        return ordered
+
+    def _collect_spouses(self, person_id, selected, links):
+        for idx, spouse_id in enumerate(self._spouse_ids_for(person_id)):
+            if spouse_id not in selected:
+                selected[spouse_id] = {"generation": 0, "path": f"s{idx:03d}", "is_spouse": True}
+
     def _collect_descendants(self, person_id, selected, links, path):
         child_ids = self._children_for(person_id)
         for idx, child_id in enumerate(child_ids):
@@ -334,7 +356,9 @@ class FocusedPersonTreeGenerator:
             if child_id not in selected:
                 selected[child_id] = {"generation": generation, "path": child_path}
                 self._collect_descendants(child_id, selected, links, child_path)
-            links.add((person_id, child_id))
+            for parent_id in self._parent_ids_for(child_id):
+                if parent_id in selected:
+                    links.add((parent_id, child_id))
 
     def _create_html(self, main_person, nodes, links, num_ancestor_generations):
         nodes_json = json.dumps(nodes, ensure_ascii=False)
@@ -364,6 +388,8 @@ class FocusedPersonTreeGenerator:
             --ring: #1abc9c;
             --line: #e5eef4;
             --shadow: 0 10px 30px rgba(0,0,0,.06);
+            --header-height: 104px;
+            --control-top: 125px;
         }}
 
         * {{
@@ -422,8 +448,8 @@ class FocusedPersonTreeGenerator:
 
         #container {{
             width: 100%;
-            height: 100%;
-            margin-top: 104px;
+            height: calc(100vh - var(--header-height));
+            margin-top: var(--header-height);
             position: relative;
             overflow: auto;
             background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
@@ -537,14 +563,13 @@ class FocusedPersonTreeGenerator:
 
         .controls {{
             position: fixed;
-            top: 125px;
+            top: var(--control-top);
             right: 20px;
-            width: 200px;
-            background: rgba(255, 248, 220, 0.95);
-            padding: 15px 20px;
-            border-radius: 8px;
+            background: #d4af37;
+            padding: 0;
+            border-radius: 4px;
             border: 2px solid #d4af37;
-            z-index: 100;
+            z-index: 998;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }}
 
@@ -555,8 +580,8 @@ class FocusedPersonTreeGenerator:
             padding: 8px 14px;
             border-radius: 4px;
             cursor: pointer;
-            margin: 5px;
-            font-size: 25px;
+            margin: 0;
+            font-size: 18px;
             font-weight: bold;
             transition: all 0.3s ease;
         }}
@@ -600,9 +625,21 @@ class FocusedPersonTreeGenerator:
         const generationSpacingY = 160;
         const verticalColumnSpacingX = 340;
         const verticalNodeSpacingY = 128;
-        const headerHeight = 104;
+        const headerMargin = 14;
         const margin = {{ top: 80, right: 120, bottom: 120, left: 120 }};
         const renderStates = new Map();
+
+        function measuredHeaderHeight() {{
+            const header = document.querySelector('.page-header');
+            return header ? Math.ceil(header.getBoundingClientRect().height) : 104;
+        }}
+
+        function updateLayoutChrome() {{
+            const headerHeight = measuredHeaderHeight();
+            document.documentElement.style.setProperty('--header-height', `${{headerHeight}}px`);
+            document.documentElement.style.setProperty('--control-top', `${{headerHeight + headerMargin}}px`);
+            return headerHeight;
+        }}
 
         function cloneNodes() {{
             return sourceNodesData.map(node => ({{ ...node }}));
@@ -639,6 +676,11 @@ class FocusedPersonTreeGenerator:
             if (mainNode) {{
                 mainNode.x = centerX;
             }}
+
+            const spouseNodes = nodes.filter(node => node.is_spouse).sort(sortByPath);
+            spouseNodes.forEach((node, index) => {{
+                node.x = centerX + (index + 1) * nodeSpacingX;
+            }});
 
             for (let childGeneration = 0; childGeneration > minGeneration; childGeneration--) {{
                 const children = (rows.get(childGeneration) || []).sort(sortByPath);
@@ -695,6 +737,7 @@ class FocusedPersonTreeGenerator:
         function applyVerticalLayout(nodes, links) {{
             const nodeById = new Map(nodes.map(node => [node.id, node]));
             const parentLinksByTarget = d3.group(links, link => link.target);
+            const childLinksBySource = d3.group(links, link => link.source);
             const {{ rows, generations }} = orderedRows(nodes);
             const maxColumnCount = d3.max(Array.from(rows.values()), row => row.length) || 1;
             const minGeneration = d3.min(generations) || 0;
@@ -710,6 +753,20 @@ class FocusedPersonTreeGenerator:
                 return (parentLinksByTarget.get(node.id) || [])
                     .map(parentLink => nodeById.get(parentLink.source))
                     .filter(parent => parent && parent.generation === node.generation - 1)
+                    .sort(sortByPath);
+            }}
+
+            function displayedChildrenFor(node) {{
+                const seen = new Set();
+                return (childLinksBySource.get(node.id) || [])
+                    .map(childLink => nodeById.get(childLink.target))
+                    .filter(child => {{
+                        if (!child || child.generation !== node.generation + 1 || seen.has(child.id)) {{
+                            return false;
+                        }}
+                        seen.add(child.id);
+                        return true;
+                    }})
                     .sort(sortByPath);
             }}
 
@@ -733,42 +790,62 @@ class FocusedPersonTreeGenerator:
                 placeAncestorSubtree(mainNode);
             }}
 
+            const spouseNodes = nodes.filter(node => node.is_spouse).sort(sortByPath);
+            spouseNodes.forEach((node, index) => {{
+                if (mainNode && Number.isFinite(mainNode.y)) {{
+                    node.y = mainNode.y + (index + 1) * verticalNodeSpacingY;
+                }}
+            }});
+
             generations
                 .filter(generation => generation <= 0)
                 .forEach(generation => {{
-                    (rows.get(generation) || []).sort(sortByPath).forEach(node => placeAncestorSubtree(node));
+                    (rows.get(generation) || [])
+                        .filter(node => !node.is_spouse)
+                        .sort(sortByPath)
+                        .forEach(node => placeAncestorSubtree(node));
                 }});
 
-            generations
-                .filter(generation => generation > 0)
-                .forEach(generation => {{
-                    const column = (rows.get(generation) || []).sort(sortByPath);
-                    if (!column.length) return;
+            let nextDescendantLeafY = 0;
+            function placeDescendantSubtree(node) {{
+                if (!node) return 0;
+                if (Number.isFinite(node.descY)) return node.descY;
 
-                    if (generation === 1 && mainNode) {{
-                        const columnHeight = (column.length - 1) * verticalNodeSpacingY;
-                        const startY = mainNode.y - columnHeight / 2;
-                        column.forEach((node, index) => {{
-                            node.y = startY + index * verticalNodeSpacingY;
+                const children = displayedChildrenFor(node);
+                if (!children.length) {{
+                    node.descY = nextDescendantLeafY;
+                    nextDescendantLeafY += verticalNodeSpacingY;
+                    return node.descY;
+                }}
+
+                children.forEach(child => placeDescendantSubtree(child));
+                node.descY = d3.mean(children, child => child.descY);
+                return node.descY;
+            }}
+
+            const descendantRoots = (rows.get(1) || []).sort(sortByPath);
+            descendantRoots.forEach(root => placeDescendantSubtree(root));
+
+            if (descendantRoots.length) {{
+                const firstRootParents = displayedParentsFor(descendantRoots[0])
+                    .filter(parent => Number.isFinite(parent.y));
+                const descendantAnchorY = firstRootParents.length
+                    ? d3.mean(firstRootParents, parent => parent.y)
+                    : mainNode?.y || margin.top;
+                const descendantTop = d3.min(descendantRoots, root => root.descY);
+                const descendantBottom = d3.max(descendantRoots, root => root.descY);
+                const descendantShiftY = descendantAnchorY - (descendantTop + descendantBottom) / 2;
+
+                generations
+                    .filter(generation => generation > 0)
+                    .forEach(generation => {{
+                        (rows.get(generation) || []).forEach(node => {{
+                            if (Number.isFinite(node.descY)) {{
+                                node.y = node.descY + descendantShiftY;
+                            }}
                         }});
-                        return;
-                    }}
-
-                    column.forEach((node, index) => {{
-                        const parents = (parentLinksByTarget.get(node.id) || [])
-                            .map(parentLink => nodeById.get(parentLink.source))
-                            .filter(parent => parent && Number.isFinite(parent.y));
-                        node.desiredY = parents.length
-                            ? d3.mean(parents, parent => parent.y)
-                            : nextLeafY + index * verticalNodeSpacingY;
                     }});
-
-                    column.sort((a, b) => d3.ascending(a.desiredY, b.desiredY) || sortByPath(a, b));
-                    column.forEach((node, index) => {{
-                        const minY = index === 0 ? -Infinity : column[index - 1].y + verticalNodeSpacingY;
-                        node.y = Math.max(node.desiredY, minY);
-                    }});
-                }});
+            }}
 
             const minY = d3.min(nodes, node => node.y - nodeHeight / 2) || 0;
             if (minY < margin.top) {{
@@ -812,6 +889,12 @@ class FocusedPersonTreeGenerator:
             const y1 = target.y;
 
             if (orientation === 'vertical') {{
+                if (source.generation === target.generation) {{
+                    const sourceExitX = x0 + nodeWidth / 2;
+                    const targetEntryX = x1 + nodeWidth / 2;
+                    return `M${{sourceExitX}},${{y0}}L${{sourceExitX}},${{y1}}L${{targetEntryX}},${{y1}}`;
+                }}
+
                 const sourceExitX = x0 + nodeWidth / 2;
                 const targetEntryX = x1 - nodeWidth / 2;
                 const trunkX = (sourceExitX + targetEntryX) / 2;
@@ -831,20 +914,109 @@ class FocusedPersonTreeGenerator:
             return `M${{x0}},${{y0}}L${{x0}},${{midY}}L${{x1}},${{midY}}L${{x1}},${{y1}}`;
         }}
 
+        function parentKey(parents) {{
+            return parents.map(parent => parent.id).sort().join('|');
+        }}
+
+        function buildRenderedLinks(links, nodeById, orientation, parentLinksByTarget) {{
+            if (orientation !== 'vertical') {{
+                return links.map(link => ({{
+                    path: linkPath(link, nodeById, orientation, parentLinksByTarget)
+                }}));
+            }}
+
+            const rendered = [];
+            const groupedChildren = new Map();
+
+            for (const [targetId, parentLinks] of parentLinksByTarget.entries()) {{
+                const target = nodeById.get(targetId);
+                if (!target) continue;
+                const parents = parentLinks
+                    .map(parentLink => nodeById.get(parentLink.source))
+                    .filter(parent => parent && parent.generation === target.generation - 1)
+                    .sort(sortByPath);
+
+                if (parents.length < 2) {{
+                    parentLinks.forEach(parentLink => {{
+                        rendered.push({{
+                            path: linkPath(parentLink, nodeById, orientation, parentLinksByTarget)
+                        }});
+                    }});
+                    continue;
+                }}
+
+                const key = `${{parentKey(parents)}}:${{target.generation}}`;
+                if (!groupedChildren.has(key)) {{
+                    groupedChildren.set(key, {{ parents, children: [] }});
+                }}
+                groupedChildren.get(key).children.push(target);
+            }}
+
+            groupedChildren.forEach(group => {{
+                const parents = group.parents;
+                const children = group.children.sort(sortByPath);
+                const sourceExitX = d3.max(parents, parent => parent.x + nodeWidth / 2);
+                const targetEntryX = d3.min(children, child => child.x - nodeWidth / 2);
+                const availableWidth = Math.max(1, targetEntryX - sourceExitX);
+
+                if (children.length < 2) {{
+                    const child = children[0];
+                    const trunkX = sourceExitX + availableWidth / 2;
+                    const parentYs = parents.map(parent => parent.y);
+                    const parentTopY = d3.min([...parentYs, child.y]);
+                    const parentBottomY = d3.max([...parentYs, child.y]);
+                    parents.forEach(parent => {{
+                        rendered.push({{ path: `M${{parent.x + nodeWidth / 2}},${{parent.y}}L${{trunkX}},${{parent.y}}` }});
+                    }});
+                    rendered.push({{ path: `M${{trunkX}},${{parentTopY}}L${{trunkX}},${{parentBottomY}}` }});
+                    rendered.push({{ path: `M${{trunkX}},${{child.y}}L${{child.x - nodeWidth / 2}},${{child.y}}` }});
+                    return;
+                }}
+
+                let parentTrunkX = sourceExitX + Math.min(90, Math.max(40, availableWidth * 0.28));
+                let childTrunkX = targetEntryX - Math.min(90, Math.max(40, availableWidth * 0.28));
+                if (childTrunkX <= parentTrunkX + 24) {{
+                    parentTrunkX = sourceExitX + availableWidth / 3;
+                    childTrunkX = sourceExitX + availableWidth * 2 / 3;
+                }}
+
+                const parentYs = parents.map(parent => parent.y);
+                const childYs = children.map(child => child.y);
+                const parentTopY = d3.min(parentYs);
+                const parentBottomY = d3.max(parentYs);
+                const parentMidY = d3.mean(parentYs);
+                const childTopY = d3.min(childYs);
+                const childBottomY = d3.max(childYs);
+
+                parents.forEach(parent => {{
+                    rendered.push({{ path: `M${{parent.x + nodeWidth / 2}},${{parent.y}}L${{parentTrunkX}},${{parent.y}}` }});
+                }});
+                rendered.push({{ path: `M${{parentTrunkX}},${{parentTopY}}L${{parentTrunkX}},${{parentBottomY}}` }});
+                rendered.push({{ path: `M${{parentTrunkX}},${{parentMidY}}L${{childTrunkX}},${{parentMidY}}` }});
+                rendered.push({{ path: `M${{childTrunkX}},${{childTopY}}L${{childTrunkX}},${{childBottomY}}` }});
+                children.forEach(child => {{
+                    rendered.push({{ path: `M${{childTrunkX}},${{child.y}}L${{child.x - nodeWidth / 2}},${{child.y}}` }});
+                }});
+            }});
+
+            return rendered;
+        }}
+
         function renderTree(svgSelector, nodes, links, dimensions, orientation) {{
             const nodeById = new Map(nodes.map(node => [node.id, node]));
             const parentLinksByTarget = d3.group(links, link => link.target);
+            const renderedLinks = buildRenderedLinks(links, nodeById, orientation, parentLinksByTarget);
             const svg = d3.select(svgSelector)
                 .attr('width', dimensions.svgWidth)
                 .attr('height', dimensions.svgHeight);
             const g = svg.append('g');
 
             g.selectAll('.link')
-                .data(links)
+                .data(renderedLinks)
                 .enter()
                 .append('path')
                 .attr('class', 'link')
-                .attr('d', d => linkPath(d, nodeById, orientation, parentLinksByTarget));
+                .attr('d', d => d.path);
 
             const nodeGroups = g.selectAll('.node')
                 .data(nodes)
@@ -954,13 +1126,14 @@ class FocusedPersonTreeGenerator:
         function fitView() {{
             const state = renderStates.get(activeSvgSelector());
             if (!state) return;
+            const headerHeight = updateLayoutChrome();
             const bbox = state.g.node().getBBox();
             const fullWidth = window.innerWidth;
             const fullHeight = window.innerHeight - headerHeight;
             const scale = Math.min(1, 0.9 / Math.max(bbox.width / fullWidth, bbox.height / fullHeight));
             const translate = [
                 (fullWidth - bbox.width * scale) / 2 - bbox.x * scale,
-                headerHeight + (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
+                (fullHeight - bbox.height * scale) / 2 - bbox.y * scale
             ];
             state.svg.transition().duration(750).call(
                 state.zoom.transform,
@@ -968,6 +1141,12 @@ class FocusedPersonTreeGenerator:
             );
         }}
 
+        window.addEventListener('resize', () => {{
+            updateLayoutChrome();
+            fitView();
+        }});
+
+        updateLayoutChrome();
         setTimeout(fitView, 200);
     </script>
 </body>
