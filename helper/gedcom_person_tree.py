@@ -390,6 +390,8 @@ class FocusedPersonTreeGenerator:
             --shadow: 0 10px 30px rgba(0,0,0,.06);
             --header-height: 104px;
             --control-top: 125px;
+            --legend-top: 184px;
+            --control-width: 88px;
         }}
 
         * {{
@@ -565,6 +567,7 @@ class FocusedPersonTreeGenerator:
             position: fixed;
             top: var(--control-top);
             right: 20px;
+            width: var(--control-width);
             background: #d4af37;
             padding: 0;
             border-radius: 4px;
@@ -578,6 +581,7 @@ class FocusedPersonTreeGenerator:
             color: #3d3d3d;
             border: none;
             padding: 8px 14px;
+            width: 100%;
             border-radius: 4px;
             cursor: pointer;
             margin: 0;
@@ -590,6 +594,38 @@ class FocusedPersonTreeGenerator:
             background: #e8c547;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(212, 175, 55, 0.4);
+        }}
+
+        .tree-legend {{
+            position: fixed;
+            top: var(--legend-top);
+            right: 20px;
+            width: var(--control-width);
+            z-index: 998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1px;
+        }}
+
+        .legend-row {{
+            display: flex;
+            align-items: center;
+            height: 32px;
+        }}
+
+        .legend-icon {{
+            width: 24px;
+            height: 32px;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
+        }}
+
+        .legend-icon.male {{
+            color: #7fb3d5;
+        }}
+
+        .legend-icon.female {{
+            color: #e8a8c8;
         }}
     </style>
 </head>
@@ -611,6 +647,21 @@ class FocusedPersonTreeGenerator:
 
     <div class="controls">
         <button class="control-btn" onclick="fitView()">Fit View</button>
+    </div>
+
+    <div aria-label="Gender color key" class="tree-legend">
+        <div class="legend-row">
+            <svg aria-hidden="true" class="legend-icon male" viewBox="0 0 24 32">
+                <circle cx="12" cy="4" fill="currentColor" r="3.2"></circle>
+                <path d="M8 8h8c1.4 0 2.5 1.1 2.5 2.5v8.2h-2.8V31h-3V19.5h-1.4V31h-3V18.7H5.5v-8.2C5.5 9.1 6.6 8 8 8z" fill="currentColor"></path>
+            </svg>
+        </div>
+        <div class="legend-row">
+            <svg aria-hidden="true" class="legend-icon female" viewBox="0 0 24 32">
+                <circle cx="12" cy="4" fill="currentColor" r="3.2"></circle>
+                <path d="M8.7 8h6.6l4.2 12h-3.2L18 31h-3.1l-1.3-11h-3.2L9.1 31H6l1.7-11H4.5L8.7 8z" fill="currentColor"></path>
+            </svg>
+        </div>
     </div>
 
     <div id="tooltip" class="tooltip"></div>
@@ -636,8 +687,16 @@ class FocusedPersonTreeGenerator:
 
         function updateLayoutChrome() {{
             const headerHeight = measuredHeaderHeight();
+            const controlTop = headerHeight + headerMargin;
             document.documentElement.style.setProperty('--header-height', `${{headerHeight}}px`);
-            document.documentElement.style.setProperty('--control-top', `${{headerHeight + headerMargin}}px`);
+            document.documentElement.style.setProperty('--control-top', `${{controlTop}}px`);
+            requestAnimationFrame(() => {{
+                const controls = document.querySelector('.controls');
+                const legendTop = controls
+                    ? Math.ceil(controls.getBoundingClientRect().bottom + 10)
+                    : controlTop + 60;
+                document.documentElement.style.setProperty('--legend-top', `${{legendTop}}px`);
+            }});
             return headerHeight;
         }}
 
