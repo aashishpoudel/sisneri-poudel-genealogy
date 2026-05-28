@@ -40,7 +40,7 @@ family trees** in both **English** and **Nepali**.
 -   **`index.html`** hosts the trees inside an iframe with language
     tabs, a **search bar** (with autocomplete pills), and a **hamburger
     menu** that opens side navigation.
--   **`about.html`** describes the genealogy source, methodology, and
+-   **`faq.html`** describes the genealogy source, methodology, and
     FAQ in both Nepali and English.
 -   **`contact.html`** provides professional contact options (WhatsApp,
     email) with styled clickable cards.
@@ -74,5 +74,5 @@ flowchart TD
     D --> F[index.html]
     E --> F[index.html]
     F --> G[Website (sisneripoudel.com)]
-    H[about.html & contact.html] --> G
+    H[faq.html & contact.html] --> G
 ```
