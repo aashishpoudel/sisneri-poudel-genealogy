@@ -1846,7 +1846,7 @@ Gopal
         │       │       │   │       │   │   │   ├── Ramkrishna
         │       │       │   │       │   │   │   └── Balkrishna
         │       │       │   │       │   │   │       ├── Sulav
-        │       │       │   │       │   │   │       └── Asim
+        │       │       │   │       │   │   │       └── Ashim
         │       │       │   │       │   │   ├── Doleshor
         │       │       │   │       │   │   ├── FadindraKeshari
         │       │       │   │       │   │   │   ├── RabiRaj

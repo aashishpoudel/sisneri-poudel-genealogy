@@ -2,7 +2,7 @@
 1 SOUR Family Echo
 2 WWW https://www.familyecho.com/
 1 FILE Aashish_family
-1 DATE 27 MAY 2026
+1 DATE 28 MAY 2026
 1 DEST ANSTFILE
 1 GEDC
 2 VERS 5.5.1
@@ -3014,6 +3014,7 @@
 1 DEAT Y
 1 NOTE Bio notes: शिवकुमारी पौडेल
 1 FAMS @F141@
+1 FAMC @F144@
 0 @I390@ INDI
 1 NAME GaneshDutta /Poudel/
 2 GIVN GaneshDutta
@@ -3025,7 +3026,7 @@
 1 DEAT Y
 1 NOTE Bio notes: गणेशदत्त पौडेल
 1 FAMS @F143@
-1 FAMC @F144@
+1 FAMC @F145@
 0 @I391@ INDI
 1 NAME PurnaKumari /Acharya/
 2 GIVN PurnaKumari
@@ -3046,16 +3047,18 @@
 1 SEX M
 1 DEAT Y
 1 NOTE Bio notes: जीवनाथ पौडेल
-1 FAMS @F144@
-1 FAMC @F145@
+1 FAMS @F145@
+1 FAMC @F146@
 0 @I393@ INDI
-1 NAME /Adhikari/
+1 NAME PhulKumari /Adhikari/
+2 GIVN PhulKumari
 2 SURN Adhikari
+2 _MARNM Poudel
 1 SEX F
 1 BIRT
 2 PLAC Jhulpokhari
 1 DEAT Y
-1 FAMS @F144@
+1 FAMS @F145@
 0 @I394@ INDI
 1 NAME Ramdutta /Poudel/
 2 GIVN Ramdutta
@@ -3063,14 +3066,14 @@
 2 _MARNM Poudel
 1 SEX M
 1 DEAT Y
-1 FAMS @F145@
-1 FAMC @F146@
+1 FAMS @F146@
+1 FAMC @F147@
 0 @I395@ INDI
 1 NAME /Poudel/
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F145@
+1 FAMS @F146@
 0 @I396@ INDI
 1 NAME Ghanashyam /Poudel/
 2 GIVN Ghanashyam
@@ -3079,14 +3082,14 @@
 1 SEX M
 1 DEAT Y
 1 NOTE Bio notes: घनश्याम पौडेल
-1 FAMS @F146@
-1 FAMC @F147@
+1 FAMS @F147@
+1 FAMC @F148@
 0 @I397@ INDI
 1 NAME
 1 SEX F
 1 DEAT Y
 1 NOTE Bio notes: रामदत्त पौडेल
-1 FAMS @F146@
+1 FAMS @F147@
 0 @I398@ INDI
 1 NAME Rambhadra /Poudel/
 2 GIVN Rambhadra
@@ -3094,7 +3097,7 @@
 2 _MARNM Poudel
 1 SEX M
 1 DEAT Y
-1 FAMS @F147@
+1 FAMS @F148@
 0 @I399@ INDI
 1 NAME Rambhadra /Poudel/
 2 GIVN Rambhadra
@@ -3102,7 +3105,7 @@
 2 _MARNM Poudel
 1 SEX M
 1 DEAT Y
-1 FAMS @F147@
+1 FAMS @F148@
 0 @I400@ INDI
 1 NAME Uttam Kumar /Subedi/
 2 GIVN Uttam Kumar
@@ -3111,7 +3114,7 @@
 1 SEX M
 1 DEAT Y
 1 FAMS @F142@
-1 FAMC @F148@
+1 FAMC @F149@
 0 @I401@ INDI
 1 NAME Indrakumari /Regmi/
 2 GIVN Indrakumari
@@ -3143,7 +3146,7 @@
 2 _MARNM Subedi
 1 SEX M
 1 DEAT Y
-1 FAMS @F151@
+1 FAMS @F152@
 1 FAMC @F142@
 0 @I405@ INDI
 1 NAME Kedar Prasad /Subedi/
@@ -3152,7 +3155,7 @@
 2 _MARNM Subedi
 1 SEX M
 1 DEAT Y
-1 FAMS @F149@
+1 FAMS @F150@
 1 FAMC @F142@
 0 @I406@ INDI
 1 NAME Nira /Subedi/
@@ -3160,22 +3163,22 @@
 2 SURN Subedi
 2 _MARNM Bhattarai
 1 SEX F
-1 FAMS @F150@
-1 FAMC @F151@
+1 FAMS @F151@
+1 FAMC @F152@
 0 @I407@ INDI
 1 NAME Mitthu /Aryal/
 2 GIVN Mitthu
 2 SURN Aryal
 2 _MARNM Subedi
 1 SEX F
-1 FAMS @F151@
+1 FAMS @F152@
 0 @I408@ INDI
 1 NAME Bibekananda /Bhattarai/
 2 GIVN Bibekananda
 2 SURN Bhattarai
 2 _MARNM Bhattarai
 1 SEX M
-1 FAMS @F150@
+1 FAMS @F151@
 0 @I409@ INDI
 1 NAME Bhaididi /Subedi/
 2 GIVN Bhaididi
@@ -3183,66 +3186,66 @@
 2 _MARNM Subedi
 1 SEX F
 1 DEAT Y
-1 FAMS @F149@
+1 FAMS @F150@
 0 @I410@ INDI
 1 NAME Biki /Bhattarai/
 2 GIVN Biki
 2 SURN Bhattarai
 2 _MARNM Koirala
 1 SEX F
-1 FAMS @F152@
-1 FAMC @F150@
+1 FAMS @F153@
+1 FAMC @F151@
 0 @I411@ INDI
 1 NAME Bikash /Bhattarai/
 2 GIVN Bikash
 2 SURN Bhattarai
 2 _MARNM Bhattarai
 1 SEX M
-1 FAMS @F153@
-1 FAMC @F150@
+1 FAMS @F154@
+1 FAMC @F151@
 0 @I412@ INDI
 1 NAME Binod /Koirala/
 2 GIVN Binod
 2 SURN Koirala
 2 _MARNM Koirala
 1 SEX M
-1 FAMS @F152@
+1 FAMS @F153@
 0 @I413@ INDI
 1 NAME Sabina /Bhattarai/
 2 GIVN Sabina
 2 SURN Bhattarai
 2 _MARNM Bhattarai
 1 SEX F
-1 FAMS @F153@
+1 FAMS @F154@
 0 @I414@ INDI
 1 NAME Mina /Subedi/
 2 GIVN Mina
 2 SURN Subedi
 2 _MARNM Dhakal
 1 SEX F
-1 FAMS @F154@
-1 FAMC @F151@
+1 FAMS @F155@
+1 FAMC @F152@
 0 @I415@ INDI
 1 NAME Mukut /Dhakal/
 2 GIVN Mukut
 2 SURN Dhakal
 2 _MARNM Dhakal
 1 SEX M
-1 FAMS @F154@
+1 FAMS @F155@
 0 @I416@ INDI
 1 NAME Bina /Subedi/
 2 GIVN Bina
 2 SURN Subedi
 2 _MARNM Dhakal
 1 SEX F
-1 FAMC @F151@
+1 FAMC @F152@
 0 @I417@ INDI
 1 NAME Usha /Subedi/
 2 GIVN Usha
 2 SURN Subedi
 2 _MARNM Subedi
 1 SEX F
-1 FAMC @F151@
+1 FAMC @F152@
 0 @I418@ INDI
 1 NAME Sworupa /Subedi/
 2 GIVN Sworupa
@@ -3250,111 +3253,111 @@
 2 _MARNM Pandey
 1 SEX F
 1 DEAT Y
-1 FAMC @F151@
+1 FAMC @F152@
 0 @I419@ INDI
 1 NAME Samu /Subedi/
 2 GIVN Samu
 2 SURN Subedi
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F155@
-1 FAMC @F151@
+1 FAMS @F156@
+1 FAMC @F152@
 0 @I420@ INDI
 1 NAME Jagannath /Poudel/
 2 GIVN Jagannath
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX M
-1 FAMS @F155@
+1 FAMS @F156@
 0 @I421@ INDI
 1 NAME Rajesh /Subedi/
 2 GIVN Rajesh
 2 SURN Subedi
 2 _MARNM Subedi
 1 SEX M
-1 FAMS @F156@
-1 FAMC @F149@
+1 FAMS @F157@
+1 FAMC @F150@
 0 @I422@ INDI
 1 NAME Amritkala /Subedi/
 2 GIVN Amritkala
 2 SURN Subedi
 2 _MARNM Subedi
 1 SEX F
-1 FAMS @F156@
+1 FAMS @F157@
 0 @I423@ INDI
 1 NAME Kalpana /Subedi/
 2 GIVN Kalpana
 2 SURN Subedi
 2 _MARNM Dawadi
 1 SEX F
-1 FAMS @F157@
-1 FAMC @F149@
+1 FAMS @F158@
+1 FAMC @F150@
 0 @I424@ INDI
 1 NAME Sonica /Dawadi/
 2 GIVN Sonica
 2 SURN Dawadi
 2 _MARNM Kuinkel
 1 SEX F
-1 FAMC @F157@
+1 FAMC @F158@
 0 @I425@ INDI
 1 NAME Sofiya /Dawadi/
 2 GIVN Sofiya
 2 SURN Dawadi
 2 _MARNM Dawadi
 1 SEX F
-1 FAMC @F157@
+1 FAMC @F158@
 0 @I426@ INDI
 1 NAME Rita /Subedi/
 2 GIVN Rita
 2 SURN Subedi
 2 _MARNM Dhakal
 1 SEX F
-1 FAMS @F158@
-1 FAMC @F149@
+1 FAMS @F159@
+1 FAMC @F150@
 0 @I427@ INDI
 1 NAME Sunita /Subedi/
 2 GIVN Sunita
 2 SURN Subedi
 2 _MARNM McLennon
 1 SEX F
-1 FAMS @F159@
-1 FAMC @F149@
+1 FAMS @F160@
+1 FAMC @F150@
 0 @I428@ INDI
 1 NAME Bibu /Subedi/
 2 GIVN Bibu
 2 SURN Subedi
 2 _MARNM Subedi
 1 SEX M
-1 FAMC @F159@
+1 FAMC @F160@
 0 @I429@ INDI
 1 NAME Scott /McLennon/
 2 GIVN Scott
 2 SURN McLennon
 2 _MARNM McLennon
 1 SEX M
-1 FAMS @F159@
+1 FAMS @F160@
 0 @I430@ INDI
 1 NAME Kritan /Lamsal/
 2 GIVN Kritan
 2 SURN Lamsal
 2 _MARNM McLennon
 1 SEX F
-1 FAMS @F160@
-1 FAMC @F159@
+1 FAMS @F161@
+1 FAMC @F160@
 0 @I431@ INDI
 1 NAME Dylan /Lerch/
 2 GIVN Dylan
 2 SURN Lerch
 2 _MARNM Lerch
 1 SEX M
-1 FAMS @F160@
+1 FAMS @F161@
 0 @I432@ INDI
 1 NAME Thakur /Dhakal/
 2 GIVN Thakur
 2 SURN Dhakal
 2 _MARNM Dhakal
 1 SEX M
-1 FAMS @F158@
+1 FAMS @F159@
 0 @I433@ INDI
 1 NAME Balbhadra /Subedi/
 2 GIVN Balbhadra
@@ -3362,8 +3365,8 @@
 2 _MARNM Subedi
 1 SEX M
 1 DEAT Y
-1 FAMS @F148@
-1 FAMC @F161@
+1 FAMS @F149@
+1 FAMC @F162@
 0 @I434@ INDI
 1 NAME Rukmini Devi /Subedi/
 2 GIVN Rukmini Devi
@@ -3371,7 +3374,7 @@
 2 _MARNM Subedi
 1 SEX F
 1 DEAT Y
-1 FAMS @F148@
+1 FAMS @F149@
 0 @I435@ INDI
 1 NAME Shiva Kumar /Subedi/
 2 GIVN Shiva Kumar
@@ -3379,7 +3382,7 @@
 2 _MARNM Subedi
 1 SEX M
 1 DEAT Y
-1 FAMC @F148@
+1 FAMC @F149@
 0 @I436@ INDI
 1 NAME Dev Kumar /Subedi/
 2 GIVN Dev Kumar
@@ -3387,7 +3390,7 @@
 2 _MARNM Subedi
 1 SEX M
 1 DEAT Y
-1 FAMC @F148@
+1 FAMC @F149@
 0 @I437@ INDI
 1 NAME Deep Kumar /Subedi/
 2 GIVN Deep Kumar
@@ -3395,7 +3398,7 @@
 2 _MARNM Subedi
 1 SEX M
 1 DEAT Y
-1 FAMC @F148@
+1 FAMC @F149@
 0 @I438@ INDI
 1 NAME Nanda Kumar /Subedi/
 2 GIVN Nanda Kumar
@@ -3403,7 +3406,7 @@
 2 _MARNM Subedi
 1 SEX M
 1 DEAT Y
-1 FAMC @F148@
+1 FAMC @F149@
 0 @I439@ INDI
 1 NAME Mohan Kumar /Subedi/
 2 GIVN Mohan Kumar
@@ -3411,7 +3414,7 @@
 2 _MARNM Subedi
 1 SEX M
 1 DEAT Y
-1 FAMC @F148@
+1 FAMC @F149@
 0 @I440@ INDI
 1 NAME Tharka /Subedi/
 2 GIVN Tharka
@@ -3419,7 +3422,7 @@
 2 _MARNM Subedi
 1 SEX M
 1 DEAT Y
-1 FAMC @F148@
+1 FAMC @F149@
 0 @I441@ INDI
 1 NAME Gagan Kumar /Subedi/
 2 GIVN Gagan Kumar
@@ -3427,7 +3430,7 @@
 2 _MARNM Subedi
 1 SEX M
 1 DEAT Y
-1 FAMC @F148@
+1 FAMC @F149@
 0 @I442@ INDI
 1 NAME Gauridutta /Subedi/
 2 GIVN Gauridutta
@@ -3435,7 +3438,7 @@
 2 _MARNM Subedi
 1 SEX M
 1 DEAT Y
-1 FAMS @F161@
+1 FAMS @F162@
 0 @I443@ INDI
 1 NAME Karnakumari Devi /Subedi/
 2 GIVN Karnakumari Devi
@@ -3443,7 +3446,7 @@
 2 _MARNM Subedi
 1 SEX F
 1 DEAT Y
-1 FAMS @F161@
+1 FAMS @F162@
 0 @I444@ INDI
 1 NAME Goma /Neupane/
 2 GIVN Goma
@@ -3453,7 +3456,7 @@
 1 BIRT
 2 DATE 1945
 1 DEAT Y
-1 FAMS @F164@
+1 FAMS @F165@
 1 FAMC @F116@
 0 @I445@ INDI
 1 NAME Sanu /Neupane/
@@ -3463,7 +3466,7 @@
 1 SEX F
 1 BIRT
 2 DATE 1954
-1 FAMS @F162@
+1 FAMS @F163@
 1 FAMC @F116@
 0 @I446@ INDI
 1 NAME Bhairabi /Neupane/
@@ -3473,7 +3476,7 @@
 1 SEX F
 1 BIRT
 2 DATE 1957
-1 FAMS @F167@
+1 FAMS @F168@
 1 FAMC @F116@
 0 @I447@ INDI
 1 NAME Dinesh /Neupane/
@@ -3483,7 +3486,7 @@
 1 SEX M
 1 BIRT
 2 DATE 1964
-1 FAMS @F170@
+1 FAMS @F171@
 1 FAMC @F116@
 0 @I448@ INDI
 1 NAME Umesh /Neupane/
@@ -3493,7 +3496,7 @@
 1 SEX M
 1 BIRT
 2 DATE 1967
-1 FAMS @F174@
+1 FAMS @F175@
 1 FAMC @F116@
 0 @I449@ INDI
 1 NAME Sita /Khanal/
@@ -3501,23 +3504,23 @@
 2 SURN Khanal
 2 _MARNM Ghimire
 1 SEX F
-1 FAMS @F163@
-1 FAMC @F164@
+1 FAMS @F164@
+1 FAMC @F165@
 0 @I450@ INDI
 1 NAME Chiranjibi /Khanal/
 2 GIVN Chiranjibi
 2 SURN Khanal
 2 _MARNM Khanal
 1 SEX M
-1 FAMS @F164@
 1 FAMS @F165@
+1 FAMS @F166@
 0 @I451@ INDI
 1 NAME Rajendra /Ghimire/
 2 GIVN Rajendra
 2 SURN Ghimire
 2 _MARNM Ghimire
 1 SEX M
-1 FAMS @F163@
+1 FAMS @F164@
 0 @I452@ INDI
 1 NAME Kedar /Poudel/
 2 GIVN Kedar
@@ -3528,7 +3531,7 @@
 2 DATE 1945
 1 DEAT Y
 2 DATE 2000
-1 FAMS @F162@
+1 FAMS @F163@
 1 FAMC @F141@
 2 PEDI birth
 0 @I453@ INDI
@@ -3537,30 +3540,30 @@
 2 SURN Poudel
 2 _MARNM Khanal
 1 SEX F
-1 FAMS @F207@
-1 FAMC @F162@
+1 FAMS @F208@
+1 FAMC @F163@
 0 @I454@ INDI
 1 NAME Usha /Poudel/
 2 GIVN Usha
 2 SURN Poudel
 2 _MARNM Sapkota
 1 SEX F
-1 FAMS @F208@
-1 FAMC @F162@
+1 FAMS @F209@
+1 FAMC @F163@
 0 @I455@ INDI
 1 NAME Saru /Poudel/
 2 GIVN Saru
 2 SURN Poudel
 2 _MARNM Pyakurel
 1 SEX F
-1 FAMC @F162@
+1 FAMC @F163@
 0 @I456@ INDI
 1 NAME Rajani /Poudel/
 2 GIVN Rajani
 2 SURN Poudel
 2 _MARNM Dahal
 1 SEX F
-1 FAMC @F162@
+1 FAMC @F163@
 0 @I457@ INDI
 1 NAME Kalyan /Poudel/
 2 GIVN Kalyan
@@ -3569,8 +3572,8 @@
 1 SEX M
 1 BIRT
 2 DATE 1987
-1 FAMS @F206@
-1 FAMC @F162@
+1 FAMS @F207@
+1 FAMC @F163@
 0 @I458@ INDI
 1 NAME Sujan /Kuinkel/
 2 GIVN Sujan
@@ -3579,15 +3582,15 @@
 1 SEX M
 1 BIRT
 2 DATE 1974
-1 FAMS @F166@
-1 FAMC @F167@
+1 FAMS @F167@
+1 FAMC @F168@
 0 @I459@ INDI
 1 NAME Dhruba /Kuinkel/
 2 GIVN Dhruba
 2 SURN Kuinkel
 2 _MARNM Kuinkel
 1 SEX M
-1 FAMS @F167@
+1 FAMS @F168@
 0 @I460@ INDI
 1 NAME Sumitra /Kuinkel/
 2 GIVN Sumitra
@@ -3596,8 +3599,8 @@
 1 SEX F
 1 BIRT
 2 DATE 1978
-1 FAMS @F210@
-1 FAMC @F167@
+1 FAMS @F211@
+1 FAMC @F168@
 0 @I461@ INDI
 1 NAME Sabina /Kuinkel/
 2 GIVN Sabina
@@ -3606,7 +3609,7 @@
 1 SEX F
 1 BIRT
 2 DATE 1983
-1 FAMC @F167@
+1 FAMC @F168@
 0 @I462@ INDI
 1 NAME Suman /Kuinkel/
 2 GIVN Suman
@@ -3615,8 +3618,8 @@
 1 SEX M
 1 BIRT
 2 DATE 1992
-1 FAMS @F168@
-1 FAMC @F167@
+1 FAMS @F169@
+1 FAMC @F168@
 0 @I463@ INDI
 1 NAME Bikash /Neupane/
 2 GIVN Bikash
@@ -3625,24 +3628,24 @@
 1 SEX M
 1 BIRT
 2 DATE 1985
-1 FAMS @F169@
-1 FAMC @F170@
+1 FAMS @F170@
+1 FAMC @F171@
 0 @I464@ INDI
 1 NAME Ganga /Poudel/
 2 GIVN Ganga
 2 SURN Poudel
 2 _MARNM Neupane
 1 SEX F
-1 FAMS @F170@
+1 FAMS @F171@
 0 @I465@ INDI
 1 NAME Binita /Neupane/
 2 GIVN Binita
 2 SURN Neupane
 2 _MARNM Upadhyaya
 1 SEX F
-1 FAMS @F171@
 1 FAMS @F172@
-1 FAMC @F170@
+1 FAMS @F173@
+1 FAMC @F171@
 0 @I466@ INDI
 1 NAME Aarambha /Upadhyaya/
 2 GIVN Aarambha
@@ -3651,79 +3654,79 @@
 1 SEX M
 1 BIRT
 2 DATE 2015
-1 FAMC @F172@
+1 FAMC @F173@
 0 @I467@ INDI
 1 NAME Sadikshya /Neupane/
 2 GIVN Sadikshya
 2 SURN Neupane
 2 _MARNM Dhunghel
 1 SEX F
-1 FAMS @F173@
-1 FAMC @F174@
+1 FAMS @F174@
+1 FAMC @F175@
 0 @I468@ INDI
 1 NAME Rita /Neupane/
 2 GIVN Rita
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX F
-1 FAMS @F174@
+1 FAMS @F175@
 0 @I469@ INDI
 1 NAME Salina /Neupane/
 2 GIVN Salina
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX F
-1 FAMC @F174@
+1 FAMC @F175@
 0 @I470@ INDI
 1 NAME Samyog /Neupane/
 2 GIVN Samyog
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX M
-1 FAMC @F174@
+1 FAMC @F175@
 0 @I471@ INDI
 1 NAME Bibek /Dhunghel/
 2 GIVN Bibek
 2 SURN Dhunghel
 2 _MARNM Dhunghel
 1 SEX M
-1 FAMS @F173@
+1 FAMS @F174@
 0 @I472@ INDI
 1 NAME Narayani /Sigdel/
 2 GIVN Narayani
 2 SURN Sigdel
 2 _MARNM Neupane
 1 SEX F
-1 FAMS @F169@
+1 FAMS @F170@
 0 @I473@ INDI
 1 NAME Sagar /Upadhyaya/
 2 GIVN Sagar
 2 SURN Upadhyaya
 2 _MARNM Upadhyaya
 1 SEX M
-1 FAMS @F171@
+1 FAMS @F172@
 0 @I474@ INDI
 1 NAME Gayatri /Khanal/
 2 GIVN Gayatri
 2 SURN Khanal
 2 _MARNM Aryal
 1 SEX F
-1 FAMC @F164@
+1 FAMC @F165@
 0 @I475@ INDI
 1 NAME Sushila /Khanal/
 2 GIVN Sushila
 2 SURN Khanal
 2 _MARNM Lamichhane
 1 SEX F
-1 FAMC @F164@
+1 FAMC @F165@
 0 @I476@ INDI
 1 NAME Sunil /Khanal/
 2 GIVN Sunil
 2 SURN Khanal
 2 _MARNM Khanal
 1 SEX M
-1 FAMS @F175@
-1 FAMC @F164@
+1 FAMS @F176@
+1 FAMC @F165@
 0 @I477@ INDI
 1 NAME Menuka /Ghimire/
 2 GIVN Menuka
@@ -3732,44 +3735,44 @@
 1 SEX F
 1 BIRT
 2 DATE 1982
-1 FAMS @F175@
+1 FAMS @F176@
 0 @I478@ INDI
 1 NAME Rashmi /Ghimire/
 2 GIVN Rashmi
 2 SURN Ghimire
 2 _MARNM Subedi
 1 SEX F
-1 FAMS @F176@
-1 FAMC @F163@
+1 FAMS @F177@
+1 FAMC @F164@
 0 @I479@ INDI
 1 NAME Sarad /Subedi/
 2 GIVN Sarad
 2 SURN Subedi
 2 _MARNM Subedi
 1 SEX M
-1 FAMS @F176@
+1 FAMS @F177@
 0 @I480@ INDI
 1 NAME Asmi /Ghimire/
 2 GIVN Asmi
 2 SURN Ghimire
 2 _MARNM Ghimire
 1 SEX F
-1 FAMS @F177@
-1 FAMC @F163@
+1 FAMS @F178@
+1 FAMC @F164@
 0 @I481@ INDI
 1 NAME Bhuwan /Baral/
 2 GIVN Bhuwan
 2 SURN Baral
 2 _MARNM Baral
 1 SEX M
-1 FAMS @F177@
+1 FAMS @F178@
 0 @I482@ INDI
 1 NAME Asmin /Ghimire/
 2 GIVN Asmin
 2 SURN Ghimire
 2 _MARNM Ghimire
 1 SEX M
-1 FAMC @F163@
+1 FAMC @F164@
 0 @I483@ INDI
 1 NAME Bhagawan /Poudel/
 2 GIVN Bhagawan
@@ -3778,7 +3781,7 @@
 1 SEX M
 1 BIRT
 2 DATE 1961
-1 FAMS @F178@
+1 FAMS @F179@
 1 FAMC @F115@
 0 @I484@ INDI
 1 NAME PushpaRaj /Poudel/
@@ -3788,7 +3791,7 @@
 1 SEX M
 1 BIRT
 2 DATE 1966
-1 FAMS @F182@
+1 FAMS @F183@
 1 FAMC @F115@
 0 @I485@ INDI
 1 NAME Madhusudan /Poudel/
@@ -3796,7 +3799,7 @@
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX M
-1 FAMS @F184@
+1 FAMS @F185@
 1 FAMC @F115@
 0 @I486@ INDI
 1 NAME Pawana /Poudel/
@@ -3806,22 +3809,22 @@
 1 SEX F
 1 BIRT
 2 DATE 1986
-1 FAMC @F178@
+1 FAMC @F179@
 0 @I487@ INDI
 1 NAME Shanti /Poudel/
 2 GIVN Shanti
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F178@
+1 FAMS @F179@
 0 @I488@ INDI
 1 NAME Pabita /Poudel/
 2 GIVN Pabita
 2 SURN Poudel
 2 _MARNM Rupakheti
 1 SEX F
-1 FAMS @F179@
-1 FAMC @F178@
+1 FAMS @F180@
+1 FAMC @F179@
 0 @I489@ INDI
 1 NAME Prabesh /Poudel/
 2 GIVN Prabesh
@@ -3830,8 +3833,8 @@
 1 SEX M
 1 BIRT
 2 DATE 1991
-1 FAMS @F180@
-1 FAMC @F178@
+1 FAMS @F181@
+1 FAMC @F179@
 0 @I490@ INDI
 1 NAME Suraj /Poudel/
 2 GIVN Suraj
@@ -3840,15 +3843,15 @@
 1 SEX M
 1 BIRT
 2 DATE 1991
-1 FAMS @F181@
-1 FAMC @F182@
+1 FAMS @F182@
+1 FAMC @F183@
 0 @I491@ INDI
 1 NAME Gauri /Khanal/
 2 GIVN Gauri
 2 SURN Khanal
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F182@
+1 FAMS @F183@
 0 @I492@ INDI
 1 NAME Niraj /Poudel/
 2 GIVN Niraj
@@ -3857,8 +3860,8 @@
 1 SEX M
 1 BIRT
 2 DATE 1991
-1 FAMS @F183@
-1 FAMC @F182@
+1 FAMS @F184@
+1 FAMC @F183@
 0 @I493@ INDI
 1 NAME Kushal /Poudel/
 2 GIVN Kushal
@@ -3867,22 +3870,22 @@
 1 SEX M
 1 BIRT
 2 DATE 1995
-1 FAMC @F184@
+1 FAMC @F185@
 0 @I494@ INDI
 1 NAME Kushum /Poudel/
 2 GIVN Kushum
 2 SURN Poudel
 2 _MARNM Chalise
 1 SEX F
-1 FAMS @F185@
-1 FAMC @F184@
+1 FAMS @F186@
+1 FAMC @F185@
 0 @I495@ INDI
 1 NAME Amrit /Chalise/
 2 GIVN Amrit
 2 SURN Chalise
 2 _MARNM Chalise
 1 SEX M
-1 FAMS @F185@
+1 FAMS @F186@
 0 @I496@ INDI
 1 NAME Sushila /Poudel/
 2 GIVN Sushila
@@ -3891,7 +3894,7 @@
 1 SEX F
 1 BIRT
 2 DATE 1957
-1 FAMS @F186@
+1 FAMS @F187@
 1 FAMC @F115@
 0 @I497@ INDI
 1 NAME Rameshwor /Dhungel/
@@ -3899,7 +3902,7 @@
 2 SURN Dhungel
 2 _MARNM Dhungel
 1 SEX M
-1 FAMS @F186@
+1 FAMS @F187@
 0 @I498@ INDI
 1 NAME Sabin /Dhungel/
 2 GIVN Sabin
@@ -3908,9 +3911,9 @@
 1 SEX M
 1 BIRT
 2 DATE 1981
-1 FAMS @F187@
-1 FAMS @F190@
-1 FAMC @F186@
+1 FAMS @F188@
+1 FAMS @F191@
+1 FAMC @F187@
 0 @I499@ INDI
 1 NAME Anup /Dhungel/
 2 GIVN Anup
@@ -3919,9 +3922,9 @@
 1 SEX M
 1 BIRT
 2 DATE 1985
-1 FAMS @F188@
-1 FAMS @F191@
-1 FAMC @F186@
+1 FAMS @F189@
+1 FAMS @F192@
+1 FAMC @F187@
 0 @I500@ INDI
 1 NAME Abishek /Dhungel/
 2 GIVN Abishek
@@ -3930,65 +3933,65 @@
 1 SEX M
 1 BIRT
 2 DATE 1987
-1 FAMS @F189@
-1 FAMS @F192@
-1 FAMC @F186@
+1 FAMS @F190@
+1 FAMS @F193@
+1 FAMC @F187@
 0 @I501@ INDI
 1 NAME Acchyat /Dhungel/
 2 GIVN Acchyat
 2 SURN Dhungel
 2 _MARNM Dhungel
 1 SEX M
-1 FAMC @F190@
+1 FAMC @F191@
 0 @I502@ INDI
 1 NAME Aakarsh /Dhungel/
 2 GIVN Aakarsh
 2 SURN Dhungel
 2 _MARNM Dhungel
 1 SEX M
-1 FAMC @F191@
+1 FAMC @F192@
 0 @I503@ INDI
 1 NAME Avyan /Dhungel/
 2 GIVN Avyan
 2 SURN Dhungel
 2 _MARNM Dhungel
 1 SEX M
-1 FAMC @F192@
+1 FAMC @F193@
 0 @I504@ INDI
 1 NAME Deeya /Bhattarai/
 2 GIVN Deeya
 2 SURN Bhattarai
 2 _MARNM Dhungel
 1 SEX F
-1 FAMS @F188@
+1 FAMS @F189@
 0 @I505@ INDI
 1 NAME Manila /Gautam/
 2 GIVN Manila
 2 SURN Gautam
 2 _MARNM Dhungel
 1 SEX F
-1 FAMS @F189@
+1 FAMS @F190@
 0 @I506@ INDI
 1 NAME Adarzaa /Dhungel/
 2 GIVN Adarzaa
 2 SURN Dhungel
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F180@
+1 FAMS @F181@
 0 @I507@ INDI
 1 NAME Surendra /Rupakheti/
 2 GIVN Surendra
 2 SURN Rupakheti
 2 _MARNM Rupakheti
 1 SEX M
-1 FAMS @F179@
+1 FAMS @F180@
 0 @I508@ INDI
 1 NAME Anisha /Khatiwada/
 2 GIVN Anisha
 2 SURN Khatiwada
 2 _MARNM Dhungel
 1 SEX F
-1 FAMS @F187@
+1 FAMS @F188@
 0 @I509@ INDI
 1 NAME Aaira /Poudel/
 2 GIVN Aaira
@@ -3997,21 +4000,21 @@
 1 SEX F
 1 BIRT
 2 DATE 2023
-1 FAMC @F180@
+1 FAMC @F181@
 0 @I510@ INDI
 1 NAME Pratikshya /Thapa/
 2 GIVN Pratikshya
 2 SURN Thapa
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F181@
+1 FAMS @F182@
 0 @I511@ INDI
 1 NAME Anusha /Wagle/
 2 GIVN Anusha
 2 SURN Wagle
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F183@
+1 FAMS @F184@
 0 @I512@ INDI
 1 NAME Hari /Poudel/
 2 GIVN Hari
@@ -4020,7 +4023,7 @@
 1 SEX M
 1 BIRT
 2 DATE 1953
-1 FAMS @F194@
+1 FAMS @F195@
 1 FAMC @F141@
 0 @I513@ INDI
 1 NAME Parasar /Poudel/
@@ -4030,9 +4033,9 @@
 1 SEX M
 1 BIRT
 2 DATE 1958
-1 FAMS @F193@
-1 FAMS @F197@
-1 FAMS @F199@
+1 FAMS @F194@
+1 FAMS @F198@
+1 FAMS @F200@
 1 FAMC @F141@
 0 @I514@ INDI
 1 NAME Sudhir /Poudel/
@@ -4042,33 +4045,33 @@
 1 SEX M
 1 BIRT
 2 DATE 1981
-1 FAMS @F195@
-1 FAMC @F194@
+1 FAMS @F196@
+1 FAMC @F195@
 0 @I515@ INDI
 1 NAME
 1 SEX F
-1 FAMS @F194@
+1 FAMS @F195@
 0 @I516@ INDI
 1 NAME Shreyasha /Poudel/
 2 GIVN Shreyasha
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX F
-1 FAMC @F195@
+1 FAMC @F196@
 0 @I517@ INDI
 1 NAME Gandira /Khanal/
 2 GIVN Gandira
 2 SURN Khanal
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F195@
+1 FAMS @F196@
 0 @I518@ INDI
 1 NAME Subrat /Poudel/
 2 GIVN Subrat
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX M
-1 FAMC @F195@
+1 FAMC @F196@
 0 @I519@ INDI
 1 NAME Prabhakar /Poudel/
 2 GIVN Prabhakar
@@ -4077,7 +4080,7 @@
 1 SEX M
 1 BIRT
 2 DATE 1982
-1 FAMC @F194@
+1 FAMC @F195@
 0 @I520@ INDI
 1 NAME Sunil /Poudel/
 2 GIVN Sunil
@@ -4086,51 +4089,51 @@
 1 SEX M
 1 BIRT
 2 DATE 1981
-1 FAMS @F196@
-1 FAMC @F197@
+1 FAMS @F197@
+1 FAMC @F198@
 0 @I521@ INDI
 1 NAME Sumitra /Poudel/
 2 GIVN Sumitra
 2 SURN Poudel
 2 _MARNM Kharel
 1 SEX F
-1 FAMS @F198@
-1 FAMC @F197@
+1 FAMS @F199@
+1 FAMC @F198@
 0 @I522@ INDI
 1 NAME Bimal /Kharel/
 2 GIVN Bimal
 2 SURN Kharel
 2 _MARNM Kharel
 1 SEX M
-1 FAMS @F198@
+1 FAMS @F199@
 0 @I523@ INDI
 1 NAME Susmita /Bhandari/
 2 GIVN Susmita
 2 SURN Bhandari
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F196@
+1 FAMS @F197@
 0 @I524@ INDI
 1 NAME Tulasa /Poudel/
 2 GIVN Tulasa
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F193@
+1 FAMS @F194@
 0 @I525@ INDI
 1 NAME Amrita /Poudel/
 2 GIVN Amrita
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX F
-1 FAMC @F199@
+1 FAMC @F200@
 0 @I526@ INDI
 1 NAME Kanchi Didi /Poudel/
 2 GIVN Kanchi Didi
 2 SURN Poudel
 2 _MARNM Ghimire
 1 SEX F
-1 FAMS @F200@
+1 FAMS @F201@
 1 FAMC @F141@
 0 @I527@ INDI
 1 NAME Nani Didi /Poudel/
@@ -4138,7 +4141,7 @@
 2 SURN Poudel
 2 _MARNM Khanal
 1 SEX F
-1 FAMS @F201@
+1 FAMS @F202@
 1 FAMC @F141@
 0 @I528@ INDI
 1 NAME KrishnaPrasad /Ghimire/
@@ -4148,81 +4151,81 @@
 1 SEX M
 1 BIRT
 2 DATE 1935
-1 FAMS @F200@
+1 FAMS @F201@
 0 @I529@ INDI
 1 NAME Harihar /Ghimire/
 2 GIVN Harihar
 2 SURN Ghimire
 2 _MARNM Ghimire
 1 SEX M
-1 FAMS @F202@
-1 FAMC @F200@
+1 FAMS @F203@
+1 FAMC @F201@
 0 @I530@ INDI
 1 NAME Bhanubhakta /Ghimire/
 2 GIVN Bhanubhakta
 2 SURN Ghimire
 2 _MARNM Ghimire
 1 SEX M
-1 FAMS @F203@
-1 FAMC @F200@
+1 FAMS @F204@
+1 FAMC @F201@
 0 @I531@ INDI
 1 NAME ShreePrasad /Ghimire/
 2 GIVN ShreePrasad
 2 SURN Ghimire
 2 _MARNM Ghimire
 1 SEX M
-1 FAMS @F204@
-1 FAMC @F200@
+1 FAMS @F205@
+1 FAMC @F201@
 0 @I532@ INDI
 1 NAME RamPrasad /Khanal/
 2 GIVN RamPrasad
 2 SURN Khanal
 2 _MARNM Khanal
 1 SEX M
-1 FAMS @F201@
+1 FAMS @F202@
 0 @I533@ INDI
 1 NAME Uddhab /Khanal/
 2 GIVN Uddhab
 2 SURN Khanal
 2 _MARNM Khanal
 1 SEX M
-1 FAMC @F201@
+1 FAMC @F202@
 0 @I534@ INDI
 1 NAME Mukunda /Khanal/
 2 GIVN Mukunda
 2 SURN Khanal
 2 _MARNM Khanal
 1 SEX M
-1 FAMS @F205@
-1 FAMC @F201@
+1 FAMS @F206@
+1 FAMC @F202@
 0 @I535@ INDI
 1 NAME Bhagawati /Subedi/
 2 GIVN Bhagawati
 2 SURN Subedi
 2 _MARNM Ghimire
 1 SEX F
-1 FAMS @F202@
+1 FAMS @F203@
 0 @I536@ INDI
 1 NAME Tara /Neupane/
 2 GIVN Tara
 2 SURN Neupane
 2 _MARNM Ghimire
 1 SEX F
-1 FAMS @F203@
+1 FAMS @F204@
 0 @I537@ INDI
 1 NAME Ambika /Sapkota/
 2 GIVN Ambika
 2 SURN Sapkota
 2 _MARNM Ghimire
 1 SEX F
-1 FAMS @F204@
+1 FAMS @F205@
 0 @I538@ INDI
 1 NAME Gayatri /Adhikari/
 2 GIVN Gayatri
 2 SURN Adhikari
 2 _MARNM Khanal
 1 SEX F
-1 FAMS @F205@
+1 FAMS @F206@
 0 @I539@ INDI
 1 NAME Subhang /Poudel/
 2 GIVN Subhang
@@ -4231,32 +4234,32 @@
 1 SEX M
 1 BIRT
 2 DATE 2019
-1 FAMC @F206@
+1 FAMC @F207@
 0 @I540@ INDI
 1 NAME Sami /Khanal/
 2 GIVN Sami
 2 SURN Khanal
 2 _MARNM Khanal
 1 SEX F
-1 FAMC @F207@
+1 FAMC @F208@
 0 @I541@ INDI
 1 NAME
 1 SEX M
-1 FAMS @F207@
+1 FAMS @F208@
 0 @I542@ INDI
 1 NAME Samir /Khanal/
 2 GIVN Samir
 2 SURN Khanal
 2 _MARNM Khanal
 1 SEX M
-1 FAMC @F207@
+1 FAMC @F208@
 0 @I543@ INDI
 1 NAME Anusha /Sapkota/
 2 GIVN Anusha
 2 SURN Sapkota
 2 _MARNM Sapkota
 1 SEX F
-1 FAMC @F208@
+1 FAMC @F209@
 0 @I544@ INDI
 1 NAME Anush /Sapkota/
 2 GIVN Anush
@@ -4264,61 +4267,61 @@
 2 _MARNM Sapkota
 1 SEX M
 1 DEAT Y
-1 FAMC @F208@
+1 FAMC @F209@
 0 @I545@ INDI
 1 NAME Narayani /Khanal/
 2 GIVN Narayani
 2 SURN Khanal
 2 _MARNM Khanal
 1 SEX F
-1 FAMS @F165@
+1 FAMS @F166@
 0 @I546@ INDI
 1 NAME Anita /Khanal/
 2 GIVN Anita
 2 SURN Khanal
 2 _MARNM Rimal
 1 SEX F
-1 FAMS @F209@
-1 FAMC @F165@
+1 FAMS @F210@
+1 FAMC @F166@
 0 @I547@ INDI
 1 NAME Arun /Rimal/
 2 GIVN Arun
 2 SURN Rimal
 2 _MARNM Rimal
 1 SEX M
-1 FAMS @F209@
+1 FAMS @F210@
 0 @I548@ INDI
 1 NAME Pooja /Kuinkel/
 2 GIVN Pooja
 2 SURN Kuinkel
 2 _MARNM Kuinkel
 1 SEX F
-1 FAMS @F166@
+1 FAMS @F167@
 0 @I549@ INDI
 1 NAME Aditi /Kuinkel/
 2 GIVN Aditi
 2 SURN Kuinkel
 2 _MARNM Kuinkel
 1 SEX F
-1 FAMC @F166@
+1 FAMC @F167@
 0 @I550@ INDI
 1 NAME Shanira /Rupakheti/
 2 GIVN Shanira
 2 SURN Rupakheti
 2 _MARNM Rupakheti
 1 SEX F
-1 FAMC @F210@
+1 FAMC @F211@
 0 @I551@ INDI
 1 NAME
 1 SEX M
-1 FAMS @F210@
+1 FAMS @F211@
 0 @I552@ INDI
 1 NAME Nitika /Poudel/
 2 GIVN Nitika
 2 SURN Poudel
 2 _MARNM Kuinkel
 1 SEX F
-1 FAMS @F168@
+1 FAMS @F169@
 0 @I553@ INDI
 1 NAME Binda /Bhattarai/
 2 GIVN Binda
@@ -4326,8 +4329,8 @@
 2 _MARNM Khatiwada
 1 SEX F
 1 FAMS @F140@
-1 FAMS @F211@
-1 FAMC @F212@
+1 FAMS @F212@
+1 FAMC @F213@
 2 PEDI birth
 0 @I554@ INDI
 1 NAME Khem /Khatiwada/
@@ -4336,9 +4339,9 @@
 2 _MARNM Khatiwada
 1 SEX M
 1 FAMS @F140@
-1 FAMS @F213@
 1 FAMS @F214@
-1 FAMC @F215@
+1 FAMS @F215@
+1 FAMC @F216@
 2 PEDI birth
 0 @I555@ INDI
 1 NAME Bhadrakala /Adhikari/
@@ -4347,7 +4350,7 @@
 2 _MARNM Khatiwada
 1 SEX F
 1 DEAT Y
-1 FAMS @F215@
+1 FAMS @F216@
 0 @I556@ INDI
 1 NAME RamPrasad /Khatiwada/
 2 GIVN RamPrasad
@@ -4355,9 +4358,9 @@
 2 _MARNM Khatiwada
 1 SEX M
 1 DEAT Y
-1 FAMS @F215@
 1 FAMS @F216@
-1 FAMC @F217@
+1 FAMS @F217@
+1 FAMC @F218@
 2 PEDI birth
 0 @I557@ INDI
 1 NAME Govinda /Khatiwada/
@@ -4365,204 +4368,204 @@
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX M
-1 FAMS @F218@
-1 FAMC @F215@
+1 FAMS @F219@
+1 FAMC @F216@
 0 @I558@ INDI
 1 NAME Manju /Khatiwada/
 2 GIVN Manju
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX F
-1 FAMS @F218@
+1 FAMS @F219@
 0 @I559@ INDI
 1 NAME Maiya /Khatiwada/
 2 GIVN Maiya
 2 SURN Khatiwada
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F219@
-1 FAMC @F218@
+1 FAMS @F220@
+1 FAMC @F219@
 0 @I560@ INDI
 1 NAME HomNath /Poudel/
 2 GIVN HomNath
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX M
-1 FAMS @F219@
+1 FAMS @F220@
 0 @I561@ INDI
 1 NAME Fadindra /Khatiwada/
 2 GIVN Fadindra
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX M
-1 FAMS @F220@
-1 FAMC @F218@
+1 FAMS @F221@
+1 FAMC @F219@
 0 @I562@ INDI
 1 NAME Rita /Khatiwada/
 2 GIVN Rita
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX F
-1 FAMS @F220@
+1 FAMS @F221@
 0 @I563@ INDI
 1 NAME Yasoda /Khatiwada/
 2 GIVN Yasoda
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX F
-1 FAMC @F218@
+1 FAMC @F219@
 0 @I564@ INDI
 1 NAME Tika /Khatiwada/
 2 GIVN Tika
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX F
-1 FAMC @F218@
+1 FAMC @F219@
 0 @I565@ INDI
 1 NAME DilliPrasad /Khatiwada/
 2 GIVN DilliPrasad
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX M
-1 FAMS @F221@
-1 FAMC @F215@
+1 FAMS @F222@
+1 FAMC @F216@
 0 @I566@ INDI
 1 NAME Srijana /Khatiwada/
 2 GIVN Srijana
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX F
-1 FAMS @F221@
+1 FAMS @F222@
 0 @I567@ INDI
 1 NAME Ambika /Khatiwada/
 2 GIVN Ambika
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX M
-1 FAMS @F222@
-1 FAMC @F215@
+1 FAMS @F223@
+1 FAMC @F216@
 0 @I568@ INDI
 1 NAME Laxmi /Khatiwada/
 2 GIVN Laxmi
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX F
-1 FAMS @F222@
+1 FAMS @F223@
 0 @I569@ INDI
 1 NAME Alka /Khatiwada/
 2 GIVN Alka
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX F
-1 FAMC @F222@
+1 FAMC @F223@
 0 @I570@ INDI
 1 NAME Subash /Khatiwada/
 2 GIVN Subash
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX M
-1 FAMC @F222@
+1 FAMC @F223@
 0 @I571@ INDI
 1 NAME Bibash /Khatiwada/
 2 GIVN Bibash
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX M
-1 FAMC @F221@
+1 FAMC @F222@
 0 @I572@ INDI
 1 NAME Binisha /Khatiwada/
 2 GIVN Binisha
 2 SURN Khatiwada
 2 _MARNM Khatiwada
 1 SEX F
-1 FAMC @F221@
+1 FAMC @F222@
 0 @I573@ INDI
 1 NAME Subhadra /Khatiwada/
 2 GIVN Subhadra
 2 SURN Khatiwada
 2 _MARNM Bhandari
 1 SEX F
-1 FAMS @F223@
-1 FAMC @F215@
+1 FAMS @F224@
+1 FAMC @F216@
 0 @I574@ INDI
 1 NAME Yasoda /Bhandari/
 2 GIVN Yasoda
 2 SURN Bhandari
 2 _MARNM Bhandari
 1 SEX F
-1 FAMC @F223@
+1 FAMC @F224@
 0 @I575@ INDI
 1 NAME Mina /Bhandari/
 2 GIVN Mina
 2 SURN Bhandari
 2 _MARNM Bhandari
 1 SEX F
-1 FAMC @F223@
+1 FAMC @F224@
 0 @I576@ INDI
 1 NAME BedPrakash /Bhandari/
 2 GIVN BedPrakash
 2 SURN Bhandari
 2 _MARNM Bhandari
 1 SEX M
-1 FAMC @F223@
+1 FAMC @F224@
 0 @I577@ INDI
 1 NAME Uttam /Bhandari/
 2 GIVN Uttam
 2 SURN Bhandari
 2 _MARNM Bhandari
 1 SEX M
-1 FAMC @F223@
+1 FAMC @F224@
 0 @I578@ INDI
 1 NAME Mohan /Bhandari/
 2 GIVN Mohan
 2 SURN Bhandari
 2 _MARNM Bhandari
 1 SEX M
-1 FAMS @F224@
-1 FAMC @F223@
+1 FAMS @F225@
+1 FAMC @F224@
 0 @I579@ INDI
 1 NAME Rupa /Bhandari/
 2 GIVN Rupa
 2 SURN Bhandari
 2 _MARNM Bhandari
 1 SEX F
-1 FAMS @F224@
+1 FAMS @F225@
 0 @I580@ INDI
 1 NAME Yoga /Khatiwada/
 2 GIVN Yoga
 2 SURN Khatiwada
 2 _MARNM Ghimire
 1 SEX F
-1 FAMS @F225@
-1 FAMC @F215@
+1 FAMS @F226@
+1 FAMC @F216@
 0 @I581@ INDI
 1 NAME Pushpa /Ghimire/
 2 GIVN Pushpa
 2 SURN Ghimire
 2 _MARNM Ghimire
 1 SEX M
-1 FAMS @F225@
+1 FAMS @F226@
 0 @I582@ INDI
 1 NAME Amol /Ghimire/
 2 GIVN Amol
 2 SURN Ghimire
 2 _MARNM Ghimire
 1 SEX M
-1 FAMC @F225@
+1 FAMC @F226@
 0 @I583@ INDI
 1 NAME Anuja /Ghimire/
 2 GIVN Anuja
 2 SURN Ghimire
 2 _MARNM Ghimire
 1 SEX F
-1 FAMC @F225@
+1 FAMC @F226@
 0 @I584@ INDI
 1 NAME RatnaMaya /Bhattarai/
 2 GIVN RatnaMaya
 2 SURN Bhattarai
 2 _MARNM Niraula
 1 SEX F
-1 FAMS @F212@
+1 FAMS @F213@
 0 @I585@ INDI
 1 NAME BhimPrasad /Bhattarai/
 2 GIVN BhimPrasad
@@ -4571,9 +4574,9 @@
 1 SEX M
 1 DEAT Y
 2 DATE 2022
-1 FAMS @F212@
-1 FAMS @F226@
-1 FAMC @F227@
+1 FAMS @F213@
+1 FAMS @F227@
+1 FAMC @F228@
 2 PEDI birth
 0 @I586@ INDI
 1 NAME Goma /Bhattarai/
@@ -4581,178 +4584,178 @@
 2 SURN Bhattarai
 2 _MARNM Neupane
 1 SEX F
-1 FAMS @F228@
-1 FAMC @F212@
+1 FAMS @F229@
+1 FAMC @F213@
 0 @I587@ INDI
 1 NAME Gopal /Neupane/
 2 GIVN Gopal
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX M
-1 FAMS @F228@
+1 FAMS @F229@
 0 @I588@ INDI
 1 NAME Dinesh /Neupane/
 2 GIVN Dinesh
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX M
-1 FAMS @F229@
-1 FAMC @F228@
+1 FAMS @F230@
+1 FAMC @F229@
 0 @I589@ INDI
 1 NAME Nanu /Guragain/
 2 GIVN Nanu
 2 SURN Guragain
 2 _MARNM Neupane
 1 SEX F
-1 FAMS @F229@
+1 FAMS @F230@
 0 @I590@ INDI
 1 NAME Anju /Neupane/
 2 GIVN Anju
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX F
-1 FAMC @F228@
+1 FAMC @F229@
 0 @I591@ INDI
 1 NAME Ranju /Neupane/
 2 GIVN Ranju
 2 SURN Neupane
 2 _MARNM Dahal
 1 SEX F
-1 FAMS @F230@
-1 FAMC @F228@
+1 FAMS @F231@
+1 FAMC @F229@
 0 @I592@ INDI
 1 NAME Surya /Dahal/
 2 GIVN Surya
 2 SURN Dahal
 2 _MARNM Dahal
 1 SEX M
-1 FAMS @F230@
+1 FAMS @F231@
 0 @I593@ INDI
 1 NAME Naresh /Neupane/
 2 GIVN Naresh
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX M
-1 FAMS @F231@
-1 FAMC @F228@
+1 FAMS @F232@
+1 FAMC @F229@
 0 @I594@ INDI
 1 NAME Maya /Khanal/
 2 GIVN Maya
 2 SURN Khanal
 2 _MARNM Neupane
 1 SEX F
-1 FAMS @F231@
+1 FAMS @F232@
 0 @I595@ INDI
 1 NAME Rajendra /Bhattarai/
 2 GIVN Rajendra
 2 SURN Bhattarai
 2 _MARNM Bhattarai
 1 SEX M
-1 FAMS @F232@
-1 FAMC @F212@
+1 FAMS @F233@
+1 FAMC @F213@
 0 @I596@ INDI
 1 NAME Mina /Bhattarai/
 2 GIVN Mina
 2 SURN Bhattarai
 2 _MARNM Bhattarai
 1 SEX F
-1 FAMS @F232@
+1 FAMS @F233@
 0 @I597@ INDI
 1 NAME Sabita /Bhattarai/
 2 GIVN Sabita
 2 SURN Bhattarai
 2 _MARNM Niraula
 1 SEX F
-1 FAMS @F233@
-1 FAMC @F232@
+1 FAMS @F234@
+1 FAMC @F233@
 0 @I598@ INDI
 1 NAME Kabita /Bhattarai/
 2 GIVN Kabita
 2 SURN Bhattarai
 2 _MARNM Niraula
 1 SEX F
-1 FAMS @F234@
-1 FAMC @F232@
+1 FAMS @F235@
+1 FAMC @F233@
 0 @I599@ INDI
 1 NAME Binita /Bhattarai/
 2 GIVN Binita
 2 SURN Bhattarai
 2 _MARNM Pokharel
 1 SEX F
-1 FAMS @F235@
-1 FAMC @F232@
+1 FAMS @F236@
+1 FAMC @F233@
 0 @I600@ INDI
 1 NAME Mamata /Bhattarai/
 2 GIVN Mamata
 2 SURN Bhattarai
 2 _MARNM Adhikari
 1 SEX F
-1 FAMS @F236@
-1 FAMC @F232@
+1 FAMS @F237@
+1 FAMC @F233@
 0 @I601@ INDI
 1 NAME Pooja /Bhattarai/
 2 GIVN Pooja
 2 SURN Bhattarai
 2 _MARNM Bhattarai
 1 SEX F
-1 FAMC @F232@
+1 FAMC @F233@
 0 @I602@ INDI
 1 NAME Chandra /Bhattarai/
 2 GIVN Chandra
 2 SURN Bhattarai
 2 _MARNM Bhattarai
 1 SEX M
-1 FAMS @F237@
-1 FAMC @F212@
+1 FAMS @F238@
+1 FAMC @F213@
 0 @I603@ INDI
 1 NAME Ambika /Bhattarai/
 2 GIVN Ambika
 2 SURN Bhattarai
 2 _MARNM Bhattarai
 1 SEX F
-1 FAMS @F237@
+1 FAMS @F238@
 0 @I604@ INDI
 1 NAME Ashru /Bhattarai/
 2 GIVN Ashru
 2 SURN Bhattarai
 2 _MARNM Bhattarai
 1 SEX F
-1 FAMC @F237@
+1 FAMC @F238@
 0 @I605@ INDI
 1 NAME Subash /Bhattarai/
 2 GIVN Subash
 2 SURN Bhattarai
 2 _MARNM Bhattarai
 1 SEX M
-1 FAMC @F237@
+1 FAMC @F238@
 0 @I606@ INDI
 1 NAME Madhav /Niraula/
 2 GIVN Madhav
 2 SURN Niraula
 2 _MARNM Niraula
 1 SEX M
-1 FAMS @F233@
+1 FAMS @F234@
 0 @I607@ INDI
 1 NAME Kuldeep /Niraula/
 2 GIVN Kuldeep
 2 SURN Niraula
 2 _MARNM Niraula
 1 SEX M
-1 FAMS @F234@
+1 FAMS @F235@
 0 @I608@ INDI
 1 NAME Sanjeev /Pokharel/
 2 GIVN Sanjeev
 2 SURN Pokharel
 2 _MARNM Pokharel
 1 SEX M
-1 FAMS @F235@
+1 FAMS @F236@
 0 @I609@ INDI
 1 NAME Suman /Adhikari/
 2 GIVN Suman
 2 SURN Adhikari
 2 _MARNM Adhikari
 1 SEX M
-1 FAMS @F236@
+1 FAMS @F237@
 0 @I610@ INDI
 1 NAME Manamaya /Khatiwada/
 2 GIVN Manamaya
@@ -4760,7 +4763,7 @@
 2 _MARNM Khatiwada
 1 SEX F
 1 DEAT Y
-1 FAMS @F217@
+1 FAMS @F218@
 0 @I611@ INDI
 1 NAME Chudamani /Khatiwada/
 2 GIVN Chudamani
@@ -4768,9 +4771,9 @@
 2 _MARNM Khatiwada
 1 SEX M
 1 DEAT Y
-1 FAMS @F217@
-1 FAMS @F238@
-1 FAMC @F239@
+1 FAMS @F218@
+1 FAMS @F239@
+1 FAMC @F240@
 2 PEDI birth
 0 @I612@ INDI
 1 NAME Lildevi /Khatiwada/
@@ -4779,7 +4782,7 @@
 2 _MARNM Khatiwada
 1 SEX F
 1 DEAT Y
-1 FAMC @F217@
+1 FAMC @F218@
 0 @I613@ INDI
 1 NAME Mailidevi /Khatiwada/
 2 GIVN Mailidevi
@@ -4787,7 +4790,7 @@
 2 _MARNM Khatiwada
 1 SEX F
 1 DEAT Y
-1 FAMC @F217@
+1 FAMC @F218@
 0 @I614@ INDI
 1 NAME Ishworidasi /Khatiwada/
 2 GIVN Ishworidasi
@@ -4795,7 +4798,7 @@
 2 _MARNM Khatiwada
 1 SEX F
 1 DEAT Y
-1 FAMC @F217@
+1 FAMC @F218@
 0 @I615@ INDI
 1 NAME Liladevi /Khatiwada/
 2 GIVN Liladevi
@@ -4803,7 +4806,7 @@
 2 _MARNM Khatiwada
 1 SEX F
 1 DEAT Y
-1 FAMC @F217@
+1 FAMC @F218@
 0 @I616@ INDI
 1 NAME Chhavidevi /Khatiwada/
 2 GIVN Chhavidevi
@@ -4811,7 +4814,7 @@
 2 _MARNM Khatiwada
 1 SEX F
 1 DEAT Y
-1 FAMC @F217@
+1 FAMC @F218@
 0 @I617@ INDI
 1 NAME DevidasWife /Khatiwada/
 2 GIVN DevidasWife
@@ -4819,7 +4822,7 @@
 2 _MARNM Khatiwada
 1 SEX F
 1 DEAT Y
-1 FAMS @F239@
+1 FAMS @F240@
 0 @I618@ INDI
 1 NAME Devidas /Khatiwada/
 2 GIVN Devidas
@@ -4827,9 +4830,9 @@
 2 _MARNM Khatiwada
 1 SEX M
 1 DEAT Y
-1 FAMS @F239@
 1 FAMS @F240@
-1 FAMC @F241@
+1 FAMS @F241@
+1 FAMC @F242@
 2 PEDI birth
 0 @I619@ INDI
 1 NAME DeviduttaWife /Khatiwada/
@@ -4838,7 +4841,7 @@
 2 _MARNM Khatiwada
 1 SEX F
 1 DEAT Y
-1 FAMS @F241@
+1 FAMS @F242@
 0 @I620@ INDI
 1 NAME Devidutta /Khatiwada/
 2 GIVN Devidutta
@@ -4846,9 +4849,9 @@
 2 _MARNM Khatiwada
 1 SEX M
 1 DEAT Y
-1 FAMS @F241@
 1 FAMS @F242@
-1 FAMC @F243@
+1 FAMS @F243@
+1 FAMC @F244@
 2 PEDI birth
 0 @I621@ INDI
 1 NAME JagannathWife /Khatiwada/
@@ -4857,7 +4860,7 @@
 2 _MARNM Khatiwada
 1 SEX F
 1 DEAT Y
-1 FAMS @F243@
+1 FAMS @F244@
 0 @I622@ INDI
 1 NAME Jagannath /Khatiwada/
 2 GIVN Jagannath
@@ -4865,7 +4868,7 @@
 2 _MARNM Khatiwada
 1 SEX M
 1 DEAT Y
-1 FAMS @F243@
+1 FAMS @F244@
 0 @I623@ INDI
 1 NAME BhimPrasadMother /Bhattarai/
 2 GIVN BhimPrasadMother
@@ -4873,7 +4876,7 @@
 2 _MARNM Bhattarai
 1 SEX F
 1 DEAT Y
-1 FAMS @F227@
+1 FAMS @F228@
 0 @I624@ INDI
 1 NAME BhimPrasadFather /Bhattarai/
 2 GIVN BhimPrasadFather
@@ -4881,7 +4884,7 @@
 2 _MARNM Bhattarai
 1 SEX M
 1 DEAT Y
-1 FAMS @F227@
+1 FAMS @F228@
 0 @I625@ INDI
 1 NAME Kewali /Bhattarai/
 2 GIVN Kewali
@@ -4889,14 +4892,14 @@
 2 _MARNM Bhattarai
 1 SEX M
 1 DEAT Y
-1 FAMC @F227@
+1 FAMC @F228@
 0 @I626@ INDI
 1 NAME Santa /Bhattarai/
 2 GIVN Santa
 2 SURN Bhattarai
 2 _MARNM Dhungel
 1 SEX F
-1 FAMC @F227@
+1 FAMC @F228@
 0 @I627@ INDI
 1 NAME Kamala /Bhattarai/
 2 GIVN Kamala
@@ -4904,7 +4907,7 @@
 2 _MARNM Kafle
 1 SEX F
 1 DEAT Y
-1 FAMC @F227@
+1 FAMC @F228@
 0 @I628@ INDI
 1 NAME MailaBa /Neupane/
 2 GIVN MailaBa
@@ -4912,7 +4915,7 @@
 2 _MARNM Neupane
 1 SEX M
 1 DEAT Y
-1 FAMS @F244@
+1 FAMS @F245@
 1 FAMC @F119@
 0 @I629@ INDI
 1 NAME MeghNath /Neupane/
@@ -4921,7 +4924,7 @@
 2 _MARNM Neupane
 1 SEX M
 1 DEAT Y
-1 FAMS @F245@
+1 FAMS @F246@
 1 FAMC @F119@
 0 @I630@ INDI
 1 NAME Madhav /Neupane/
@@ -4929,36 +4932,36 @@
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX M
-1 FAMC @F244@
+1 FAMC @F245@
 0 @I631@ INDI
 1 NAME
 1 SEX F
-1 FAMS @F244@
+1 FAMS @F245@
 0 @I632@ INDI
 1 NAME Shiva /Neupane/
 2 GIVN Shiva
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX M
-1 FAMC @F244@
+1 FAMC @F245@
 0 @I633@ INDI
 1 NAME Sabitri /Neupane/
 2 GIVN Sabitri
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX F
-1 FAMC @F245@
+1 FAMC @F246@
 0 @I634@ INDI
 1 NAME
 1 SEX F
-1 FAMS @F245@
+1 FAMS @F246@
 0 @I635@ INDI
 1 NAME Baisnavi /Neupane/
 2 GIVN Baisnavi
 2 SURN Neupane
 2 _MARNM Sharma
 1 SEX F
-1 FAMC @F245@
+1 FAMC @F246@
 0 @I636@ INDI
 1 NAME Hari /Neupane/
 2 GIVN Hari
@@ -4966,26 +4969,26 @@
 2 _MARNM Neupane
 1 SEX M
 1 DEAT Y
-1 FAMS @F246@
-1 FAMC @F245@
+1 FAMS @F247@
+1 FAMC @F246@
 0 @I637@ INDI
 1 NAME Roshan /Neupane/
 2 GIVN Roshan
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX M
-1 FAMC @F246@
+1 FAMC @F247@
 0 @I638@ INDI
 1 NAME
 1 SEX F
-1 FAMS @F246@
+1 FAMS @F247@
 0 @I639@ INDI
 1 NAME Ranjit /Neupane/
 2 GIVN Ranjit
 2 SURN Neupane
 2 _MARNM Neupane
 1 SEX M
-1 FAMC @F246@
+1 FAMC @F247@
 0 @I640@ INDI
 1 NAME ThuloNani /Neupane/
 2 GIVN ThuloNani
@@ -4995,7 +4998,7 @@
 1 BIRT
 2 DATE 1920
 1 DEAT Y
-1 FAMS @F247@
+1 FAMS @F248@
 1 FAMC @F117@
 0 @I641@ INDI
 1 NAME Baulai Didi /Neupane/
@@ -5015,18 +5018,18 @@
 1 SEX M
 1 DEAT Y
 2 DATE 2024
-1 FAMC @F247@
+1 FAMC @F248@
 0 @I643@ INDI
 1 NAME
 1 SEX M
-1 FAMS @F247@
+1 FAMS @F248@
 0 @I644@ INDI
 1 NAME Ganga /Aryal/
 2 GIVN Ganga
 2 SURN Aryal
 2 _MARNM Aryal
 1 SEX F
-1 FAMC @F247@
+1 FAMC @F248@
 0 @I645@ INDI
 1 NAME BhimRudra /Regmi/
 2 GIVN BhimRudra
@@ -5036,7 +5039,7 @@
 1 DEAT Y
 2 DATE 1937
 1 FAMS @F118@
-1 FAMC @F248@
+1 FAMC @F249@
 0 @I646@ INDI
 1 NAME SumitraDevi /Regmi/
 2 GIVN SumitraDevi
@@ -5048,75 +5051,75 @@
 0 @I647@ INDI
 1 NAME
 1 SEX M
-1 FAMS @F248@
+1 FAMS @F249@
 0 @I648@ INDI
 1 NAME
 1 SEX F
-1 FAMS @F248@
+1 FAMS @F249@
 0 @I649@ INDI
 1 NAME RadheshoriThuloDad /Regmi/
 2 GIVN RadheshoriThuloDad
 2 SURN Regmi
 2 _MARNM Regmi
 1 SEX M
-1 FAMS @F249@
-1 FAMC @F248@
+1 FAMS @F250@
+1 FAMC @F249@
 0 @I650@ INDI
 1 NAME Sambhu /Regmi/
 2 GIVN Sambhu
 2 SURN Regmi
 2 _MARNM Regmi
 1 SEX M
-1 FAMC @F249@
+1 FAMC @F250@
 0 @I651@ INDI
 1 NAME Achyut /Regmi/
 2 GIVN Achyut
 2 SURN Regmi
 2 _MARNM Regmi
 1 SEX M
-1 FAMC @F249@
+1 FAMC @F250@
 0 @I652@ INDI
 1 NAME Naranath /Regmi/
 2 GIVN Naranath
 2 SURN Regmi
 2 _MARNM Regmi
 1 SEX M
-1 FAMC @F249@
+1 FAMC @F250@
 0 @I653@ INDI
 1 NAME Damodar /Regmi/
 2 GIVN Damodar
 2 SURN Regmi
 2 _MARNM Regmi
 1 SEX M
-1 FAMC @F249@
+1 FAMC @F250@
 0 @I654@ INDI
 1 NAME Rama /Regmi/
 2 GIVN Rama
 2 SURN Regmi
 2 _MARNM Regmi
 1 SEX F
-1 FAMC @F249@
+1 FAMC @F250@
 0 @I655@ INDI
 1 NAME Radha /Regmi/
 2 GIVN Radha
 2 SURN Regmi
 2 _MARNM Regmi
 1 SEX F
-1 FAMC @F249@
+1 FAMC @F250@
 0 @I656@ INDI
 1 NAME Manda /Regmi/
 2 GIVN Manda
 2 SURN Regmi
 2 _MARNM Regmi
 1 SEX F
-1 FAMC @F249@
+1 FAMC @F250@
 0 @I657@ INDI
 1 NAME Sushila /Regmi/
 2 GIVN Sushila
 2 SURN Regmi
 2 _MARNM Regmi
 1 SEX F
-1 FAMC @F249@
+1 FAMC @F250@
 0 @I658@ INDI
 1 NAME LaxmiPrasad /Regmi/
 2 GIVN LaxmiPrasad
@@ -5125,7 +5128,7 @@
 1 SEX M
 1 DEAT Y
 2 DATE 1988
-1 FAMS @F251@
+1 FAMS @F252@
 1 FAMC @F118@
 0 @I659@ INDI
 1 NAME Ruku /Regmi/
@@ -5135,7 +5138,7 @@
 1 SEX F
 1 DEAT Y
 2 PLAC Budhanilkantha
-1 FAMS @F250@
+1 FAMS @F251@
 1 FAMC @F118@
 0 @I660@ INDI
 1 NAME Mailididi /Regmi/
@@ -5161,35 +5164,35 @@
 2 SURN Bhandari
 2 _MARNM Bhandari
 1 SEX M
-1 FAMC @F250@
+1 FAMC @F251@
 0 @I663@ INDI
 1 NAME Bidur /Bhandari/
 2 GIVN Bidur
 2 SURN Bhandari
 2 _MARNM Bhandari
 1 SEX M
-1 FAMC @F250@
+1 FAMC @F251@
 0 @I664@ INDI
 1 NAME Dhruba /Bhandari/
 2 GIVN Dhruba
 2 SURN Bhandari
 2 _MARNM Bhandari
 1 SEX M
-1 FAMC @F250@
+1 FAMC @F251@
 0 @I665@ INDI
 1 NAME NaniMaiya /Bhandari/
 2 GIVN NaniMaiya
 2 SURN Bhandari
 2 _MARNM Bhandari
 1 SEX F
-1 FAMC @F250@
+1 FAMC @F251@
 0 @I666@ INDI
 1 NAME Muna /Bhandari/
 2 GIVN Muna
 2 SURN Bhandari
 2 _MARNM Luitel
 1 SEX F
-1 FAMC @F250@
+1 FAMC @F251@
 0 @I667@ INDI
 1 NAME SaniMaiya /Bhandari/
 2 GIVN SaniMaiya
@@ -5197,28 +5200,28 @@
 2 _MARNM Poudel
 1 SEX F
 1 NOTE Bio notes: Farping
-1 FAMC @F250@
+1 FAMC @F251@
 0 @I668@ INDI
 1 NAME Kanchi /Bhandari/
 2 GIVN Kanchi
 2 SURN Bhandari
 2 _MARNM Acharya
 1 SEX F
-1 FAMC @F250@
+1 FAMC @F251@
 0 @I669@ INDI
 1 NAME Sabitri (Sandidi) /Regmi/
 2 GIVN Sabitri (Sandidi)
 2 SURN Regmi
 2 _MARNM Neupane
 1 SEX F
-1 FAMC @F251@
+1 FAMC @F252@
 0 @I670@ INDI
 1 NAME Sobha /Regmi/
 2 GIVN Sobha
 2 SURN Regmi
 2 _MARNM Neupane
 1 SEX F
-1 FAMC @F251@
+1 FAMC @F252@
 0 @I671@ INDI
 1 NAME Keshav /Regmi/
 2 GIVN Keshav
@@ -5226,7 +5229,7 @@
 2 _MARNM Regmi
 1 SEX M
 1 DEAT Y
-1 FAMC @F251@
+1 FAMC @F252@
 0 @I672@ INDI
 1 NAME Madhav /Regmi/
 2 GIVN Madhav
@@ -5234,14 +5237,56 @@
 2 _MARNM Regmi
 1 SEX M
 1 DEAT Y
-1 FAMC @F251@
+1 FAMC @F252@
 0 @I673@ INDI
 1 NAME Bhola /Regmi/
 2 GIVN Bhola
 2 SURN Regmi
 2 _MARNM Regmi
 1 SEX M
-1 FAMC @F251@
+1 FAMC @F252@
+0 @I674@ INDI
+1 NAME ShivaPrasad /Wagle/
+2 GIVN ShivaPrasad
+2 SURN Wagle
+2 _MARNM Wagle
+1 SEX M
+1 DEAT Y
+1 FAMS @F144@
+1 FAMC @F253@
+0 @I675@ INDI
+1 NAME NandaKumari /Wagle/
+2 GIVN NandaKumari
+2 SURN Wagle
+2 _MARNM Wagle
+1 SEX F
+1 DEAT Y
+1 FAMS @F144@
+0 @I676@ INDI
+1 NAME Gopilal
+2 GIVN Gopilal
+1 SEX M
+1 DEAT Y
+1 FAMS @F253@
+1 FAMC @F254@
+0 @I677@ INDI
+1 NAME KholaKumari
+2 GIVN KholaKumari
+1 SEX F
+1 DEAT Y
+1 FAMS @F253@
+0 @I678@ INDI
+1 NAME KashiNath
+2 GIVN KashiNath
+1 SEX M
+1 DEAT Y
+1 FAMS @F254@
+0 @I679@ INDI
+1 NAME RamLila
+2 GIVN RamLila
+1 SEX F
+1 DEAT Y
+1 FAMS @F254@
 0 @F1@ FAM
 1 HUSB @I1@
 1 WIFE @I2@
@@ -5557,44 +5602,44 @@
 1 HUSB @I322@
 1 CHIL @I325@
 1 CHIL @I326@
-0 @F157@ FAM
+0 @F158@ FAM
 1 WIFE @I423@
 1 CHIL @I424@
 1 CHIL @I425@
-0 @F172@ FAM
+0 @F173@ FAM
 1 WIFE @I465@
 1 CHIL @I466@
-0 @F184@ FAM
+0 @F185@ FAM
 1 HUSB @I485@
 1 CHIL @I493@
 1 CHIL @I494@
-0 @F190@ FAM
+0 @F191@ FAM
 1 HUSB @I498@
 1 CHIL @I501@
-0 @F191@ FAM
+0 @F192@ FAM
 1 HUSB @I499@
 1 CHIL @I502@
-0 @F192@ FAM
+0 @F193@ FAM
 1 HUSB @I500@
 1 CHIL @I503@
-0 @F199@ FAM
+0 @F200@ FAM
 1 HUSB @I513@
 1 CHIL @I525@
-0 @F206@ FAM
+0 @F207@ FAM
 1 HUSB @I457@
 1 CHIL @I539@
-0 @F208@ FAM
+0 @F209@ FAM
 1 WIFE @I454@
 1 CHIL @I543@
 1 CHIL @I544@
-0 @F223@ FAM
+0 @F224@ FAM
 1 WIFE @I573@
 1 CHIL @I574@
 1 CHIL @I575@
 1 CHIL @I576@
 1 CHIL @I577@
 1 CHIL @I578@
-0 @F249@ FAM
+0 @F250@ FAM
 1 HUSB @I649@
 1 CHIL @I650@
 1 CHIL @I651@
@@ -5604,7 +5649,7 @@
 1 CHIL @I655@
 1 CHIL @I656@
 1 CHIL @I657@
-0 @F250@ FAM
+0 @F251@ FAM
 1 WIFE @I659@
 1 CHIL @I662@
 1 CHIL @I663@
@@ -5613,7 +5658,7 @@
 1 CHIL @I666@
 1 CHIL @I667@
 1 CHIL @I668@
-0 @F251@ FAM
+0 @F252@ FAM
 1 HUSB @I658@
 1 CHIL @I669@
 1 CHIL @I670@
@@ -6216,7 +6261,7 @@
 1 CHIL @I382@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F213@ FAM
+0 @F214@ FAM
 1 HUSB @I554@
 1 _CURRENT Y
 1 _PRIMARY N
@@ -6248,30 +6293,36 @@
 1 _CURRENT Y
 1 _PRIMARY Y
 0 @F144@ FAM
+1 HUSB @I674@
+1 WIFE @I675@
+1 CHIL @I389@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F145@ FAM
 1 HUSB @I392@
 1 WIFE @I393@
 1 CHIL @I390@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F145@ FAM
+0 @F146@ FAM
 1 HUSB @I394@
 1 WIFE @I395@
 1 CHIL @I392@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F146@ FAM
+0 @F147@ FAM
 1 HUSB @I396@
 1 WIFE @I397@
 1 CHIL @I394@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F147@ FAM
+0 @F148@ FAM
 1 HUSB @I398@
 1 WIFE @I399@
 1 CHIL @I396@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F148@ FAM
+0 @F149@ FAM
 1 HUSB @I433@
 1 WIFE @I434@
 1 CHIL @I400@
@@ -6284,7 +6335,7 @@
 1 CHIL @I441@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F149@ FAM
+0 @F150@ FAM
 1 HUSB @I405@
 1 WIFE @I409@
 1 CHIL @I421@
@@ -6293,14 +6344,14 @@
 1 CHIL @I427@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F150@ FAM
+0 @F151@ FAM
 1 HUSB @I408@
 1 WIFE @I406@
 1 CHIL @I410@
 1 CHIL @I411@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F151@ FAM
+0 @F152@ FAM
 1 HUSB @I404@
 1 WIFE @I407@
 1 CHIL @I406@
@@ -6311,55 +6362,55 @@
 1 CHIL @I419@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F152@ FAM
+0 @F153@ FAM
 1 HUSB @I412@
 1 WIFE @I410@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F153@ FAM
+0 @F154@ FAM
 1 HUSB @I411@
 1 WIFE @I413@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F154@ FAM
+0 @F155@ FAM
 1 HUSB @I415@
 1 WIFE @I414@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F155@ FAM
+0 @F156@ FAM
 1 HUSB @I420@
 1 WIFE @I419@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F156@ FAM
+0 @F157@ FAM
 1 HUSB @I421@
 1 WIFE @I422@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F158@ FAM
+0 @F159@ FAM
 1 HUSB @I432@
 1 WIFE @I426@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F159@ FAM
+0 @F160@ FAM
 1 HUSB @I429@
 1 WIFE @I427@
 1 CHIL @I428@
 1 CHIL @I430@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F160@ FAM
+0 @F161@ FAM
 1 HUSB @I431@
 1 WIFE @I430@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F161@ FAM
+0 @F162@ FAM
 1 HUSB @I442@
 1 WIFE @I443@
 1 CHIL @I433@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F162@ FAM
+0 @F163@ FAM
 1 HUSB @I452@
 1 WIFE @I445@
 1 CHIL @I453@
@@ -6369,7 +6420,7 @@
 1 CHIL @I457@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F163@ FAM
+0 @F164@ FAM
 1 HUSB @I451@
 1 WIFE @I449@
 1 CHIL @I478@
@@ -6377,7 +6428,7 @@
 1 CHIL @I482@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F164@ FAM
+0 @F165@ FAM
 1 HUSB @I450@
 1 WIFE @I444@
 1 CHIL @I449@
@@ -6386,19 +6437,19 @@
 1 CHIL @I476@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F165@ FAM
+0 @F166@ FAM
 1 HUSB @I450@
 1 WIFE @I545@
 1 CHIL @I546@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F166@ FAM
+0 @F167@ FAM
 1 HUSB @I458@
 1 WIFE @I548@
 1 CHIL @I549@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F167@ FAM
+0 @F168@ FAM
 1 HUSB @I459@
 1 WIFE @I446@
 1 CHIL @I458@
@@ -6407,34 +6458,34 @@
 1 CHIL @I462@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F168@ FAM
+0 @F169@ FAM
 1 HUSB @I462@
 1 WIFE @I552@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F169@ FAM
+0 @F170@ FAM
 1 HUSB @I463@
 1 WIFE @I472@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F170@ FAM
+0 @F171@ FAM
 1 HUSB @I447@
 1 WIFE @I464@
 1 CHIL @I463@
 1 CHIL @I465@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F171@ FAM
+0 @F172@ FAM
 1 HUSB @I473@
 1 WIFE @I465@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F173@ FAM
+0 @F174@ FAM
 1 HUSB @I471@
 1 WIFE @I467@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F174@ FAM
+0 @F175@ FAM
 1 HUSB @I448@
 1 WIFE @I468@
 1 CHIL @I467@
@@ -6442,22 +6493,22 @@
 1 CHIL @I470@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F175@ FAM
+0 @F176@ FAM
 1 HUSB @I476@
 1 WIFE @I477@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F176@ FAM
+0 @F177@ FAM
 1 HUSB @I479@
 1 WIFE @I478@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F177@ FAM
+0 @F178@ FAM
 1 HUSB @I481@
 1 WIFE @I480@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F178@ FAM
+0 @F179@ FAM
 1 HUSB @I483@
 1 WIFE @I487@
 1 CHIL @I486@
@@ -6465,40 +6516,40 @@
 1 CHIL @I489@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F179@ FAM
+0 @F180@ FAM
 1 HUSB @I507@
 1 WIFE @I488@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F180@ FAM
+0 @F181@ FAM
 1 HUSB @I489@
 1 WIFE @I506@
 1 CHIL @I509@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F181@ FAM
+0 @F182@ FAM
 1 HUSB @I490@
 1 WIFE @I510@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F182@ FAM
+0 @F183@ FAM
 1 HUSB @I484@
 1 WIFE @I491@
 1 CHIL @I490@
 1 CHIL @I492@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F183@ FAM
+0 @F184@ FAM
 1 HUSB @I492@
 1 WIFE @I511@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F185@ FAM
+0 @F186@ FAM
 1 HUSB @I495@
 1 WIFE @I494@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F186@ FAM
+0 @F187@ FAM
 1 HUSB @I497@
 1 WIFE @I496@
 1 CHIL @I498@
@@ -6506,57 +6557,57 @@
 1 CHIL @I500@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F187@ FAM
+0 @F188@ FAM
 1 HUSB @I498@
 1 WIFE @I508@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F188@ FAM
+0 @F189@ FAM
 1 HUSB @I499@
 1 WIFE @I504@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F189@ FAM
+0 @F190@ FAM
 1 HUSB @I500@
 1 WIFE @I505@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F193@ FAM
+0 @F194@ FAM
 1 HUSB @I513@
 1 WIFE @I524@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F197@ FAM
+0 @F198@ FAM
 1 HUSB @I513@
 1 CHIL @I520@
 1 CHIL @I521@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F194@ FAM
+0 @F195@ FAM
 1 HUSB @I512@
 1 WIFE @I515@
 1 CHIL @I514@
 1 CHIL @I519@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F195@ FAM
+0 @F196@ FAM
 1 HUSB @I514@
 1 WIFE @I517@
 1 CHIL @I516@
 1 CHIL @I518@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F196@ FAM
+0 @F197@ FAM
 1 HUSB @I520@
 1 WIFE @I523@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F198@ FAM
+0 @F199@ FAM
 1 HUSB @I522@
 1 WIFE @I521@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F200@ FAM
+0 @F201@ FAM
 1 HUSB @I528@
 1 WIFE @I526@
 1 CHIL @I529@
@@ -6564,56 +6615,56 @@
 1 CHIL @I531@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F201@ FAM
+0 @F202@ FAM
 1 HUSB @I532@
 1 WIFE @I527@
 1 CHIL @I533@
 1 CHIL @I534@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F202@ FAM
+0 @F203@ FAM
 1 HUSB @I529@
 1 WIFE @I535@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F203@ FAM
+0 @F204@ FAM
 1 HUSB @I530@
 1 WIFE @I536@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F204@ FAM
+0 @F205@ FAM
 1 HUSB @I531@
 1 WIFE @I537@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F205@ FAM
+0 @F206@ FAM
 1 HUSB @I534@
 1 WIFE @I538@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F207@ FAM
+0 @F208@ FAM
 1 HUSB @I541@
 1 WIFE @I453@
 1 CHIL @I540@
 1 CHIL @I542@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F209@ FAM
+0 @F210@ FAM
 1 HUSB @I547@
 1 WIFE @I546@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F210@ FAM
+0 @F211@ FAM
 1 HUSB @I551@
 1 WIFE @I460@
 1 CHIL @I550@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F211@ FAM
+0 @F212@ FAM
 1 WIFE @I553@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F212@ FAM
+0 @F213@ FAM
 1 HUSB @I585@
 1 WIFE @I584@
 1 CHIL @I553@
@@ -6622,11 +6673,11 @@
 1 CHIL @I602@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F214@ FAM
+0 @F215@ FAM
 1 HUSB @I554@
 1 _CURRENT Y
 1 _PRIMARY N
-0 @F215@ FAM
+0 @F216@ FAM
 1 HUSB @I556@
 1 WIFE @I555@
 1 CHIL @I554@
@@ -6637,13 +6688,13 @@
 1 CHIL @I580@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F216@ FAM
+0 @F217@ FAM
 1 HUSB @I556@
 1 EVEN
 2 TYPE Friendship
 1 _CURRENT Y
 1 _PRIMARY N
-0 @F217@ FAM
+0 @F218@ FAM
 1 HUSB @I611@
 1 WIFE @I610@
 1 CHIL @I556@
@@ -6654,7 +6705,7 @@
 1 CHIL @I616@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F218@ FAM
+0 @F219@ FAM
 1 HUSB @I557@
 1 WIFE @I558@
 1 CHIL @I559@
@@ -6663,47 +6714,47 @@
 1 CHIL @I564@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F219@ FAM
+0 @F220@ FAM
 1 HUSB @I560@
 1 WIFE @I559@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F220@ FAM
+0 @F221@ FAM
 1 HUSB @I561@
 1 WIFE @I562@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F221@ FAM
+0 @F222@ FAM
 1 HUSB @I565@
 1 WIFE @I566@
 1 CHIL @I571@
 1 CHIL @I572@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F222@ FAM
+0 @F223@ FAM
 1 HUSB @I567@
 1 WIFE @I568@
 1 CHIL @I569@
 1 CHIL @I570@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F224@ FAM
+0 @F225@ FAM
 1 HUSB @I578@
 1 WIFE @I579@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F225@ FAM
+0 @F226@ FAM
 1 HUSB @I581@
 1 WIFE @I580@
 1 CHIL @I582@
 1 CHIL @I583@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F226@ FAM
+0 @F227@ FAM
 1 HUSB @I585@
 1 _CURRENT Y
 1 _PRIMARY N
-0 @F227@ FAM
+0 @F228@ FAM
 1 HUSB @I624@
 1 WIFE @I623@
 1 CHIL @I585@
@@ -6712,7 +6763,7 @@
 1 CHIL @I627@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F228@ FAM
+0 @F229@ FAM
 1 HUSB @I587@
 1 WIFE @I586@
 1 CHIL @I588@
@@ -6721,22 +6772,22 @@
 1 CHIL @I593@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F229@ FAM
+0 @F230@ FAM
 1 HUSB @I588@
 1 WIFE @I589@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F230@ FAM
+0 @F231@ FAM
 1 HUSB @I592@
 1 WIFE @I591@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F231@ FAM
+0 @F232@ FAM
 1 HUSB @I593@
 1 WIFE @I594@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F232@ FAM
+0 @F233@ FAM
 1 HUSB @I595@
 1 WIFE @I596@
 1 CHIL @I597@
@@ -6746,77 +6797,77 @@
 1 CHIL @I601@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F233@ FAM
+0 @F234@ FAM
 1 HUSB @I606@
 1 WIFE @I597@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F234@ FAM
+0 @F235@ FAM
 1 HUSB @I607@
 1 WIFE @I598@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F235@ FAM
+0 @F236@ FAM
 1 HUSB @I608@
 1 WIFE @I599@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F236@ FAM
+0 @F237@ FAM
 1 HUSB @I609@
 1 WIFE @I600@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F237@ FAM
+0 @F238@ FAM
 1 HUSB @I602@
 1 WIFE @I603@
 1 CHIL @I604@
 1 CHIL @I605@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F238@ FAM
+0 @F239@ FAM
 1 HUSB @I611@
 1 EVEN
 2 TYPE Friendship
 1 _CURRENT Y
 1 _PRIMARY N
-0 @F239@ FAM
+0 @F240@ FAM
 1 HUSB @I618@
 1 WIFE @I617@
 1 CHIL @I611@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F240@ FAM
+0 @F241@ FAM
 1 HUSB @I618@
 1 EVEN
 2 TYPE Friendship
 1 _CURRENT Y
 1 _PRIMARY N
-0 @F241@ FAM
+0 @F242@ FAM
 1 HUSB @I620@
 1 WIFE @I619@
 1 CHIL @I618@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F242@ FAM
+0 @F243@ FAM
 1 HUSB @I620@
 1 EVEN
 2 TYPE Friendship
 1 _CURRENT Y
 1 _PRIMARY N
-0 @F243@ FAM
+0 @F244@ FAM
 1 HUSB @I622@
 1 WIFE @I621@
 1 CHIL @I620@
 1 _CURRENT Y
 1 _PRIMARY Y
-0 @F244@ FAM
+0 @F245@ FAM
 1 HUSB @I628@
 1 WIFE @I631@
 1 CHIL @I630@
 1 CHIL @I632@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F245@ FAM
+0 @F246@ FAM
 1 HUSB @I629@
 1 WIFE @I634@
 1 CHIL @I633@
@@ -6824,25 +6875,37 @@
 1 CHIL @I636@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F246@ FAM
+0 @F247@ FAM
 1 HUSB @I636@
 1 WIFE @I638@
 1 CHIL @I637@
 1 CHIL @I639@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F247@ FAM
+0 @F248@ FAM
 1 HUSB @I643@
 1 WIFE @I640@
 1 CHIL @I642@
 1 CHIL @I644@
 1 _CURRENT N
 1 _PRIMARY N
-0 @F248@ FAM
+0 @F249@ FAM
 1 HUSB @I647@
 1 WIFE @I648@
 1 CHIL @I645@
 1 CHIL @I649@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F253@ FAM
+1 HUSB @I676@
+1 WIFE @I677@
+1 CHIL @I674@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F254@ FAM
+1 HUSB @I678@
+1 WIFE @I679@
+1 CHIL @I676@
 1 _CURRENT Y
 1 _PRIMARY Y
 0 TRLR
