@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual Family Trees</title>
+    <style>
+        :root{
+            --bg: #f7f9fb;
+            --card: #ffffff;
+            --text: #1f2a37;
+            --muted: #6b7280;
+            --ring: #1abc9c;
+            --line: #e5eef4;
+            --shadow: 0 10px 30px rgba(0,0,0,.06);
+            --header-height: 168px;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            overflow: hidden;
+            color: var(--text);
+            background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        }
+
+        .page-header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+            box-shadow: 0 2px 8px rgba(0,0,0,.05);
+        }
+
+        .header-wrap{
+            width: 100%;
+            padding: 14px 20px 10px;
+        }
+
+        .crumbs{
+            display: inline-block;
+            margin: 0 0 6px;
+        }
+
+        .crumbs a{
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .crumbs a:hover{
+            color: var(--text);
+            text-decoration: underline;
+        }
+
+        .header-title{
+            margin: 0;
+            color: var(--text);
+            text-align: center;
+            font: 650 clamp(22px, 4.2vw, 34px)/1.18 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        }
+
+        .person-tabs{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 12px;
+            padding: 7px;
+            background: #eff5fb;
+            border: 1px solid var(--line);
+        }
+
+        .person-tab{
+            appearance: none;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--text);
+            padding: 9px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font: 650 15px system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            min-width: 86px;
+        }
+
+        .person-tab[aria-selected="true"]{
+            background: var(--card);
+            border-color: var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .person-tab:focus{
+            outline: 3px solid var(--ring);
+            outline-offset: 2px;
+        }
+
+        .frame-wrap{
+            width: 100%;
+            height: calc(100vh - var(--header-height));
+            margin-top: var(--header-height);
+            background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
+        }
+
+        .tree-frame{
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: transparent;
+        }
+
+        @media (max-width: 520px){
+            .header-wrap{
+                padding: 12px 12px 8px;
+            }
+
+            .person-tabs{
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 8px;
+            }
+
+            .person-tab{
+                min-width: auto;
+                flex: 0 0 auto;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="header-wrap">
+            <nav class="crumbs" aria-label="Breadcrumb">
+                <a href="index.html">← Back to Home</a>
+            </nav>
+            <h1 class="header-title" id="page-title">आशिष पौडेलको वंशावली (Aashish Poudel Family Tree)</h1>
+            <div aria-label="Individual family tree tabs" class="person-tabs" role="tablist">
+                <button aria-selected="true" class="person-tab" data-src="aashish_poudel.html" data-title="आशिष पौडेलको वंशावली (Aashish Poudel Family Tree)" role="tab" tabindex="0">Aashish</button>
+                <button aria-selected="false" class="person-tab" data-src="aayan_poudel.html" data-title="आयन पौडेलको वंशावली (Aayan Poudel Family Tree)" role="tab" tabindex="-1">Aayan</button>
+                <button aria-selected="false" class="person-tab" data-src="adwik_poudel.html" data-title="अद्विक पौडेलको वंशावली (Adwik Poudel Family Tree)" role="tab" tabindex="-1">Adwik</button>
+                <button aria-selected="false" class="person-tab" data-src="aarvi_poudel.html" data-title="आरवी पौडेलको वंशावली (Aarvi Poudel Family Tree)" role="tab" tabindex="-1">Aarvi</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="frame-wrap">
+        <iframe class="tree-frame" id="tree-frame" src="aashish_poudel.html" title="Aashish Poudel Family Tree"></iframe>
+    </main>
+
+    <script>
+        const pageTitle = document.getElementById('page-title');
+        const frame = document.getElementById('tree-frame');
+        const tabs = Array.from(document.querySelectorAll('.person-tab'));
+
+        function updateChromeHeight(){
+            const header = document.querySelector('.page-header');
+            const headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 168;
+            document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+            return headerHeight;
+        }
+
+        function activateTab(tab){
+            tabs.forEach(item => {
+                const selected = item === tab;
+                item.setAttribute('aria-selected', selected ? 'true' : 'false');
+                item.tabIndex = selected ? 0 : -1;
+            });
+            pageTitle.textContent = tab.dataset.title;
+            document.title = tab.dataset.title;
+            if (!frame.src.endsWith(tab.dataset.src)) {
+                frame.src = tab.dataset.src;
+            }
+            updateChromeHeight();
+        }
+
+        function prepareFrame(){
+            updateChromeHeight();
+            let frameDoc;
+            try {
+                frameDoc = frame.contentDocument || frame.contentWindow.document;
+            } catch (error) {
+                return;
+            }
+            if (!frameDoc) return;
+
+            const sourceTitle = frameDoc.querySelector('title')?.textContent?.trim();
+            if (sourceTitle) {
+                pageTitle.textContent = sourceTitle;
+                document.title = sourceTitle;
+            }
+
+            let style = frameDoc.getElementById('individual-wrapper-style');
+            if (!style) {
+                style = frameDoc.createElement('style');
+                style.id = 'individual-wrapper-style';
+                style.textContent = `
+                    .page-header{ display: none !important; }
+                    #container{
+                        margin-top: 0 !important;
+                        height: 100vh !important;
+                    }
+                    .controls{ top: 14px !important; }
+                    .tree-legend{ top: 64px !important; }
+                `;
+                frameDoc.head.appendChild(style);
+            }
+
+            frame.contentWindow.updateLayoutChrome?.();
+            setTimeout(() => frame.contentWindow.fitView?.(), 150);
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => activateTab(tab));
+            tab.addEventListener('keydown', event => {
+                const index = tabs.indexOf(tab);
+                if (event.key === 'ArrowRight') {
+                    event.preventDefault();
+                    const nextTab = tabs[(index + 1) % tabs.length];
+                    activateTab(nextTab);
+                    nextTab.focus();
+                }
+                if (event.key === 'ArrowLeft') {
+                    event.preventDefault();
+                    const previousTab = tabs[(index - 1 + tabs.length) % tabs.length];
+                    activateTab(previousTab);
+                    previousTab.focus();
+                }
+            });
+        });
+
+        frame.addEventListener('load', prepareFrame);
+        window.addEventListener('resize', () => {
+            updateChromeHeight();
+            prepareFrame();
+        });
+        updateChromeHeight();
+    </script>
+</body>
+</html>
