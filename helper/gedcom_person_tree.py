@@ -448,6 +448,10 @@ class FocusedPersonTreeGenerator:
             font: 15px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
         }}
 
+        body.embedded-tree .page-header {{
+            display: none;
+        }}
+
         #container {{
             width: 100%;
             height: calc(100vh - var(--header-height));
@@ -455,6 +459,11 @@ class FocusedPersonTreeGenerator:
             position: relative;
             overflow: auto;
             background: linear-gradient(135deg, #fef8e7 0%, #fffbf0 100%);
+        }}
+
+        body.embedded-tree #container {{
+            height: 100vh;
+            margin-top: 0;
         }}
 
         .hidden-tree {{
@@ -596,6 +605,10 @@ class FocusedPersonTreeGenerator:
             box-shadow: 0 4px 8px rgba(212, 175, 55, 0.4);
         }}
 
+        body.embedded-tree .controls {{
+            top: 14px;
+        }}
+
         .tree-legend {{
             position: fixed;
             top: var(--legend-top);
@@ -626,6 +639,10 @@ class FocusedPersonTreeGenerator:
 
         .legend-icon.female {{
             color: #e8a8c8;
+        }}
+
+        body.embedded-tree .tree-legend {{
+            top: 64px;
         }}
     </style>
 </head>
@@ -679,15 +696,21 @@ class FocusedPersonTreeGenerator:
         const headerMargin = 14;
         const margin = {{ top: 80, right: 120, bottom: 120, left: 120 }};
         const renderStates = new Map();
+        const embeddedInFrame = window.self !== window.top;
+
+        if (embeddedInFrame) {{
+            document.body.classList.add('embedded-tree');
+        }}
 
         function measuredHeaderHeight() {{
+            if (embeddedInFrame) return 0;
             const header = document.querySelector('.page-header');
             return header ? Math.ceil(header.getBoundingClientRect().height) : 104;
         }}
 
         function updateLayoutChrome() {{
             const headerHeight = measuredHeaderHeight();
-            const controlTop = headerHeight + headerMargin;
+            const controlTop = embeddedInFrame ? headerMargin : headerHeight + headerMargin;
             document.documentElement.style.setProperty('--header-height', `${{headerHeight}}px`);
             document.documentElement.style.setProperty('--control-top', `${{controlTop}}px`);
             requestAnimationFrame(() => {{
