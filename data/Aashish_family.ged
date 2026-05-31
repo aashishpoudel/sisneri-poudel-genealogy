@@ -2,7 +2,6 @@
 1 SOUR Family Echo
 2 WWW https://www.familyecho.com/
 1 FILE Aashish_family
-1 DATE 31 MAY 2026
 1 DEST ANSTFILE
 1 GEDC
 2 VERS 5.5.1
@@ -3540,7 +3539,6 @@
 2 SURN Poudel
 2 _MARNM Khanal
 1 SEX F
-1 FAMS @F205@
 1 FAMC @F163@
 0 @I454@ INDI
 1 NAME Usha /Poudel/
@@ -3548,7 +3546,6 @@
 2 SURN Poudel
 2 _MARNM Sapkota
 1 SEX F
-1 FAMS @F206@
 1 FAMC @F163@
 0 @I455@ INDI
 1 NAME Saru /Poudel/
@@ -3572,7 +3569,6 @@
 1 SEX M
 1 BIRT
 2 DATE 1987
-1 FAMS @F204@
 1 FAMC @F163@
 0 @I458@ INDI
 1 NAME Sujan /Kuinkel/
@@ -3599,7 +3595,6 @@
 1 SEX F
 1 BIRT
 2 DATE 1978
-1 FAMS @F208@
 1 FAMC @F168@
 0 @I461@ INDI
 1 NAME Sabina /Kuinkel/
@@ -3939,24 +3934,18 @@
 2 SURN Dhungel
 2 _MARNM Dhungel
 1 SEX M
-1 FAMC @F188@
-2 PEDI birth
 0 @I502@ INDI
 1 NAME Aakarsh /Dhungel/
 2 GIVN Aakarsh
 2 SURN Dhungel
 2 _MARNM Dhungel
 1 SEX M
-1 FAMC @F189@
-2 PEDI birth
 0 @I503@ INDI
 1 NAME Avyan /Dhungel/
 2 GIVN Avyan
 2 SURN Dhungel
 2 _MARNM Dhungel
 1 SEX M
-1 FAMC @F190@
-2 PEDI birth
 0 @I504@ INDI
 1 NAME Deeya /Bhattarai/
 2 GIVN Deeya
@@ -4023,7 +4012,6 @@
 1 SEX M
 1 BIRT
 2 DATE 1953
-1 FAMS @F192@
 1 FAMC @F141@
 0 @I513@ INDI
 1 NAME Parasar /Poudel/
@@ -4033,9 +4021,6 @@
 1 SEX M
 1 BIRT
 2 DATE 1958
-1 FAMS @F191@
-1 FAMS @F195@
-1 FAMS @F197@
 1 FAMC @F141@
 0 @I514@ INDI
 1 NAME Sudhir /Poudel/
@@ -4045,33 +4030,24 @@
 1 SEX M
 1 BIRT
 2 DATE 1981
-1 FAMS @F193@
-1 FAMC @F192@
-0 @I515@ INDI
-1 NAME
-1 SEX F
-1 FAMS @F192@
 0 @I516@ INDI
 1 NAME Shreyasha /Poudel/
 2 GIVN Shreyasha
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX F
-1 FAMC @F193@
 0 @I517@ INDI
 1 NAME Gandira /Khanal/
 2 GIVN Gandira
 2 SURN Khanal
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F193@
 0 @I518@ INDI
 1 NAME Subrat /Poudel/
 2 GIVN Subrat
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX M
-1 FAMC @F193@
 0 @I519@ INDI
 1 NAME Prabhakar /Poudel/
 2 GIVN Prabhakar
@@ -4080,7 +4056,6 @@
 1 SEX M
 1 BIRT
 2 DATE 1982
-1 FAMC @F192@
 0 @I520@ INDI
 1 NAME Sunil /Poudel/
 2 GIVN Sunil
@@ -4089,51 +4064,43 @@
 1 SEX M
 1 BIRT
 2 DATE 1981
-1 FAMS @F194@
-1 FAMC @F195@
 0 @I521@ INDI
 1 NAME Sumitra /Poudel/
 2 GIVN Sumitra
 2 SURN Poudel
 2 _MARNM Kharel
 1 SEX F
-1 FAMS @F196@
-1 FAMC @F195@
 0 @I522@ INDI
 1 NAME Bimal /Kharel/
 2 GIVN Bimal
 2 SURN Kharel
 2 _MARNM Kharel
 1 SEX M
-1 FAMS @F196@
 0 @I523@ INDI
 1 NAME Susmita /Bhandari/
 2 GIVN Susmita
 2 SURN Bhandari
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F194@
 0 @I524@ INDI
 1 NAME Tulasa /Poudel/
 2 GIVN Tulasa
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX F
-1 FAMS @F191@
 0 @I525@ INDI
 1 NAME Amrita /Poudel/
 2 GIVN Amrita
 2 SURN Poudel
 2 _MARNM Poudel
 1 SEX F
-1 FAMC @F197@
 0 @I526@ INDI
 1 NAME Kanchi Didi /Poudel/
 2 GIVN Kanchi Didi
 2 SURN Poudel
 2 _MARNM Ghimire
 1 SEX F
-1 FAMS @F198@
+
 1 FAMC @F141@
 0 @I527@ INDI
 1 NAME Nani Didi /Poudel/
@@ -4151,7 +4118,7 @@
 1 SEX M
 1 BIRT
 2 DATE 1935
-1 FAMS @F198@
+
 0 @I529@ INDI
 1 NAME Harihar /Ghimire/
 2 GIVN Harihar
