@@ -107,6 +107,24 @@
             stroke-width: 4px;
         }
 
+        .generation-guide-line {
+            stroke: rgba(180, 140, 80, 0.55);
+            stroke-width: 3px;
+            stroke-dasharray: 2 6;
+            stroke-linecap: round;
+        }
+
+        .generation-guide-text {
+            fill: #1f2a37;
+            font: 30px/1 Georgia, serif;
+            text-anchor: middle;
+            pointer-events: none;
+        }
+
+        .generation-guide-label {
+            text-anchor: start;
+        }
+
         .node {
             cursor: pointer;
         }
@@ -711,6 +729,59 @@
             return rendered;
         }
 
+        function renderGenerationGuides(g, nodes, orientation) {
+            if (orientation !== 'vertical') return;
+
+            const columns = d3.group(nodes, node => node.generation);
+            const generations = Array.from(columns.keys()).sort((a, b) => a - b);
+            if (!generations.length) return;
+
+            const labelY = 34;
+            const lineStartY = 58;
+            const boxGap = 16;
+            const minGeneration = generations[0];
+            const firstColumnX = d3.min(nodes, node => node.x) || margin.left;
+
+            g.append('text')
+                .attr('class', 'generation-guide-text generation-guide-label')
+                .attr('x', firstColumnX - 165)
+                .attr('y', labelY)
+                .text('Gen');
+
+            const guideData = generations.map(generation => {
+                const columnNodes = columns.get(generation) || [];
+                const x = d3.mean(columnNodes, node => node.x);
+                const topNodeY = d3.min(columnNodes, node => node.y - nodeHeight / 2);
+                return {
+                    generation,
+                    x,
+                    lineEndY: topNodeY - boxGap
+                };
+            }).filter(guide => Number.isFinite(guide.x));
+
+            const guideGroups = g.append('g')
+                .attr('class', 'generation-guides')
+                .selectAll('g')
+                .data(guideData)
+                .enter()
+                .append('g');
+
+            guideGroups.append('text')
+                .attr('class', 'generation-guide-text')
+                .attr('x', guide => guide.x)
+                .attr('y', labelY)
+                .text(guide => guide.generation);
+
+            guideGroups
+                .filter(guide => guide.lineEndY > lineStartY)
+                .append('line')
+                .attr('class', 'generation-guide-line')
+                .attr('x1', guide => guide.x)
+                .attr('x2', guide => guide.x)
+                .attr('y1', lineStartY)
+                .attr('y2', guide => guide.lineEndY);
+        }
+
         function renderTree(svgSelector, nodes, links, dimensions, orientation) {
             const nodeById = new Map(nodes.map(node => [node.id, node]));
             const parentLinksByTarget = d3.group(links, link => link.target);
@@ -719,6 +790,8 @@
                 .attr('width', dimensions.svgWidth)
                 .attr('height', dimensions.svgHeight);
             const g = svg.append('g');
+
+            renderGenerationGuides(g, nodes, orientation);
 
             g.selectAll('.link')
                 .data(renderedLinks)
