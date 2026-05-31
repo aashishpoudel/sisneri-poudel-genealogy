@@ -107,6 +107,24 @@
             stroke-width: 4px;
         }
 
+        .generation-guide-line {
+            stroke: rgba(180, 140, 80, 0.55);
+            stroke-width: 2px;
+            stroke-dasharray: 2 6;
+            stroke-linecap: round;
+        }
+
+        .generation-guide-text {
+            fill: #1f2a37;
+            font: 22px/1 Georgia, serif;
+            text-anchor: middle;
+            pointer-events: none;
+        }
+
+        .generation-guide-label {
+            text-anchor: start;
+        }
+
         .node {
             cursor: pointer;
         }
@@ -280,7 +298,7 @@
                 <a href="index.html">← Back to Home</a>
             </nav>
             <h1 class="header-title">पुण्यवती पौडेलको वंशावली (Punyawati Poudel Family Tree)</h1>
-            <div class="header-subtitle">प्रत्यक्ष पुर्खा ५ पुस्ता र वंशजहरू (Direct Ancestors 5 generations/Descendents)</div>
+            <div class="header-subtitle">प्रत्यक्ष पुर्खा ४ पुस्ता र वंशजहरू (Direct Ancestors 4 generations/Descendents)</div>
         </div>
     </header>
 
@@ -311,8 +329,8 @@
     <div id="tooltip" class="tooltip"></div>
 
     <script>
-        const sourceNodesData = [{"id": "I333", "name": "Punyawati Poudel", "given_name": "Punyawati", "surname": "Poudel", "nepali_name": "पुण्यवती पौडेल", "birth": "1962", "birth_place": "दुवाकोट, भक्तपुर, नेपाल", "death": "", "sex": "F", "notes": "Bio notes: पुण्यवती पौडेल", "generation": 0, "path": "m", "is_main": true, "is_spouse": false}, {"id": "I332", "name": "Narayan Poudel", "given_name": "Narayan", "surname": "Poudel", "nepali_name": "नारायण पौडेल", "birth": "1954", "birth_place": "लुभू, ललितपुर, नेपाल", "death": "", "sex": "M", "notes": "Bio notes: नारायण पौडेल", "generation": 0, "path": "s000", "is_main": false, "is_spouse": true}, {"id": "I334", "name": "Krishna Prasad Neupane", "given_name": "Krishna Prasad", "surname": "Neupane", "nepali_name": "", "birth": "1924", "birth_place": "दुवाकोट, नेपाल", "death": "", "sex": "M", "notes": "", "generation": -1, "path": "a0", "is_main": false, "is_spouse": false}, {"id": "I336", "name": "GopiKrishna Neupane", "given_name": "GopiKrishna", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -2, "path": "a00", "is_main": false, "is_spouse": false}, {"id": "I338", "name": "PadamLal Neupane", "given_name": "PadamLal", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -3, "path": "a000", "is_main": false, "is_spouse": false}, {"id": "I340", "name": "Nandalal Neupane", "given_name": "Nandalal", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -4, "path": "a0000", "is_main": false, "is_spouse": false}, {"id": "I342", "name": "Harihar Nepane", "given_name": "Harihar", "surname": "Nepane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -5, "path": "a00000", "is_main": false, "is_spouse": false}, {"id": "I343", "name": "(unknown)", "given_name": "(unknown)", "surname": "", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -5, "path": "a00001", "is_main": false, "is_spouse": false}, {"id": "I341", "name": "(unknown)", "given_name": "(unknown)", "surname": "", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a0001", "is_main": false, "is_spouse": false}, {"id": "I339", "name": "Neupane", "given_name": "Neupane", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -3, "path": "a001", "is_main": false, "is_spouse": false}, {"id": "I337", "name": "PadmaKumari Dawadi", "given_name": "PadmaKumari", "surname": "Dawadi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -2, "path": "a01", "is_main": false, "is_spouse": false}, {"id": "I335", "name": "Radheshwori Regmi", "given_name": "Radheshwori", "surname": "Regmi", "nepali_name": "", "birth": "1927", "birth_place": "कौडल, नेपाल", "death": "", "sex": "F", "notes": "", "generation": -1, "path": "a1", "is_main": false, "is_spouse": false}, {"id": "I645", "name": "BhimRudra Regmi", "given_name": "BhimRudra", "surname": "Regmi", "nepali_name": "", "birth": "", "birth_place": "", "death": "1937", "sex": "M", "notes": "", "generation": -2, "path": "a10", "is_main": false, "is_spouse": false}, {"id": "I647", "name": "(unknown)", "given_name": "(unknown)", "surname": "", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -3, "path": "a100", "is_main": false, "is_spouse": false}, {"id": "I648", "name": "(unknown)", "given_name": "(unknown)", "surname": "", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -3, "path": "a101", "is_main": false, "is_spouse": false}, {"id": "I646", "name": "SumitraDevi Regmi", "given_name": "SumitraDevi", "surname": "Regmi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -2, "path": "a11", "is_main": false, "is_spouse": false}, {"id": "I2", "name": "Aarati Subedi", "given_name": "Aarati", "surname": "Subedi", "nepali_name": "आरती सुवेदी", "birth": "1982", "birth_place": "", "death": "", "sex": "F", "notes": "Bio notes: आरती सुवेदी", "generation": 1, "path": "d000", "is_main": false, "is_spouse": false}, {"id": "I3", "name": "Aaditya Subedi", "given_name": "Aaditya", "surname": "Subedi", "nepali_name": "", "birth": "2012", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": 2, "path": "d000000", "is_main": false, "is_spouse": false}, {"id": "I327", "name": "Deeya Tara Subedi", "given_name": "Deeya Tara", "surname": "Subedi", "nepali_name": "", "birth": "2015", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": 2, "path": "d000001", "is_main": false, "is_spouse": false}, {"id": "I381", "name": "Aashish Poudel", "given_name": "Aashish", "surname": "Poudel", "nepali_name": "", "birth": "28 NOV 1984", "birth_place": "जैंसीदेवल, काठमाण्डौ", "death": "", "sex": "M", "notes": "", "generation": 1, "path": "d001", "is_main": false, "is_spouse": false}, {"id": "I383", "name": "Aayan Poudel", "given_name": "Aayan", "surname": "Poudel", "nepali_name": "आयन पौडेल", "birth": "8 APR 2017", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: आयन पौडेल", "generation": 2, "path": "d001000", "is_main": false, "is_spouse": false}, {"id": "I384", "name": "Adwik Poudel", "given_name": "Adwik", "surname": "Poudel", "nepali_name": "अद्विक पौडेल", "birth": "25 JAN 2019", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: अद्विक पौडेल", "generation": 2, "path": "d001001", "is_main": false, "is_spouse": false}, {"id": "I385", "name": "Aarvi Poudel", "given_name": "Aarvi", "surname": "Poudel", "nepali_name": "आरवी पौडेल", "birth": "27 JAN 2025", "birth_place": "", "death": "", "sex": "F", "notes": "Bio notes: आरवी पौडेल", "generation": 2, "path": "d001002", "is_main": false, "is_spouse": false}];
-        const linksData = [{"source": "I2", "target": "I3"}, {"source": "I2", "target": "I327"}, {"source": "I332", "target": "I2"}, {"source": "I332", "target": "I381"}, {"source": "I333", "target": "I2"}, {"source": "I333", "target": "I381"}, {"source": "I334", "target": "I333"}, {"source": "I335", "target": "I333"}, {"source": "I336", "target": "I334"}, {"source": "I337", "target": "I334"}, {"source": "I338", "target": "I336"}, {"source": "I339", "target": "I336"}, {"source": "I340", "target": "I338"}, {"source": "I341", "target": "I338"}, {"source": "I342", "target": "I340"}, {"source": "I343", "target": "I340"}, {"source": "I381", "target": "I383"}, {"source": "I381", "target": "I384"}, {"source": "I381", "target": "I385"}, {"source": "I645", "target": "I335"}, {"source": "I646", "target": "I335"}, {"source": "I647", "target": "I645"}, {"source": "I648", "target": "I645"}];
+        const sourceNodesData = [{"id": "I333", "name": "Punyawati Poudel", "given_name": "Punyawati", "surname": "Poudel", "nepali_name": "पुण्यवती पौडेल", "birth": "1962", "birth_place": "दुवाकोट, भक्तपुर, नेपाल", "death": "", "sex": "F", "notes": "Bio notes: पुण्यवती पौडेल", "generation": 0, "path": "m", "is_main": true, "is_spouse": false}, {"id": "I332", "name": "Narayan Poudel", "given_name": "Narayan", "surname": "Poudel", "nepali_name": "नारायण पौडेल", "birth": "1954", "birth_place": "लुभू, ललितपुर, नेपाल", "death": "", "sex": "M", "notes": "Bio notes: नारायण पौडेल", "generation": 0, "path": "s000", "is_main": false, "is_spouse": true}, {"id": "I334", "name": "Krishna Prasad Neupane", "given_name": "Krishna Prasad", "surname": "Neupane", "nepali_name": "", "birth": "1924", "birth_place": "दुवाकोट, नेपाल", "death": "", "sex": "M", "notes": "", "generation": -1, "path": "a0", "is_main": false, "is_spouse": false}, {"id": "I336", "name": "GopiKrishna Neupane", "given_name": "GopiKrishna", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -2, "path": "a00", "is_main": false, "is_spouse": false}, {"id": "I338", "name": "PadamLal Neupane", "given_name": "PadamLal", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -3, "path": "a000", "is_main": false, "is_spouse": false}, {"id": "I340", "name": "Nandalal Neupane", "given_name": "Nandalal", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -4, "path": "a0000", "is_main": false, "is_spouse": false}, {"id": "I341", "name": "(unknown)", "given_name": "(unknown)", "surname": "", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -4, "path": "a0001", "is_main": false, "is_spouse": false}, {"id": "I339", "name": "Neupane", "given_name": "Neupane", "surname": "Neupane", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -3, "path": "a001", "is_main": false, "is_spouse": false}, {"id": "I337", "name": "PadmaKumari Dawadi", "given_name": "PadmaKumari", "surname": "Dawadi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -2, "path": "a01", "is_main": false, "is_spouse": false}, {"id": "I335", "name": "Radheshwori Regmi", "given_name": "Radheshwori", "surname": "Regmi", "nepali_name": "", "birth": "1927", "birth_place": "कौडल, नेपाल", "death": "", "sex": "F", "notes": "", "generation": -1, "path": "a1", "is_main": false, "is_spouse": false}, {"id": "I645", "name": "BhimRudra Regmi", "given_name": "BhimRudra", "surname": "Regmi", "nepali_name": "", "birth": "", "birth_place": "", "death": "1937", "sex": "M", "notes": "", "generation": -2, "path": "a10", "is_main": false, "is_spouse": false}, {"id": "I647", "name": "(unknown)", "given_name": "(unknown)", "surname": "", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": -3, "path": "a100", "is_main": false, "is_spouse": false}, {"id": "I648", "name": "(unknown)", "given_name": "(unknown)", "surname": "", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -3, "path": "a101", "is_main": false, "is_spouse": false}, {"id": "I646", "name": "SumitraDevi Regmi", "given_name": "SumitraDevi", "surname": "Regmi", "nepali_name": "", "birth": "", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": -2, "path": "a11", "is_main": false, "is_spouse": false}, {"id": "I2", "name": "Aarati Subedi", "given_name": "Aarati", "surname": "Subedi", "nepali_name": "आरती सुवेदी", "birth": "1982", "birth_place": "", "death": "", "sex": "F", "notes": "Bio notes: आरती सुवेदी", "generation": 1, "path": "d000", "is_main": false, "is_spouse": false}, {"id": "I3", "name": "Aaditya Subedi", "given_name": "Aaditya", "surname": "Subedi", "nepali_name": "", "birth": "2012", "birth_place": "", "death": "", "sex": "M", "notes": "", "generation": 2, "path": "d000000", "is_main": false, "is_spouse": false}, {"id": "I327", "name": "Deeya Tara Subedi", "given_name": "Deeya Tara", "surname": "Subedi", "nepali_name": "", "birth": "2015", "birth_place": "", "death": "", "sex": "F", "notes": "", "generation": 2, "path": "d000001", "is_main": false, "is_spouse": false}, {"id": "I381", "name": "Aashish Poudel", "given_name": "Aashish", "surname": "Poudel", "nepali_name": "", "birth": "28 NOV 1984", "birth_place": "जैंसीदेवल, काठमाण्डौ", "death": "", "sex": "M", "notes": "", "generation": 1, "path": "d001", "is_main": false, "is_spouse": false}, {"id": "I383", "name": "Aayan Poudel", "given_name": "Aayan", "surname": "Poudel", "nepali_name": "आयन पौडेल", "birth": "8 APR 2017", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: आयन पौडेल", "generation": 2, "path": "d001000", "is_main": false, "is_spouse": false}, {"id": "I384", "name": "Adwik Poudel", "given_name": "Adwik", "surname": "Poudel", "nepali_name": "अद्विक पौडेल", "birth": "25 JAN 2019", "birth_place": "", "death": "", "sex": "M", "notes": "Bio notes: अद्विक पौडेल", "generation": 2, "path": "d001001", "is_main": false, "is_spouse": false}, {"id": "I385", "name": "Aarvi Poudel", "given_name": "Aarvi", "surname": "Poudel", "nepali_name": "आरवी पौडेल", "birth": "27 JAN 2025", "birth_place": "", "death": "", "sex": "F", "notes": "Bio notes: आरवी पौडेल", "generation": 2, "path": "d001002", "is_main": false, "is_spouse": false}];
+        const linksData = [{"source": "I2", "target": "I3"}, {"source": "I2", "target": "I327"}, {"source": "I332", "target": "I2"}, {"source": "I332", "target": "I381"}, {"source": "I333", "target": "I2"}, {"source": "I333", "target": "I381"}, {"source": "I334", "target": "I333"}, {"source": "I335", "target": "I333"}, {"source": "I336", "target": "I334"}, {"source": "I337", "target": "I334"}, {"source": "I338", "target": "I336"}, {"source": "I339", "target": "I336"}, {"source": "I340", "target": "I338"}, {"source": "I341", "target": "I338"}, {"source": "I381", "target": "I383"}, {"source": "I381", "target": "I384"}, {"source": "I381", "target": "I385"}, {"source": "I645", "target": "I335"}, {"source": "I646", "target": "I335"}, {"source": "I647", "target": "I645"}, {"source": "I648", "target": "I645"}];
 
         const nodeWidth = 211;
         const nodeHeight = 100;
@@ -711,6 +729,59 @@
             return rendered;
         }
 
+        function renderGenerationGuides(g, nodes, orientation) {
+            if (orientation !== 'vertical') return;
+
+            const columns = d3.group(nodes, node => node.generation);
+            const generations = Array.from(columns.keys()).sort((a, b) => a - b);
+            if (!generations.length) return;
+
+            const labelY = 34;
+            const lineStartY = 58;
+            const boxGap = 16;
+            const minGeneration = generations[0];
+            const firstColumnX = d3.min(nodes, node => node.x) || margin.left;
+
+            g.append('text')
+                .attr('class', 'generation-guide-text generation-guide-label')
+                .attr('x', firstColumnX - 165)
+                .attr('y', labelY)
+                .text('Gen');
+
+            const guideData = generations.map(generation => {
+                const columnNodes = columns.get(generation) || [];
+                const x = d3.mean(columnNodes, node => node.x);
+                const topNodeY = d3.min(columnNodes, node => node.y - nodeHeight / 2);
+                return {
+                    generation,
+                    x,
+                    lineEndY: topNodeY - boxGap
+                };
+            }).filter(guide => Number.isFinite(guide.x));
+
+            const guideGroups = g.append('g')
+                .attr('class', 'generation-guides')
+                .selectAll('g')
+                .data(guideData)
+                .enter()
+                .append('g');
+
+            guideGroups.append('text')
+                .attr('class', 'generation-guide-text')
+                .attr('x', guide => guide.x)
+                .attr('y', labelY)
+                .text(guide => guide.generation);
+
+            guideGroups
+                .filter(guide => guide.lineEndY > lineStartY)
+                .append('line')
+                .attr('class', 'generation-guide-line')
+                .attr('x1', guide => guide.x)
+                .attr('x2', guide => guide.x)
+                .attr('y1', lineStartY)
+                .attr('y2', guide => guide.lineEndY);
+        }
+
         function renderTree(svgSelector, nodes, links, dimensions, orientation) {
             const nodeById = new Map(nodes.map(node => [node.id, node]));
             const parentLinksByTarget = d3.group(links, link => link.target);
@@ -719,6 +790,8 @@
                 .attr('width', dimensions.svgWidth)
                 .attr('height', dimensions.svgHeight);
             const g = svg.append('g');
+
+            renderGenerationGuides(g, nodes, orientation);
 
             g.selectAll('.link')
                 .data(renderedLinks)
