@@ -1592,7 +1592,7 @@ sujal_45=Person("Sujal", gender="Male", name_nep="सुजल")
 gaurav_45_2=Person("Gaurav", gender="Male", name_nep="गौरव")
 grishma_45 = Person("Grishma", gender="Female", name_nep="ग्रीष्मा", edit="+ स्रोत: गोपाल (बुवा)")
 umanga_45=Person("Umanga", gender="Male", name_nep="उमंग")
-mili_45=Person("Mili", gender="Female", name_nep="मिली", edit="+ स्रोत: गोपाल (बुवा)")
+mili_45=Person("Mili", gender="Female", name_nep="मिली", edit="+ स्रोत: गोपाल (ठुलो बुवा)")
 
 narayan_44_2 = Person("Narayan", gender="Male", name_nep="नारायण")
 rajendra_44 = Person("Rajendra", gender="Male", name_nep="राजेन्द्र")
