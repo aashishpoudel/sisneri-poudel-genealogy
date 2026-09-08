@@ -9233,8 +9233,8 @@
                                               "children": []
                                             },
                                             {
-                                              "name": "Saroj",
-                                              "name_nep": "\u0938\u0930\u094b\u091c",
+                                              "name": "Sharad",
+                                              "name_nep": "\u0936\u0930\u0926",
                                               "gender": "Male",
                                               "birth_year": null,
                                               "death_year": null,
@@ -9247,7 +9247,7 @@
                                               "grandfather_nep": "\u0939\u0930\u093f\u0932\u093e\u0932",
                                               "children": [
                                                 {
-                                                  "name": "Sourya",
+                                                  "name": "Saurya",
                                                   "name_nep": "\u0938\u094c\u0930\u094d\u092f",
                                                   "gender": "Male",
                                                   "birth_year": null,
@@ -9255,8 +9255,8 @@
                                                   "place": null,
                                                   "gen_number": null,
                                                   "comment": null,
-                                                  "father": "Saroj",
-                                                  "father_nep": "\u0938\u0930\u094b\u091c",
+                                                  "father": "Sharad",
+                                                  "father_nep": "\u0936\u0930\u0926",
                                                   "grandfather": "DurgaPrasad",
                                                   "grandfather_nep": "\u0917\u0923\u0947\u0936\u092a\u094d\u0930\u0938\u093e\u0926",
                                                   "children": []
@@ -9270,8 +9270,8 @@
                                                   "place": null,
                                                   "gen_number": null,
                                                   "comment": null,
-                                                  "father": "Saroj",
-                                                  "father_nep": "\u0938\u0930\u094b\u091c",
+                                                  "father": "Sharad",
+                                                  "father_nep": "\u0936\u0930\u0926",
                                                   "grandfather": "DurgaPrasad",
                                                   "grandfather_nep": "\u0917\u0923\u0947\u0936\u092a\u094d\u0930\u0938\u093e\u0926",
                                                   "children": []
@@ -9279,7 +9279,7 @@
                                               ]
                                             },
                                             {
-                                              "name": "Basanta",
+                                              "name": "Bashanta",
                                               "name_nep": "\u092c\u0938\u0928\u094d\u0924",
                                               "gender": "Male",
                                               "birth_year": null,
@@ -9301,7 +9301,7 @@
                                                   "place": null,
                                                   "gen_number": null,
                                                   "comment": null,
-                                                  "father": "Basanta",
+                                                  "father": "Bashanta",
                                                   "father_nep": "\u092c\u0938\u0928\u094d\u0924",
                                                   "grandfather": "DurgaPrasad",
                                                   "grandfather_nep": "\u0917\u0923\u0947\u0936\u092a\u094d\u0930\u0938\u093e\u0926",
@@ -9309,14 +9309,14 @@
                                                 },
                                                 {
                                                   "name": "Richa",
-                                                  "name_nep": "\u0930\u093f\u091a\u093e",
+                                                  "name_nep": "\u090b\u091a\u093e",
                                                   "gender": "Female",
                                                   "birth_year": null,
                                                   "death_year": null,
                                                   "place": null,
                                                   "gen_number": null,
                                                   "comment": null,
-                                                  "father": "Basanta",
+                                                  "father": "Bashanta",
                                                   "father_nep": "\u092c\u0938\u0928\u094d\u0924",
                                                   "grandfather": "DurgaPrasad",
                                                   "grandfather_nep": "\u0917\u0923\u0947\u0936\u092a\u094d\u0930\u0938\u093e\u0926",

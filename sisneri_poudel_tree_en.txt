@@ -593,10 +593,10 @@ Gopal
         │   │   │       │       │   │   │   ├── Ramesh
         │   │   │       │       │   │   │   │   └── Pawan
         │   │   │       │       │   │   │   ├── Dinesh
-        │   │   │       │       │   │   │   ├── Saroj
-        │   │   │       │       │   │   │   │   ├── Sourya
+        │   │   │       │       │   │   │   ├── Sharad
+        │   │   │       │       │   │   │   │   ├── Saurya
         │   │   │       │       │   │   │   │   └── Saurav
-        │   │   │       │       │   │   │   └── Basanta
+        │   │   │       │       │   │   │   └── Bashanta
         │   │   │       │       │   │   │       ├── Pratik
         │   │   │       │       │   │   │       └── Richa
         │   │   │       │       │   │   └── Sudarshan
