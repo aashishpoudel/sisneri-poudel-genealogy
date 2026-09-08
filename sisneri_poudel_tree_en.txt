@@ -596,9 +596,10 @@ Gopal
         │   │   │       │       │   │   │   ├── Sharad
         │   │   │       │       │   │   │   │   ├── Saurya
         │   │   │       │       │   │   │   │   └── Saurav
+        │   │   │       │       │   │   │   │       └── Bihan
         │   │   │       │       │   │   │   └── Bashanta
-        │   │   │       │       │   │   │       ├── Pratik
-        │   │   │       │       │   │   │       └── Richa
+        │   │   │       │       │   │   │       ├── Richa
+        │   │   │       │       │   │   │       └── Pratik
         │   │   │       │       │   │   └── Sudarshan
         │   │   │       │       │   │       ├── Niraj
         │   │   │       │       │   │       │   └── Kanchan
