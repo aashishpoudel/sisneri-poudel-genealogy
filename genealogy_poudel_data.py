@@ -3965,7 +3965,7 @@ bhagawan_44.add_children([prabesh_45])
 pushpa_raj_44.add_children([suraj_45, niraj_45])
 madhu_sudan_44.add_children([kushal_45])
 kalyan_44.add_children([subhanga_45, tejashree_45])
-sudhir_44.add_children([subrat_45, shreyesha_45])
+sudhir_44.add_children([shreyesha_45, subrat_45])
 sunil_44.add_children([pranavi_45, deepti_45])
 
 ashok_45.add_children([aahwan_46])

@@ -2592,9 +2592,9 @@
                                                   "grandfather_nep": "\u0917\u0923\u0947\u0936\u0926\u0924\u094d\u0924",
                                                   "children": [
                                                     {
-                                                      "name": "Subrat",
-                                                      "name_nep": "\u0938\u0941\u0935\u094d\u0930\u0924",
-                                                      "gender": "Male",
+                                                      "name": "Shreyesha",
+                                                      "name_nep": "\u0936\u094d\u0930\u0947\u092f\u0938\u093e",
+                                                      "gender": "Female",
                                                       "birth_year": null,
                                                       "death_year": null,
                                                       "place": null,
@@ -2607,9 +2607,9 @@
                                                       "children": []
                                                     },
                                                     {
-                                                      "name": "Shreyesha",
-                                                      "name_nep": "\u0936\u094d\u0930\u0947\u092f\u0938\u093e",
-                                                      "gender": "Female",
+                                                      "name": "Subrat",
+                                                      "name_nep": "\u0938\u0941\u0935\u094d\u0930\u0924",
+                                                      "gender": "Male",
                                                       "birth_year": null,
                                                       "death_year": null,
                                                       "place": null,

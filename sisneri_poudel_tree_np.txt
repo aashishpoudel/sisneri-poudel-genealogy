@@ -166,8 +166,8 @@ Gopal
         │   │   │           │   │           │       └── Tejashree
         │   │   │           │   │           ├── Hari
         │   │   │           │   │           │   ├── Sudhir
-        │   │   │           │   │           │   │   ├── Subrat
-        │   │   │           │   │           │   │   └── Shreyesha
+        │   │   │           │   │           │   │   ├── Shreyesha
+        │   │   │           │   │           │   │   └── Subrat
         │   │   │           │   │           │   └── Prabakar
         │   │   │           │   │           └── Parasar
         │   │   │           │   │               └── Sunil
