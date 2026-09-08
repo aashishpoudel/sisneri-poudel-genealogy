@@ -162,8 +162,8 @@ Gopal
         │   │   │           │   │           │       └── Kushal
         │   │   │           │   │           ├── Kedar
         │   │   │           │   │           │   └── Kalyan
-        │   │   │           │   │           │       ├── Subhanga
-        │   │   │           │   │           │       └── Tejashree
+        │   │   │           │   │           │       ├── Shubhang
+        │   │   │           │   │           │       └── Tejshree
         │   │   │           │   │           ├── Hari
         │   │   │           │   │           │   ├── Sudhir
         │   │   │           │   │           │   │   ├── Shreyesha
