@@ -9233,7 +9233,7 @@
                                               "children": [
                                                 {
                                                   "name": "Diva",
-                                                  "name_nep": "\u0926\u093f\u0935\u093e",
+                                                  "name_nep": "\u0926\u093f\u092d\u093e",
                                                   "gender": "Female",
                                                   "birth_year": null,
                                                   "death_year": null,
@@ -9248,7 +9248,22 @@
                                                 },
                                                 {
                                                   "name": "Dikshya",
-                                                  "name_nep": "\u0926\u093f\u0915\u094d\u0937\u094d\u092f\u093e",
+                                                  "name_nep": "\u0926\u093f\u0915\u094d\u0937\u093e",
+                                                  "gender": "Female",
+                                                  "birth_year": null,
+                                                  "death_year": null,
+                                                  "place": null,
+                                                  "gen_number": null,
+                                                  "comment": null,
+                                                  "father": "Dinesh",
+                                                  "father_nep": "\u0926\u093f\u0928\u0947\u0936",
+                                                  "grandfather": "DurgaPrasad",
+                                                  "grandfather_nep": "\u0917\u0923\u0947\u0936\u092a\u094d\u0930\u0938\u093e\u0926",
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "Ichchha",
+                                                  "name_nep": "\u0907\u091a\u094d\u091b\u093e",
                                                   "gender": "Female",
                                                   "birth_year": null,
                                                   "death_year": null,
