@@ -4,7 +4,30 @@
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans Devanagari","Noto Sans",Arial,sans-serif;color:var(--text);background:radial-gradient(1200px 600px at 10% -10%,rgba(13,110,253,.08),transparent 60%),radial-gradient(1000px 800px at 110% 10%,rgba(26,188,156,.08),transparent 60%),var(--bg)}
 .wrap{max-width:1100px;margin:auto;padding:28px 20px 48px}header{display:grid;gap:10px;justify-items:start;margin:10px 0 22px}.crumbs a{color:var(--muted);text-decoration:none}.title{font-size:clamp(32px,5vw,48px);margin:0}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{grid-column:span 12;background:#fef9e7;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(16px,3.2vw,24px)}
 .tabs{display:flex;gap:8px;background:var(--tab-bg);border:1px solid var(--line);padding:6px;border-radius:12px;margin-bottom:14px;overflow-x:auto}.upper-tabs{margin-bottom:18px}.tab-btn{border:1px solid transparent;background:transparent;color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:650;white-space:nowrap}.tab-btn[aria-selected=true]{background:var(--card);border-color:var(--line);box-shadow:var(--shadow)}.panel{display:none}.panel.active{display:block}h2{margin:8px 0 14px}
-.table-wrap{overflow-x:auto;border:1px solid #e4d9a8;border-radius:12px;background:rgba(255,255,255,.42)}table{width:100%;border-collapse:collapse;min-width:640px}th,td{padding:11px 12px;border-bottom:1px solid #e8dfba;border-right:1px solid #eee5c7;text-align:left;vertical-align:top;line-height:1.45}th{background:#f5e9a9;font-weight:750}th:last-child,td:last-child{border-right:0}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:rgba(255,255,255,.28)}.note{color:var(--muted);font-size:13px}.footer{margin-top:28px;display:flex;gap:14px}.btn{padding:12px 16px;border-radius:12px;text-decoration:none;background:var(--text);color:#fff;border:1px solid var(--text)}.btn--ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.table-wrap{overflow-x:auto;border:1px solid #e4d9a8;border-radius:12px;background:rgba(255,255,255,.42)}table{
+  width:max-content;
+  min-width:100%;
+  table-layout:auto;
+  border-collapse:collapse;
+}
+th,td{
+  width:auto;
+  max-width:none;
+  white-space:nowrap;
+  padding:11px 12px;border-bottom:1px solid #e8dfba;border-right:1px solid #eee5c7;text-align:left;vertical-align:top;line-height:1.45}th{background:#f5e9a9;font-weight:750}th:last-child,td:last-child{border-right:0}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:rgba(255,255,255,.28)}.note{color:var(--muted);font-size:13px}.footer{margin-top:28px;display:flex;gap:14px}.btn{padding:12px 16px;border-radius:12px;text-decoration:none;background:var(--text);color:#fff;border:1px solid var(--text)}.btn--ghost{background:transparent;color:var(--text);border-color:var(--line)}
+
+#ritual th:last-child,#ritual td:last-child{
+  white-space:normal;
+  min-width:260px;
+}
+
+#ritual td.merged-first-col{
+  text-align:center;
+  vertical-align:middle;
+  font-weight:600;
+}
+.personal-note{margin-top:16px;}
+
 @media(max-width:650px){.wrap{padding:18px 10px 36px}.card{padding:12px}.upper-tabs .tab-btn{font-size:13px;padding:9px 10px}th,td{padding:9px 10px}}
 </style></head><body><div class="wrap">
 <header><nav class="crumbs"><a href="index.html">← Back</a></nav><h1 class="title" id="page-title" data-ne="श्राद्ध विवरण" data-en="Shraddha Details">श्राद्ध विवरण</h1></header><section class="grid"><article class="card">
@@ -28,18 +51,18 @@
 <div class="panel upperpanel active" id="nwaran">
   <h2 class="section-title" data-ne="न्वारनको नामहरु" data-en="Nwaran Names">न्वारनको नामहरु</h2>
   <div class="table-wrap"><table><thead><tr><th>क्र.सं.</th><th>प्रचलित बोलाइको नाम</th><th>न्वारनको नाम</th></tr></thead><tbody><tr><td>1</td><td>अंगिरस</td><td>अंगिरस</td></tr><tr><td>2</td><td>शिव कुमारी</td><td>शिव कुमारी</td></tr><tr><td>3</td><td>विष्णुगोपाल</td><td>मिनप्रसाद</td></tr><tr><td>4</td><td>विन्दु कुमारी</td><td>शुभद्रा कुमारी</td></tr><tr><td>5</td><td>नारायण प्रसाद</td><td>युद्ध प्रसाद</td></tr><tr><td>6</td><td>पुण्यवती</td><td>पुण्यवती</td></tr><tr><td>7</td><td>सुशीला</td><td>खड्गकुमारी</td></tr><tr><td>8</td><td>भगवान प्रसाद</td><td>तारा नाथ</td></tr><tr><td>9</td><td>अंगुर (शान्ति)</td><td>ठगकुमारी</td></tr><tr><td>10</td><td>पुष्पराज</td><td>हुतराज</td></tr><tr><td>11</td><td>गौरी</td><td>दुर्गा देवी</td></tr><tr><td>12</td><td>मधुसुदन</td><td>घनश्याम</td></tr><tr><td>13</td><td>साधना</td><td>लेख कुमारी</td></tr><tr><td>14</td><td>आरती</td><td>यदु कुमारी</td></tr><tr><td>15</td><td>आशिष</td><td>पुष्कर नाथ</td></tr><tr><td>16</td><td>मुना</td><td>यमुना</td></tr><tr><td>17</td><td>पवना</td><td>विन्देश्वरी</td></tr><tr><td>18</td><td>पविता</td><td>रुकमणी</td></tr><tr><td>19</td><td>प्रवेश</td><td>एकनाथ</td></tr><tr><td>20</td><td>आदर्शा</td><td>भोज कुमारी</td></tr><tr><td>21</td><td>सुरज (ठुलो बाबु)</td><td>खुर प्रसाद</td></tr><tr><td>22</td><td>निरज</td><td>खुरनाथ</td></tr><tr><td>23</td><td>कुशल</td><td>पिताम्बर</td></tr><tr><td>24</td><td>कुसुम</td><td>कृष्ण कुमारी</td></tr><tr><td>25</td><td>आयन</td><td>टेकनारायण</td></tr><tr><td>26</td><td>अद्विक</td><td>पुकार</td></tr><tr><td>27</td><td>आरवी</td><td>ढाकालक्ष्मी</td></tr><tr><td>28</td><td>केदार</td><td>फणिन्द्रराज</td></tr><tr><td>29</td><td>कान्छी दिदी (रेणुका घिमिरे)</td><td>डम्बरकुमारी</td></tr><tr><td>30</td><td>नानी खनाल</td><td>फुत्तकुमारी</td></tr><tr><td>31</td><td>हरि प्रसाद</td><td>ढुण्डीराज</td></tr><tr><td>32</td><td>मन आमा</td><td>कुल कुमारी</td></tr><tr><td>33</td><td>सुधिर</td><td>गीता प्रसाद</td></tr><tr><td>34</td><td>गान्धीरा</td><td>कालिका</td></tr><tr><td>35</td><td>प्रभाकर</td><td>रुद्र प्रसाद</td></tr><tr><td>36</td><td>संझना</td><td>कमल कुमारी</td></tr><tr><td>37</td><td>श्रेयसा</td><td>झरना</td></tr><tr><td>38</td><td>सुव्रत</td><td>ओमप्रसाद</td></tr><tr><td>39</td><td>प्रिसा</td><td>पिताम्बरी</td></tr><tr><td>40</td><td>परासर</td><td>रवण प्रसाद</td></tr><tr><td>41</td><td>तुलसा</td><td>खेस कुमारी</td></tr><tr><td>42</td><td>सुनिल</td><td>शेष मणि</td></tr><tr><td>43</td><td>सुस्मिता</td><td>होम कुमारी</td></tr><tr><td>44</td><td>अमृता</td><td>टेककुमारी</td></tr><tr><td>45</td><td>सुमित्रा</td><td>लावण्यवती</td></tr><tr><td>46</td><td>प्रणवी</td><td>प्रेम कुमारी</td></tr><tr><td>47</td><td>दिप्ती</td><td>डोल कुमारी</td></tr></tbody></table></div>
-</div>
+<p class="note personal-note" data-ne="नोट: यो मेरो व्यक्तिगत पेज हो जहाँ मैले मेरो पुर्खा/चसिडोल पौडेल परिवारको बारेमा विवरण राखेको छु। - आशिष" data-en="Note: This is my personal page where I have recorded details about my ancestors/the Chasidol Poudel family. - Aashish">नोट: यो मेरो व्यक्तिगत पेज हो जहाँ मैले मेरो पुर्खा/चसिडोल पौडेल परिवारको बारेमा विवरण राखेको छु। - आशिष</p></div>
 
 <div class="panel upperpanel" id="direct">
   <h2 class="section-title" data-ne="प्रत्यक्ष पुर्खाहरूको विवरण" data-en="Direct Ancestors' Details">प्रत्यक्ष पुर्खाहरूको विवरण</h2>
   <div class="table-wrap"><table><thead><tr><th>गोत्र</th><th>सम्बन्ध</th><th>नाम</th><th>स्वरूप</th></tr></thead><tbody><tr><td>आत्रेय</td><td>पिता</td><td>मीन्नाथ शर्मा</td><td>वसु</td></tr><tr><td>आत्रेय</td><td>पितामह</td><td>अग्नि रूप शर्मा</td><td>रुद्र</td></tr><tr><td>आत्रेय</td><td>प्रपितामह</td><td>गौतम दत्त शर्मा</td><td>आदित्य</td></tr><tr><td>आत्रेय</td><td>माता</td><td>सुभद्रा देवी</td><td>वसु</td></tr><tr><td>आत्रेय</td><td>पितामही</td><td>शिव कुमारी देवी</td><td>रुद्र</td></tr><tr><td>आत्रेय</td><td>प्रपितामही</td><td>पूर्ण कुमारी देवी</td><td>आदित्य</td></tr><tr><td>भारद्वाज</td><td>मातामह</td><td>उत्तम कुमार शर्मा</td><td>वसु</td></tr><tr><td>भारद्वाज</td><td>प्रमातामह</td><td>गौरी दत्त शर्मा</td><td>रुद्र</td></tr><tr><td>भारद्वाज</td><td>वृद्धप्रमातामह</td><td>इन्द्र कुमारी देवी</td><td>आदित्य</td></tr><tr><td>आत्रेय</td><td>मध्यम पिता</td><td>कृष्ण प्रसाद शर्मा</td><td>वसु</td></tr><tr><td>भारद्वाज</td><td>मातुल</td><td>बोध कुमार शर्मा</td><td>वसु</td></tr><tr><td>कौण्डिन्य</td><td>ज्येष्ठ पितृस्वरूप</td><td>भक्त कुमारी सापकोटा</td><td>वसु</td></tr><tr><td>कश्यप</td><td>क. पितृस्वरूप</td><td>उमा कुमारी</td><td>वसु</td></tr><tr><td>आत्रेय</td><td>मध्यम मातृस्वरूप</td><td>मित्रु देवी सडवा</td><td>वसु</td></tr><tr><td>कौण्डिन्य</td><td>कान्छा</td><td>नारायणी सडवा</td><td>वसु</td></tr><tr><td>उपमन्यु</td><td>भगिनी</td><td>सपना कुमारी सडवा</td><td>वसु</td></tr><tr><td>आत्रेय</td><td>गणनी गुरु</td><td>दुर्गा प्रसाद शर्मा</td><td>वसु</td></tr></tbody></table></div>
-</div>
+<p class="note personal-note" data-ne="नोट: यो मेरो व्यक्तिगत पेज हो जहाँ मैले मेरो पुर्खा/चसिडोल पौडेल परिवारको बारेमा विवरण राखेको छु। - आशिष" data-en="Note: This is my personal page where I have recorded details about my ancestors/the Chasidol Poudel family. - Aashish">नोट: यो मेरो व्यक्तिगत पेज हो जहाँ मैले मेरो पुर्खा/चसिडोल पौडेल परिवारको बारेमा विवरण राखेको छु। - आशिष</p></div>
 
 <div class="panel upperpanel" id="ritual">
   <h2 class="section-title" data-ne="चसिडोल पितृको श्राद्धतिथि" data-en="Chasidol Ancestors' Ritual Dates">चसिडोल पितृको श्राद्धतिथि</h2>
   <div class="table-wrap"><table><thead><tr><th>महिना / पक्ष</th><th>तिथि</th><th>पितृ / विवरण</th></tr></thead><tbody><tr><td>बैशाख कृष्ण</td><td>पञ्चमी</td><td>देवनाथको पिता बुद्धिनाथ</td></tr><tr><td>बैशाख कृष्ण</td><td>पञ्चमी</td><td>ईश्वरको प्रपितामह लक्ष्मी नारायण</td></tr><tr><td>बैशाख कृष्ण</td><td>दशमी</td><td>ईश्वरको पितामही चित्र कुमारी</td></tr><tr><td>बैशाख शुक्ल</td><td>दशमी</td><td>सूर्यमणिको बाजु जगन्नाथ कृष्ण कुमारी</td></tr><tr><td>बैशाख शुक्ल</td><td>एकादशी</td><td>शेषराजको साहिला पितामह रामनाथ</td></tr><tr><td>जेठ कृष्ण</td><td>पञ्चमी</td><td>पुरुषोत्तमको कनिष्ठ पितामही कृष्ण कुमारी</td></tr><tr><td>जेठ कृष्ण</td><td>पञ्चमी</td><td>हरिप्रसादको पितामही पूर्ण कुमारी</td></tr><tr><td>जेठ कृष्ण</td><td>तृतीया</td><td>कल्याणको पिता फणिन्द्रनाथ</td></tr><tr><td>जेठ कृष्ण</td><td>प्रतिपदा</td><td>सूर्यराजको पिता ध्रुव प्रसाद</td></tr><tr><td>जेठ शुक्ल</td><td>द्वादशी</td><td>ईश्वरको पिता गुरु प्रसाद</td></tr><tr><td>आषाढ कृष्ण</td><td>एकादशी</td><td>पुरुषोत्तमको कनिष्ठ पितामह कीर्तिनाथ र पिता गणेश प्रसाद</td></tr><tr><td>आषाढ कृष्ण</td><td>नवमी</td><td>माधवको आमा ठण्ड कुमारी</td></tr><tr><td>आषाढ शुक्ल</td><td>सप्तमी</td><td>रघुनाथको आमा रत्नकुमारी</td></tr><tr><td>आषाढ शुक्ल</td><td>चतुर्दशी</td><td>पुरुषोत्तमको आमा गोमादेवी</td></tr><tr><td>आषाढ शुक्ल</td><td>नवमी</td><td>सूर्यमणिको पिता गणराज</td></tr><tr><td>श्रावण कृष्ण</td><td>अष्टमी</td><td>पुरुषोत्तमको प्रपितामही शिवमाया</td></tr><tr><td>श्रावण शुक्ल</td><td>दशमी</td><td>पुरुषोत्तमको प्रपितामह दण्डपाणी तथा कल्याण</td></tr><tr><td>श्रावण शुक्ल</td><td>दशमी</td><td>शुभद्राको हजुरआमा यश कुमारी</td></tr><tr><td>श्रावण शुक्ल</td><td>दशमी</td><td>शुदर्शनको माता दीप कुमारी</td></tr><tr><td>श्रावण शुक्ल</td><td>एकादशी</td><td>नारायणको पिता विष्णुगोपालको</td></tr><tr><td>श्रावण शुक्ल</td><td>द्वादशी</td><td>ईश्वरको जेठ भ्राता बोधनाथ</td></tr><tr><td>भाद्र कृष्ण</td><td>त्रयोदशी</td><td>देवनाथीका पितामह वाणि विलास</td></tr><tr><td>भाद्र शुक्ल</td><td>त्रयोदशी</td><td>देवनाथीका कनिष्ठ माता गौरदेवी</td></tr><tr><td>भाद्र शुक्ल</td><td>चतुर्दशी</td><td>निरञ्जनको पिता गणेश प्रसादको (जगन्नाथ)</td></tr><tr><td>भाद्र शुक्ल</td><td>दशमी</td><td>सूर्यमणिको माता देवनायकको</td></tr><tr><td>आश्विन कृष्ण</td><td>सप्तमी</td><td>हरिबोलको माता चितकुमारीको</td></tr><tr><td>आश्विन कृष्ण</td><td>प्रतिपदा</td><td>रघुनाथको सापत्नमाता चेतकुमारीको</td></tr><tr><td>आश्विन शुक्ल</td><td>एकादशी</td><td>पुरुषोत्तमको पितामह तोयनाथ र पितामही योगकुमारीको</td></tr><tr><td>आश्विन शुक्ल</td><td>पूर्णिमा</td><td>रघुनाथको पिता रमानाथको</td></tr><tr><td>मार्ग कृष्ण</td><td>औंसी</td><td>शंकरको जेठ पितामह पद्मनाथ</td></tr><tr><td>मार्ग कृष्ण</td><td>चतुर्दशी</td><td>शुरेशको मध्यम पितामह भूमिनन्द</td></tr><tr><td>मार्ग शुक्ल</td><td>तृतीया</td><td>हरी प्रसादको पितामह गणेशदत्त</td></tr><tr><td>मार्ग शुक्ल</td><td>पञ्चमी</td><td>हरी प्रसादको पिता अंगिरस</td></tr><tr><td>मार्ग शुक्ल</td><td>षष्ठी</td><td>शुदर्शनको पिता रविलाल</td></tr><tr><td>मार्ग शुक्ल</td><td>अष्टमी</td><td>परशुरामको श्रीमती चन्द्रलक्ष्मी</td></tr><tr><td>पौष शुक्ल</td><td>सप्तमी</td><td>देवनाथीका पितामही बालकुमारी</td></tr><tr><td>पौष शुक्ल</td><td>अष्टमी</td><td>देवनाथीको माता भक्त कुमारी</td></tr><tr><td>माघ कृष्ण</td><td>तृतीया</td><td>गोविन्दको जेठपत्नी डोलकेशरी</td></tr><tr><td>माघ कृष्ण</td><td>अष्टमी</td><td>गोविन्दको माता शारदाकुमारी</td></tr><tr><td>माघ शुक्ल</td><td>पञ्चमी</td><td>हरी प्रसादको माता शिवकुमारी</td></tr><tr><td>फागुन कृष्ण</td><td>औंसी</td><td>ऋषिरामको जेठ पत्नी बुद्धि कुमारी</td></tr><tr><td>फागुन कृष्ण</td><td>षष्ठी</td><td>सूर्यमणिको जेठ पत्नी इन्दिरा/उषा कुमारी</td></tr><tr><td>फागुन शुक्ल</td><td>द्वादशी</td><td>रघुनाथको हजुरबा चक्रपाणी</td></tr><tr><td>चैत्र कृष्ण</td><td>तृतीया</td><td>शंकरको पिता टाईश्वर</td></tr><tr><td>चैत्र कृष्ण</td><td>चौथी</td><td>माधवको पिता डिल्लीनाथ</td></tr><tr><td>चैत्र कृष्ण</td><td>नवमी</td><td>देवनाथीको कनिष्ठ पिता दुर्गा प्रसाद</td></tr><tr><td>चैत्र कृष्ण</td><td>एकादशी</td><td>रामहरीको पिता खेचरनाथ (बासुदेव)</td></tr><tr><td>चैत्र शुक्ल</td><td>सप्तमी</td><td>ईश्वरको माता टिका कुमारी</td></tr></tbody></table></div>
-  <p class="note">नोट: स्क्यानमा अस्पष्ट देखिएका अक्षरहरू अनुमान गरेर परिवर्तन गरिएको छैन। मूल कागजातसँग एक पटक मिलान गर्नु उपयुक्त हुन्छ।</p>
-</div>
+  
+<p class="note personal-note" data-ne="नोट: यो मेरो व्यक्तिगत पेज हो जहाँ मैले मेरो पुर्खा/चसिडोल पौडेल परिवारको बारेमा विवरण राखेको छु। - आशिष" data-en="Note: This is my personal page where I have recorded details about my ancestors/the Chasidol Poudel family. - Aashish">नोट: यो मेरो व्यक्तिगत पेज हो जहाँ मैले मेरो पुर्खा/चसिडोल पौडेल परिवारको बारेमा विवरण राखेको छु। - आशिष</p></div>
 </article><article class="card"><div class="footer"><a class="btn" href="index.html">⌂ Home / गृहपृष्ठ</a><a class="btn btn--ghost" href="contact.html">Contact / सम्पर्क</a></div></article></section></div>
 <script>
 const pageLangButtons = [...document.querySelectorAll(".page-lang")];
@@ -85,6 +108,28 @@ function renderRows(id, rows) {
   });
 }
 
+
+function mergeRitualFirstColumn() {
+  const rows = [...document.querySelectorAll("#ritual tbody tr")];
+  let i = 0;
+  while (i < rows.length) {
+    const cell = rows[i].children[0];
+    const value = cell ? cell.textContent.trim() : "";
+    let j = i + 1;
+    while (j < rows.length && rows[j].children[0] &&
+           rows[j].children[0].textContent.trim() === value) j++;
+    const count = j - i;
+    if (cell) {
+      cell.classList.add("merged-first-col");
+      if (count > 1) {
+        cell.rowSpan = count;
+        for (let k = i + 1; k < j; k++) rows[k].children[0].remove();
+      }
+    }
+    i = j;
+  }
+}
+
 function setLanguage(lang) {
   document.documentElement.lang = lang;
   pageLangButtons.forEach(btn =>
@@ -103,11 +148,8 @@ function setLanguage(lang) {
     });
     renderRows(id, lang === "en" ? englishRows[id] : nepaliRows[id]);
   });
-
-  const note = document.querySelector("#ritual .note");
-  if (note) note.textContent = lang === "ne"
-    ? "नोट: स्क्यानमा अस्पष्ट देखिएका अक्षरहरू अनुमान गरेर परिवर्तन गरिएको छैन। मूल कागजातसँग एक पटक मिलान गर्नु उपयुक्त हुन्छ।"
-    : "Note: Unclear text in the scanned source has not been intentionally guessed. Please verify ambiguous entries against the original document.";
+  mergeRitualFirstColumn();
+  document.querySelectorAll(".personal-note").forEach(note => note.textContent = note.dataset[lang]);
 }
 
 pageLangButtons.forEach(btn => btn.addEventListener("click", () => setLanguage(btn.dataset.lang)));
